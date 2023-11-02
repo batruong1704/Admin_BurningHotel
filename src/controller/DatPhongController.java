@@ -70,7 +70,7 @@ public class DatPhongController {
     try {
         conn = DriverManager.getConnection(Hotel_Manager.dbURL);
         // Thực hiện truy vấn và lấy kết quả trả về
-        sql = "Select * From quanlytaikhoan";
+        sql = "Select * From khachhang";
         if (sMaKT != null && !sMaKT.equals("")) {
             sql = sql + " Where " + sPhanLoai + " Like '%" + sMaKT + "%'";
         }

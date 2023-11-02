@@ -513,7 +513,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -567,8 +567,8 @@ public class JP_DatPhong extends javax.swing.JPanel {
                 .addComponent(jLabel20)
                 .addGap(0, 0, 0)
                 .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -585,11 +585,11 @@ public class JP_DatPhong extends javax.swing.JPanel {
             TableModel model = tb_khachhang.getModel();
             makh = model.getValueAt(index, 0).toString();
             tenkh = model.getValueAt(index, 1).toString();
-            sodt = model.getValueAt(index, 2).toString();
-            diachi = DatPhongController.NguonTruyVanDuLieu("DiaChi", "quanlytaikhoan", "ID", makh);
-            gioitinh = DatPhongController.NguonTruyVanDuLieu("GioiTinh", "quanlytaikhoan", "ID", makh);
-            cmnd = DatPhongController.NguonTruyVanDuLieu("CMND", "quanlytaikhoan", "ID", makh);
-            email = DatPhongController.NguonTruyVanDuLieu("Email", "quanlytaikhoan", "ID", makh);
+            email = model.getValueAt(index, 2).toString();
+            sodt = model.getValueAt(index, 3).toString();
+            diachi = DatPhongController.NguonTruyVanDuLieu("DiaChi", "khachhang", "ID", makh);
+            gioitinh = DatPhongController.NguonTruyVanDuLieu("GioiTinh", "khachhang", "ID", makh);
+            cmnd = DatPhongController.NguonTruyVanDuLieu("CMND", "khachhang", "ID", makh);
             txt_info_makh.setText(makh);
             txt_info_tenkh.setText(tenkh);
             txt_info_diachi.setText(diachi);
