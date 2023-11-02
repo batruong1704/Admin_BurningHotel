@@ -68,7 +68,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
         
         tbl_Phong_b1.setRowCount(0);
         arrPhong_b1.forEach((KQ) -> {
-            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTrangThai()});
+            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTinhTrang()});
         });
     }
     
@@ -77,7 +77,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
         arrKhachHang_b1 = DatPhongController.NguonKhachHang(sPhanLoaiTimKiem, sTimKhachHang);
         tbl_KhachHang_b1.setRowCount(0);
         arrKhachHang_b1.forEach((KQ) -> {
-            tbl_KhachHang_b1.addRow(new Object[]{KQ.getMakh(), KQ.getTenkh(), KQ.getEmail(), KQ.getSodt(), KQ.getGioitinh()});
+            tbl_KhachHang_b1.addRow(new Object[]{KQ.getMakh(), KQ.getTenkh(), KQ.getEmail(), KQ.getSdt(), KQ.getGioitinh()});
         });
     }
 

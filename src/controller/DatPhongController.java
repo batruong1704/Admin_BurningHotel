@@ -48,11 +48,11 @@ public class DatPhongController {
                 bp.setMaPhong(rs.getString("MaPhong"));
                 bp.setLoaiPhong(rs.getString("LoaiPhong"));
                 bp.setTang(rs.getString("Tang"));
-                bp.setTrangThai(rs.getString("TrangThai"));
+                bp.setTinhTrang(rs.getString("TrangThai"));
                 if (rs.getString("TrangThai").equals("Trống")) {
-                    bp.setTrangThai("Trống");
+                    bp.setTinhTrang("Trống");
                 } else {
-                    bp.setTrangThai("Đầy");
+                    bp.setTinhTrang("Đầy");
                 }
                 arrPhong.add(bp);
             }
@@ -102,7 +102,7 @@ public class DatPhongController {
             
             bp.setEmail(rs.getString("Email"));
             bp.setCmnd(rs.getString("CMND"));
-            bp.setSodt(rs.getString("SDT"));
+            bp.setSdt(rs.getString("SDT"));
             arrKhachHang.add(bp);
         }
         state.close();
@@ -285,7 +285,7 @@ public class DatPhongController {
             state.setString(3, bp.getDiachi());
             state.setString(4, bp.getGioitinh());
             state.setString(5, bp.getCmnd());
-            state.setString(6, bp.getSodt());
+            state.setString(6, bp.getSdt());
             state.execute();
             state.close();
             conn.close();
@@ -536,10 +536,10 @@ public class DatPhongController {
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMaPhong());
             state.setString(2, bp.getLoaiPhong());
-            state.setString(3, bp.getSoGiuong());
-            state.setString(4, bp.getSoPhong());
+            //state.setString(3, bp.getSoGiuong());
+           // state.setString(4, bp.getSoPhong());
             state.setString(5, bp.getGiaPhong());
-            state.setString(6, bp.getTrangThai());
+            //state.setString(6, bp.getTrangThai());
             state.setString(7, bp.getMoTa());
             state.setString(8, maphong);
             state.execute();

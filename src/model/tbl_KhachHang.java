@@ -1,20 +1,24 @@
 package model;
 
 public class tbl_KhachHang {
-    String makh, tenkh, diachi, gioitinh, cmnd, sodt, password, email;
 
-    public tbl_KhachHang() {
-    }
+    String makh, tenkh,sdt,email,cmnd ,diachi, gioitinh;
 
-    public tbl_KhachHang(String makh, String tenkh, String diachi, String gioitinh, String cmnd, String sodt, String password, String email) {
+
+
+    public tbl_KhachHang(){}
+
+    public tbl_KhachHang(String makh, String tenkh, String sdt, String email, String cmnd, String diachi, String gioitinh) {
+
         this.makh = makh;
         this.tenkh = tenkh;
+        this.sdt = sdt;
+        this.email = email;
+        this.cmnd = cmnd;
         this.diachi = diachi;
         this.gioitinh = gioitinh;
-        this.cmnd = cmnd;
-        this.sodt = sodt;
-        this.password = password;
-        this.email = email;
+
+
     }
 
     public String getMakh() {
@@ -33,6 +37,30 @@ public class tbl_KhachHang {
         this.tenkh = tenkh;
     }
 
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCmnd() {
+        return cmnd;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
+    }
+
     public String getDiachi() {
         return diachi;
     }
@@ -49,37 +77,7 @@ public class tbl_KhachHang {
         this.gioitinh = gioitinh;
     }
 
-    public String getCmnd() {
-        return cmnd;
-    }
 
-    public void setCmnd(String cmnd) {
-        this.cmnd = cmnd;
-    }
-
-    public String getSodt() {
-        return sodt;
-    }
-
-    public void setSodt(String sodt) {
-        this.sodt = sodt;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
     
 
 }

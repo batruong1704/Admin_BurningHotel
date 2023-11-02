@@ -1,10 +1,5 @@
 package view;
-
-import controller.QuanLyController;
-import model.tbl_DoiMatKhau;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,8 +9,7 @@ import controller.QuanLyKhachSanController;
 
 public class JF_AboutMe extends javax.swing.JFrame {
 
-    List<tbl_DoiMatKhau> arrDoiMatKhau = new ArrayList<>();
-    private static String id, mkc, mkm;
+    private static String email, mkc, mkm;
 
     public JF_AboutMe() {
         initComponents();
@@ -332,9 +326,9 @@ public class JF_AboutMe extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_ThoatActionPerformed
 
     private void bt_DoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DoiMKActionPerformed
-        String id = txttendn.getText();
-        String mkc = txtmkc.getText();
-        String mkm = txtmkm.getText();
+        email = txttendn.getText();
+        mkc = txtmkc.getText();
+        mkm = txtmkm.getText();
         String nlMkm = txtnlmkm.getText();
         // Kiểm tra mật khẩu mới nhập lại có giống với mật khẩu mới không
         if (!mkm.equals(nlMkm)) {
@@ -342,9 +336,13 @@ public class JF_AboutMe extends javax.swing.JFrame {
             return;
         } else {
             // Thực hiện đổi mật khẩu
-            tbl_DoiMatKhau cn = new tbl_DoiMatKhau(id, mkc, mkm);
-            QuanLyKhachSanController.DoiMatKhau(cn);
-            JOptionPane.showMessageDialog(this, "Bạn đã thay đổi mật khẩu thành công", "Thông Báo ", JOptionPane.INFORMATION_MESSAGE);
+            if(QuanLyKhachSanController.DoiMatKhau(mkm, email, mkc)==true){
+                JOptionPane.showMessageDialog(this, "Bạn đã thay đổi mật khẩu thành công", "Thông Báo ", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+              JOptionPane.showMessageDialog(this, "Lỗi cập nhập", "Thông Báo", JOptionPane.ERROR_MESSAGE);  
+            }
+            
         }
 
     }//GEN-LAST:event_bt_DoiMKActionPerformed
@@ -374,6 +372,14 @@ public class JF_AboutMe extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JF_AboutMe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

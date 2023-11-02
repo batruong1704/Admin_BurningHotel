@@ -1,42 +1,42 @@
 package model;
 
 public class tbl_Phong {
-    String MaPhong, LoaiPhong, SoGiuong, SoPhong, GiaPhong, TrangThai, MoTa, Tang, LuotDat, TongDoanhThuPhong;
+
+    String MaPhong, LoaiPhong,KieuPhong,SLMax, LoaiGiuong, GiaPhong, IMG, DienTich, TamNhin,MoTa, TinhTrang,LuotDat, TongDoanhThuPhong,tang;
 
     public tbl_Phong(){}
 
-    public tbl_Phong(String MaPhong, String LoaiPhong,String SoGiuong, String SoPhong, String GiaPhong, String TrangThai, String MoTa) {
+    public tbl_Phong(String MaPhong, String LoaiPhong, String KieuPhong, String SLMax, String LoaiGiuong, String GiaPhong, String IMG, String DienTich, String TamNhin, String MoTa, String TinhTrang) {
         this.MaPhong = MaPhong;
         this.LoaiPhong = LoaiPhong;
-        this.SoGiuong = SoGiuong;
-        this.SoPhong = SoPhong;
+        this.KieuPhong = KieuPhong;
+        this.SLMax = SLMax;
+        this.LoaiGiuong = LoaiGiuong;
         this.GiaPhong = GiaPhong;
-        this.TrangThai = TrangThai;
+        this.IMG = IMG;
+        this.DienTich = DienTich;
+        this.TamNhin = TamNhin;
         this.MoTa = MoTa;
+        this.TinhTrang = TinhTrang;
     }
 
-    public tbl_Phong(String MaPhong, String LoaiPhong, String GiaPhong, String LuotDat, String TongDoanhThuPhong) {
+   
+    
+    public tbl_Phong(String MaPhong, String LoaiPhong, String KieuPhong, String SLMax, String LoaiGiuong, String GiaPhong, String IMG, String DienTich, String TamNhin, String MoTa, String TinhTrang, String LuotDat, String TongDoanhThuPhong, String tang) {
         this.MaPhong = MaPhong;
         this.LoaiPhong = LoaiPhong;
+        this.KieuPhong = KieuPhong;
+        this.SLMax = SLMax;
+        this.LoaiGiuong = LoaiGiuong;
         this.GiaPhong = GiaPhong;
+        this.IMG = IMG;
+        this.DienTich = DienTich;
+        this.TamNhin = TamNhin;
+        this.MoTa = MoTa;
+        this.TinhTrang = TinhTrang;
         this.LuotDat = LuotDat;
         this.TongDoanhThuPhong = TongDoanhThuPhong;
-    }
-
-    public String getLuotDat() {
-        return LuotDat;
-    }
-
-    public void setLuotDat(String LuotDat) {
-        this.LuotDat = LuotDat;
-    }
-
-    public String getTongDoanhThuPhong() {
-        return TongDoanhThuPhong;
-    }
-
-    public void setTongDoanhThuPhong(String TongDoanhThuPhong) {
-        this.TongDoanhThuPhong = TongDoanhThuPhong;
+        this.tang = tang;
     }
 
     public String getMaPhong() {
@@ -55,6 +55,30 @@ public class tbl_Phong {
         this.LoaiPhong = LoaiPhong;
     }
 
+    public String getKieuPhong() {
+        return KieuPhong;
+    }
+
+    public void setKieuPhong(String KieuPhong) {
+        this.KieuPhong = KieuPhong;
+    }
+
+    public String getSLMax() {
+        return SLMax;
+    }
+
+    public void setSLMax(String SLMax) {
+        this.SLMax = SLMax;
+    }
+
+    public String getLoaiGiuong() {
+        return LoaiGiuong;
+    }
+
+    public void setLoaiGiuong(String LoaiGiuong) {
+        this.LoaiGiuong = LoaiGiuong;
+    }
+
     public String getGiaPhong() {
         return GiaPhong;
     }
@@ -63,12 +87,28 @@ public class tbl_Phong {
         this.GiaPhong = GiaPhong;
     }
 
-    public String getTrangThai() {
-        return TrangThai;
+    public String getIMG() {
+        return IMG;
     }
 
-    public void setTrangThai(String TrangThai) {
-        this.TrangThai = TrangThai;
+    public void setIMG(String IMG) {
+        this.IMG = IMG;
+    }
+
+    public String getDienTich() {
+        return DienTich;
+    }
+
+    public void setDienTich(String DienTich) {
+        this.DienTich = DienTich;
+    }
+
+    public String getTamNhin() {
+        return TamNhin;
+    }
+
+    public void setTamNhin(String TamNhin) {
+        this.TamNhin = TamNhin;
     }
 
     public String getMoTa() {
@@ -78,28 +118,39 @@ public class tbl_Phong {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
-    public String getSoGiuong() {
-        return SoGiuong;
+
+    public String getTinhTrang() {
+        return TinhTrang;
     }
 
-    public void setSoGiuong(String SoGiuong) {
-        this.SoGiuong = SoGiuong;
+    public void setTinhTrang(String TinhTrang) {
+        this.TinhTrang = TinhTrang;
     }
 
-    public String getSoPhong() {
-        return SoPhong;
+    public String getLuotDat() {
+        return LuotDat;
     }
 
-    public void setSoPhong(String SoPhong) {
-        this.SoPhong = SoPhong;
+    public void setLuotDat(String LuotDat) {
+        this.LuotDat = LuotDat;
+    }
+
+    public String getTongDoanhThuPhong() {
+        return TongDoanhThuPhong;
+    }
+
+    public void setTongDoanhThuPhong(String TongDoanhThuPhong) {
+        this.TongDoanhThuPhong = TongDoanhThuPhong;
     }
 
     public String getTang() {
-        return Tang;
+        return tang;
     }
 
-    public void setTang(String Tang) {
-        this.Tang = Tang;
+    public void setTang(String tang) {
+        this.tang = tang;
     }
+
     
+   
 }

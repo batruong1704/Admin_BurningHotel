@@ -1,23 +1,16 @@
 package controller;
 
-import model.tbl_PhieuDangKy;
-import model.tbl_KhachHang;
-import model.tbl_Phong;
-import model.tbl_ChucVu;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.tbl_NhanVien;
-import model.tbl_DoiMatKhau;
 import model.Hotel_Manager;
+import static model.Hotel_Manager.dbURL;
 
 public class QuanLyKhachSanController {
 
@@ -54,37 +47,43 @@ public class QuanLyKhachSanController {
     }
     
     
-
-    public static void DoiMatKhau(tbl_DoiMatKhau bp) {
-        boolean success = false;
-        Connection conn = null;
+   
+    public static boolean DoiMatKhau(String mkm, String email, String mkc) {
+       
+        conn = null;
         PreparedStatement state = null;
-        try {
-            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            String sql = "UPDATE taikhoanadmin SET MatKhau = ? WHERE Email = ? AND PassWord = ?";
-            state = conn.prepareStatement(sql);
-            state.setString(1, bp.getMatKhauMoi());
-            state.setString(2, bp.getEmail());
-            state.setString(3, bp.getMatKhauCu());
-            int rowsAffected = state.executeUpdate();
-            if (rowsAffected > 0) {
-                success = true;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        boolean updateSuccess = false;
+         try {
+        java.sql.Connection conn = DriverManager.getConnection(dbURL);
+        sql = "UPDATE taikhoanadmin SET PassWord = ? WHERE Email = ? AND PassWord = ?";
+        state = conn.prepareStatement(sql);
+        state.setString(1, mkm);
+        state.setString(2, email);
+        state.setString(3, mkc);
+
+        int rowsUpdated = state.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            updateSuccess = true;
+        } else {
+             updateSuccess = false;
         }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } 
+         return updateSuccess;
     }
 
-    public static void QuenMatKhau(tbl_NhanVien nv) {
+    public static void QuenMatKhau(String pw, String sdt, String email) {
         Connection conn = null;
         PreparedStatement state = null;
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             String sql = "UPDATE taikhoanadmin SET PassWord = ? WHERE SDT = ? AND Email = ?";
             state = conn.prepareStatement(sql);
-            state.setString(1, nv.getPasswword());
-            state.setString(2, nv.getSdt());
-            state.setString(3, nv.getEmail());
+            state.setString(1, pw);
+            state.setString(2, sdt);
+            state.setString(3, email);
             state.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

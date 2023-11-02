@@ -4,27 +4,25 @@
  */
 package model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  *
  * @author Dung Nguyen
  */
 public class tbl_NhanVien {
-    String id,tennv,macv,gioitinh,ngaysinh,sdt,diachi,tendn,passwword,email;
+    String id, hoten, macv, ngaysinh, gioitinh, diachi, email, sdt, matkhau;
 
-    public tbl_NhanVien(String id, String tennv, String macv, String gioitinh, String ngaysinh, String sdt, String diachi, String tendn, String passwword, String email) {
+    public tbl_NhanVien() {}
+    
+    public tbl_NhanVien(String id, String hoten, String macv, String ngaysinh, String gioitinh, String diachi, String email, String sdt, String matkhau) {
         this.id = id;
-        this.tennv = tennv;
+        this.hoten = hoten;
         this.macv = macv;
-        this.gioitinh = gioitinh;
         this.ngaysinh = ngaysinh;
-        this.sdt = sdt;
+        this.gioitinh = gioitinh;
         this.diachi = diachi;
-        this.tendn = tendn;
-        this.passwword = passwword;        this.email = email;
-
+        this.email = email;
+        this.sdt = sdt;
+        this.matkhau = matkhau;
     }
 
     public String getid() {
@@ -35,12 +33,12 @@ public class tbl_NhanVien {
         this.id = id;
     }
 
-    public String getTennv() {
-        return tennv;
+    public String getHoten() {
+        return hoten;
     }
 
-    public void setTennv(String tennv) {
-        this.tennv = tennv;
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
     }
 
     public String getMacv() {
@@ -83,21 +81,6 @@ public class tbl_NhanVien {
         this.diachi = diachi;
     }
 
-    public String getTendn() {
-        return tendn;
-    }
-
-    public void setTendn(String tendn) {
-        this.tendn = tendn;
-    }
-
-    public String getPasswword() {
-        return passwword;
-    }
-
-    public void setPasswword(String passwword) {
-        this.passwword = passwword;
-    }
     public String getEmail() {
         return email;
     }
@@ -106,5 +89,12 @@ public class tbl_NhanVien {
         this.email = email;
     }
 
+    public String getMatkhau() {
+        return matkhau;
+    }
+
+    public void setMatkhau(String matkhau) {
+        this.matkhau = matkhau;
+    }
     
 }
