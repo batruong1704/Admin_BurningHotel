@@ -1,17 +1,17 @@
 package model;
 
 public class tbl_Phong {
-    String MaPhong, LoaiPhong, SoGiuong, SoPhong, GiaPhong, TinhTrang, MoTa, Tang, LuotDat, TongDoanhThuPhong;
+    String MaPhong, LoaiPhong, SoGiuong, SoPhong, GiaPhong, TrangThai, MoTa, Tang, LuotDat, TongDoanhThuPhong;
 
     public tbl_Phong(){}
 
-    public tbl_Phong(String MaPhong, String LoaiPhong,String SoGiuong, String SoPhong, String GiaPhong, String TinhTrang, String MoTa) {
+    public tbl_Phong(String MaPhong, String LoaiPhong,String SoGiuong, String SoPhong, String GiaPhong, String TrangThai, String MoTa) {
         this.MaPhong = MaPhong;
         this.LoaiPhong = LoaiPhong;
         this.SoGiuong = SoGiuong;
         this.SoPhong = SoPhong;
         this.GiaPhong = GiaPhong;
-        this.TinhTrang = TinhTrang;
+        this.TrangThai = TrangThai;
         this.MoTa = MoTa;
     }
 
@@ -63,12 +63,12 @@ public class tbl_Phong {
         this.GiaPhong = GiaPhong;
     }
 
-    public String getTinhTrang() {
-        return TinhTrang;
+    public String getTrangThai() {
+        return TrangThai;
     }
 
-    public void setTinhTrang(String TinhTrang) {
-        this.TinhTrang = TinhTrang;
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
     }
 
     public String getMoTa() {

@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_AboutMe.java</file>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/model/Hotel_Manager.java</file>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/controller/QuanLyKhachSanController.java</file>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_NhaPhanPhoi.java</file>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/controller/QuanLyController.java</file>
-            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_DangNhap.java</file>
+            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/controller/DatPhongController.java</file>
+            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/model/tbl_HangHoa.java</file>
+            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_DatPhongB2.java</file>
+            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/model/tbl_MonAn.java</file>
         </group>
     </open-files>
 </project-private>

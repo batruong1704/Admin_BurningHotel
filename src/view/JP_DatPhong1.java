@@ -66,7 +66,7 @@ public class JP_DatPhong1 extends javax.swing.JPanel {
         
         tbl_Phong_b1.setRowCount(0);
         arrPhong_b1.forEach((KQ) -> {
-            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTinhTrang()});
+            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTrangThai()});
         });
     }
     public void Buoc1_LayNguonKH() throws IOException {

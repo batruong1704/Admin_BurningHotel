@@ -141,11 +141,11 @@ public class QuanLyController {
                 bp.setSoGiuong(rs.getString("SoGiuong"));
                 bp.setSoPhong(rs.getString("SoPhong"));
                 bp.setGiaPhong(rs.getString("GiaPhong"));
-                bp.setTinhTrang(rs.getString("TinhTrang"));
-                if(rs.getString("TinhTrang").equals("0")){
-                    bp.setTinhTrang("Trống");
+                bp.setTrangThai(rs.getString("TrangThai"));
+                if(rs.getString("TrangThai").equals("Trống")){
+                    bp.setTrangThai("Trống");
                 } else {
-                    bp.setTinhTrang("Đầy");
+                    bp.setTrangThai("Đầy");
                 }
                 bp.setMoTa(rs.getString("MoTa"));
                 arrPhong.add(bp);
@@ -169,7 +169,7 @@ public class QuanLyController {
             state.setString(3, bp.getSoGiuong());
             state.setString(4, bp.getSoPhong());
             state.setString(5, bp.getGiaPhong());
-            state.setString(6, bp.getTinhTrang());
+            state.setString(6, bp.getTrangThai());
             state.setString(7, bp.getMoTa());
             state.execute();
         } catch (SQLException ex) {
@@ -180,14 +180,14 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,SoGiuong = ?, SoPhong = ?, GiaPhong = ?, TinhTrang = ?, MoTa = ? WHERE MaPhong = ?";
+            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,SoGiuong = ?, SoPhong = ?, GiaPhong = ?, TrangThai = ?, MoTa = ? WHERE MaPhong = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMaPhong());
             state.setString(2, bp.getLoaiPhong());
             state.setString(3, bp.getSoGiuong());
             state.setString(4, bp.getSoPhong());
             state.setString(5, bp.getGiaPhong());
-            state.setString(6, bp.getTinhTrang());
+            state.setString(6, bp.getTrangThai());
             state.setString(7, bp.getMoTa());
             state.setString(8, maphong);
             state.execute();

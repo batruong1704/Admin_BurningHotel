@@ -17,15 +17,15 @@ import javax.swing.table.TableModel;
 import model.tbl_CTPhieuDV;
 import model.tbl_CTPhieuSP;
 import model.tbl_DichVu;
-import model.tbl_HangHoa;
 import model.tbl_HoaDon;
+import model.tbl_MonAn;
 import model.tbl_PhieuBonus;
 
 public final class JF_DatPhongB2 extends javax.swing.JFrame {
 
     DefaultTableModel tbl_DichVu_b2, tbl_SanPham_b2, tbl_ChotDichVu, tbl_ChotSanPham;
     List<tbl_DichVu> arrDichVu_b2 = new ArrayList<>();
-    List<tbl_HangHoa> arrSanPham_b2 = new ArrayList<>();
+    List<tbl_MonAn> arrSanPham_b2 = new ArrayList<>();
     private String b2_madv, b2_tendv, b2_giadv, b2_masp, b2_tensp, b2_soluongsp, b2_giasp, b2_tongphieu, b2_tiencoc;
 
     public JF_DatPhongB2() throws IOException {
@@ -49,7 +49,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         arrSanPham_b2 = DatPhongController.NguonSanPham("");
         tbl_SanPham_b2.setRowCount(0);
         arrSanPham_b2.forEach((KQ) -> {
-            tbl_SanPham_b2.addRow(new Object[]{KQ.getMahang(), KQ.getTenhang(), KQ.getGiaban(), KQ.getSoluong()});
+            tbl_SanPham_b2.addRow(new Object[]{KQ.getID(), KQ.getTenMon(), KQ.getPhanLoai(), KQ.getThanhTien()});
         });
     }
 
@@ -212,7 +212,6 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_chotdichvu.setRowHeight(20);
         tb_chotdichvu.setRowMargin(5);
         tb_chotdichvu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -237,7 +236,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         jLabel35.setText("Tổng dịch vụ:");
 
         jLabel37.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel37.setText("Tổng sản phẩm:");
+        jLabel37.setText("Tổng giá món ăn:");
 
         jLabel38.setFont(new java.awt.Font("Montserrat Medium", 1, 18)); // NOI18N
         jLabel38.setText("Tổng:");
@@ -248,12 +247,10 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         txt_b2_tiencoc.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
 
         lb_b2_tonggiadv.setFont(new java.awt.Font("Montserrat Medium", 3, 16)); // NOI18N
-        lb_b2_tonggiadv.setForeground(new java.awt.Color(255, 0, 0));
         lb_b2_tonggiadv.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_b2_tonggiadv.setText("0");
 
         lb_b2_tonggiasp.setFont(new java.awt.Font("Montserrat Medium", 3, 16)); // NOI18N
-        lb_b2_tonggiasp.setForeground(new java.awt.Color(255, 0, 0));
         lb_b2_tonggiasp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_b2_tonggiasp.setText("0");
 
@@ -375,7 +372,6 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_chotsanpham.setRowHeight(20);
         tb_chotsanpham.setRowMargin(5);
         tb_chotsanpham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -574,7 +570,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã Sản Phẩm", "Sản Phẩm", "Giá", "Còn"
+                "Mã Món Ăn", "Tên Món", "Loại", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -611,7 +607,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         btn_timkiemdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
 
         jLabel44.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel44.setText("Mã Sản Phẩm:");
+        jLabel44.setText("Mã Món:");
 
         jLabel36.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel36.setText("Bộ lọc:");
@@ -619,7 +615,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         txt_timkiemsp.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
 
         jLabel43.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel43.setText("Tên Sản Phẩm:");
+        jLabel43.setText("Tên Món:");
 
         lb_b2_masp.setFont(new java.awt.Font("Montserrat SemiBold", 1, 14)); // NOI18N
         lb_b2_masp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -654,7 +650,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         });
 
         jLabel45.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel45.setText("Tên Sản Phẩm:");
+        jLabel45.setText("Số Lượng");
 
         jLabel42.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         jLabel42.setText("Giá:");
@@ -967,12 +963,13 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
                 b2_tiencoc = "0";
             }
             tbl_HoaDon cnhd = new tbl_HoaDon("", JP_DatPhong.maPhieuDk, "", "", ngayHienTai, b2_tongphieu, b2_tiencoc);
-            DatPhongController.ThemHoaDon(cnhd);
+            DatPhongController.ThemHoaDon(cnhd, b2_tiencoc);
             JOptionPane.showMessageDialog(this, "Đặt phòng Thành Công!", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             JFrame jf_Main = new Home();
             jf_Main.setLocationRelativeTo(null);
             jf_Main.setVisible(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(JF_DatPhongB2.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1021,7 +1018,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
                 b2_tiencoc = "0";
             }
             tbl_HoaDon cnhd = new tbl_HoaDon("", JP_DatPhong.maPhieuDk, "", "", ngayHienTai, b2_tongphieu, b2_tiencoc);
-            DatPhongController.ThemHoaDon(cnhd);
+            DatPhongController.ThemHoaDon(cnhd, b2_tiencoc);
             JOptionPane.showMessageDialog(this, "Đặt phòng Thành Công!", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             JFrame jf_Main = new Home();

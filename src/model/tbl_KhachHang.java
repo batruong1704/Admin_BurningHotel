@@ -1,16 +1,20 @@
 package model;
 
 public class tbl_KhachHang {
-    String makh, tenkh, diachi, gioitinh, cmnd, sodt;
+    String makh, tenkh, diachi, gioitinh, cmnd, sodt, password, email;
 
-    public tbl_KhachHang(){}
-    public tbl_KhachHang(String makh, String tenkh, String diachi, String gioitinh, String cmnd, String sodt) {
+    public tbl_KhachHang() {
+    }
+
+    public tbl_KhachHang(String makh, String tenkh, String diachi, String gioitinh, String cmnd, String sodt, String password, String email) {
         this.makh = makh;
         this.tenkh = tenkh;
         this.diachi = diachi;
         this.gioitinh = gioitinh;
         this.cmnd = cmnd;
         this.sodt = sodt;
+        this.password = password;
+        this.email = email;
     }
 
     public String getMakh() {
@@ -60,5 +64,22 @@ public class tbl_KhachHang {
     public void setSodt(String sodt) {
         this.sodt = sodt;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
+
 }

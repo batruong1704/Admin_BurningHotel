@@ -573,7 +573,7 @@ public class JP_KhachHang extends javax.swing.JPanel {
         }
         cmnd = txtcmnd.getText();
         sodt = txtsdt.getText();
-        tbl_KhachHang cn = new tbl_KhachHang(makh, tenkh, diachi, gioitinh, cmnd, sodt);
+        tbl_KhachHang cn = new tbl_KhachHang(makh, tenkh, diachi, gioitinh, cmnd, sodt, "", "");
         if (ktThem == true) {
             QuanLyController.ThemKhachHang(cn);
         } else {

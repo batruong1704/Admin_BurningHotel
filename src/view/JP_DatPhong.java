@@ -1,19 +1,17 @@
 package view;
 
 import controller.DatPhongController;
-import controller.QuanLyController;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.IOException;
-import java.lang.System.Logger;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -21,8 +19,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
-import model.tbl_DichVu;
-import model.tbl_HangHoa;
 import model.tbl_KhachHang;
 import model.tbl_Phong;
 
@@ -34,7 +30,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
     List<tbl_Phong> arrPhong_b1 = new ArrayList<>();
 
     private String sTimMaPhieu, sTimKhachHang, sPhanLoaiTimKiem;
-    public static String makh, tenkh, sodt, diachi, gioitinh, cmnd, maPhong, loaiPhong, giaPhong, maPhieuDk, maNhanVien, tinhTien;
+    public static String makh, tenkh, sodt, diachi, gioitinh, cmnd, maPhong, loaiPhong, giaPhong, maPhieuDk, maNhanVien, tinhTien, email;
     public static Date ngayDen, ngayDi;
     public static String laymanhanvien;
     public static double soNgay;
@@ -72,15 +68,16 @@ public class JP_DatPhong extends javax.swing.JPanel {
         
         tbl_Phong_b1.setRowCount(0);
         arrPhong_b1.forEach((KQ) -> {
-            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTinhTrang()});
+            tbl_Phong_b1.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(), KQ.getTang(), KQ.getTrangThai()});
         });
     }
+    
     public void Buoc1_LayNguonKH() throws IOException {
         tbl_KhachHang_b1 = (DefaultTableModel) tb_khachhang.getModel();
         arrKhachHang_b1 = DatPhongController.NguonKhachHang(sPhanLoaiTimKiem, sTimKhachHang);
         tbl_KhachHang_b1.setRowCount(0);
         arrKhachHang_b1.forEach((KQ) -> {
-            tbl_KhachHang_b1.addRow(new Object[]{KQ.getMakh(), KQ.getTenkh(), KQ.getSodt()});
+            tbl_KhachHang_b1.addRow(new Object[]{KQ.getMakh(), KQ.getTenkh(), KQ.getEmail(), KQ.getSodt(), KQ.getGioitinh()});
         });
     }
 
@@ -105,8 +102,6 @@ public class JP_DatPhong extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_phong = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        txt_ticket_maphieu = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         txt_ticket_maphong = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -133,6 +128,9 @@ public class JP_DatPhong extends javax.swing.JPanel {
         txt_ticket_manhanvien = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         button1 = new container.Button();
+        txt_timtheoEmail = new javax.swing.JLabel();
+        txt_info_email = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1140, 780));
@@ -182,33 +180,33 @@ public class JP_DatPhong extends javax.swing.JPanel {
         tb_khachhang.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         tb_khachhang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã Khách Hàng", "Tên Khách Hàng", "Số Điện Thoại"
+                "ID", "Tên Khách Hàng", "Email", "Số Điện Thoại", "Giới Tính"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -225,9 +223,10 @@ public class JP_DatPhong extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tb_khachhang);
         if (tb_khachhang.getColumnModel().getColumnCount() > 0) {
-            tb_khachhang.getColumnModel().getColumn(0).setPreferredWidth(35);
-            tb_khachhang.getColumnModel().getColumn(1).setPreferredWidth(175);
-            tb_khachhang.getColumnModel().getColumn(2).setPreferredWidth(75);
+            tb_khachhang.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tb_khachhang.getColumnModel().getColumn(1).setPreferredWidth(125);
+            tb_khachhang.getColumnModel().getColumn(2).setPreferredWidth(175);
+            tb_khachhang.getColumnModel().getColumn(3).setPreferredWidth(75);
         }
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -307,13 +306,6 @@ public class JP_DatPhong extends javax.swing.JPanel {
         add(jPanel8, java.awt.BorderLayout.LINE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel18.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel18.setText("Mã Phiếu:");
-
-        txt_ticket_maphieu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_ticket_maphieu.setMargin(new java.awt.Insets(0, 2, 0, 0));
-        txt_ticket_maphieu.setPreferredSize(new java.awt.Dimension(250, 25));
 
         jLabel22.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel22.setText("Mã Phòng:");
@@ -436,6 +428,25 @@ public class JP_DatPhong extends javax.swing.JPanel {
             }
         });
 
+        txt_timtheoEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_timtheoEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
+        txt_timtheoEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_timtheoEmailMouseClicked(evt);
+            }
+        });
+
+        txt_info_email.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_email.setMargin(new java.awt.Insets(0, 2, 0, 0));
+        txt_info_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_info_emailActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel8.setText("Email:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -444,14 +455,14 @@ public class JP_DatPhong extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(txt_info_email))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 12, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_ticket_maphieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txt_info_makh, javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,27 +491,36 @@ public class JP_DatPhong extends javax.swing.JPanel {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_timtheoSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_ticket_checkin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel18)
-                .addGap(0, 0, 0)
-                .addComponent(txt_ticket_maphieu, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, 0)
+                        .addComponent(txt_info_email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -549,14 +569,14 @@ public class JP_DatPhong extends javax.swing.JPanel {
                 .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6))
         );
 
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        add(jPanel2, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_khachhangMouseClicked
@@ -566,9 +586,10 @@ public class JP_DatPhong extends javax.swing.JPanel {
             makh = model.getValueAt(index, 0).toString();
             tenkh = model.getValueAt(index, 1).toString();
             sodt = model.getValueAt(index, 2).toString();
-            diachi = DatPhongController.NguonTruyVanDuLieu("DiaChi", "KhachHang", "MaKhachHang", makh);
-            gioitinh = DatPhongController.NguonTruyVanDuLieu("GioiTinh", "KhachHang", "MaKhachHang", makh);
-            cmnd = DatPhongController.NguonTruyVanDuLieu("CMND", "KhachHang", "MaKhachHang", makh);
+            diachi = DatPhongController.NguonTruyVanDuLieu("DiaChi", "quanlytaikhoan", "ID", makh);
+            gioitinh = DatPhongController.NguonTruyVanDuLieu("GioiTinh", "quanlytaikhoan", "ID", makh);
+            cmnd = DatPhongController.NguonTruyVanDuLieu("CMND", "quanlytaikhoan", "ID", makh);
+            email = DatPhongController.NguonTruyVanDuLieu("Email", "quanlytaikhoan", "ID", makh);
             txt_info_makh.setText(makh);
             txt_info_tenkh.setText(tenkh);
             txt_info_diachi.setText(diachi);
@@ -587,6 +608,8 @@ public class JP_DatPhong extends javax.swing.JPanel {
             }
             txt_info_cmnd.setText(cmnd);
             txt_info_sdt.setText(sodt);
+            txt_info_email.setText(email);
+            maPhieuDk = Integer.toString(DatPhongController.MaPhieuLonNhat());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -602,7 +625,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
 
     private void btn_timtheomakhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheomakhachhangMouseClicked
         try {
-            sPhanLoaiTimKiem = "MaKhachHang";
+            sPhanLoaiTimKiem = "ID";
             sTimKhachHang = txt_info_makh.getText();
             Buoc1_LayNguonKH();
         } catch (IOException ex) {
@@ -617,7 +640,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
 
     private void btn_timtheotenkhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheotenkhachhangMouseClicked
         try {
-            sPhanLoaiTimKiem = "TenKhachHang";
+            sPhanLoaiTimKiem = "HoTen";
             sTimKhachHang = txt_info_tenkh.getText();
             Buoc1_LayNguonKH();
         } catch (IOException ex) {
@@ -653,61 +676,73 @@ public class JP_DatPhong extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_refresh_KHMouseClicked
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        try {
-            TableModel modelP = tb_phong.getModel();
-            maPhong = modelP.getValueAt(tb_phong.getSelectedRow(), 0).toString();
-            loaiPhong = modelP.getValueAt(tb_phong.getSelectedRow(), 1).toString();
-            makh = txt_info_makh.getText();
-            tenkh = txt_info_tenkh.getText();
-            sodt = txt_info_sdt.getText();
-            diachi = txt_info_diachi.getText();
-            if (rdb_info_Nam.isSelected()) {
-                gioitinh = "Nam";
-            } else if (rdb_info_Nu.isSelected()) {
-                gioitinh = "Nữ";
-            } else if (rdb_Khac.isSelected()) {
-                gioitinh = "Khác";
-            }
-            cmnd = txt_info_cmnd.getText();
-            maPhieuDk = txt_ticket_maphieu.getText();
-            maNhanVien = txt_ticket_manhanvien.getText();
-            ngayDen = txt_ticket_checkin.getDate();
-            ngayDi = txt_ticket_checkout.getDate();
-            if (maPhieuDk.isEmpty() || makh.isEmpty() || tenkh.isEmpty() || diachi.isEmpty() || gioitinh.isEmpty() || cmnd.isEmpty() || sodt.isEmpty() || maPhong.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin!", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (DatPhongController.KiemTra("PhieuDatPhong", "MaPhieuDatPhong", maPhieuDk)) {
-                JOptionPane.showMessageDialog(this, "Mã phiếu đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (ngayDen == null || ngayDi == null || ngayDen.after(ngayDi)) {
-                JOptionPane.showMessageDialog(this, "Ngày đến hoặc ngày đi không hợp lệ", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            Date ngayHienTai = new Date();
-            if (txt_ticket_checkin.getDate().before(ngayHienTai)) {
-                JOptionPane.showMessageDialog(this, "Ngày đến phải sau ngày hiện tại.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (ngayDen != null && ngayDi != null) {
-                try {
-                    soNgay = (double) ((ngayDi.getTime() - ngayDen.getTime()) / (24 * 60 * 60 * 1000));
-                    giaPhong = DatPhongController.NguonTruyVanDuLieu("GiaPhong", "Phong", "MaPhong", maPhong);
-                    
-                    tinhTien = String.valueOf(soNgay * Double.parseDouble(giaPhong));
-                } catch (IOException ex) {
-                    java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            JFrame dialog = new JDiaLog_DatPhong();
-            dialog.setVisible(true);
-            dialog.setLocationRelativeTo(null);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Thêm phòng thất bại!!!", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+        TableModel modelP = tb_phong.getModel();
+        maPhong = modelP.getValueAt(tb_phong.getSelectedRow(), 0).toString();
+        loaiPhong = modelP.getValueAt(tb_phong.getSelectedRow(), 1).toString();
+        makh = txt_info_makh.getText();
+        tenkh = txt_info_tenkh.getText();
+        sodt = txt_info_sdt.getText();
+        diachi = txt_info_diachi.getText();
+        if (rdb_info_Nam.isSelected()) {
+            gioitinh = "Nam";
+        } else if (rdb_info_Nu.isSelected()) {
+            gioitinh = "Nữ";
+        } else if (rdb_Khac.isSelected()) {
+            gioitinh = "Khác";
+        }
+        cmnd = txt_info_cmnd.getText();
+        maNhanVien = txt_ticket_manhanvien.getText();
+        ngayDen = txt_ticket_checkin.getDate();
+        ngayDi = txt_ticket_checkout.getDate();
+        if (makh.isEmpty() || tenkh.isEmpty() || diachi.isEmpty() || gioitinh.isEmpty() || cmnd.isEmpty() || sodt.isEmpty() || maPhong.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin!", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
+//        try {
+//            if (DatPhongController.KiemTra("PhieuDatPhong", "MaPhieuDatPhong", maPhieuDk)) {
+//                JOptionPane.showMessageDialog(this, "Mã phiếu đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        if (ngayDen == null || ngayDi == null || ngayDen.after(ngayDi)) {
+            JOptionPane.showMessageDialog(this, "Ngày đến hoặc ngày đi không hợp lệ", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Date ngayHienTai = new Date();
+        if (txt_ticket_checkin.getDate().before(ngayHienTai)) {
+            JOptionPane.showMessageDialog(this, "Ngày đến phải sau ngày hiện tại.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (ngayDen != null && ngayDi != null) {
+            try {
+                soNgay = (double) ((ngayDi.getTime() - ngayDen.getTime()) / (24 * 60 * 60 * 1000));
+                giaPhong = DatPhongController.NguonTruyVanDuLieu("GiaPhong", "Phong", "MaPhong", maPhong);
+                
+                tinhTien = String.valueOf(soNgay * Double.parseDouble(giaPhong));
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        JFrame dialog = new JDiaLog_DatPhong();
+        dialog.setVisible(true);
+        dialog.setLocationRelativeTo(null);
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void txt_timtheoEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_timtheoEmailMouseClicked
+        try {
+            sPhanLoaiTimKiem = "Email";
+            sTimKhachHang = txt_info_email.getText();
+            Buoc1_LayNguonKH();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_timtheoEmailMouseClicked
+
+    private void txt_info_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_info_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_info_emailActionPerformed
 
 
 
@@ -718,7 +753,6 @@ public class JP_DatPhong extends javax.swing.JPanel {
     private container.Button button1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -731,6 +765,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -747,14 +782,15 @@ public class JP_DatPhong extends javax.swing.JPanel {
     private javax.swing.JTable tb_phong;
     private javax.swing.JTextField txt_info_cmnd;
     private javax.swing.JTextField txt_info_diachi;
+    private javax.swing.JTextField txt_info_email;
     private javax.swing.JTextField txt_info_makh;
     private javax.swing.JTextField txt_info_sdt;
     private javax.swing.JTextField txt_info_tenkh;
     private com.toedter.calendar.JDateChooser txt_ticket_checkin;
     private com.toedter.calendar.JDateChooser txt_ticket_checkout;
     private javax.swing.JLabel txt_ticket_manhanvien;
-    private javax.swing.JTextField txt_ticket_maphieu;
     private javax.swing.JLabel txt_ticket_maphong;
+    private javax.swing.JLabel txt_timtheoEmail;
     private javax.swing.JLabel txt_timtheoSDT;
     // End of variables declaration//GEN-END:variables
 

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import model.tbl_DichVu;
 import model.tbl_HangHoa;
 import model.tbl_HoaDon;
 import model.tbl_KhachHang;
+import model.tbl_MonAn;
 import model.tbl_PhieuDatPhong;
 import model.tbl_Phong;
 import model.tbl_PhieuBonus;
@@ -33,7 +35,7 @@ public class DatPhongController {
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select MaPhong, LoaiPhong, LEFT(MaPhong,1) as Tang, TinhTrang From Phong";
+            sql = "Select MaPhong, LoaiPhong, LEFT(MaPhong,1) as Tang, TrangThai From Phong";
             if (sMaKT != null && !sMaKT.equals("")) {
                 sql = sql + " Where " + sPhanLoai + " Like '%" + sMaKT + "%'";
             }
@@ -46,11 +48,11 @@ public class DatPhongController {
                 bp.setMaPhong(rs.getString("MaPhong"));
                 bp.setLoaiPhong(rs.getString("LoaiPhong"));
                 bp.setTang(rs.getString("Tang"));
-                bp.setTinhTrang(rs.getString("TinhTrang"));
-                if (rs.getString("TinhTrang").equals("0")) {
-                    bp.setTinhTrang("Trống");
+                bp.setTrangThai(rs.getString("TrangThai"));
+                if (rs.getString("TrangThai").equals("Trống")) {
+                    bp.setTrangThai("Trống");
                 } else {
-                    bp.setTinhTrang("Đầy");
+                    bp.setTrangThai("Đầy");
                 }
                 arrPhong.add(bp);
             }
@@ -63,67 +65,86 @@ public class DatPhongController {
     }
 
     public static List<tbl_KhachHang> NguonKhachHang(String sPhanLoai, String sMaKT) {
-        List<tbl_KhachHang> arrKhachHang = new ArrayList<>();
-        Statement state = null;
-        try {
-            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From KhachHang";
-            if (sMaKT != null && !sMaKT.equals("")) {
-                sql = sql + " Where " + sPhanLoai + " Like '%" + sMaKT + "%'";
-            }
-            sql = sql + " order by MaKhachHang DESC";
-            state = conn.createStatement();
-            ResultSet rs = state.executeQuery(sql);
-            // Xử lý kết quả trả về
-            while (rs.next()) {
-                tbl_KhachHang bp = new tbl_KhachHang();
-                bp.setMakh(rs.getString("MaKhachHang"));
-                bp.setTenkh(rs.getString("TenKhachHang"));
-                bp.setDiachi(rs.getString("diachi"));
-                bp.setGioitinh(rs.getString("gioitinh"));
-                bp.setCmnd(rs.getString("cmnd"));
-                bp.setSodt(rs.getString("SDT"));
-                arrKhachHang.add(bp);
-            }
-            state.close();
-            conn.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    List<tbl_KhachHang> arrKhachHang = new ArrayList<>();
+    Statement state = null;
+    try {
+        conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+        // Thực hiện truy vấn và lấy kết quả trả về
+        sql = "Select * From quanlytaikhoan";
+        if (sMaKT != null && !sMaKT.equals("")) {
+            sql = sql + " Where " + sPhanLoai + " Like '%" + sMaKT + "%'";
         }
-        return arrKhachHang;
+        sql = sql + " order by ID DESC";
+        state = conn.createStatement();
+        ResultSet rs = state.executeQuery(sql);
+        // Xử lý kết quả trả về
+        while (rs.next()) {
+            tbl_KhachHang bp = new tbl_KhachHang();
+            bp.setMakh(rs.getString("ID"));
+            bp.setTenkh(rs.getString("HoTen"));
+            bp.setDiachi(rs.getString("DiaChi"));
+            
+            int gioiTinhValue = rs.getInt("GioiTinh");
+            String gioiTinh;
+            switch (gioiTinhValue) {
+                case 1:
+                    gioiTinh = "Nam";
+                    break;
+                case 0:
+                    gioiTinh = "Nữ";
+                    break;
+                default:
+                    gioiTinh = "Khác";
+                    break;
+            }
+            
+            bp.setGioitinh(gioiTinh);
+            
+            bp.setEmail(rs.getString("Email"));
+            bp.setCmnd(rs.getString("CMND"));
+            bp.setSodt(rs.getString("SDT"));
+            arrKhachHang.add(bp);
+        }
+        state.close();
+        conn.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
+    return arrKhachHang;
+}
 
-    public static List<tbl_HangHoa> NguonSanPham(String sMaKT) {
-        List<tbl_HangHoa> arrHangHoa = new ArrayList<>();
+
+    public static List<tbl_MonAn> NguonSanPham(String sMaKT) {
+        List<tbl_MonAn> arrMonAn = new ArrayList<>();
         Statement state = null;
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             state = conn.createStatement();
-            sql = "select * from mathang where soluong > 0";
+            sql = "select * from doan";
             if (sMaKT != null && !sMaKT.equals("")) {
-                sql = sql + " and mahang Like '%" + sMaKT + "%'";
+                sql = sql + " WHERE ID Like '%" + sMaKT + "%'";
             }
             ResultSet rs = (ResultSet) state.executeQuery(sql);
             while (rs.next()) {
-                tbl_HangHoa hh = new tbl_HangHoa();
-                hh.setMahang(rs.getString("MaHang"));
-                hh.setTenhang(rs.getString("TenHang"));
-                hh.setMacongty(rs.getString("MaCongTy"));
-                hh.setLoaihang(rs.getString("LoaiHang"));
-                hh.setSoluong(rs.getString("SoLuong"));
-                hh.setDonvitinh(rs.getString("Donvitinh"));
-                hh.setGianhap(rs.getString("GiaNhap"));
-                hh.setGiaban(rs.getString("GiaBan"));
-
-                arrHangHoa.add(hh);
+                tbl_MonAn hh = new tbl_MonAn();
+                hh.setID(rs.getString("ID"));
+                hh.setTenMon(rs.getString("TenMon"));
+                hh.setPhanLoai(rs.getString("PhanLoai"));
+                hh.setThoiGianNau(rs.getString("ThoiGianNau"));
+                hh.setDoKho(rs.getString("DoKho"));
+                hh.setThanhPhan(rs.getString("ThanhPhan"));
+                hh.setHamLuongKalo(rs.getString("HamLuongKalo"));                
+                hh.setThanhTien(rs.getString("ThanhTien"));
+                hh.setMoTa(rs.getString("MoTa"));
+                hh.setSoLuongDaBan(rs.getString("SoLuongDaBan"));
+                arrMonAn.add(hh);
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(HangHoaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return arrHangHoa;
+        return arrMonAn;
 
     }
 
@@ -145,7 +166,7 @@ public class DatPhongController {
                 tbl_DichVu bp = new tbl_DichVu();
                 bp.setMadichvu(rs.getString("MaDichVu"));
                 bp.setTendichvu(rs.getString("TenDichVu"));
-                bp.setGiadichvu(rs.getString("Gia"));
+                bp.setGiadichvu(rs.getString("DonGia"));
                 arrDichVu.add(bp);
             }
             state.close();
@@ -173,7 +194,7 @@ public class DatPhongController {
             while (rs.next()) {
                 tbl_PhieuDatPhong bp = new tbl_PhieuDatPhong();
                 bp.setMaPhieuDK(rs.getString("MaPhieuDatPhong"));
-                bp.setMaKhachHang(rs.getString("MaKhachHang"));
+                bp.setMaKhachHang(rs.getString("ID"));
                 bp.setNgayDen(rs.getString("NgayDen"));
                 bp.setNgayDi(rs.getString("NgayDi"));
                 bp.setMaPhong(rs.getString("MaPhong"));
@@ -209,6 +230,27 @@ public class DatPhongController {
         }
         return ketqua;
     }
+    
+    public static int MaPhieuLonNhat() throws IOException {
+        int ketqua = 0;
+        Statement state = null;
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SELECT MAX(MaPDP) FROM phieudatphong";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                ketqua = rs.getInt("MAX(MaPDP)") + 1;
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ketqua;
+    }
 
     // kiem tra trung ma
     public static boolean KiemTra(String tenbang, String tentruong, String manhap) throws SQLException {
@@ -236,7 +278,7 @@ public class DatPhongController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DiaChi, GioiTinh, CMND, SDT) VALUES(?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO KhachHang (ID, TenKhachHang, DiaChi, GioiTinh, CMND, SDT) VALUES(?, ?, ?, ?, ?, ?)";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMakh());
             state.setString(2, bp.getTenkh());
@@ -252,40 +294,42 @@ public class DatPhongController {
         }
     }
 
-    public static boolean ThemPhieuDatPhong(tbl_PhieuDatPhong bp) throws SQLException {
-        Connection conn = null;
-        PreparedStatement state = null;
-        String updateTinhTrang = "UPDATE phong SET TinhTrang='1' WHERE MaPhong = ?";
-        try {
-            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "INSERT INTO phieudatphong VALUES(?, ?, ?, ?, ?, ?, ?)";
-            state = conn.prepareStatement(sql);
-            state.setString(1, bp.getMaPhieuDK());
-            state.setString(2, bp.getMaKhachHang());
-            state.setString(3, bp.getMaNhanVien());
-            state.setString(4, bp.getNgayDen());
-            state.setString(5, bp.getNgayDi());
-            state.setString(6, bp.getMaPhong());
-            state.setDouble(7, Double.parseDouble(bp.getThanhTien()));
-            state.execute();
+    public static boolean ThemPhieuDatPhong(tbl_PhieuDatPhong bp, Date ngayhientai) throws SQLException {
+    Connection conn = null;
+    PreparedStatement state = null;
+    String updateTrangThai = "UPDATE phong SET TrangThai='Đầy' WHERE MaPhong = ?";
+    try {
+        conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+        sql = "INSERT INTO phieudatphong VALUES(?, ?, ?, ?, ?, ?, ?)";
+        state = conn.prepareStatement(sql);
+        state.setString(1, bp.getMaPhieuDK());
+        state.setString(2, bp.getMaKhachHang());
+        state.setString(3, bp.getMaNhanVien());
+        state.setDouble(4, Double.parseDouble(bp.getThanhTien()));            
+        state.setDouble(5, 0.0); // Sử dụng 0.0 thay vì Double.parseDouble("0")
+        state.setString(6, "Thanh Toán Trực Tiếp");
+        state.setDate(7, new java.sql.Date(ngayhientai.getTime())); // Set giá trị ngày hôm nay
 
-            PreparedStatement update = conn.prepareStatement(updateTinhTrang);
-            update.setString(1, bp.getMaPhong());
-            update.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            System.out.println("Lỗi khi thêm phiếu đặt phòng: " + ex.getMessage());
-            ex.printStackTrace();
-            return false;
-        } finally {
-            if (state != null) {
-                state.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
+        state.execute();
+
+        PreparedStatement update = conn.prepareStatement(updateTrangThai);
+        update.setString(1, bp.getMaPhong());
+        update.executeUpdate();
+        return true;
+    } catch (SQLException ex) {
+        System.out.println("Lỗi khi thêm phiếu đặt phòng: " + ex.getMessage());
+        ex.printStackTrace();
+        return false;
+    } finally {
+        if (state != null) {
+            state.close();
+        }
+        if (conn != null) {
+            conn.close();
         }
     }
+}
+
 
 
     // Thêm dữ liệu cho cả bảng phieudichvu, phieusanpham;
@@ -390,13 +434,11 @@ public class DatPhongController {
         }
     }
 
-    public static void ThemHoaDon(tbl_HoaDon bp) throws SQLException {
+    public static void ThemHoaDon(tbl_HoaDon bp, String tinhtrang) throws SQLException {
         String maxIdHoaDon = "SELECT MAX(MaHoaDon) FROM HoaDon";
-        String maxIdPhieuDV = "SELECT MAX(MaPhieuDichVu) FROM PhieuDichVu";
-        String maxIdPhieuSP = "SELECT MAX(MaPhieuSanPham) FROM PhieuSanPham";
-        sql = "INSERT INTO hoadon(MaHoaDon, MaPhieuDatPhong, MaPhieuDichVu, MaPhieuSanPham, NgayLap, TongTien, TienCoc) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL); PreparedStatement getMaxIdHoaDon = conn.prepareStatement(maxIdHoaDon); PreparedStatement getMaxIdPhieuDV = conn.prepareStatement(maxIdPhieuDV); PreparedStatement getMaxIdPhieuSP = conn.prepareStatement(maxIdPhieuSP); PreparedStatement insertdata = conn.prepareStatement(sql)) {
+        sql = "INSERT INTO hoadon "
+                + "VALUES (?, ?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL); PreparedStatement getMaxIdHoaDon = conn.prepareStatement(maxIdHoaDon); PreparedStatement insertdata = conn.prepareStatement(sql)) {
             // Lấy phiếu hoá đơn lớn nhất sau đấy để insert tự tăng 1 đơn vị
             int indexHD = 0;
             ResultSet rs = getMaxIdHoaDon.executeQuery();
@@ -409,32 +451,35 @@ public class DatPhongController {
             indexHD++;
             String newId = "HD" + String.format("%03d", indexHD);
             rs.close();
-            // Lấy ra phiếu dịch vụ mới thêm trước đó
-            rs = getMaxIdPhieuDV.executeQuery();
             String maphieudichvu = null;
             if (rs.next()) {
                 maphieudichvu = rs.getString(1);
             }
-            rs.close();
-
-            rs = getMaxIdPhieuSP.executeQuery();
-            String maphieusanpham = null;
-            if (rs.next()) {
-                maphieusanpham = rs.getString(1);
-            }
             insertdata.setString(1, newId);
             insertdata.setString(2, bp.getMaPhieuDatPhong());
-            insertdata.setString(3, maphieudichvu);
-            insertdata.setString(4, maphieusanpham);
-            insertdata.setString(5, bp.getNgayLap());
-            insertdata.setDouble(6, Double.valueOf(bp.getTongTien()));
-            insertdata.setDouble(7, Double.parseDouble(bp.getTienCoc()));
+            insertdata.setDouble(3, Double.valueOf(bp.getTongTien()));
+            insertdata.setString(4, tinhtrang);
             insertdata.execute();
             insertdata.close();
             conn.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public static void TienCoc(String ID, String tiencoc) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "UPDATE phieudatphongphong SET ThanhToanTruoc = '" + tiencoc + "' WHERE MaPDP = " + ID +";";
+            state = conn.prepareStatement(sql);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
     }
 
     public static void XoaPhieuDatPhong(String maPhong) throws SQLException {
@@ -458,10 +503,10 @@ public class DatPhongController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE Phong SET TinhTrang = CASE " +
+            sql = "UPDATE Phong SET TrangThai = CASE " +
                                 "WHEN MaPhong = ? THEN 0 " +
                                 "WHEN MaPhong = ? THEN 1 " +
-                                "ELSE TinhTrang END";
+                                "ELSE TrangThai END";
             state = conn.prepareStatement(sql);
             state.setString(1, maphongcu);
             state.setString(2, bp.getMaPhong());
@@ -487,14 +532,14 @@ public class DatPhongController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,SoGiuong = ?, SoPhong = ?, GiaPhong = ?, TinhTrang = ?, MoTa = ? WHERE MaPhong = ?";
+            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,SoGiuong = ?, SoPhong = ?, GiaPhong = ?, TrangThai = ?, MoTa = ? WHERE MaPhong = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMaPhong());
             state.setString(2, bp.getLoaiPhong());
             state.setString(3, bp.getSoGiuong());
             state.setString(4, bp.getSoPhong());
             state.setString(5, bp.getGiaPhong());
-            state.setString(6, bp.getTinhTrang());
+            state.setString(6, bp.getTrangThai());
             state.setString(7, bp.getMoTa());
             state.setString(8, maphong);
             state.execute();
@@ -515,7 +560,7 @@ public class DatPhongController {
             state.setString(1, mpm);
             ResultSet rs = (ResultSet) state.executeQuery();
             while (rs.next()) {
-                tinhtrang = rs.getString("TinhTrang"); 
+                tinhtrang = rs.getString("TrangThai"); 
             }
        
     }catch (SQLException ex) {

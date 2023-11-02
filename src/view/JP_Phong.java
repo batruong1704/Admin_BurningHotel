@@ -30,7 +30,7 @@ public final class JP_Phong extends javax.swing.JPanel {
         arrPhong = QuanLyController.NguonPhong();
         tbl_Phong.setRowCount(0);
         arrPhong.forEach((KQ) -> {
-            tbl_Phong.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(),KQ.getSoGiuong(), KQ.getSoPhong(), KQ.getGiaPhong(), KQ.getTinhTrang(), KQ.getMoTa()});
+            tbl_Phong.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(),KQ.getSoGiuong(), KQ.getSoPhong(), KQ.getGiaPhong(), KQ.getTrangThai(), KQ.getMoTa()});
         });
     }
     
