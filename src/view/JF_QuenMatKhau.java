@@ -246,7 +246,7 @@ public class JF_QuenMatKhau extends javax.swing.JFrame {
         }
             else{
             // Thực hiện đổi mật khẩu
-            tbl_NhanVien nv = new tbl_NhanVien("", tennv, macv, gioitinh, ngaysinh, sodienthoai, diachi, taikhoan, matkhau, email);
+            tbl_NhanVien nv = new tbl_NhanVien("", tennv, macv, gioitinh, ngaysinh, sodienthoai, diachi, taikhoan, matkhau);
             QuanLyKhachSanController.QuenMatKhau(nv);
             JOptionPane.showMessageDialog(this, "Bạn đã đặt lại mật khẩu thành công", "Thông Báo ", JOptionPane.INFORMATION_MESSAGE);
             }

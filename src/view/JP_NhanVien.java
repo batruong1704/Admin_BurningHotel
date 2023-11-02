@@ -641,7 +641,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         taikhoan = txttaikhoan.getText();
         matkhau = txtmatkhau.getText();
 
-        tbl_NhanVien nv = new tbl_NhanVien(manv, tennv, macv, gt, date, sdt, diachi, taikhoan, matkhau, "");
+        tbl_NhanVien nv = new tbl_NhanVien(manv, tennv, macv, gt, date, sdt, diachi, taikhoan, matkhau);
         if (ktThem == true) {
             QuanLyController.ThemNV(nv);
             JOptionPane.showMessageDialog(this, "Thêm mới thành công ");

@@ -14,7 +14,7 @@ import java.util.Date;
 public class tbl_NhanVien {
     String id,tennv,macv,gioitinh,ngaysinh,sdt,diachi,tendn,passwword,email;
 
-    public tbl_NhanVien(String id, String tennv, String macv, String gioitinh, String ngaysinh, String sdt, String diachi, String tendn, String passwword, String email) {
+    public tbl_NhanVien(String id, String tennv, String macv, String gioitinh, String ngaysinh, String sdt, String diachi, String tendn, String passwword) {
         this.id = id;
         this.tennv = tennv;
         this.macv = macv;
