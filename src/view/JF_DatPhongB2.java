@@ -26,7 +26,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
     DefaultTableModel tbl_DichVu_b2, tbl_SanPham_b2, tbl_ChotDichVu, tbl_ChotSanPham;
     List<tbl_DichVu> arrDichVu_b2 = new ArrayList<>();
     List<tbl_MonAn> arrSanPham_b2 = new ArrayList<>();
-    private String b2_madv, b2_tendv, b2_giadv, b2_masp, b2_tensp, b2_soluongsp, b2_giasp, b2_tongphieu, b2_tiencoc;
+    private String b2_madv, b2_tendv, b2_giadv, b2_masp, b2_tensp, b2_soluongsp, b2_tongphieu, b2_tiencoc;
 
     public JF_DatPhongB2() throws IOException {
         initComponents();
@@ -448,7 +448,7 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
         boolean skt = false;
         // Kiểm tra trùng lặp với cột đầu tiên của bảng
         for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
-            if (tbl_ChotDichVu.getValueAt(i, 0).equals(b2_madv)) {
+            if (tbl_ChotDichVu.getValueAt(i, 0) != null && tbl_ChotDichVu.getValueAt(i, 0).equals(b2_madv)) {
                 skt = true;
                 break;
             }
@@ -472,12 +472,8 @@ public final class JF_DatPhongB2 extends javax.swing.JFrame {
             if (b2_giadv.isEmpty()) {
                 b2_giadv = "0";
             }
-
-            if (b2_giasp.isEmpty()) {
-                b2_giasp = "0";
-            }
             tbl_PhieuBonus cndv = new tbl_PhieuBonus("", JP_DatPhong.maPhieuDk, b2_giadv);
-            DatPhongController.ThemPhieuBonus(cndv, "MaPhieuDichVu", "PhieuDichVu", "PDV");
+            DatPhongController.ThemPhieuBonus(cndv, "MaPDV", "PhieuDichVu", "PDV");
 
             for (int i = 0; i < tb_chotdichvu.getRowCount(); i++) {
                 b2_madv = tb_chotdichvu.getValueAt(i, 0).toString();
