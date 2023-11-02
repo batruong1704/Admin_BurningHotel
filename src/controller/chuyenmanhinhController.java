@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import view.Home_BackUp;
 import view.JP_ChucVu;
 import view.JP_DatPhong;
+import view.JP_DauBep;
 import view.JP_DichVu;
 import view.JP_HangHoa;
 import view.JP_KhachHang;
@@ -26,40 +27,44 @@ import view.JP_NhanVien;
 import view.JP_ThongKe;
 
 public class chuyenmanhinhController {
+
     private JPanel root;
     private String kindSelected = "";
     private List<chuyenmanhinhModel> listItem = null;
-    
-    public chuyenmanhinhController(JPanel jpnRoot){
+
+    public chuyenmanhinhController(JPanel jpnRoot) {
         this.root = jpnRoot;
     }
-    
-    public void setView(JPanel jpnItem) throws IOException, SQLException{
+
+    public void setView(JPanel jpnItem) throws IOException, SQLException {
         root.removeAll();
         root.setLayout(new BorderLayout());
         root.add(new JP_ChucVu());
         root.validate();
         root.repaint();
     }
-    public void setEvent(List<chuyenmanhinhModel> listItem){
+
+    public void setEvent(List<chuyenmanhinhModel> listItem) {
         this.listItem = listItem;
-        
-        for(chuyenmanhinhModel item : listItem){
+
+        for (chuyenmanhinhModel item : listItem) {
             item.getPanel_chuyen().addMouseListener(new LabelEvent(item.getCheck_chuyen(), item.getPanel_chuyen(), item.getLabel_chuyen()));
         }
     }
-    class LabelEvent implements MouseListener{
+
+    class LabelEvent implements MouseListener {
+
         private JPanel node;
         private String check;
         private JPanel btnItem;
         private JLabel jlbItem;
 
-        public LabelEvent(String check, JPanel btnItem,JLabel jlbItem) {
+        public LabelEvent(String check, JPanel btnItem, JLabel jlbItem) {
             this.check = check;
             this.btnItem = btnItem;
             this.jlbItem = jlbItem;
         }
-        
+
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (check) {
@@ -69,11 +74,11 @@ public class chuyenmanhinhController {
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (SQLException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 break;
-                
+
                 case "QuanLyPhong": {
                     try {
                         node = new JP_Phong();
@@ -82,7 +87,7 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-                
+
                 case "QuanLyDichVu": {
                     try {
                         node = new JP_DichVu();
@@ -91,13 +96,13 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-                
+
                 case "QuanLyNhanVien": {
-                try {
-                    node = new JP_NhanVien();
-                } catch (IOException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    try {
+                        node = new JP_NhanVien();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 break;
 
@@ -109,7 +114,7 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-                
+
                 case "PhieuDatPhong": {
                     try {
                         node = new JP_DatPhong();
@@ -118,40 +123,40 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-                
+
                 case "Home": {
                     node = new Home_BackUp();
                 }
                 break;
-                
+
                 case "ThongKeDoanhThu": {
-                try {
-                    node = new JP_ThongKe();
-                } catch (IOException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    try {
+                        node = new JP_ThongKe();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 break;
-                
+
                 case "QuanLyDatPhong": {
-                try {
-                    node = new JP_SuaPhieuDatPhong();
-                } catch (IOException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    try {
+                        node = new JP_SuaPhieuDatPhong();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 break;
-                                              
+
                 case "NhapHang": {
                     node = new JP_NhapHang();
                 }
                 break;
-                
+
                 case "KhoHang": {
                     node = new JP_HangHoa();
                 }
                 break;
-                
+
                 case "SuaPhieuDatPhong": {
                     try {
                         node = new JP_SuaPhieuDatPhong();
@@ -160,23 +165,28 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-                
-                case "HoaDon":
-                {
-                try {
-                    node = new JP_HoaDon();
-                } catch (IOException | SQLException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }
-                    break;
 
-                    
-                case "NhaPhanPhoi":  {
-                    node = new JP_NhaPhanPhoi();
+                case "HoaDon": {
+                    try {
+                        node = new JP_HoaDon();
+                    } catch (IOException | SQLException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 break;
 
+                case "NhaPhanPhoi": {
+                    node = new JP_NhaPhanPhoi();
+                }
+                break;
+                case "DauBep": {
+                    try {
+                        node = new JP_DauBep();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
             }
             root.removeAll();
             root.setLayout(new BorderLayout());
@@ -184,7 +194,7 @@ public class chuyenmanhinhController {
             root.validate();
             root.repaint();
         }
-        
+
         @Override
         public void mousePressed(MouseEvent e) {
         }
@@ -200,6 +210,6 @@ public class chuyenmanhinhController {
         @Override
         public void mouseExited(MouseEvent e) {
         }
-        
+
     }
 }

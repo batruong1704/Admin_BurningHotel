@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Hotel_Manager;
 import model.tbl_ChucVu;
+import model.tbl_DauBep;
 import model.tbl_DichVu;
 import model.tbl_KhachHang;
 import model.tbl_NhanVien;
@@ -582,4 +583,110 @@ public class QuanLyController {
             ex.printStackTrace();
         } 
     }
+    public static List<tbl_DauBep> NguonDauBep(String sMaKT) throws IOException {
+        List<tbl_DauBep> arrDauBep = new ArrayList<>();
+        Statement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select * From DauBep";
+            if(sMaKT != null && !sMaKT.equals("")){
+                sql = sql + " Where ID ='" + sMaKT + "'";
+            }
+            sql = sql + " order by ID";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                tbl_DauBep db = new tbl_DauBep();
+                db.setId(rs.getString("ID"));
+                db.setHoten(rs.getString("HoTen"));
+                db.setGioitinh(rs.getString("GioiTinh"));
+                db.setNgaysinh(rs.getString("NgaySinh"));
+                db.setChucvu(rs.getString("ChucVu"));
+                db.setSonamkn(rs.getString("SoNamKinhNghiem"));
+                db.setEmail(rs.getString("Email"));
+                db.setSdt(rs.getString("SoDienThoai"));
+                db.setDiachi(rs.getString("DiaChi"));
+                db.setMota(rs.getString("MoTa"));
+                db.setHinhanh(rs.getString("HinhAnh"));
+                arrDauBep.add(db);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return arrDauBep;
+    }
+    
+    public static void ThemDauBep(tbl_DauBep db) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "INSERT INTO DauBep (ID, HoTen, GioiTinh, NgaySinh, ChucVu, SoNamKinhNghiem, Email, SoDienThoai, DiaChi, MoTa, HinhAnh) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            state = conn.prepareStatement(sql);
+            state.setString(1, db.getId());
+            state.setString(2, db.getHoten());
+            state.setString(3, db.getGioitinh());
+            state.setString(4, db.getNgaysinh());
+            state.setString(5, db.getChucvu());
+            state.setString(6, db.getSonamkn());
+            state.setString(7, db.getEmail());
+            state.setString(8, db.getSdt());
+            state.setString(9, db.getDiachi());
+            state.setString(10, db.getMota());
+            state.setString(11, db.getHinhanh());
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void CapNhapDauBep(tbl_DauBep db, String macu) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "UPDATE DauBep SET ID = ?, HoTen = ?, GioiTinh= ?, NgaySinh= ?, ChucVu = ?, SoNamKinhNghiem = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, MoTa = ?, HinhAnh = ?  WHERE ID = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, db.getId());
+            state.setString(2, db.getHoten());
+            state.setString(3, db.getGioitinh());
+            state.setString(4, db.getNgaysinh());
+            state.setString(5, db.getChucvu());
+            state.setString(6, db.getSonamkn());
+            state.setString(7, db.getEmail());
+            state.setString(8, db.getSdt());
+            state.setString(9, db.getDiachi());
+            state.setString(10, db.getMota());
+            state.setString(11, db.getHinhanh());
+            state.setString(12, macu);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+
+    public static void XoaDauBep(String id) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "DELETE FROM DauBep WHERE ID = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, id);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+    
 }

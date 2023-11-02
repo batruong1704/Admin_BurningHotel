@@ -160,7 +160,7 @@
                   <Component id="btn_qlkhachhang" alignment="0" max="32767" attributes="0"/>
                   <Component id="btn_qlDatPhong" alignment="0" max="32767" attributes="0"/>
                   <Component id="btn_qlDoAn" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btn_qlDatPhong2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btn_qlDauBep" alignment="1" max="32767" attributes="0"/>
                   <Component id="btn_qlPhieuGiamGia" alignment="0" max="32767" attributes="0"/>
                   <Component id="btn_nhaphang" alignment="1" max="32767" attributes="0"/>
                   <Component id="btn_khohang" alignment="1" max="32767" attributes="0"/>
@@ -237,7 +237,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="btn_qlDatPhong" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="btn_qlDatPhong2" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="btn_qlDauBep" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="btn_qlPhieuGiamGia" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -1240,14 +1240,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="btn_qlDatPhong2">
+            <Container class="javax.swing.JPanel" name="btn_qlDauBep">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="29" red="4c" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_qlDatPhong2MousePressed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_qlDauBepMousePressed"/>
               </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">

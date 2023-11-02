@@ -32,7 +32,10 @@ public class Home extends javax.swing.JFrame {
         listItem.add(new chuyenmanhinhModel("ThongKeDoanhThu", btn_ThongKeDoanhThu, lb_ThongKeDoanhThu));
         listItem.add(new chuyenmanhinhModel("KhoHang", btn_khohang, lb_khohang));
         listItem.add(new chuyenmanhinhModel("NhapHang", btn_nhaphang, lb_nhaphang));
-        listItem.add(new chuyenmanhinhModel("NhaPhanPhoi", btn_nhaphanphoi, lb_nhaphanphoi));
+        listItem.add(new chuyenmanhinhModel("NhaPhanPhoi", btn_nhaphanphoi, lb_nhaphanphoi));        
+        listItem.add(new chuyenmanhinhModel("DauBep", btn_qlDauBep, lb_qlDauBep));
+        listItem.add(new chuyenmanhinhModel("DoAn", btn_qlDoAn, lb_qlDoAn));
+        listItem.add(new chuyenmanhinhModel("PhieuGiamGia", btn_qlPhieuGiamGia, lb_qlPhieuGiamGia));
         listItem.add(new chuyenmanhinhModel("Home", btn_home, lb_home));
         contronller.setEvent(listItem);
 
@@ -121,7 +124,7 @@ public class Home extends javax.swing.JFrame {
         btn_qlDoAn = new javax.swing.JPanel();
         ind_qlDoAn = new javax.swing.JPanel();
         lb_qlDoAn = new javax.swing.JLabel();
-        btn_qlDatPhong2 = new javax.swing.JPanel();
+        btn_qlDauBep = new javax.swing.JPanel();
         ind_qlDauBep = new javax.swing.JPanel();
         lb_qlDauBep = new javax.swing.JLabel();
         btn_qlPhieuGiamGia = new javax.swing.JPanel();
@@ -670,13 +673,13 @@ public class Home extends javax.swing.JFrame {
         lb_qlDoAn.setText("Đồ ăn");
         btn_qlDoAn.add(lb_qlDoAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
 
-        btn_qlDatPhong2.setBackground(new java.awt.Color(76, 41, 211));
-        btn_qlDatPhong2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_qlDauBep.setBackground(new java.awt.Color(76, 41, 211));
+        btn_qlDauBep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_qlDatPhong2MousePressed(evt);
+                btn_qlDauBepMousePressed(evt);
             }
         });
-        btn_qlDatPhong2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btn_qlDauBep.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ind_qlDauBep.setOpaque(false);
         ind_qlDauBep.setPreferredSize(new java.awt.Dimension(4, 40));
@@ -692,12 +695,12 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        btn_qlDatPhong2.add(ind_qlDauBep, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        btn_qlDauBep.add(ind_qlDauBep, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         lb_qlDauBep.setFont(new java.awt.Font("Montserrat Light", 1, 14)); // NOI18N
         lb_qlDauBep.setForeground(new java.awt.Color(255, 255, 255));
         lb_qlDauBep.setText("Đầu Bếp");
-        btn_qlDatPhong2.add(lb_qlDauBep, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
+        btn_qlDauBep.add(lb_qlDauBep, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
 
         btn_qlPhieuGiamGia.setBackground(new java.awt.Color(76, 41, 211));
         btn_qlPhieuGiamGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -742,7 +745,7 @@ public class Home extends javax.swing.JFrame {
             .addComponent(btn_qlkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlDatPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlDoAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_qlDatPhong2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_qlDauBep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlPhieuGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_nhaphang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_khohang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -805,7 +808,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlDatPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_qlDatPhong2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_qlDauBep, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlPhieuGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -1254,9 +1257,9 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_qlDoAnMousePressed
 
-    private void btn_qlDatPhong2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlDatPhong2MousePressed
+    private void btn_qlDauBepMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlDauBepMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_qlDatPhong2MousePressed
+    }//GEN-LAST:event_btn_qlDauBepMousePressed
 
     private void btn_qlPhieuGiamGiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlPhieuGiamGiaMousePressed
         // TODO add your handling code here:
@@ -1316,7 +1319,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btn_nhaphanphoi;
     private javax.swing.JPanel btn_phieudatphong;
     private javax.swing.JPanel btn_qlDatPhong;
-    private javax.swing.JPanel btn_qlDatPhong2;
+    private javax.swing.JPanel btn_qlDauBep;
     private javax.swing.JPanel btn_qlDoAn;
     private javax.swing.JPanel btn_qlPhieuGiamGia;
     private javax.swing.JPanel btn_qlchucvu;
