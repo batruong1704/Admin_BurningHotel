@@ -238,7 +238,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
 
     private void bt_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DangNhapActionPerformed
         try (Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM taikhoanadmin WHERE Email = ? AND PassWord = ?")) {
+            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM khachhang WHERE Email = ? AND PassWord = ?")) {
             String UN = txt_TaiKhoan.getText();
             String PW = txt_MatKhau.getText();
             psQL.setString(1, UN);
@@ -254,6 +254,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 // tự động đóng thông báo sau 3 giây
                 Timer timer = new Timer(3000, new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         JOptionPane.getRootFrame().dispose();
                     }
@@ -268,16 +269,15 @@ public class JF_DangNhap extends javax.swing.JFrame {
                 txt_TaiKhoan.requestFocus();
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }//GEN-LAST:event_bt_DangNhapActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         dispose();
         System.out.println("Notification: Quên mật khẩu");
-        JFrame jf_QuenMatKhau = new JF_QuenMatKhau();                                    // Khởi tạo JFrame chính
+        JFrame jf_QuenMatKhau = new JF_QuenMatKhau();                           // Khởi tạo JFrame chính
         jf_QuenMatKhau.setLocationRelativeTo(null);
-        jf_QuenMatKhau.setVisible(true);                                       // Hiển thị JFrame chính 
+        jf_QuenMatKhau.setVisible(true);                                      // Hiển thị JFrame chính 
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void ckb_hienthimatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckb_hienthimatkhauActionPerformed
@@ -285,11 +285,8 @@ public class JF_DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_ckb_hienthimatkhauActionPerformed
 
     public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JF_DangNhap().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new JF_DangNhap().setVisible(true);
         });
     }
 
