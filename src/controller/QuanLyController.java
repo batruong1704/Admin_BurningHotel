@@ -805,5 +805,4 @@ public class QuanLyController {
             ex.printStackTrace();
         } 
     }
-
 }

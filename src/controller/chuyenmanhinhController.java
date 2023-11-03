@@ -16,14 +16,17 @@ import view.JP_ChucVu;
 import view.JP_DatPhong;
 import view.JP_DauBep;
 import view.JP_DichVu;
+import view.JP_DoAn;
 import view.JP_HangHoa;
 import view.JP_KhachHang;
 import view.JP_NhapHang;
 import view.JP_Phong;
 import view.JP_SuaPhieuDatPhong;
 import view.JP_HoaDon;
+import view.JP_MaGiamGia;
 import view.JP_NhaPhanPhoi;
 import view.JP_NhanVien;
+import view.JP_QuanLyTienIch;
 import view.JP_ThongKe;
 
 public class chuyenmanhinhController {
@@ -71,9 +74,7 @@ public class chuyenmanhinhController {
                 case "QuanLyChucVu": {
                     try {
                         node = new JP_ChucVu();
-                    } catch (IOException ex) {
-                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
+                    } catch (IOException | SQLException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -82,11 +83,9 @@ public class chuyenmanhinhController {
                 case "QuanLyPhong": {
                     try {
                         node = new JP_Phong();
-                    } catch (IOException ex) {
+                    } catch (IOException | SQLException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
-                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    }
                 }
                 break;
 
@@ -185,6 +184,32 @@ public class chuyenmanhinhController {
                     try {
                         node = new JP_DauBep();
                     } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                case "PhieuGiamGia": {
+                    try {
+                        node = new JP_MaGiamGia();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                
+                case "DoAn": {
+                    try {
+                        node = new JP_DoAn();
+                    } catch (IOException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                
+                case "QLTienIch": {
+                    try {
+                        node = new JP_QuanLyTienIch();
+                    } catch (IOException | SQLException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }

@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import model.Hotel_Manager;
-import model.tbl_PhieuDatMon;
+import model.tbl_MonAn;
 import model.tbl_PhieuDatMon;
 
 public class DatMonController {
@@ -46,5 +47,63 @@ public class DatMonController {
             System.out.println("Lỗi: " + ex.getMessage());
         }
         return arrPhieuDatMon;
+    }
+    
+    
+    public static List<tbl_MonAn> NguonMonAn(String Category, String Content) {
+        List<tbl_MonAn> arrMonAn = new ArrayList<>();
+        Statement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select * From doan ";
+            if (Category != null && !Category.equals("")) {
+                sql = sql + " Where " + Category + " Like '%" + Content + "%'";
+            }
+            sql = sql + " Order by ID";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                tbl_MonAn bp = new tbl_MonAn();
+                bp.setID(rs.getString("ID"));
+                bp.setTenMon(rs.getString("TenMon"));
+                bp.setPhanLoai(rs.getString("PhanLoai"));
+                bp.setThoiGianNau(rs.getString("ThoiGianNau"));
+                bp.setDoKho(rs.getString("DoKho"));
+                bp.setThanhPhan(rs.getString("ThanhPhan"));
+                bp.setHamLuongKalo(rs.getString("HamLuongKalo"));
+                bp.setThanhTien(rs.getString("ThanhTien"));
+                bp.setMoTa(rs.getString("MoTa"));
+                bp.setSoLuongDaBan(rs.getString("SoLuongDaBan"));
+                arrMonAn.add(bp);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return arrMonAn;
+    }
+    
+    public static ArrayList<String> layDanhSachPhanLoai() {
+        ArrayList<String> danhSachPhanLoai = new ArrayList<>();
+        
+        try {
+            try (java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL)) {
+                sql = "SELECT DISTINCT PhanLoai FROM doan";
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+                
+                while (resultSet.next()) {
+                    String phanLoai = resultSet.getString("PhanLoai");
+                    danhSachPhanLoai.add(phanLoai);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return danhSachPhanLoai;
     }
 }
