@@ -25,7 +25,7 @@ public class JP_DatMon extends javax.swing.JPanel {
 
     public static void LayNguon(String dk) throws IOException, SQLException {
         arrTimPhong = HoaDonController.NguonPhong(dk);
-        model = (DefaultTableModel) tb_hoadon.getModel();
+        model = (DefaultTableModel) tb_qlphongtructuyen.getModel();
         model.setRowCount(0);
         arrTimPhong.forEach((KQ) -> {
             model.addRow(new Object[]{KQ.getMahoadon(), KQ.getMakhachhang(), KQ.getPhong(), KQ.getNgayden(), KQ.getNgaydi(),
@@ -68,9 +68,13 @@ public class JP_DatMon extends javax.swing.JPanel {
         lb_TongTien = new javax.swing.JLabel();
         lb_Con = new javax.swing.JLabel();
         btn_dongy = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        lb_email = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lb_sodienthoai = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tb_hoadon = new javax.swing.JTable();
+        tb_qlphongtructuyen = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
@@ -115,35 +119,35 @@ public class JP_DatMon extends javax.swing.JPanel {
 
         lb_trangthai.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         lb_trangthai.setText("Còn:");
-        jPanel8.add(lb_trangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 355, 108, -1));
+        jPanel8.add(lb_trangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 108, -1));
 
         jLabel26.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel26.setText("Tổng Tiền:");
-        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 323, 108, -1));
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 108, -1));
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel20.setText("Giá Sản Phẩm:");
-        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 293, 108, -1));
+        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 108, -1));
 
         jLabel24.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel24.setText("Giá Dịch Vụ:");
-        jPanel8.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 263, 108, -1));
+        jPanel8.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 108, -1));
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel13.setText("Giá Phòng:");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 233, 108, -1));
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 108, -1));
 
         jLabel14.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel14.setText("Lưu Trú:");
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 203, 108, -1));
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 108, -1));
 
         jLabel15.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel15.setText("Ngày Đi:");
-        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 173, 108, -1));
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 108, -1));
 
         jLabel16.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel16.setText("Ngày Đến:");
-        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 143, 108, -1));
+        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 108, -1));
 
         jLabel10.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel10.setText("Phòng:");
@@ -180,42 +184,42 @@ public class JP_DatMon extends javax.swing.JPanel {
         lb_ngayden.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_ngayden.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_ngayden.setText(" ");
-        jPanel8.add(lb_ngayden, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 141, 150, -1));
+        jPanel8.add(lb_ngayden, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 150, -1));
 
         lb_ngaydi.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_ngaydi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_ngaydi.setText(" ");
-        jPanel8.add(lb_ngaydi, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 171, 150, -1));
+        jPanel8.add(lb_ngaydi, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 150, -1));
 
         lb_songayo.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_songayo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_songayo.setText(" ");
-        jPanel8.add(lb_songayo, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 201, 150, -1));
+        jPanel8.add(lb_songayo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 150, -1));
 
         lb_giaphong.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giaphong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giaphong.setText(" ");
-        jPanel8.add(lb_giaphong, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 231, 150, -1));
+        jPanel8.add(lb_giaphong, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 150, -1));
 
         lb_giadichvu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giadichvu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giadichvu.setText(" ");
-        jPanel8.add(lb_giadichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 261, 150, -1));
+        jPanel8.add(lb_giadichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 150, -1));
 
         lb_giasanpham.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giasanpham.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giasanpham.setText(" ");
-        jPanel8.add(lb_giasanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 291, 150, -1));
+        jPanel8.add(lb_giasanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 150, -1));
 
         lb_TongTien.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_TongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_TongTien.setText(" ");
-        jPanel8.add(lb_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 321, 150, -1));
+        jPanel8.add(lb_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
 
         lb_Con.setFont(new java.awt.Font("Montserrat Medium", 1, 16)); // NOI18N
         lb_Con.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_Con.setText(" ");
-        jPanel8.add(lb_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 351, 150, -1));
+        jPanel8.add(lb_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 150, -1));
 
         btn_dongy.setFont(new java.awt.Font("Montserrat", 3, 14)); // NOI18N
         btn_dongy.setText("Thanh Toán");
@@ -229,7 +233,25 @@ public class JP_DatMon extends javax.swing.JPanel {
                 btn_dongyActionPerformed(evt);
             }
         });
-        jPanel8.add(btn_dongy, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 410, 270, -1));
+        jPanel8.add(btn_dongy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 270, -1));
+
+        jLabel11.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel11.setText("Email:");
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 108, -1));
+
+        lb_email.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_email.setText(" ");
+        jPanel8.add(lb_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 150, -1));
+
+        jLabel12.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel12.setText("Số Điện Thoại:");
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 108, -1));
+
+        lb_sodienthoai.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_sodienthoai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_sodienthoai.setText(" ");
+        jPanel8.add(lb_sodienthoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 150, -1));
 
         jPanel2.add(jPanel8, java.awt.BorderLayout.CENTER);
 
@@ -237,8 +259,8 @@ public class JP_DatMon extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tb_hoadon.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        tb_hoadon.setModel(new javax.swing.table.DefaultTableModel(
+        tb_qlphongtructuyen.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        tb_qlphongtructuyen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -257,19 +279,19 @@ public class JP_DatMon extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tb_hoadon.setRowHeight(25);
-        tb_hoadon.setRowMargin(2);
-        tb_hoadon.addMouseListener(new java.awt.event.MouseAdapter() {
+        tb_qlphongtructuyen.setRowHeight(25);
+        tb_qlphongtructuyen.setRowMargin(2);
+        tb_qlphongtructuyen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_hoadonMouseClicked(evt);
+                tb_qlphongtructuyenMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tb_hoadon);
-        if (tb_hoadon.getColumnModel().getColumnCount() > 0) {
-            tb_hoadon.getColumnModel().getColumn(0).setPreferredWidth(35);
-            tb_hoadon.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tb_hoadon.getColumnModel().getColumn(2).setPreferredWidth(35);
-            tb_hoadon.getColumnModel().getColumn(5).setPreferredWidth(40);
+        jScrollPane2.setViewportView(tb_qlphongtructuyen);
+        if (tb_qlphongtructuyen.getColumnModel().getColumnCount() > 0) {
+            tb_qlphongtructuyen.getColumnModel().getColumn(0).setPreferredWidth(35);
+            tb_qlphongtructuyen.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tb_qlphongtructuyen.getColumnModel().getColumn(2).setPreferredWidth(35);
+            tb_qlphongtructuyen.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -306,9 +328,9 @@ public class JP_DatMon extends javax.swing.JPanel {
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tb_hoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_hoadonMouseClicked
-        int index = tb_hoadon.getSelectedRow();
-        TableModel model = tb_hoadon.getModel();
+    private void tb_qlphongtructuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_qlphongtructuyenMouseClicked
+        int index = tb_qlphongtructuyen.getSelectedRow();
+        TableModel model = tb_qlphongtructuyen.getModel();
         mahoadonString = model.getValueAt(index, 0).toString();
         makhachhangString = model.getValueAt(index, 1).toString();
         maphongString = model.getValueAt(index, 2).toString();
@@ -331,7 +353,7 @@ public class JP_DatMon extends javax.swing.JPanel {
         lb_TongTien.setText(tongtienString);
         lb_Con.setText(conthieuString);
         MoKhoaBTN(conthieuString);
-    }//GEN-LAST:event_tb_hoadonMouseClicked
+    }//GEN-LAST:event_tb_qlphongtructuyenMouseClicked
 
     private void layThem(String a) {
         try {
@@ -377,6 +399,8 @@ public class JP_DatMon extends javax.swing.JPanel {
     private javax.swing.JButton btn_dongy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -397,6 +421,7 @@ public class JP_DatMon extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lb_Con;
     private javax.swing.JLabel lb_TongTien;
+    private javax.swing.JLabel lb_email;
     private javax.swing.JLabel lb_giadichvu;
     private javax.swing.JLabel lb_giaphong;
     private javax.swing.JLabel lb_giasanpham;
@@ -405,9 +430,10 @@ public class JP_DatMon extends javax.swing.JPanel {
     private javax.swing.JLabel lb_maphong;
     private javax.swing.JLabel lb_ngayden;
     private javax.swing.JLabel lb_ngaydi;
+    private javax.swing.JLabel lb_sodienthoai;
     private javax.swing.JLabel lb_songayo;
     private javax.swing.JLabel lb_tenkh;
     private javax.swing.JLabel lb_trangthai;
-    public static javax.swing.JTable tb_hoadon;
+    public static javax.swing.JTable tb_qlphongtructuyen;
     // End of variables declaration//GEN-END:variables
 }
