@@ -20,17 +20,31 @@ public class HoaDonController {
         try {
             conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
             sql = """
-                  SELECT hd.MaHoaDon,kh.MaKhachHang, kh.TenKhachHang, pdp.MaPhong, pdp.NgayDen, pdp.NgayDi, pdp.MaNhanVien,
-                  DATEDIFF(DAY, pdp.NgayDen, pdp.NgayDi) AS SoNgayLuTru, pdp.ThanhTienP,
-                  ISNULL(pd.TongTien, 0) AS GiaDichVu, ISNULL(ps.TongTien, 0) AS GiaSanPham,
-                  hd.TongTien,
-                  CASE WHEN hd.TongTien - hd.TienCoc = 0 THEN 'Hoàn Thành'
-                  ELSE CAST(hd.TongTien - hd.TienCoc AS VARCHAR(255)) END AS ConThieu
+                  SELECT
+                      hd.MaHoaDon,
+                      kh.ID,
+                      kh.HoTen,
+                      ctdp.MaPhong,
+                      ctdp.NgayDen,
+                      ctdp.NgayDi,
+                      pdp.MaNhanVien,
+                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) AS SoNgayLuTru,
+                      pdp.TongTien,
+                      pdv.TongTienDV,
+                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) * p.GiaPhong AS ThanhTienP,
+                      CASE
+                          WHEN pdp.TongTien - pdp.ThanhToanTruoc = 0 THEN 'Hoàn Thành'
+                          ELSE CAST(pdp.TongTien - pdp.ThanhToanTruoc AS VARCHAR(255))
+                      END AS ConThieu
+                      
                   FROM hoadon hd
-                  JOIN phieudatphong pdp ON hd.MaPhieuDatPhong = pdp.MaPhieuDatPhong
-                  JOIN khachhang kh ON pdp.MaKhachHang = kh.MaKhachHang
-                  LEFT JOIN phieudichvu pd ON hd.MaPhieuDichVu = pd.MaPhieuDichVu
-                  LEFT JOIN phieusanpham ps ON hd.MaPhieuSanPham = ps.MaPhieuSanPham""";
+                  JOIN phieudatphong pdp ON hd.MaPDP = pdp.MaPDP
+                  JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
+                  JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
+                  JOIN phong p ON p.MaPhong = ctdp.MaPhong
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
+                
+                  """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
                 sql = sql + sDieuKien;
             }
@@ -39,15 +53,14 @@ public class HoaDonController {
             while (rs.next()) {
                 tbl_PhieuTraPhong bp = new tbl_PhieuTraPhong();
                 bp.setMahoadon(rs.getString("MaHoaDon"));
-                bp.setMakhachhang(rs.getString("MaKhachHang"));
-                bp.setTenkhachhang(rs.getString("TenKhachHang"));
+                bp.setMakhachhang(rs.getString("ID"));
+                bp.setTenkhachhang(rs.getString("HoTen"));
                 bp.setPhong(rs.getString("MaPhong"));
                 bp.setNgayden(rs.getString("NgayDen"));
                 bp.setNgaydi(rs.getString("NgayDi"));
                 bp.setSongayolai(rs.getString("SoNgayLuTru"));
                 bp.setGiaphong(rs.getString("ThanhTienP"));
-                bp.setGiadichvu(rs.getString("GiaDichVu"));
-                bp.setGiasanpham(rs.getString("GiaSanPham"));
+                bp.setGiadichvu(rs.getString("TongTienDV"));
                 bp.setTongthanhtoan(rs.getString("TongTien"));
                 bp.setTiencoc(rs.getString("ConThieu"));
                 arrPhieuTra.add(bp);
@@ -116,7 +129,6 @@ public class HoaDonController {
                 bp.setTenkhachhang(rs.getString("TenKhachHang"));
                 bp.setGiaphong(rs.getString("ThanhTienP"));
                 bp.setGiadichvu(rs.getString("TongTienDV"));
-                bp.setGiasanpham(rs.getString("TongTienSP"));
                 bp.setTiencoc(rs.getString("TienCoc"));
                 arrPhieuTra.add(bp);
             }
