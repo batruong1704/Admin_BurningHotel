@@ -22,6 +22,7 @@ import view.JP_NhapHang;
 import view.JP_Phong;
 import view.JP_SuaPhieuDatPhong;
 import view.JP_HoaDon;
+import view.JP_MaGiamGia;
 import view.JP_NhaPhanPhoi;
 import view.JP_NhanVien;
 import view.JP_ThongKe;
@@ -189,6 +190,13 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
+                case "PhieuGiamGia":{
+                try {
+                    node = new JP_MaGiamGia();
+                } catch (IOException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
             }
             root.removeAll();
             root.setLayout(new BorderLayout());

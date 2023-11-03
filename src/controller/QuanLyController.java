@@ -14,6 +14,7 @@ import model.tbl_ChucVu;
 import model.tbl_DauBep;
 import model.tbl_DichVu;
 import model.tbl_KhachHang;
+import model.tbl_MaGiamGia;
 import model.tbl_NhanVien;
 import model.tbl_Phong;
 
@@ -623,6 +624,90 @@ public class QuanLyController {
             ex.printStackTrace();
         } 
     }
+    
+    public static List<tbl_MaGiamGia> NguonMaGiamGia(String sMaKT) throws IOException {
+        List<tbl_MaGiamGia> arrMaGiamGia = new ArrayList<>();
+        Statement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select * From PhieuGiamGia";
+            if(sMaKT != null && !sMaKT.equals("")){
+                sql = sql + " Where MaGiamGia ='" + sMaKT + "'";
+            }
+            sql = sql + " order by MaGiamGia";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                tbl_MaGiamGia mgg = new tbl_MaGiamGia();
+                mgg.setMagiamgia(rs.getString("MaGiamGia"));
+                mgg.setTenmagiamgia(rs.getString("TenMaGiamGia"));
+                mgg.setChietkhau(rs.getString("ChietKhau"));
+                arrMaGiamGia.add(mgg);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return arrMaGiamGia;
+    }
+    
+    public static void ThemMaGiamGia(tbl_MaGiamGia mgg) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "INSERT INTO PhieuGiamGia (MaGiamGia, TenMaGiamGia, ChietKhau) VALUES(?, ?, ?)";
+            state = conn.prepareStatement(sql);
+            state.setString(1, mgg.getMagiamgia());
+            state.setString(2, mgg.getTenmagiamgia());
+            state.setString(3, mgg.getChietkhau());
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void CapNhapMaGiamGia(tbl_MaGiamGia mgg, String macu) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "UPDATE PhieuGiamGia SET MaGiamGia = ?, TenMaGiamGia = ?, ChietKhau = ? WHERE MaGiamGia = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, mgg.getMagiamgia());
+            state.setString(2, mgg.getTenmagiamgia());
+            state.setString(3, mgg.getChietkhau());
+            state.setString(4, macu);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+
+    public static void XoaMaGiamGia(String magiamgia) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "DELETE FROM PhieuGiamGia WHERE MaGiamGia = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, magiamgia);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+    
+    
         public static List<tbl_NhanVien> NguonNhanVien(String sMaKT) throws IOException {
         List<tbl_NhanVien> arrNhanVien = new ArrayList<>();
         Statement state = null;
