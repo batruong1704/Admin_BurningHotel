@@ -335,7 +335,6 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         lb_maphong.setText(maphongString);
         lb_ngayden.setText(ngaydenString);
         lb_ngaydi.setText(ngaydiString);
-        lb_songayo.setText(songayluutruString);
         lb_giaphong.setText(giaphongString);
         lb_giasanpham.setText(giasanphString);
         lb_giadichvu.setText(giadichvuString);
