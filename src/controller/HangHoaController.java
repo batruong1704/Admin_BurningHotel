@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,10 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Hotel_Manager;
 import model.tbl_HangHoa;
 import model.tbl_Nhaphanphoi;
 import model.tbl_NhapHang;
 import static model.Hotel_Manager.dbURL;
+import model.tbl_DoAn;
 
 public class HangHoaController {
 
@@ -470,5 +473,111 @@ public class HangHoaController {
                 ex.printStackTrace();
             }
         }
+    }
+    
+    public static List<tbl_DoAn> NguonDoAn(String sMaKT) throws IOException {
+        List<tbl_DoAn> arrDoAn = new ArrayList<>();
+        Statement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select * From DoAn";
+            if(sMaKT != null && !sMaKT.equals("")){
+                sql = sql + " Where ID ='" + sMaKT + "'";
+            }
+            sql = sql + " order by ID";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                tbl_DoAn da = new tbl_DoAn();
+                da.setId(rs.getString("ID"));
+                da.setTenmon(rs.getString("TenMon"));
+                da.setPhanloai(rs.getString("PhanLoai"));
+                da.setThoigiannau(rs.getString("ThoiGianNau"));
+                da.setDokho(rs.getString("DoKho"));
+                da.setThanhphan(rs.getString("ThanhPhan"));
+                da.setHamluongcalo(rs.getString("HamLuongCalo"));
+                da.setThanhtien(rs.getString("ThanhTien"));
+                da.setMota(rs.getString("MoTa"));
+                da.setSoluongban(rs.getString("SoLuongDaBan"));
+                da.setImg(rs.getString("img"));
+                arrDoAn.add(da);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return arrDoAn;
+    }
+    
+    public static void ThemDoAn(tbl_DoAn da) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(dbURL);
+            sql = "INSERT INTO DoAn (ID, TenMon, PhanLoai, ThoiGianNau, DoKho, ThanhPhan, HamLuongCalo, ThanhTien, MoTa, SoLuongDaBan, img) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            state = conn.prepareStatement(sql);
+            state.setString(1, da.getId());
+            state.setString(2, da.getTenmon());
+            state.setString(3, da.getPhanloai());
+            state.setString(4, da.getThoigiannau());
+            state.setString(5, da.getDokho());
+            state.setString(6, da.getThanhphan());
+            state.setString(7, da.getHamluongcalo());
+            state.setString(8, da.getThanhtien());
+            state.setString(9, da.getMota());
+            state.setString(10, da.getSoluongban());
+            state.setString(11, da.getImg());
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void CapNhapDoAn(tbl_DoAn da, String macu) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(dbURL);
+            sql = "UPDATE DoAn SET ID = ?, TenMon = ?, PhanLoai = ?, ThoiGianNau= ?, DoKho= ?, ThanhPhan = ?, HamLuongCalo = ?, ThanhTien = ?, MoTa = ?, SoLuongDaBan = ?, img = ?  WHERE ID = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, da.getId());
+            state.setString(2, da.getTenmon());
+            state.setString(3, da.getPhanloai());
+            state.setString(4, da.getThoigiannau());
+            state.setString(5, da.getDokho());
+            state.setString(6, da.getThanhphan());
+            state.setString(7, da.getHamluongcalo());
+            state.setString(8, da.getThanhtien());
+            state.setString(9, da.getMota());
+            state.setString(10, da.getSoluongban());
+            state.setString(11, da.getImg());
+            state.setString(12, macu);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+
+    public static void XoaDoAn(String id) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(dbURL);
+            sql = "DELETE FROM DoAn WHERE ID = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, id);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
     }
 }

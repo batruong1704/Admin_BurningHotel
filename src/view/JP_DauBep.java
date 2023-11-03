@@ -16,6 +16,8 @@ import controller.QuanLyKhachSanController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import model.tbl_ChucVu;
 import model.tbl_DauBep;
 public class JP_DauBep extends javax.swing.JPanel {
 
@@ -47,11 +49,15 @@ public class JP_DauBep extends javax.swing.JPanel {
             tbl_DauBep.addRow(new Object[]{KQ.getId(), KQ.getHoten(),KQ.getGioitinh(), KQ.getNgaysinh(), KQ.getChucvu(), KQ.getSonamkn(),KQ.getEmail(), KQ.getSdt(), KQ.getDiachi(), KQ.getMota(), KQ.getHinhanh()});
         });
     }
+    private DefaultComboBoxModel<String> comboBoxModel;
     public void LayNguonCBO() throws IOException {
-        arrDauBep = QuanLyController.NguonDauBep(sTimDauBep);
-//        for (int i = 0; i < arrKhachHang.size(); i++) {
-//            cbgioitinh.addItem(arrKhachHang.get(i).getGioitinh());
-//        }
+        //arrDauBep = QuanLyController.NguonDauBep(sTimDauBep);
+        comboBoxModel = new DefaultComboBoxModel<>();
+        cbmacv.setModel(comboBoxModel);
+        List<tbl_ChucVu> chucvu1 = QuanLyController.ChucVu();
+        for (tbl_ChucVu o : chucvu1) {
+            comboBoxModel.addElement(o.getMaChucVu() +"-"+o.getTenChucVu() ); 
+        }
     }
     public void KhoaMo(boolean b) {
         txtid.setEditable(b);
@@ -59,7 +65,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         rdb_Nam.setSelected(b);
         rdb_Nu.setSelected(b);
         rdb_Khac.setSelected(b);
-        txtchucvu.setEditable(b);   
+        cbmacv.setEditable(b);   
         txtsonamkn.setEditable(b);
         txtdiachi.setEditable(b);
         txtemail.setEditable(b);
@@ -80,7 +86,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         rdb_Nam.setSelected(false);
         rdb_Nu.setSelected(false);
         rdb_Khac.setSelected(false);
-        txtchucvu.setEditable(b);
+        cbmacv.setEditable(b);
         txtemail.setEditable(b);
         bt_them.setEnabled(b);
         bt_sua.setEnabled(b);
@@ -97,7 +103,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         rdb_Nam.setSelected(false);
         rdb_Nu.setSelected(false);
         rdb_Khac.setSelected(false);
-        txtchucvu.setText("");
+//        cbmacv.setSelectedIndex(0);
         txtemail.setText("");
         txtsonamkn.setText("");
         txtsdt.setText("");
@@ -108,6 +114,7 @@ public class JP_DauBep extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        general = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         txt_timkiem = new javax.swing.JTextField();
@@ -123,7 +130,6 @@ public class JP_DauBep extends javax.swing.JPanel {
         txtdiachi = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtchucvu = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         rdb_Nam = new javax.swing.JRadioButton();
@@ -135,10 +141,12 @@ public class JP_DauBep extends javax.swing.JPanel {
         txtsonamkn = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtsdt = new javax.swing.JTextField();
-        txtmota = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txthinhanh = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtmota = new javax.swing.JTextArea();
+        cbmacv = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         bt_them = new javax.swing.JButton();
         bt_sua = new javax.swing.JButton();
@@ -226,9 +234,6 @@ public class JP_DauBep extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel6.setText("Chức Vụ:");
 
-        txtchucvu.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        txtchucvu.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
         jLabel7.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel7.setText("Email:");
 
@@ -236,14 +241,17 @@ public class JP_DauBep extends javax.swing.JPanel {
         txtemail.setMargin(new java.awt.Insets(0, 2, 0, 0));
 
         rdb_Nam.setBackground(new java.awt.Color(255, 255, 255));
+        general.add(rdb_Nam);
         rdb_Nam.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_Nam.setLabel("Nam");
 
         rdb_Nu.setBackground(new java.awt.Color(255, 255, 255));
+        general.add(rdb_Nu);
         rdb_Nu.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_Nu.setLabel("Nữ");
 
         rdb_Khac.setBackground(new java.awt.Color(255, 255, 255));
+        general.add(rdb_Khac);
         rdb_Khac.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_Khac.setText("Khác");
         rdb_Khac.addActionListener(new java.awt.event.ActionListener() {
@@ -271,9 +279,6 @@ public class JP_DauBep extends javax.swing.JPanel {
         txtsdt.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txtsdt.setMargin(new java.awt.Insets(0, 2, 0, 0));
 
-        txtmota.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        txtmota.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
         jLabel11.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel11.setText("Mô Tả:");
 
@@ -283,6 +288,16 @@ public class JP_DauBep extends javax.swing.JPanel {
         txthinhanh.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txthinhanh.setMargin(new java.awt.Insets(0, 2, 0, 0));
 
+        txtmota.setColumns(20);
+        txtmota.setRows(5);
+        jScrollPane2.setViewportView(txtmota);
+
+        cbmacv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbmacvActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -290,17 +305,17 @@ public class JP_DauBep extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txthinhanh)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtid)
                     .addComponent(txttendb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_namsinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtchucvu)
                     .addComponent(txtsonamkn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtemail)
                     .addComponent(txtsdt)
                     .addComponent(txtdiachi)
-                    .addComponent(txtmota)
-                    .addComponent(txthinhanh)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,9 +335,9 @@ public class JP_DauBep extends javax.swing.JPanel {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cbmacv, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -348,8 +363,8 @@ public class JP_DauBep extends javax.swing.JPanel {
                 .addComponent(txt_namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(0, 0, 0)
-                .addComponent(txtchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(cbmacv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(0, 0, 0)
@@ -368,13 +383,12 @@ public class JP_DauBep extends javax.swing.JPanel {
                 .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addGap(0, 0, 0)
-                .addComponent(txtmota, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addGap(0, 0, 0)
                 .addComponent(txthinhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -497,13 +511,13 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel8, java.awt.BorderLayout.LINE_START);
@@ -631,7 +645,7 @@ public class JP_DauBep extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn Giới Tính.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (QuanLyKhachSanController.KiemTraTrungMa("KhachHang", "MaKhachHang", txtid.getText(), ktThem, macu) == true) {
+        if (QuanLyKhachSanController.KiemTraTrungMa("daubep", "ID", txtid.getText(), ktThem, macu) == true) {
             JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             txtid.requestFocus();
             return;
@@ -647,7 +661,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(txt_namsinh.getDate());
-        chucvu = txtchucvu.getText();
+        chucvu = (String) cbmacv.getSelectedItem();
         sonamkn = txtsonamkn.getText();
         email = txtemail.getText();
         sdt = txtsdt.getText();
@@ -709,7 +723,17 @@ public class JP_DauBep extends javax.swing.JPanel {
             rdb_Nu.setSelected(false);
             rdb_Khac.setSelected(true);
         }
-        txtchucvu.setText(chucvu);
+        int itemCount = comboBoxModel.getSize();
+        for (int i = 0; i < itemCount; i++) {
+        String selectedValue = comboBoxModel.getElementAt(i);
+        String[] values = selectedValue.split("-");
+        String mact = values[0];
+        
+        if (mact.equalsIgnoreCase(chucvu)) {
+            comboBoxModel.setSelectedItem(mact);
+            break;
+        }
+        }
         txtsonamkn.setText(sonamkn);
         txtemail.setText(email);
         txtsdt.setText(sdt);
@@ -726,6 +750,15 @@ public class JP_DauBep extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttendbActionPerformed
 
+    private void cbmacvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmacvActionPerformed
+
+            String selectedValue = (String) comboBoxModel.getSelectedItem(); // Lấy giá trị
+            String[] values = selectedValue.split("-"); // Chia chuỗi
+            String mact = values[0];
+            
+            comboBoxModel.setSelectedItem(mact);
+    }//GEN-LAST:event_cbmacvActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -733,6 +766,8 @@ public class JP_DauBep extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JComboBox<String> cbmacv;
+    private javax.swing.ButtonGroup general;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -754,18 +789,18 @@ public class JP_DauBep extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton rdb_Khac;
     private javax.swing.JRadioButton rdb_Nam;
     private javax.swing.JRadioButton rdb_Nu;
     private javax.swing.JTable tb_DauBep;
     private com.toedter.calendar.JDateChooser txt_namsinh;
     private javax.swing.JTextField txt_timkiem;
-    private javax.swing.JTextField txtchucvu;
     private javax.swing.JTextField txtdiachi;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txthinhanh;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtmota;
+    private javax.swing.JTextArea txtmota;
     private javax.swing.JTextField txtsdt;
     private javax.swing.JTextField txtsonamkn;
     private javax.swing.JTextField txttendb;

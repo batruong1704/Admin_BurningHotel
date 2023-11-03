@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/controller/DatPhongController.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/model/tbl_HangHoa.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_DatPhongB2.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/model/tbl_MonAn.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/view/Home.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/model/tbl_MaGiamGia.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/controller/chuyenmanhinhController.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/controller/QuanLyController.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/view/JP_MaGiamGia.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/Admin_BurningHotel/src/view/JP_DauBep.java</file>
         </group>
     </open-files>
 </project-private>
