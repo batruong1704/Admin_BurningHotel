@@ -12,22 +12,22 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import view.Home_BackUp;
-import view.JP_ChucVu;
-import view.JP_DatPhong;
-import view.JP_DauBep;
-import view.JP_DichVu;
-import view.JP_DoAn;
-import view.JP_HangHoa;
-import view.JP_KhachHang;
-import view.JP_NhapHang;
-import view.JP_Phong;
-import view.JP_SuaPhieuDatPhong;
-import view.JP_HoaDon;
-import view.JP_MaGiamGia;
-import view.JP_NhaPhanPhoi;
-import view.JP_NhanVien;
-import view.JP_QuanLyTienIch;
-import view.JP_ThongKe;
+import view.quanly.JP_ChucVu;
+import view.hoatdong.JP_DatPhong;
+import view.hoatdong.JP_HoaDon;
+import view.quanly.JP_DauBep;
+import view.quanly.JP_DichVu;
+import view.khohang.JP_DoAn;
+import view.khohang.JP_HangHoa;
+import view.quanly.JP_KhachHang;
+import view.khohang.JP_NhapHang;
+import view.quanly.JP_Phong;
+import view.hoatdong.JP_SuaPhieuDatPhong;
+import view.quanly.JP_MaGiamGia;
+import view.khohang.JP_NhaPhanPhoi;
+import view.quanly.JP_NhanVien;
+import view.hoatdong.JP_QuanLyTienIch;
+import view.thongkedoanhthu.JP_ThongKe;
 
 public class chuyenmanhinhController {
 

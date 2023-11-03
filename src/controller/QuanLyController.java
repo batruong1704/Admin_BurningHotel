@@ -748,16 +748,17 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "INSERT INTO NhanVien (MaNhanVien, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SoDienThoai, MatKhau) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO NhanVien (MaNhanVien, HoTen, MaChucVu, NgaySinh, GioiTinh, DiaChi, Email, SoDienThoai, MatKhau) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getid());
             state.setString(2, bp.getHoten());
-            state.setString(3, bp.getNgaysinh());
-            state.setString(4, bp.getGioitinh());
-            state.setString(5, bp.getDiachi());
-            state.setString(6, bp.getEmail());
-            state.setString(7, bp.getSdt());
-            state.setString(8, bp.getMatkhau());
+            state.setString(3, bp.getMacv());
+            state.setString(4, bp.getNgaysinh());
+            state.setString(5, bp.getGioitinh());
+            state.setString(6, bp.getDiachi());
+            state.setString(7, bp.getEmail());
+            state.setString(8, bp.getSdt());
+            state.setString(9, bp.getMatkhau());
             state.execute();
             state.close();
             conn.close();
@@ -771,7 +772,7 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE NhanVien SET MaNhanVien = ?, HoTen = ?, NgaySinh = ?, GioiTinh = ?, DiaChi = ?, Email = ?, SoDienThoai = ?, MatKhau = ? WHERE MaKhachHang = ?";
+            sql = "UPDATE NhanVien SET MaNhanVien = ?, HoTen = ?, MaChucVu = ?,  NgaySinh = ?, GioiTinh = ?, DiaChi = ?, Email = ?, SoDienThoai = ?, MatKhau = ? WHERE MaNhanVien = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getid());
             state.setString(2, bp.getHoten());
@@ -781,7 +782,8 @@ public class QuanLyController {
             state.setString(6, bp.getDiachi());
             state.setString(7, bp.getEmail());
             state.setString(8, bp.getSdt());
-            state.setString(9, macu);
+            state.setString(9, bp.getMatkhau());
+            state.setString(10, macu);
             state.execute();
             state.close();
             conn.close();
