@@ -2,44 +2,44 @@ package model;
 
 
 public class tbl_PhieuTraPhong {
-    String mahoadon, makhachhang, tenkhachhang, emailkhachhang, sdt, phong, ngayden, ngaydi, songayolai, giaphong, giadichvu, giasanpham, tongthanhtoan, tiencoc;
+
+    String mahoadon, makhachhang, tenkhachhang, phong, ngayden, ngaydi, songayolai, giaphong, giadichvu, giamonan, tongthanhtoan,conthieu, tiencoc;
+
 
     public tbl_PhieuTraPhong() {
     }
 
-    public tbl_PhieuTraPhong(String mahoadon, String makhachhang, String tenkhachhang, String emailkhachhang, String sdt, String phong, String ngayden, String ngaydi, String songayolai, String giaphong, String giadichvu, String giasanpham, String tongthanhtoan, String tiencoc) {
+    public tbl_PhieuTraPhong(String mahoadon, String makhachhang, String phong, String ngayden, String ngaydi, String songayolai, String tongthanhtoan, String conthieu) {
+
         this.mahoadon = mahoadon;
         this.makhachhang = makhachhang;
-        this.tenkhachhang = tenkhachhang;
-        this.emailkhachhang = emailkhachhang;
-        this.sdt = sdt;
         this.phong = phong;
         this.ngayden = ngayden;
         this.ngaydi = ngaydi;
         this.songayolai = songayolai;
+        this.tongthanhtoan = tongthanhtoan;
+        this.conthieu = conthieu;
+    }
+
+
+    public String getConthieu() {
+        return conthieu;
+    }
+
+    public void setConthieu(String conthieu) {
+        this.conthieu = conthieu;
+    }
+
+   
+    public tbl_PhieuTraPhong(String tenkhachhang, String giaphong, String giadichvu, String giamonan, String conthieu) {
+        this.tenkhachhang = tenkhachhang;
         this.giaphong = giaphong;
         this.giadichvu = giadichvu;
-        this.giasanpham = giasanpham;
-        this.tongthanhtoan = tongthanhtoan;
-        this.tiencoc = tiencoc;
+        this.giamonan = giamonan;
+        this.conthieu = conthieu;
     }
-
-    public String getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
-
-    public String getEmailkhachhang() {
-        return emailkhachhang;
-    }
-
-    public void setEmailkhachhang(String emailkhachhang) {
-        this.emailkhachhang = emailkhachhang;
-    }
-
+    
+    
     public String getMahoadon() {
         return mahoadon;
     }
@@ -112,12 +112,12 @@ public class tbl_PhieuTraPhong {
         this.giadichvu = giadichvu;
     }
 
-    public String getGiasanpham() {
-        return giasanpham;
+    public String getGiamonan() {
+        return giamonan;
     }
 
-    public void setGiasanpham(String giasanpham) {
-        this.giasanpham = giasanpham;
+    public void setGiamonan(String giasanpham) {
+        this.giamonan = giamonan;
     }
 
     public String getTongthanhtoan() {
@@ -135,5 +135,7 @@ public class tbl_PhieuTraPhong {
     public void setTiencoc(String tiencoc) {
         this.tiencoc = tiencoc;
     }
+
+    
     
 }

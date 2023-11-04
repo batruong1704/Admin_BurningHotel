@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.tbl_PhieuTraPhong;
 
+
 public class JP_HoaDon extends javax.swing.JPanel {
 
     static DefaultTableModel model;
     static ArrayList<tbl_PhieuTraPhong> arrTraPhong = new ArrayList<>();
 
-    public static String mahoadonString, makhachhangString, tenkhachhangString, maphongString, ngaydenString, ngaydiString, songayluutruString, giaphongString, giadichvuString, giasanphString, tongtienString, conthieuString, tiencocString;
+    public static String mahoadonString, makhachhangString, tenkhachhangString, maphongString, ngaydenString, ngaydiString, songayluutruString, giaphongString, giadichvuString, giamonanString, tongtienString, conthieuString, tiencocString;
 
     public JP_HoaDon() throws IOException, SQLException {
         initComponents();
@@ -29,7 +30,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
         model.setRowCount(0);
         arrTraPhong.forEach((KQ) -> {
             model.addRow(new Object[]{KQ.getMahoadon(), KQ.getMakhachhang(), KQ.getPhong(), KQ.getNgayden(), KQ.getNgaydi(),
-                KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getTiencoc()});
+                KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getConthieu()});
         });
     }
 
@@ -63,10 +64,11 @@ public class JP_HoaDon extends javax.swing.JPanel {
         lb_songayo = new javax.swing.JLabel();
         lb_giaphong = new javax.swing.JLabel();
         lb_giadichvu = new javax.swing.JLabel();
-        lb_giasanpham = new javax.swing.JLabel();
+        lb_monan = new javax.swing.JLabel();
         lb_TongTien = new javax.swing.JLabel();
         lb_Con = new javax.swing.JLabel();
         btn_dongy = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_hoadon = new javax.swing.JTable();
@@ -197,10 +199,10 @@ public class JP_HoaDon extends javax.swing.JPanel {
         lb_giadichvu.setText(" ");
         jPanel8.add(lb_giadichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 261, 150, -1));
 
-        lb_giasanpham.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        lb_giasanpham.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_giasanpham.setText(" ");
-        jPanel8.add(lb_giasanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 291, 150, -1));
+        lb_monan.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_monan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_monan.setText(" ");
+        jPanel8.add(lb_monan, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 150, -1));
 
         lb_TongTien.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_TongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -225,6 +227,10 @@ public class JP_HoaDon extends javax.swing.JPanel {
             }
         });
         jPanel8.add(btn_dongy, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 410, 270, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Món Ăn:");
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 290, 60, -1));
 
         jPanel2.add(jPanel8, java.awt.BorderLayout.CENTER);
 
@@ -312,6 +318,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
         songayluutruString = model.getValueAt(index, 5).toString();
         tongtienString = model.getValueAt(index, 6).toString();
         conthieuString = model.getValueAt(index, 7).toString();
+        
         layThem(mahoadonString);
         lb_mahoadon.setText(mahoadonString);
         lb_makh.setText(makhachhangString);
@@ -321,12 +328,26 @@ public class JP_HoaDon extends javax.swing.JPanel {
         lb_ngaydi.setText(ngaydiString);
         lb_songayo.setText(songayluutruString);
         lb_giaphong.setText(giaphongString);
-        lb_giasanpham.setText(giasanphString);
+        lb_monan.setText(giamonanString);
         lb_giadichvu.setText(giadichvuString);
         lb_TongTien.setText(tongtienString);
         lb_Con.setText(conthieuString);
         MoKhoaBTN(conthieuString);
     }//GEN-LAST:event_tb_hoadonMouseClicked
+        public void XoaTrang() {
+          lb_mahoadon.setText("");
+          lb_makh.setText("");
+          lb_tenkh.setText("");
+          lb_maphong.setText("");
+          lb_ngayden.setText("");
+          lb_ngaydi.setText("");
+          lb_songayo.setText("");
+          lb_giaphong.setText("");
+          lb_monan.setText("");
+          lb_giadichvu.setText("");
+          lb_TongTien.setText("");
+          lb_Con.setText("");
+      }
 
     private void layThem(String a) {
         try {
@@ -335,7 +356,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
                 giaphongString = phieuTraPhong.getGiaphong();
                 giadichvuString = phieuTraPhong.getGiadichvu();
                 tenkhachhangString = phieuTraPhong.getTenkhachhang();
-                tiencocString = phieuTraPhong.getTiencoc();
+                giamonanString=phieuTraPhong.getGiamonan();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JP_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
@@ -379,6 +400,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -392,10 +414,10 @@ public class JP_HoaDon extends javax.swing.JPanel {
     private javax.swing.JLabel lb_TongTien;
     private javax.swing.JLabel lb_giadichvu;
     private javax.swing.JLabel lb_giaphong;
-    private javax.swing.JLabel lb_giasanpham;
     private javax.swing.JLabel lb_mahoadon;
     private javax.swing.JLabel lb_makh;
     private javax.swing.JLabel lb_maphong;
+    private javax.swing.JLabel lb_monan;
     private javax.swing.JLabel lb_ngayden;
     private javax.swing.JLabel lb_ngaydi;
     private javax.swing.JLabel lb_songayo;

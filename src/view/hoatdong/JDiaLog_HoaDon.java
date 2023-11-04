@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import static view.hoatdong.JP_HoaDon.conthieuString;
 import static view.hoatdong.JP_HoaDon.giadichvuString;
 import static view.hoatdong.JP_HoaDon.giaphongString;
-import static view.hoatdong.JP_HoaDon.giasanphString;
+import static view.hoatdong.JP_HoaDon.giamonanString;
 import static view.hoatdong.JP_HoaDon.mahoadonString;
 import static view.hoatdong.JP_HoaDon.makhachhangString;
 import static view.hoatdong.JP_HoaDon.maphongString;
@@ -21,9 +21,11 @@ import static view.hoatdong.JP_HoaDon.tenkhachhangString;
 import static view.hoatdong.JP_HoaDon.tongtienString;
 
 public class JDiaLog_HoaDon extends javax.swing.JFrame {
+ private JP_HoaDon jpHoaDon;
 
     public JDiaLog_HoaDon() {
         initComponents();
+        this.jpHoaDon = jpHoaDon;
         lb_mahoadon.setText(mahoadonString);
         lb_makh.setText(makhachhangString);
         lb_tenkh.setText(tenkhachhangString);
@@ -32,12 +34,15 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
         lb_ngaydi.setText(ngaydiString);
         lb_songayo.setText(songayluutruString);
         lb_giaphong.setText(giaphongString);
-        lb_giasanpham.setText(giasanphString);
+        lb_monan.setText(giamonanString);
         lb_giadichvu.setText(giadichvuString);
         lb_TongTien.setText(tongtienString);
         lb_Con.setText(conthieuString);
     }
 
+   
+
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,7 +69,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        lb_giasanpham = new javax.swing.JLabel();
+        lb_monan = new javax.swing.JLabel();
         lb_TongTien = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -158,11 +163,11 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
         });
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jLabel20.setText("Giá Sản Phẩm:");
+        jLabel20.setText("Giá Món Ăn:");
 
-        lb_giasanpham.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        lb_giasanpham.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb_giasanpham.setText(" ");
+        lb_monan.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_monan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_monan.setText(" ");
 
         lb_TongTien.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
         lb_TongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -240,7 +245,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lb_TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lb_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lb_giasanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(lb_monan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -287,7 +292,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(lb_giasanpham))
+                    .addComponent(lb_monan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
@@ -317,31 +322,52 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        double tiencocCSDLDouble = Double.parseDouble(JP_HoaDon.tiencocString);
+                                              
+        //double tiencocCSDLDouble = Double.parseDouble(JP_HoaDon.tiencocString);
         double tienconthieuDouble = Double.parseDouble(lb_Con.getText());
         double tiencocHT = Double.parseDouble(txt_thanhtoan.getText());
-        double tienhientai = tiencocCSDLDouble + tiencocHT;
+       // double tienhientai = tiencocCSDLDouble + tiencocHT;
         if (tiencocHT > tienconthieuDouble) {
             JOptionPane.showMessageDialog(this, "Tiền thanh toán phải nhỏ hơn số tiền còn lại!", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-        } else {
+        }
+        else if(tiencocHT < tienconthieuDouble){
+            try {
+                int kq = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn thanh toán hoá đơn này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+                HoaDonController.CapNhatPDP(lb_mahoadon.getText(),tiencocHT);
+                jpHoaDon.LayNguon("");
+                
+                JP_HoaDon pa=new JP_HoaDon();
+                
+                pa.XoaTrang();
+                dispose();
+              
+            } catch (SQLException ex) {
+                Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        else {
             int kq = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn thanh toán hoá đơn này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
             if (kq == JOptionPane.YES_OPTION) {
                 try {
-                    HoaDonController.CapNhatHoaDon(lb_mahoadon.getText(), tienhientai);
-                   
-                    JPanel pa = new JP_HoaDon();
-                    pa.setVisible(true);
-                    dispose();
-                    if (tienconthieuDouble == tiencocHT){
+                        HoaDonController.CapNhatHoaDon(lb_mahoadon.getText());
                         HoaDonController.CapNhatPhong(maphongString);
-                    }
-                     JP_HoaDon.LayNguon("");
-                } catch (SQLException | IOException ex) {
+                        jpHoaDon.LayNguon("");
+                        JP_HoaDon pa=new JP_HoaDon();
+                        pa.XoaTrang();
+                        pa.setVisible(true);
+                        dispose();
+                      
+                }
+                catch (SQLException ex) {
+                    Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-           
         }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -353,28 +379,28 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+         try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+    //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new JDiaLog_HoaDon().setVisible(true);
-        });
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(() -> {
+        new JDiaLog_HoaDon().setVisible(true);
+    });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -399,10 +425,10 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel lb_TongTien;
     private javax.swing.JLabel lb_giadichvu;
     private javax.swing.JLabel lb_giaphong;
-    private javax.swing.JLabel lb_giasanpham;
     private javax.swing.JLabel lb_mahoadon;
     private javax.swing.JLabel lb_makh;
     private javax.swing.JLabel lb_maphong;
+    private javax.swing.JLabel lb_monan;
     private javax.swing.JLabel lb_ngayden;
     private javax.swing.JLabel lb_ngaydi;
     private javax.swing.JLabel lb_songayo;

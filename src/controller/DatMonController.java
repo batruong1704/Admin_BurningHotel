@@ -19,38 +19,67 @@ public class DatMonController {
     private static Connection conn = null;
     private static String sql;
 
-    public static ArrayList<tbl_PhieuDatMon> NguonPhong(String sDieuKien) throws SQLException {
-        ArrayList<tbl_PhieuDatMon> arrPhieuDatMon = new ArrayList<>();
+    public static ArrayList<tbl_PhieuTraPhong> NguonPhong(String sDieuKien) throws SQLException  {
+        ArrayList<tbl_PhieuTraPhong> arrPhieuTra = new ArrayList<>();
         Statement state = null;
         try {
             conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "Select *  From khachhang kh, hoadon hd, phong p, phieudatphong dp, chitietdatphong ct "
-                    + "where dp.MaPDP = hd.MaPDP and dp.MaKhachHang = kh.ID and dp.MaPDP = ct.MaPDP and p.MaPhong = ct.MaPhong"
-                    + "and p.TrangThai = 'Đầy'";
+            sql = """
+                  SELECT
+                      hd.MaHoaDon,
+                      kh.ID,
+                      kh.HoTen,
+                      kh.Email,
+                      kh.SDT,
+                      ctdp.MaPhong,
+                      ctdp.NgayDen,
+                      ctdp.NgayDi,
+                      pdp.MaNhanVien,
+                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) AS SoNgayLuTru,
+                      pdp.TongTien,
+                      pdv.TongTienDV,
+                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) * p.GiaPhong AS ThanhTienP,
+                      CASE
+                          WHEN pdp.TongTien - pdp.ThanhToanTruoc = 0 THEN 'Hoàn Thành'
+                          ELSE CAST(pdp.TongTien - pdp.ThanhToanTruoc AS VARCHAR(255))
+                      END AS ConThieu
+                      
+                  FROM hoadon hd
+                  JOIN phieudatphong pdp ON hd.MaPDP = pdp.MaPDP
+                  JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
+                  JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
+                  JOIN phong p ON p.MaPhong = ctdp.MaPhong
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
+                
+                  """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
                 sql = sql + sDieuKien;
             }
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
-                // String maphong, makh, tenkh, email, ngayden, ngaydi, tongtien, con;
-//                tbl_PhieuDatMon bp = new tbl_PhieuDatMon();
-//                bp.setMaphong(rs.getString("ct.MaPhong"));
-//                bp.setMakh(rs.getString("kh.ID"));
-//                bp.setTenkh(rs.getString("kh.HoTen"));
-//                bp.setEmail(rs.getString("kh.Email"));
-//                bp.setNgayden(rs.getString("ct.NgayDen"));
-//                bp.setNgaydi(rs.getString("ct.NgayDi"));
-//                bp.setTongtien(rs.getString("hd.TongTien"));
-//                bp.setCon(rs.getString("dp.ThanhToanTruoc"));
-//                arrPhieuDatMon.add(bp);
+                tbl_PhieuTraPhong bp = new tbl_PhieuTraPhong();
+                bp.setMahoadon(rs.getString("MaHoaDon"));
+                bp.setMakhachhang(rs.getString("ID"));
+                bp.setTenkhachhang(rs.getString("HoTen"));
+                bp.setEmailkhachhang(rs.getString("Email"));
+                bp.setSdt(rs.getString("SDT"));
+                bp.setPhong(rs.getString("MaPhong"));
+                bp.setNgayden(rs.getString("NgayDen"));
+                bp.setNgaydi(rs.getString("NgayDi"));
+                bp.setSongayolai(rs.getString("SoNgayLuTru"));
+                bp.setGiaphong(rs.getString("ThanhTienP"));
+                bp.setGiadichvu(rs.getString("TongTienDV"));
+                bp.setTongthanhtoan(rs.getString("TongTien"));
+                bp.setTiencoc(rs.getString("ConThieu"));
+                arrPhieuTra.add(bp);
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
             System.out.println("Lỗi: " + ex.getMessage());
         }
-        return arrPhieuDatMon;
+        return arrPhieuTra;
     }
 
     public static List<tbl_MonAn> NguonMonAn(String Category, String Content) {
