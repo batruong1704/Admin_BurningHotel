@@ -24,7 +24,6 @@ import view.khohang.JP_HangHoa;
 import view.quanly.JP_KhachHang;
 import view.khohang.JP_NhapHang;
 import view.quanly.JP_Phong;
-import view.hoatdong.JP_SuaPhieuDatPhong;
 import view.quanly.JP_MaGiamGia;
 import view.khohang.JP_NhaPhanPhoi;
 import view.quanly.JP_NhanVien;
@@ -139,16 +138,7 @@ public class chuyenmanhinhController {
                     }
                 }
                 break;
-
-                case "QuanLyDatPhong": {
-                    try {
-                        node = new JP_SuaPhieuDatPhong();
-                    } catch (IOException ex) {
-                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                break;
-
+                
                 case "NhapHang": {
                     node = new JP_NhapHang();
                 }
@@ -156,15 +146,6 @@ public class chuyenmanhinhController {
 
                 case "KhoHang": {
                     node = new JP_HangHoa();
-                }
-                break;
-
-                case "SuaPhieuDatPhong": {
-                    try {
-                        node = new JP_SuaPhieuDatPhong();
-                    } catch (IOException ex) {
-                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                 }
                 break;
 

@@ -385,15 +385,13 @@ public class JP_HoaDon extends javax.swing.JPanel {
             JFrame dialogHD = new JDiaLog_HoaDon();
             dialogHD.setVisible(true);
             dialogHD.setLocationRelativeTo(null);
-        } catch (SQLException ex) {
-            Logger.getLogger(JP_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(JP_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_dongyMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        JFrame dialogBL = new JDiaLog_BoLocNhaHang();
+        JFrame dialogBL = new JDiaLog_BoLocHoaDon();
         dialogBL.setVisible(true);
         dialogBL.setLocationRelativeTo(null);
     }//GEN-LAST:event_jLabel5MouseClicked

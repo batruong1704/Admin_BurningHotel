@@ -127,37 +127,47 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ckb_tongtien" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_tongtienfrom" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="ckb_makh" alignment="1" max="32767" attributes="0"/>
+                              <Component id="ckb_mahoadon" alignment="1" max="32767" attributes="0"/>
+                              <Component id="ckb_tenkh" pref="160" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="txt_tongtiento" max="32767" attributes="0"/>
+                              <Component id="txt_mahd" max="32767" attributes="0"/>
+                              <Component id="txt_makh" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_tenkh" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ckb_manv" min="-2" pref="164" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_manv" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ckb_phong" min="-2" pref="164" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_phong" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ckb_trangthai" min="-2" pref="164" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                                   <Component id="jLabel4" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ckb_ngayden" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ckb_ngayden" min="-2" pref="164" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="txt_ngaydenfrom" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
@@ -169,26 +179,25 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="ckb_phong" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_phong" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="ckb_manv" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_manv" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ckb_makh" alignment="1" max="32767" attributes="0"/>
-                              <Component id="ckb_mahoadon" alignment="1" max="32767" attributes="0"/>
-                              <Component id="ckb_tenkh" pref="160" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ckb_tongtien" min="-2" pref="164" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt_tongtienfrom" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_mahd" max="32767" attributes="0"/>
-                              <Component id="txt_makh" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_tenkh" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="txt_tongtiento" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -244,7 +253,9 @@
                       <Component id="txt_tongtienfrom" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="txt_tongtiento" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="75" max="32767" attributes="0"/>
+                  <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                  <Component id="ckb_trangthai" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -330,6 +341,17 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="14" style="0"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ckb_trangthai">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Montserrat Medium" size="12" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i ho&#xe1; &#x111;&#x1a1;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="ckb_tongtien">

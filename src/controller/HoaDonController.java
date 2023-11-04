@@ -23,10 +23,12 @@ public class HoaDonController {
                   SELECT
                       hd.MaHoaDon,
                       kh.ID,
+                      kh.HoTen,
                       ctdp.MaPhong,
                       ctdp.NgayDen,
                       ctdp.NgayDi,
                       pdp.MaNhanVien,
+                      pdp.ThanhToanTruoc,
                       DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) AS SoNgayLuTru,
                       hd.TongTien,
                       CASE
@@ -38,7 +40,7 @@ public class HoaDonController {
                   JOIN phieudatphong pdp ON hd.MaPDP = pdp.MaPDP
                   JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
                   JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
-                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP
                 
                   """;
             if (sDieuKien != null && !sDieuKien.equals("")) {

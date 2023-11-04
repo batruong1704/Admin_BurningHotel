@@ -26,7 +26,6 @@ public class Home extends javax.swing.JFrame {
         listItem.add(new chuyenmanhinhModel("QuanLyDichVu", btn_qldichvu, lb_dichvu));
         listItem.add(new chuyenmanhinhModel("QuanLyNhanVien", btn_qlnhanvien, lb_nhanvien));
         listItem.add(new chuyenmanhinhModel("QuanLyKhachHang", btn_qlkhachhang, lb_khachhang));
-        listItem.add(new chuyenmanhinhModel("QuanLyDatPhong", btn_qlDatPhong, lb_qlDatPhong));
         listItem.add(new chuyenmanhinhModel("PhieuDatPhong", btn_phieudatphong, lb_phieudatphong));
         listItem.add(new chuyenmanhinhModel("HoaDon", btn_hoadon, lb_hoadon));
         listItem.add(new chuyenmanhinhModel("ThongKeDoanhThu", btn_ThongKeDoanhThu, lb_ThongKeDoanhThu));
@@ -112,9 +111,6 @@ public class Home extends javax.swing.JFrame {
         btn_khohang = new javax.swing.JPanel();
         ind_khohang = new javax.swing.JPanel();
         lb_khohang = new javax.swing.JLabel();
-        btn_qlDatPhong = new javax.swing.JPanel();
-        ind_qlDatPhong = new javax.swing.JPanel();
-        lb_qlDatPhong = new javax.swing.JLabel();
         btn_ThongKeDoanhThu = new javax.swing.JPanel();
         ind_ThongKeDoanhThu = new javax.swing.JPanel();
         lb_ThongKeDoanhThu = new javax.swing.JLabel();
@@ -553,35 +549,6 @@ public class Home extends javax.swing.JFrame {
         lb_khohang.setText("Kho Hàng");
         btn_khohang.add(lb_khohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
 
-        btn_qlDatPhong.setBackground(new java.awt.Color(76, 41, 211));
-        btn_qlDatPhong.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_qlDatPhongMousePressed(evt);
-            }
-        });
-        btn_qlDatPhong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ind_qlDatPhong.setOpaque(false);
-        ind_qlDatPhong.setPreferredSize(new java.awt.Dimension(4, 40));
-
-        javax.swing.GroupLayout ind_qlDatPhongLayout = new javax.swing.GroupLayout(ind_qlDatPhong);
-        ind_qlDatPhong.setLayout(ind_qlDatPhongLayout);
-        ind_qlDatPhongLayout.setHorizontalGroup(
-            ind_qlDatPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ind_qlDatPhongLayout.setVerticalGroup(
-            ind_qlDatPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        btn_qlDatPhong.add(ind_qlDatPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
-
-        lb_qlDatPhong.setFont(new java.awt.Font("Montserrat Light", 1, 14)); // NOI18N
-        lb_qlDatPhong.setForeground(new java.awt.Color(255, 255, 255));
-        lb_qlDatPhong.setText("Đặt Phòng");
-        btn_qlDatPhong.add(lb_qlDatPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
-
         btn_ThongKeDoanhThu.setBackground(new java.awt.Color(76, 41, 211));
         btn_ThongKeDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -768,40 +735,35 @@ public class Home extends javax.swing.JFrame {
         sidepaneLayout.setHorizontalGroup(
             sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btn_home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_ThongKeDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlchucvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qldichvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_qlDatPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlDauBep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlPhieuGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_phieudatphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_hoadon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_qltienich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_qlDoAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_nhaphang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_khohang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_nhaphanphoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_ThongKeDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(sidepaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                    .addGroup(sidepaneLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(sidepaneLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(sidepaneLayout.createSequentialGroup()
                         .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(sidepaneLayout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(sidepaneLayout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(sidepaneLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
@@ -813,9 +775,13 @@ public class Home extends javax.swing.JFrame {
                             .addGroup(sidepaneLayout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(53, Short.MAX_VALUE))))
-            .addComponent(btn_qltienich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(sidepaneLayout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 47, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         sidepaneLayout.setVerticalGroup(
             sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,7 +791,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(btn_qlchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlphong, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -836,12 +802,10 @@ public class Home extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_qlDatPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(btn_qlDauBep, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlPhieuGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -851,11 +815,11 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(btn_hoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_qltienich, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(btn_nhaphang, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_khohang, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -863,19 +827,19 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(btn_nhaphanphoi, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_qlDoAn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(btn_ThongKeDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sidepaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -940,7 +904,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qldichvu);
         resetColor(btn_qlkhachhang);
         setColor(btn_qlnhanvien);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_hoadon);
         resetColor(btn_phieudatphong);
@@ -969,7 +933,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_qlnhanvienMousePressed
 
@@ -983,7 +947,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         
@@ -1006,7 +970,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_qlphongMousePressed
 
@@ -1036,7 +1000,7 @@ public class Home extends javax.swing.JFrame {
         ind_nhanvien.setOpaque(false);
         ind_hoadon.setOpaque(false);
         ind_phieudatphong.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_qlchucvuMousePressed
 
@@ -1050,7 +1014,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1072,7 +1036,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
 
     }//GEN-LAST:event_btn_qldichvuMousePressed
@@ -1087,7 +1051,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1109,7 +1073,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_qlkhachhangMousePressed
 
@@ -1123,7 +1087,7 @@ public class Home extends javax.swing.JFrame {
         setColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1145,7 +1109,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(true);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_phieudatphongMousePressed
 
@@ -1159,7 +1123,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1181,7 +1145,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_hoadonMousePressed
 
@@ -1209,7 +1173,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_hoadon);
         resetColor(btn_khohang);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1231,7 +1195,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(true);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_nhaphangMousePressed
 
@@ -1245,7 +1209,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1267,45 +1231,9 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(true);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
     }//GEN-LAST:event_btn_khohangMousePressed
-
-    private void btn_qlDatPhongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlDatPhongMousePressed
-        resetColor(btn_qlchucvu);
-        resetColor(btn_qlphong);
-        resetColor(btn_qldichvu);
-        resetColor(btn_qlkhachhang);
-        resetColor(btn_qlnhanvien);
-        resetColor(btn_khohang);
-        resetColor(btn_phieudatphong);
-        resetColor(btn_nhaphang);
-        resetColor(btn_hoadon);
-        setColor(btn_qlDatPhong);
-        resetColor(btn_nhaphanphoi);
-        resetColor(btn_qlDauBep);
-        resetColor(btn_qlPhieuGiamGia);
-        resetColor(btn_qltienich);
-        resetColor(btn_qlDoAn);
-        
-        ind_qlDauBep.setOpaque(false);
-        ind_qlPhieuGiamGia.setOpaque(false);
-        ind_qltienich.setOpaque(false);
-        ind_qlDoAn.setOpaque(false);
-        ind_ThongKeDoanhThu.setOpaque(false);
-        resetColor(btn_ThongKeDoanhThu);
-        ind_chucvu.setOpaque(false);
-        ind_phong.setOpaque(false);
-        ind_dichvu.setOpaque(false);
-        ind_khachhang.setOpaque(false);
-        ind_nhanvien.setOpaque(false);
-        ind_hoadon.setOpaque(false);
-        ind_phieudatphong.setOpaque(false);
-        ind_nhaphang.setOpaque(false);
-        ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(true);
-        ind_nhaphanphoi.setOpaque(false);
-    }//GEN-LAST:event_btn_qlDatPhongMousePressed
 
     private void btn_ThongKeDoanhThuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ThongKeDoanhThuMousePressed
         resetColor(btn_qlchucvu);
@@ -1317,7 +1245,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
         resetColor(btn_qlPhieuGiamGia);
@@ -1338,7 +1266,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_nhaphanphoi.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(true);
     }//GEN-LAST:event_btn_ThongKeDoanhThuMousePressed
@@ -1353,7 +1281,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         setColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1374,7 +1302,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_nhaphanphoi.setOpaque(true);
     }//GEN-LAST:event_btn_nhaphanphoiMousePressed
@@ -1393,7 +1321,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1414,7 +1342,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlDoAnMousePressed
@@ -1429,7 +1357,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         setColor(btn_qlDauBep);
@@ -1450,7 +1378,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlDauBepMousePressed
@@ -1465,7 +1393,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1486,7 +1414,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlPhieuGiamGiaMousePressed
@@ -1501,7 +1429,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphang);
         resetColor(btn_hoadon);
-        resetColor(btn_qlDatPhong);
+         
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
         resetColor(btn_qlDauBep);
@@ -1522,7 +1450,7 @@ public class Home extends javax.swing.JFrame {
         ind_phieudatphong.setOpaque(false);
         ind_nhaphang.setOpaque(false);
         ind_khohang.setOpaque(false);
-        ind_qlDatPhong.setOpaque(false);
+          
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qltienichMousePressed
@@ -1580,7 +1508,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btn_nhaphang;
     private javax.swing.JPanel btn_nhaphanphoi;
     private javax.swing.JPanel btn_phieudatphong;
-    private javax.swing.JPanel btn_qlDatPhong;
     private javax.swing.JPanel btn_qlDauBep;
     private javax.swing.JPanel btn_qlDoAn;
     private javax.swing.JPanel btn_qlPhieuGiamGia;
@@ -1601,7 +1528,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel ind_nhaphanphoi;
     private javax.swing.JPanel ind_phieudatphong;
     private javax.swing.JPanel ind_phong;
-    private javax.swing.JPanel ind_qlDatPhong;
     private javax.swing.JPanel ind_qlDauBep;
     private javax.swing.JPanel ind_qlDoAn;
     private javax.swing.JPanel ind_qlPhieuGiamGia;
@@ -1637,7 +1563,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel lb_nhaphanphoi;
     private javax.swing.JLabel lb_phieudatphong;
     private javax.swing.JLabel lb_phong;
-    private javax.swing.JLabel lb_qlDatPhong;
     private javax.swing.JLabel lb_qlDauBep;
     private javax.swing.JLabel lb_qlDoAn;
     private javax.swing.JLabel lb_qlPhieuGiamGia;
