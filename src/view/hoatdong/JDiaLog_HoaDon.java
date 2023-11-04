@@ -404,7 +404,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                         pa.XoaTrang();
                         pa.setVisible(true);
                         dispose();
-                      
+                        reset();
                 }
                 catch (SQLException ex) {
                     Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);

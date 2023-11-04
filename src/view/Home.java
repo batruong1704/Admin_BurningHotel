@@ -948,6 +948,11 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_khohang);
         resetColor(btn_khohang);
         resetColor(btn_nhaphanphoi);
+        resetColor(jPanel1);
+        resetColor(jPanel1);
+        resetColor(jPanel1);
+        resetColor(jPanel1);
+
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);

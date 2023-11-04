@@ -33,7 +33,21 @@ public class JP_HoaDon extends javax.swing.JPanel {
                 KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getConthieu()});
         });
     }
-
+    
+    public void reset (){
+        lb_mahoadon.setText("");
+        lb_makh.setText("");
+        lb_tenkh.setText("");
+        lb_maphong.setText("");
+        lb_ngayden.setText("");
+        lb_ngaydi.setText("");
+        lb_songayo.setText("");
+        lb_giaphong.setText("");
+        lb_monan.setText("");
+        lb_giadichvu.setText("");
+        lb_TongTien.setText("");
+        lb_Con.setText("");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
