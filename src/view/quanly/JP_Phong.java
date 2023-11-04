@@ -12,8 +12,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -24,7 +26,7 @@ private File selectedFile;
     ArrayList<tbl_Phong> arrPhong = new ArrayList<>();
     private static boolean ktThem;
     private static String macu;
-    private static String maPhong, loaiPhong,kieuPhong,slmax,loaigiuong,giaPhong,img,dientich,tamnhin,moTa, tinhTrang;
+    private static String maPhong, loaiPhong,kieuPhong,slmax,loaigiuong,giaPhong,img,img2,dientich,tamnhin,moTa, tinhTrang;
     
     public JP_Phong() throws IOException, SQLException {
         initComponents();
@@ -649,7 +651,8 @@ private File selectedFile;
         kieuPhong=txt_kieuphong.getText();
         slmax=txt_slmax.getText();
         loaigiuong=txt_loaigiuong.getText();
-        img="../img/roomstyle"+lb_anh.getText();
+        img=lb_anh.getText();
+        img2="../img/roomstyle/"+lb_anh.getText();
         dientich=txt_dientich.getText();
         tamnhin=txt_tamnhin.getText();
         moTa = txt_mota.getText();
@@ -684,12 +687,12 @@ private File selectedFile;
         } else {
             tinhTrang = "Đầy";
         }
-        tbl_Phong cn = new tbl_Phong(maPhong, loaiPhong,kieuPhong,slmax,loaigiuong, giaPhong,img,dientich,tamnhin,moTa, tinhTrang);
+        tbl_Phong cn = new tbl_Phong(maPhong, loaiPhong,kieuPhong,slmax,loaigiuong, giaPhong,img2,dientich,tamnhin,moTa, tinhTrang);
         if (ktThem == true) {
             QuanLyController.ThemPhong(cn);
             JOptionPane.showMessageDialog(this, "Thêm mới thành công!");
             
-            String uploadDirectory = "C:\\xampp\\htdocs\\BurningHotel\\img\\";
+            String uploadDirectory = "C:\\xampp\\htdocs\\BurningHotel\\img\\roomstyle";
             File uploadFile = new File(uploadDirectory, img);
             
         try {

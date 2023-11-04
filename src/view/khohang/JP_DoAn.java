@@ -3,6 +3,9 @@ package view.khohang;
 import controller.HangHoaController;
 import controller.QuanLyController;
 import controller.QuanLyKhachSanController;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.tbl_DoAn;
 
 public class JP_DoAn extends javax.swing.JPanel {
@@ -23,8 +28,8 @@ public class JP_DoAn extends javax.swing.JPanel {
     List<tbl_DoAn> arrDoAn = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimDoAn;
-    private static String id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img;
-
+    private static String id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img,img2;
+     private File selectedFile;  
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
     }};
@@ -63,7 +68,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         txtcalo.setEditable(b);
         txtthanhtien.setEditable(b);
         txtmota.setEditable(b);
-        txthinhanh.setEditable(b);
+        lb_anh.setText("Tên Ảnh");
         bt_them.setEnabled(!b);
         bt_sua.setEnabled(!b);
         bt_xoa.setEnabled(!b);
@@ -82,7 +87,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         txtcalo.setEditable(b);
         txtthanhtien.setEditable(b);
         txtmota.setEditable(b);
-        txthinhanh.setEditable(b);
+        lb_anh.setText("Tên Ảnh");
         bt_them.setEnabled(b);
         bt_sua.setEnabled(b);
         bt_xoa.setEnabled(b);
@@ -100,7 +105,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         txtcalo.setText("");
         txtthanhtien.setText("");
         txtmota.setText("");
-        txthinhanh.setText("");
+        lb_anh.setText("Tên Ảnh");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -129,7 +134,6 @@ public class JP_DoAn extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtslban = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txthinhanh = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtmota = new javax.swing.JTextArea();
         cbdokho = new javax.swing.JComboBox<>();
@@ -138,6 +142,8 @@ public class JP_DoAn extends javax.swing.JPanel {
         cbphanloai = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_thanhphan = new javax.swing.JTextArea();
+        bt_chonanh = new javax.swing.JButton();
+        lb_anh = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_them = new javax.swing.JButton();
         bt_sua = new javax.swing.JButton();
@@ -251,9 +257,6 @@ public class JP_DoAn extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel4.setText("Số Lượng Bán:");
 
-        txthinhanh.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        txthinhanh.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
         txtmota.setColumns(20);
         txtmota.setRows(5);
         jScrollPane2.setViewportView(txtmota);
@@ -288,6 +291,15 @@ public class JP_DoAn extends javax.swing.JPanel {
         txt_thanhphan.setRows(5);
         jScrollPane3.setViewportView(txt_thanhphan);
 
+        bt_chonanh.setText("chọn File");
+        bt_chonanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_chonanhActionPerformed(evt);
+            }
+        });
+
+        lb_anh.setText("Tên Ảnh");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -296,7 +308,6 @@ public class JP_DoAn extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtslban)
-                    .addComponent(txthinhanh)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cbphanloai, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtid)
@@ -307,7 +318,6 @@ public class JP_DoAn extends javax.swing.JPanel {
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtthoigiannau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,7 +328,13 @@ public class JP_DoAn extends javax.swing.JPanel {
                             .addComponent(jLabel9)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(74, 74, 74)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_chonanh)
+                                    .addComponent(lb_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -366,10 +382,12 @@ public class JP_DoAn extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(txtslban, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addGap(0, 0, 0)
-                .addComponent(txthinhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_chonanh)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(lb_anh)
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -637,11 +655,31 @@ public class JP_DoAn extends javax.swing.JPanel {
         thanhtien = txtthanhtien.getText();
         soluongban = txtslban.getText();
         mota = txtmota.getText();
-        img = txthinhanh.getText();
-        
-        tbl_DoAn da = new tbl_DoAn(id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img);
+        img = lb_anh.getText();
+        img2="../img/Doan/"+lb_anh.getText();
+        tbl_DoAn da = new tbl_DoAn(id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img2);
         if (ktThem == true) {
             HangHoaController.ThemDoAn(da);
+            String uploadDirectory = "C:\\xampp\\htdocs\\BurningHotel\\img\\DoAn";
+            File uploadFile = new File(uploadDirectory, img);
+            
+        try {
+            FileOutputStream fos = new FileOutputStream(uploadFile);
+            FileInputStream fis = new FileInputStream(selectedFile);
+
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = fis.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+
+            fis.close();
+            fos.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            // Xử lý lỗi tại đây nếu cần
+        }
         } else {
             HangHoaController.CapNhapDoAn(da, macu);
         }
@@ -682,7 +720,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         txtthanhtien.setText(thanhtien);
         txtslban.setText(soluongban);
         txtmota.setText(mota);
-        txthinhanh.setText(img);
+        lb_anh.setText(img);
     }//GEN-LAST:event_tb_DoAnMouseClicked
 
     private void txttenmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttenmonActionPerformed
@@ -705,8 +743,23 @@ public class JP_DoAn extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcaloActionPerformed
 
+    private void bt_chonanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chonanhActionPerformed
+        // TODO add your handling code here:
+          JFileChooser filechooser= new JFileChooser();
+        FileNameExtensionFilter imageFilter= new FileNameExtensionFilter("hinhanh","png","jpg");
+        filechooser.setFileFilter(imageFilter);
+        filechooser.setMultiSelectionEnabled(false);
+        int x=filechooser.showDialog(this, "Chọn file");
+        if (x==filechooser.APPROVE_OPTION){
+            selectedFile =filechooser.getSelectedFile();
+            String fileName =  selectedFile.getName();
+            lb_anh.setText(fileName);
+        }
+    }//GEN-LAST:event_bt_chonanhActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_chonanh;
     private javax.swing.JButton bt_ghi;
     private javax.swing.JButton bt_khong;
     private javax.swing.JButton bt_sua;
@@ -738,11 +791,11 @@ public class JP_DoAn extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lb_anh;
     private javax.swing.JTable tb_DoAn;
     private javax.swing.JTextArea txt_thanhphan;
     private javax.swing.JTextField txt_timkiem;
     private javax.swing.JTextField txtcalo;
-    private javax.swing.JTextField txthinhanh;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextArea txtmota;
     private javax.swing.JTextField txtslban;

@@ -669,14 +669,7 @@
                       <Title/>
                       <Editor/>
                       <Renderer/>
-<<<<<<< Upstream, based on origin/main
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-=======
->>>>>>> eecf705 commit by dung
+
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>

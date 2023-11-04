@@ -38,7 +38,7 @@ public class QuanLyController {
         while (rs.next()) {
             tbl_ChucVu bp = new tbl_ChucVu();
             bp.setMaChucVu(rs.getString("MaChucVu"));
-            bp.setTenChucVu(rs.getString("MaChucVu"));
+            bp.setTenChucVu(rs.getString("TenChucVu"));
             bp.setLuongTheoNgay(rs.getString("LuongTheoNgay"));
             arrBoPhan.add(bp);
         }

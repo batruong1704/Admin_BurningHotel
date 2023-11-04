@@ -3,27 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_Phong.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_KhachHang.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_DatMonB21.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/controller/chuyenmanhinhController.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/Home.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JDiaLog_BoLoc.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_DauBep.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_NhapHang.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/model/chuyenmanhinhModel.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_QuanLyTienIch.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/controller/HoaDonController.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_DoAn.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_QuenMatKhau.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_HangHoa.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_DichVu.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_NhaPhanPhoi.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_HoaDon.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JP_NhanVien.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JDiaLog_DatPhong.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/controller/QuanLyController.java</file>
-            <file>file:/C:/Users/84336/OneDrive/Documents/NetBeansProjects/Hotel_Manager/src/view/JF_DatMonB2.java</file>
+            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Admin_BurningHotel/src/view/hoatdong/JDiaLog_HoaDon.java</file>
+            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Admin_BurningHotel/src/view/hoatdong/JP_HoaDon.java</file>
+            <file>file:/C:/Users/nguye/OneDrive%20-%20dungnguyentstb/Documents/NetBeansProjects/Admin_BurningHotel/src/controller/HoaDonController.java</file>
         </group>
     </open-files>
 </project-private>
