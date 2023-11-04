@@ -948,10 +948,16 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_khohang);
         resetColor(btn_khohang);
         resetColor(btn_nhaphanphoi);
-        resetColor(btn_qlDatPhong);
+        
+        resetColor(btn_qlDauBep);
         resetColor(btn_qlPhieuGiamGia);
         resetColor(btn_qltienich);
-        resetColor(jPanel1);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
 
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
@@ -980,6 +986,16 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(true);
@@ -1003,6 +1019,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_hoadon);
         resetColor(btn_phieudatphong);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(true);
         ind_phong.setOpaque(false);
@@ -1028,6 +1053,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1056,6 +1090,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1083,6 +1126,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1110,6 +1162,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1151,6 +1212,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1178,6 +1248,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1204,6 +1283,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_hoadon);
         setColor(btn_qlDatPhong);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_ThongKeDoanhThu.setOpaque(false);
         resetColor(btn_ThongKeDoanhThu);
         ind_chucvu.setOpaque(false);
@@ -1231,6 +1319,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_hoadon);
         resetColor(btn_qlDatPhong);
         resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         setColor(btn_ThongKeDoanhThu);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
@@ -1259,6 +1356,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(btn_qlDatPhong);
         resetColor(btn_ThongKeDoanhThu);
         setColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(false);
         ind_chucvu.setOpaque(false);
         ind_phong.setOpaque(false);
         ind_dichvu.setOpaque(false);
@@ -1278,19 +1384,147 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_nhaphanphoiMouseClicked
 
     private void btn_qlDoAnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlDoAnMousePressed
-        // TODO add your handling code here:
+        resetColor(btn_qlchucvu);
+        resetColor(btn_qlphong);
+        resetColor(btn_qldichvu);
+        resetColor(btn_qlkhachhang);
+        resetColor(btn_qlnhanvien);
+        resetColor(btn_khohang);
+        resetColor(btn_phieudatphong);
+        resetColor(btn_nhaphang);
+        resetColor(btn_hoadon);
+        resetColor(btn_qlDatPhong);
+        resetColor(btn_ThongKeDoanhThu);
+        resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        setColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(true);
+        ind_chucvu.setOpaque(false);
+        ind_phong.setOpaque(false);
+        ind_dichvu.setOpaque(false);
+        ind_khachhang.setOpaque(false);
+        ind_nhanvien.setOpaque(false);
+        ind_hoadon.setOpaque(false);
+        ind_phieudatphong.setOpaque(false);
+        ind_nhaphang.setOpaque(false);
+        ind_khohang.setOpaque(false);
+        ind_qlDatPhong.setOpaque(false);
+        ind_ThongKeDoanhThu.setOpaque(false);
+        ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlDoAnMousePressed
 
     private void btn_qlDauBepMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlDauBepMousePressed
-        // TODO add your handling code here:
+        resetColor(btn_qlchucvu);
+        resetColor(btn_qlphong);
+        resetColor(btn_qldichvu);
+        resetColor(btn_qlkhachhang);
+        resetColor(btn_qlnhanvien);
+        resetColor(btn_khohang);
+        resetColor(btn_phieudatphong);
+        resetColor(btn_nhaphang);
+        resetColor(btn_hoadon);
+        resetColor(btn_qlDatPhong);
+        resetColor(btn_ThongKeDoanhThu);
+        resetColor(btn_nhaphanphoi);
+        setColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(true);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(true);
+        ind_chucvu.setOpaque(false);
+        ind_phong.setOpaque(false);
+        ind_dichvu.setOpaque(false);
+        ind_khachhang.setOpaque(false);
+        ind_nhanvien.setOpaque(false);
+        ind_hoadon.setOpaque(false);
+        ind_phieudatphong.setOpaque(false);
+        ind_nhaphang.setOpaque(false);
+        ind_khohang.setOpaque(false);
+        ind_qlDatPhong.setOpaque(false);
+        ind_ThongKeDoanhThu.setOpaque(false);
+        ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlDauBepMousePressed
 
     private void btn_qlPhieuGiamGiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qlPhieuGiamGiaMousePressed
-        // TODO add your handling code here:
+        resetColor(btn_qlchucvu);
+        resetColor(btn_qlphong);
+        resetColor(btn_qldichvu);
+        resetColor(btn_qlkhachhang);
+        resetColor(btn_qlnhanvien);
+        resetColor(btn_khohang);
+        resetColor(btn_phieudatphong);
+        resetColor(btn_nhaphang);
+        resetColor(btn_hoadon);
+        resetColor(btn_qlDatPhong);
+        resetColor(btn_ThongKeDoanhThu);
+        resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        setColor(btn_qlPhieuGiamGia);
+        resetColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(true);
+        ind_qltienich.setOpaque(false);
+        ind_qlDoAn.setOpaque(true);
+        ind_chucvu.setOpaque(false);
+        ind_phong.setOpaque(false);
+        ind_dichvu.setOpaque(false);
+        ind_khachhang.setOpaque(false);
+        ind_nhanvien.setOpaque(false);
+        ind_hoadon.setOpaque(false);
+        ind_phieudatphong.setOpaque(false);
+        ind_nhaphang.setOpaque(false);
+        ind_khohang.setOpaque(false);
+        ind_qlDatPhong.setOpaque(false);
+        ind_ThongKeDoanhThu.setOpaque(false);
+        ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qlPhieuGiamGiaMousePressed
 
     private void btn_qltienichMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_qltienichMousePressed
-        // TODO add your handling code here:
+        resetColor(btn_qlchucvu);
+        resetColor(btn_qlphong);
+        resetColor(btn_qldichvu);
+        resetColor(btn_qlkhachhang);
+        resetColor(btn_qlnhanvien);
+        resetColor(btn_khohang);
+        resetColor(btn_phieudatphong);
+        resetColor(btn_nhaphang);
+        resetColor(btn_hoadon);
+        resetColor(btn_qlDatPhong);
+        resetColor(btn_ThongKeDoanhThu);
+        resetColor(btn_nhaphanphoi);
+        resetColor(btn_qlDauBep);
+        resetColor(btn_qlPhieuGiamGia);
+        setColor(btn_qltienich);
+        resetColor(btn_qlDoAn);
+        
+        ind_qlDauBep.setOpaque(false);
+        ind_qlPhieuGiamGia.setOpaque(false);
+        ind_qltienich.setOpaque(true);
+        ind_qlDoAn.setOpaque(true);
+        ind_chucvu.setOpaque(false);
+        ind_phong.setOpaque(false);
+        ind_dichvu.setOpaque(false);
+        ind_khachhang.setOpaque(false);
+        ind_nhanvien.setOpaque(false);
+        ind_hoadon.setOpaque(false);
+        ind_phieudatphong.setOpaque(false);
+        ind_nhaphang.setOpaque(false);
+        ind_khohang.setOpaque(false);
+        ind_qlDatPhong.setOpaque(false);
+        ind_ThongKeDoanhThu.setOpaque(false);
+        ind_nhaphanphoi.setOpaque(false);
     }//GEN-LAST:event_btn_qltienichMousePressed
 
     int xy, xx;

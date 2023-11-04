@@ -33,7 +33,8 @@ public class JP_HoaDon extends javax.swing.JPanel {
                 KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getConthieu()});
         });
     }
-    public static void reset (){
+    
+    public static void reset() throws IOException, SQLException {
         mahoadonString = "";
         makhachhangString = "";
         tenkhachhangString = "";
@@ -47,7 +48,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
         tongtienString = "";
         conthieuString = "";
     }
-    public void update (){
+    public void update(){
         lb_mahoadon.setText(mahoadonString);
         lb_makh.setText(makhachhangString);
         lb_tenkh.setText(tenkhachhangString);
