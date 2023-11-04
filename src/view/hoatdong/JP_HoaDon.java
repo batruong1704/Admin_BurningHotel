@@ -33,20 +33,33 @@ public class JP_HoaDon extends javax.swing.JPanel {
                 KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getConthieu()});
         });
     }
-    
-    public void reset (){
-        lb_mahoadon.setText("");
-        lb_makh.setText("");
-        lb_tenkh.setText("");
-        lb_maphong.setText("");
-        lb_ngayden.setText("");
-        lb_ngaydi.setText("");
-        lb_songayo.setText("");
-        lb_giaphong.setText("");
-        lb_monan.setText("");
-        lb_giadichvu.setText("");
-        lb_TongTien.setText("");
-        lb_Con.setText("");
+    public static void reset (){
+        mahoadonString = "";
+        makhachhangString = "";
+        tenkhachhangString = "";
+        maphongString = "";
+        ngaydenString = "";
+        ngaydiString = "";
+        songayluutruString = "";
+        giaphongString = "";
+        giamonanString = "";
+        giadichvuString = "";
+        tongtienString = "";
+        conthieuString = "";
+    }
+    public void update (){
+        lb_mahoadon.setText(mahoadonString);
+        lb_makh.setText(makhachhangString);
+        lb_tenkh.setText(tenkhachhangString);
+        lb_maphong.setText(maphongString);
+        lb_ngayden.setText(ngaydenString);
+        lb_ngaydi.setText(ngaydiString);
+        lb_songayo.setText(songayluutruString);
+        lb_giaphong.setText(giaphongString);
+        lb_monan.setText(giamonanString);
+        lb_giadichvu.setText(giadichvuString);
+        lb_TongTien.setText(tongtienString);
+        lb_Con.setText(conthieuString);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -322,18 +335,7 @@ public class JP_HoaDon extends javax.swing.JPanel {
         conthieuString = model.getValueAt(index, 7).toString();
         
         layThem(mahoadonString);
-        lb_mahoadon.setText(mahoadonString);
-        lb_makh.setText(makhachhangString);
-        lb_tenkh.setText(tenkhachhangString);
-        lb_maphong.setText(maphongString);
-        lb_ngayden.setText(ngaydenString);
-        lb_ngaydi.setText(ngaydiString);
-        lb_songayo.setText(songayluutruString);
-        lb_giaphong.setText(giaphongString);
-        lb_monan.setText(giamonanString);
-        lb_giadichvu.setText(giadichvuString);
-        lb_TongTien.setText(tongtienString);
-        lb_Con.setText(conthieuString);
+        update();
         MoKhoaBTN(conthieuString);
     }//GEN-LAST:event_tb_hoadonMouseClicked
         public void XoaTrang() {
