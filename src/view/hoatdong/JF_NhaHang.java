@@ -2,6 +2,7 @@ package view.hoatdong;
 
 import controller.DatMonController;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,16 +12,21 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import model.tbl_ChiTietMonAn;
+import model.tbl_ChucVu;
 import model.tbl_MonAn;
+import model.tbl_PhieuDatMon;
+import model.tbl_PhieuMonAn;
+
 
 public final class JF_NhaHang extends javax.swing.JFrame {
-
     DefaultTableModel tbl_MonAn, tbl_ChotDichVu;
     List<tbl_MonAn> arrMonAn = new ArrayList<>();
     private String mamonan, tenmonan, giamonan, tongphieu, tiencoc;
     private int soluong;
     private final HashMap<String, Integer> monanHashMap = new HashMap<>();
     private String mahoadon, makhachhang, maphong;
+
 
     public JF_NhaHang() throws IOException {
         initComponents();
@@ -51,10 +57,10 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         double tongTien = 0.0;
 
         for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
-            if (tbl_ChotDichVu.getValueAt(i, 2) != null) {
-                String giaTien = tbl_ChotDichVu.getValueAt(i, 2).toString();
+            if (tbl_ChotDichVu.getValueAt(i, 3) != null) {
+                String giaTien = tbl_ChotDichVu.getValueAt(i, 3).toString();
                 double gia = Double.parseDouble(giaTien);
-                int soLuong = Integer.parseInt(tbl_ChotDichVu.getValueAt(i, 1).toString());
+                int soLuong = Integer.parseInt(tbl_ChotDichVu.getValueAt(i, 2).toString());
                 tongTien += gia * soLuong;
             }
         }
@@ -393,11 +399,11 @@ public final class JF_NhaHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên Món", "Số Lượng", "Giá"
+                "ID", "Tên Món", "Số Lượng", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -538,8 +544,7 @@ public final class JF_NhaHang extends javax.swing.JFrame {
 
         if (soLuong < 9) {
             soLuong++;
-            txt_soluongsp.setText(String.valueOf(soLuong));
-            updateGia();
+            txt_soluongsp.setText(String.valueOf(soLuong));            updateGia();
         } else {
             JOptionPane.showMessageDialog(this, "Số lượng sản phẩm đã đạt tối đa (9)", "Thông Báo", JOptionPane.WARNING_MESSAGE);
         }
@@ -550,23 +555,24 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         mamonan = lb_ma.getText();
         tenmonan = lb_ten.getText();
         giamonan = lb_gia.getText();
+        
         soluong = Integer.parseInt(txt_soluongsp.getText());
         if (mamonan.isEmpty() || tenmonan.isEmpty() || giamonan.isEmpty()) {
             return;
         }
         int existingRow = -1;
         for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
-            if (tenmonan.equals(tbl_ChotDichVu.getValueAt(i, 0).toString())) {
+            if (mamonan.equals(tbl_ChotDichVu.getValueAt(i, 0).toString())) {
                 existingRow = i;
                 break;
             }
         }
 
         if (existingRow != -1) {
-            int currentSoluong = (int) tbl_ChotDichVu.getValueAt(existingRow, 1);
-            tbl_ChotDichVu.setValueAt(currentSoluong + soluong, existingRow, 1);
+            int currentSoluong = (int) tbl_ChotDichVu.getValueAt(existingRow, 2);
+            tbl_ChotDichVu.setValueAt(currentSoluong + soluong, existingRow, 2);
         } else {
-            Object[] row = {tenmonan, soluong, giamonan};
+            Object[] row = {mamonan,tenmonan, soluong, giamonan};
             tbl_ChotDichVu.addRow(row);
         }
         tinhTongTien();
@@ -585,7 +591,23 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_quaylaiActionPerformed
 
     private void btn_hoanthanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hoanthanhActionPerformed
-
+        tongphieu=lb_tongtien.getText();
+        
+        tbl_PhieuMonAn pma = new tbl_PhieuMonAn( "", mahoadon, tongphieu);
+        DatMonController.ThemPhieuMonAn(pma, mahoadon);
+        for (int i = 0; i < tb_chotmonan.getRowCount(); i++) {
+             mamonan = tb_chotmonan.getValueAt(i, 0).toString();
+             soluong= Integer.parseInt(tb_chotmonan.getValueAt(i, 2).toString());
+             giamonan = tb_chotmonan.getValueAt(i, 3).toString();
+             int mapma=DatMonController.LayMaPMA(mahoadon);
+              tbl_ChiTietMonAn ctma = new tbl_ChiTietMonAn("" , mamonan, giamonan, mapma,soluong);
+              DatMonController.ThemChiTietDatMon(ctma,mapma);
+            }
+        try {
+            DatMonController.CapNhatHoaDon(mahoadon, tongphieu);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_NhaHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_hoanthanhActionPerformed
 
     private void btn_loaiboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loaiboMouseClicked

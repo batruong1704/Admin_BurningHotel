@@ -13,6 +13,9 @@ import model.tbl_MonAn;
 import model.tbl_PhieuDatMon;
 import model.tbl_PhieuTraPhong;
 import java.sql.PreparedStatement;
+import model.tbl_ChiTietMonAn;
+
+import model.tbl_PhieuMonAn;
 import model.tbl_QuanLiTienIch;
 
 public class DatMonController {
@@ -204,7 +207,7 @@ public class DatMonController {
                   JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
                   JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
                   JOIN phong p ON p.MaPhong = ctdp.MaPhong
-                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
                 
                   """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
@@ -233,4 +236,79 @@ public class DatMonController {
         }
         return arrQuanLiTienIch;
     }
+       public static void ThemPhieuMonAn(tbl_PhieuMonAn pma, String mahoadon) {
+        Connection conn = null;
+        PreparedStatement state = null;
+
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            String sql = "INSERT INTO phieumonan (MaHoaDon, TongTienMA) VALUES ( ?, ?)";
+            state = conn.prepareStatement(sql);
+            state.setString(1, mahoadon);
+            state.setString(2, pma.getTongTien());
+            state.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        
+        }
+}
+
+
+     public static int LayMaPMA(String mahoadon) {
+          int mapma = 0;
+          Connection conn = null;
+          PreparedStatement state = null;
+
+          try {
+              conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+              sql = "SELECT * FROM phieumonan WHERE MaHoaDon=?";
+              state = conn.prepareStatement(sql);
+              state.setString(1, mahoadon);
+
+              ResultSet rs = state.executeQuery();
+              while (rs.next()) {
+                  mapma = rs.getInt("MaPMA"); 
+              }
+          } catch (SQLException ex) {
+              ex.printStackTrace();
+              
+          } 
+
+          return mapma;
+      }
+     public static void ThemChiTietDatMon(tbl_ChiTietMonAn ctma,int mapma){
+          conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "INSERT INTO chitietdatmon ( MaPMA, MaMonAn,SoLuong,ThanhTien) VALUES ( ?, ?,?,?)";
+            state = conn.prepareStatement(sql);
+           
+            state.setInt(1, mapma);
+            state.setString(2, ctma.getMaMonAn());
+            state.setInt(3, ctma.getSoLuong());
+            state.setString(4, ctma.getThanhTien());
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+     }
+     public static void CapNhatHoaDon(String mahoadon, String tienan) throws SQLException {
+        Connection conn = null;
+        PreparedStatement state = null;
+
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            String sql = "UPDATE hoadon SET TongTien = TongTien + ? WHERE MaHoaDon = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, tienan); 
+            state.setString(2, mahoadon); 
+            state.executeUpdate(); 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+
 }
