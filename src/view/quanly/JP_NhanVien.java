@@ -190,7 +190,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setPreferredSize(new java.awt.Dimension(400, 700));
+        jPanel4.setPreferredSize(new java.awt.Dimension(330, 500));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 35));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -493,21 +493,28 @@ public final class JP_NhanVien extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tb_nhanvien);
+        if (tb_nhanvien.getColumnModel().getColumnCount() > 0) {
+            tb_nhanvien.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tb_nhanvien.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tb_nhanvien.getColumnModel().getColumn(3).setPreferredWidth(60);
+            tb_nhanvien.getColumnModel().getColumn(5).setPreferredWidth(65);
+            tb_nhanvien.getColumnModel().getColumn(6).setPreferredWidth(110);
+        }
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

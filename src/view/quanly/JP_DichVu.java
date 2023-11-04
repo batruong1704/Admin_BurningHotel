@@ -313,7 +313,7 @@ public final class JP_DichVu extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -328,6 +328,11 @@ public final class JP_DichVu extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tb_dichvu);
+        if (tb_dichvu.getColumnModel().getColumnCount() > 0) {
+            tb_dichvu.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tb_dichvu.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tb_dichvu.getColumnModel().getColumn(2).setPreferredWidth(100);
+        }
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
