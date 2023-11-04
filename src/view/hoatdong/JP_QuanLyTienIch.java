@@ -119,23 +119,23 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
 
         lb_trangthai.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         lb_trangthai.setText("Còn:");
-        jPanel8.add(lb_trangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 108, -1));
+        jPanel8.add(lb_trangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 108, -1));
 
         jLabel26.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel26.setText("Tổng Tiền:");
-        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 108, -1));
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 108, -1));
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel20.setText("Giá Sản Phẩm:");
-        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 108, -1));
+        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 108, -1));
 
         jLabel24.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel24.setText("Giá Dịch Vụ:");
-        jPanel8.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 108, -1));
+        jPanel8.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 108, -1));
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel13.setText("Giá Phòng:");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 108, -1));
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 108, -1));
 
         jLabel15.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel15.setText("Ngày Đi:");
@@ -190,27 +190,27 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         lb_giaphong.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giaphong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giaphong.setText(" ");
-        jPanel8.add(lb_giaphong, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 150, -1));
+        jPanel8.add(lb_giaphong, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 150, -1));
 
         lb_giadichvu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giadichvu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giadichvu.setText(" ");
-        jPanel8.add(lb_giadichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 150, -1));
+        jPanel8.add(lb_giadichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 150, -1));
 
         lb_giasanpham.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_giasanpham.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_giasanpham.setText(" ");
-        jPanel8.add(lb_giasanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 150, -1));
+        jPanel8.add(lb_giasanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 150, -1));
 
         lb_TongTien.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         lb_TongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_TongTien.setText(" ");
-        jPanel8.add(lb_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
+        jPanel8.add(lb_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 150, -1));
 
         lb_Con.setFont(new java.awt.Font("Montserrat Medium", 1, 16)); // NOI18N
         lb_Con.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_Con.setText(" ");
-        jPanel8.add(lb_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 150, -1));
+        jPanel8.add(lb_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
 
         btn_dongy.setFont(new java.awt.Font("Montserrat", 3, 14)); // NOI18N
         btn_dongy.setText("Thanh Toán");
@@ -253,17 +253,17 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         tb_qlphongtructuyen.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         tb_qlphongtructuyen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Phòng", "Mã Khách Hàng", "ID", "Ngày Đến", "Ngày Đi", "Lưu Trú", "Tổng Tiền", "Còn"
+                "Phòng", "Họ Tên", "Email", "Số Điện Thoại", "Ngày Đến", "Ngày Đi", "Tổng Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -281,8 +281,8 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         if (tb_qlphongtructuyen.getColumnModel().getColumnCount() > 0) {
             tb_qlphongtructuyen.getColumnModel().getColumn(0).setPreferredWidth(35);
             tb_qlphongtructuyen.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tb_qlphongtructuyen.getColumnModel().getColumn(2).setPreferredWidth(35);
-            tb_qlphongtructuyen.getColumnModel().getColumn(5).setPreferredWidth(40);
+            tb_qlphongtructuyen.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tb_qlphongtructuyen.getColumnModel().getColumn(3).setPreferredWidth(40);
         }
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
