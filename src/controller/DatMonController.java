@@ -57,18 +57,31 @@ public class DatMonController {
         List<tbl_MonAn> arrMonAn = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         try {
-            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             sql = "SELECT * FROM doan";
 
             // Kiểm tra xem có điều kiện tìm kiếm không
-            if (!Category.isEmpty() && !Content.isEmpty()) {
-                sql += " WHERE " + Category + " LIKE ?";
+            if (!Category.isEmpty() || !Content.isEmpty()) {
+                sql += " WHERE";
+                if (!Category.isEmpty()) {
+                    sql += " PhanLoai = ?";
+                    if (!Content.isEmpty()) {
+                        sql += " AND TenMon LIKE ?";
+                    }
+                } else {
+                    sql += " TenMon LIKE ?";
+                }
             }
 
             preparedStatement = conn.prepareStatement(sql);
 
-            if (!Category.isEmpty() && !Content.isEmpty()) {
-                preparedStatement.setString(1, "%" + Content + "%");
+            int parameterIndex = 1;
+            if (!Category.isEmpty()) {
+                preparedStatement.setString(parameterIndex, Category);
+                parameterIndex++;
+            }
+            if (!Content.isEmpty()) {
+                preparedStatement.setString(parameterIndex, "%" + Content + "%");
             }
 
             ResultSet rs = preparedStatement.executeQuery();
