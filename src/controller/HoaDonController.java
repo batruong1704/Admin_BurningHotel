@@ -24,6 +24,8 @@ public class HoaDonController {
                       hd.MaHoaDon,
                       kh.ID,
                       kh.HoTen,
+                      kh.Email,
+                      kh.SDT,
                       ctdp.MaPhong,
                       ctdp.NgayDen,
                       ctdp.NgayDi,
@@ -55,6 +57,8 @@ public class HoaDonController {
                 bp.setMahoadon(rs.getString("MaHoaDon"));
                 bp.setMakhachhang(rs.getString("ID"));
                 bp.setTenkhachhang(rs.getString("HoTen"));
+                bp.setEmailkhachhang(rs.getString("Email"));
+                bp.setSdt(rs.getString("SDT"));
                 bp.setPhong(rs.getString("MaPhong"));
                 bp.setNgayden(rs.getString("NgayDen"));
                 bp.setNgaydi(rs.getString("NgayDi"));

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 import model.Hotel_Manager;
 import model.tbl_MonAn;
 import model.tbl_PhieuDatMon;
+import model.tbl_PhieuTraPhong;
 
 public class DatMonController {
     private static Connection conn = null;
@@ -105,5 +107,54 @@ public class DatMonController {
         }
         
         return danhSachPhanLoai;
+    }
+    
+        public static ArrayList<tbl_PhieuTraPhong> NguonBonus(String maKT) throws SQLException  {
+        ArrayList<tbl_PhieuTraPhong> arrPhieuTra = new ArrayList<>();
+        Statement state = null;
+        try {
+            conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = """
+                  SELECT pdp.MaKhachHang, hd.MaHoaDon, php.TongTien
+                  FROM hoadon hd, phieudatphong pdp
+                  WHERE hd.MaPhieuDatPhong = pdp.MaPhieuDatPhong
+                  and hd.MaHoaDon = '""" + maKT +"'";
+            
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            while (rs.next()) {
+                tbl_PhieuTraPhong bp = new tbl_PhieuTraPhong();
+                bp.setMakhachhang(rs.getString("MaKhachHang"));
+                bp.setMahoadon(rs.getString("MaHoaDon"));
+                bp.setGiaphong(rs.getString("TongTien"));
+                arrPhieuTra.add(bp);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex.getMessage());
+        }
+        return arrPhieuTra;
+        }
+        
+        public static String NguonTruyVanDuLieu(String sTenCotGT) throws IOException {
+        String ketqua = "";
+        Statement state = null;
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select " + sTenCotGT + " from hoadon hd, chitietdatphong ctdp where hd.MaPDP = ctdp.MaPDP";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                ketqua = rs.getString(sTenCotGT);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ketqua;
     }
 }

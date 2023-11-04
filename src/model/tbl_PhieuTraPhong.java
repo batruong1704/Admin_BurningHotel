@@ -2,15 +2,17 @@ package model;
 
 
 public class tbl_PhieuTraPhong {
-    String mahoadon, makhachhang, tenkhachhang, phong, ngayden, ngaydi, songayolai, giaphong, giadichvu, giasanpham, tongthanhtoan, tiencoc;
+    String mahoadon, makhachhang, tenkhachhang, emailkhachhang, sdt, phong, ngayden, ngaydi, songayolai, giaphong, giadichvu, giasanpham, tongthanhtoan, tiencoc;
 
     public tbl_PhieuTraPhong() {
     }
 
-    public tbl_PhieuTraPhong(String mahoadon,String makhachhang, String tenkhachhang, String phong, String ngayden, String ngaydi, String songayolai, String giaphong, String giadichvu, String giasanpham, String tongthanhtoan, String tiencoc) {
+    public tbl_PhieuTraPhong(String mahoadon, String makhachhang, String tenkhachhang, String emailkhachhang, String sdt, String phong, String ngayden, String ngaydi, String songayolai, String giaphong, String giadichvu, String giasanpham, String tongthanhtoan, String tiencoc) {
         this.mahoadon = mahoadon;
         this.makhachhang = makhachhang;
         this.tenkhachhang = tenkhachhang;
+        this.emailkhachhang = emailkhachhang;
+        this.sdt = sdt;
         this.phong = phong;
         this.ngayden = ngayden;
         this.ngaydi = ngaydi;
@@ -20,6 +22,22 @@ public class tbl_PhieuTraPhong {
         this.giasanpham = giasanpham;
         this.tongthanhtoan = tongthanhtoan;
         this.tiencoc = tiencoc;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getEmailkhachhang() {
+        return emailkhachhang;
+    }
+
+    public void setEmailkhachhang(String emailkhachhang) {
+        this.emailkhachhang = emailkhachhang;
     }
 
     public String getMahoadon() {

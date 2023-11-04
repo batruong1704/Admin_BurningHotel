@@ -1,5 +1,6 @@
 package view.hoatdong;
 
+import controller.DatMonController;
 import view.hoatdong.JDiaLog_HoaDon;
 import view.hoatdong.JDiaLog_BoLoc;
 import controller.HoaDonController;
@@ -18,7 +19,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
     static DefaultTableModel model;
     static ArrayList<tbl_PhieuTraPhong> arrTimPhong = new ArrayList<>();
 
-    public static String mahoadonString, makhachhangString, tenkhachhangString, maphongString, ngaydenString, ngaydiString, songayluutruString, giaphongString, giadichvuString, giasanphString, tongtienString, conthieuString, tiencocString;
+    public static String mahoadonString, makhachhangString, tenkhachhangString, emailkhachhang, sdt, maphongString, ngaydenString, ngaydiString, songayluutruString, giaphongString, giadichvuString, giasanphString, tongtienString, conthieuString, tiencocString;
 
     public JP_QuanLyTienIch() throws IOException, SQLException {
         initComponents();
@@ -30,8 +31,8 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         model = (DefaultTableModel) tb_qlphongtructuyen.getModel();
         model.setRowCount(0);
         arrTimPhong.forEach((KQ) -> {
-            model.addRow(new Object[]{KQ.getMahoadon(), KQ.getMakhachhang(), KQ.getPhong(), KQ.getNgayden(), KQ.getNgaydi(),
-                KQ.getSongayolai(), KQ.getTongthanhtoan(), KQ.getTiencoc()});
+            model.addRow(new Object[]{KQ.getPhong(), KQ.getTenkhachhang(), KQ.getEmailkhachhang(), KQ.getSdt(), KQ.getNgayden(), KQ.getNgaydi(),
+                KQ.getSongayolai(), KQ.getTongthanhtoan()});
         });
     }
 
@@ -253,17 +254,17 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         tb_qlphongtructuyen.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         tb_qlphongtructuyen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Phòng", "Họ Tên", "Email", "Số Điện Thoại", "Ngày Đến", "Ngày Đi", "Tổng Tiền"
+                "Phòng", "Họ Tên", "Email", "Số Điện Thoại", "Ngày Đến", "Ngày Đi", "Số Ngày lưu trú", "Tổng Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -322,38 +323,40 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
     private void tb_qlphongtructuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_qlphongtructuyenMouseClicked
         int index = tb_qlphongtructuyen.getSelectedRow();
         TableModel model = tb_qlphongtructuyen.getModel();
-        mahoadonString = model.getValueAt(index, 0).toString();
-        makhachhangString = model.getValueAt(index, 1).toString();
-        maphongString = model.getValueAt(index, 2).toString();
-        ngaydenString = model.getValueAt(index, 3).toString();
-        ngaydiString = model.getValueAt(index, 4).toString();
-        songayluutruString = model.getValueAt(index, 5).toString();
-        tongtienString = model.getValueAt(index, 6).toString();
-        conthieuString = model.getValueAt(index, 7).toString();
-        layThem(mahoadonString);
-        lb_mahoadon.setText(mahoadonString);
-        lb_makh.setText(makhachhangString);
+        maphongString = model.getValueAt(index, 0).toString();
+//        makhachhangString = model.getValueAt(index, 1).toString();
+        tenkhachhangString = model.getValueAt(index, 1).toString();
+        emailkhachhang = model.getValueAt(index, 2).toString();
+        sdt = model.getValueAt(index, 3).toString();
+        ngaydenString = model.getValueAt(index, 4).toString();
+        ngaydiString = model.getValueAt(index, 5).toString();
+        songayluutruString = model.getValueAt(index, 6).toString();
+        tongtienString = model.getValueAt(index, 7).toString();
+//        conthieuString = model.getValueAt(index, 7).toString();
+       
+        lb_mahoadon= DatMonController.NguonTruyVanDuLieu("MaHoaDon");
+//        lb_makh = DatMonController.NguonTruyVanDuLieu("MaKhachHang", "phieudatphong", "MaHoaDon", makh);
+        lb_giaphong.setText(giaphongString);
         lb_tenkh.setText(tenkhachhangString);
         lb_maphong.setText(maphongString);
+        lb_email.setText(emailkhachhang);
+        lb_sodienthoai.setText(sdt);
         lb_ngayden.setText(ngaydenString);
         lb_ngaydi.setText(ngaydiString);
-        lb_giaphong.setText(giaphongString);
         lb_giasanpham.setText(giasanphString);
         lb_giadichvu.setText(giadichvuString);
         lb_TongTien.setText(tongtienString);
         lb_Con.setText(conthieuString);
-        MoKhoaBTN(conthieuString);
+//        MoKhoaBTN(conthieuString);
     }//GEN-LAST:event_tb_qlphongtructuyenMouseClicked
 
     private void layThem(String a) {
         try {
-            ArrayList<tbl_PhieuTraPhong> arrThem = HoaDonController.NguonPhongBonus(a);
+            ArrayList<tbl_PhieuTraPhong> arrThem = DatMonController.NguonBonus(a);
             for (tbl_PhieuTraPhong phieuTraPhong : arrThem) {
+                makhachhangString = phieuTraPhong.getMakhachhang();
+                mahoadonString = phieuTraPhong.getMahoadon();
                 giaphongString = phieuTraPhong.getGiaphong();
-                giadichvuString = phieuTraPhong.getGiadichvu();
-                giasanphString = phieuTraPhong.getGiasanpham();
-                tenkhachhangString = phieuTraPhong.getTenkhachhang();
-                tiencocString = phieuTraPhong.getTiencoc();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JP_QuanLyTienIch.class.getName()).log(Level.SEVERE, null, ex);
