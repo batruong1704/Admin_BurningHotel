@@ -152,7 +152,7 @@ public class DatMonController {
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select " + sTenCotGT + " from hoadon hd, chitietdatphong ctdp where hd.MaPDP = ctdp.MaPDP";
+            sql = "Select " + sTenCotGT + " from phieudatphong pdp, hoadon hd, chitietdatphong ctdp where pdp.MaPDP = hd.MaPDP and hd.MaPDP = ctdp.MaPDP";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             // Xử lý kết quả trả về

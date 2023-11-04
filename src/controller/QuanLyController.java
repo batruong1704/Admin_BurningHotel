@@ -644,6 +644,11 @@ public class QuanLyController {
                 mgg.setMagiamgia(rs.getString("MaGiamGia"));
                 mgg.setTenmagiamgia(rs.getString("TenMaGiamGia"));
                 mgg.setChietkhau(rs.getString("ChietKhau"));
+                if(rs.getString("TinhTrang").equals("1")){
+                    mgg.setTinhtrang("Còn Hạn Sử Dụng");
+                } else {
+                    mgg.setTinhtrang("Hết Hạn Sử Dụng");
+                }
                 arrMaGiamGia.add(mgg);
             }
             state.close();
@@ -659,11 +664,12 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "INSERT INTO PhieuGiamGia (MaGiamGia, TenMaGiamGia, ChietKhau) VALUES(?, ?, ?)";
+            sql = "INSERT INTO PhieuGiamGia (MaGiamGia, TenMaGiamGia, ChietKhau, TinhTrang) VALUES(?, ?, ?, ?)";
             state = conn.prepareStatement(sql);
             state.setString(1, mgg.getMagiamgia());
             state.setString(2, mgg.getTenmagiamgia());
             state.setString(3, mgg.getChietkhau());
+            state.setString(4, mgg.getTinhtrang());
             state.execute();
             state.close();
             conn.close();
@@ -677,12 +683,13 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE PhieuGiamGia SET MaGiamGia = ?, TenMaGiamGia = ?, ChietKhau = ? WHERE MaGiamGia = ?";
+            sql = "UPDATE PhieuGiamGia SET MaGiamGia = ?, TenMaGiamGia = ?, ChietKhau = ?, TinhTrang = ? WHERE MaGiamGia = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, mgg.getMagiamgia());
             state.setString(2, mgg.getTenmagiamgia());
             state.setString(3, mgg.getChietkhau());
-            state.setString(4, macu);
+            state.setString(4, mgg.getTinhtrang());
+            state.setString(5, macu);
             state.execute();
             state.close();
             conn.close();

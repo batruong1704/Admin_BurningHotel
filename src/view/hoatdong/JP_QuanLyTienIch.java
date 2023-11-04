@@ -181,7 +181,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
                 btn_dongyActionPerformed(evt);
             }
         });
-        jPanel8.add(btn_dongy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 270, -1));
+        jPanel8.add(btn_dongy, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 270, -1));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel11.setText("Email:");
@@ -288,6 +288,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
             tongtienString = model.getValueAt(index, 7).toString();
 
             lb_mahoadon.setText(DatMonController.NguonTruyVanDuLieu("MaHoaDon"));
+            lb_makh.setText(DatMonController.NguonTruyVanDuLieu("MaKhachHang"));
             lb_tenkh.setText(tenkhachhangString);
             lb_maphong.setText(maphongString);
             lb_email.setText(emailkhachhang);

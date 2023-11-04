@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import controller.QuanLyKhachSanController;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JTable;
 import model.tbl_MaGiamGia;
 public class JP_MaGiamGia extends javax.swing.JPanel {
 
@@ -21,7 +24,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     List<tbl_MaGiamGia> arrMaGiamGia = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimMaGiamGia;
-    private static String magiamgia, tenmagiamgia, chietkhau;
+    private static String magiamgia, tenmagiamgia, chietkhau, tinhtrang;
 
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
@@ -41,7 +44,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         arrMaGiamGia = QuanLyController.NguonMaGiamGia(sTimMaGiamGia);
         tbl_MaGiamGia.setRowCount(0);
         arrMaGiamGia.forEach((KQ) -> {
-            tbl_MaGiamGia.addRow(new Object[]{KQ.getMagiamgia(), KQ.getTenmagiamgia(), KQ.getChietkhau()});
+            tbl_MaGiamGia.addRow(new Object[]{KQ.getMagiamgia(), KQ.getTenmagiamgia(), KQ.getChietkhau(), KQ.getTinhtrang()});
         });
     }
     public void LayNguonCBO() throws IOException {
@@ -50,6 +53,18 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
 //            cbgioitinh.addItem(arrMaGiamGia.get(i).getGioitinh());
 //        }
     }
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            if (value.equals("Còn Hạn Sử Dụng")) {
+                c.setBackground(new Color( 102, 255, 102));
+            } else {
+                c.setBackground(table.getBackground());
+            }
+            return c;
+        }
+    };
     public void KhoaMo(boolean b) {
         txtmagiamgia.setEditable(b);
         txttenmagiamgia.setEditable(b);
@@ -65,6 +80,8 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         txtmagiamgia.setEditable(b);
         txttenmagiamgia.setEditable(b);
         txtchietkhau.setEditable(b);
+        rdb_conhan.setSelected(false);
+        rdb_hethan.setSelected(false);
         bt_them.setEnabled(b);
         bt_sua.setEnabled(b);
         bt_xoa.setEnabled(b);
@@ -77,11 +94,14 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         txtmagiamgia.setText("");
         txttenmagiamgia.setText("");
         txtchietkhau.setText("");
+        rdb_conhan.setSelected(false);
+        rdb_hethan.setSelected(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         txt_timkiem = new javax.swing.JTextField();
@@ -95,6 +115,9 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         txttenmagiamgia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtchietkhau = new javax.swing.JTextField();
+        lb4 = new javax.swing.JLabel();
+        rdb_conhan = new javax.swing.JRadioButton();
+        rdb_hethan = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         bt_them = new javax.swing.JButton();
         bt_sua = new javax.swing.JButton();
@@ -176,6 +199,29 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         txtchietkhau.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txtchietkhau.setMargin(new java.awt.Insets(0, 2, 0, 0));
 
+        lb4.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        lb4.setText("Tình Trạng:");
+
+        rdb_conhan.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_conhan);
+        rdb_conhan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        rdb_conhan.setText("Còn hạn");
+        rdb_conhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdb_conhanActionPerformed(evt);
+            }
+        });
+
+        rdb_hethan.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_hethan);
+        rdb_hethan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        rdb_hethan.setText("Hết hạn");
+        rdb_hethan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdb_hethanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,6 +229,12 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lb4)
+                        .addGap(72, 72, 72)
+                        .addComponent(rdb_conhan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rdb_hethan))
                     .addComponent(txtmagiamgia)
                     .addComponent(txttenmagiamgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtchietkhau)
@@ -191,7 +243,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(0, 238, Short.MAX_VALUE)))
+                        .addGap(0, 239, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -209,7 +261,12 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(txtchietkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb4)
+                    .addComponent(rdb_conhan)
+                    .addComponent(rdb_hethan))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -326,7 +383,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(8, Short.MAX_VALUE))
+                        .addContainerGap(7, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -337,13 +394,13 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         add(jPanel8, java.awt.BorderLayout.LINE_START);
@@ -353,17 +410,17 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         tb_MaGiamGia.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         tb_MaGiamGia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã Giảm Giá", "Tên Mã Giảm Giá", "Chiết Khấu"
+                "Mã Giảm Giá", "Tên Mã Giảm Giá", "Chiết Khấu", "Tình Trạng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -384,6 +441,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
             tb_MaGiamGia.getColumnModel().getColumn(0).setCellRenderer(center);
             tb_MaGiamGia.getColumnModel().getColumn(1).setPreferredWidth(100);
             tb_MaGiamGia.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tb_MaGiamGia.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
         }
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -479,8 +537,12 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         magiamgia = txtmagiamgia.getText();
         tenmagiamgia = txttenmagiamgia.getText();
         chietkhau = txtchietkhau.getText();
-        
-        tbl_MaGiamGia mgg = new tbl_MaGiamGia(magiamgia, tenmagiamgia, chietkhau);
+        if (rdb_conhan.isSelected()) {
+            tinhtrang = "1";
+        } else  {
+            tinhtrang = "0";
+        }
+        tbl_MaGiamGia mgg = new tbl_MaGiamGia(magiamgia, tenmagiamgia, chietkhau, tinhtrang);
         if (ktThem == true) {
             QuanLyController.ThemMaGiamGia(mgg);
         } else {
@@ -505,10 +567,26 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         magiamgia = model.getValueAt(index, 0).toString();
         tenmagiamgia = model.getValueAt(index, 1).toString();
         chietkhau = model.getValueAt(index, 2).toString();
+        tinhtrang = model.getValueAt(index, 3).toString();
         txtmagiamgia.setText(magiamgia);
         txttenmagiamgia.setText(tenmagiamgia);
         txtchietkhau.setText(chietkhau);
+        if(tinhtrang == "Còn Hạn Sử Dụng"){
+            rdb_conhan.setSelected(true);
+            rdb_hethan.setSelected(false);
+        }else{
+            rdb_conhan.setSelected(false);
+            rdb_hethan.setSelected(true);
+        }
     }//GEN-LAST:event_tb_MaGiamGiaMouseClicked
+
+    private void rdb_conhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_conhanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdb_conhanActionPerformed
+
+    private void rdb_hethanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_hethanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdb_hethanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -517,6 +595,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -530,6 +609,9 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb4;
+    private javax.swing.JRadioButton rdb_conhan;
+    private javax.swing.JRadioButton rdb_hethan;
     private javax.swing.JTable tb_MaGiamGia;
     private javax.swing.JTextField txt_timkiem;
     private javax.swing.JTextField txtchietkhau;
