@@ -258,9 +258,11 @@ public class JP_DoAn extends javax.swing.JPanel {
         jLabel4.setText("Số Lượng Bán:");
 
         txtmota.setColumns(20);
+        txtmota.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txtmota.setRows(5);
         jScrollPane2.setViewportView(txtmota);
 
+        cbdokho.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         cbdokho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dễ", "Bình thường", "Tương đối khó", "Khó" }));
         cbdokho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +282,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel13.setText("Độ khó:");
 
+        cbphanloai.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         cbphanloai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Món Khai Vị", "Món Chính", "Món Tráng Miệng", "Đồ Uống" }));
         cbphanloai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,6 +291,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         });
 
         txt_thanhphan.setColumns(20);
+        txt_thanhphan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txt_thanhphan.setRows(5);
         jScrollPane3.setViewportView(txt_thanhphan);
 
@@ -298,6 +302,7 @@ public class JP_DoAn extends javax.swing.JPanel {
             }
         });
 
+        lb_anh.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         lb_anh.setText("Tên Ảnh");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -332,9 +337,9 @@ public class JP_DoAn extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(74, 74, 74)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bt_chonanh)
-                                    .addComponent(lb_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lb_anh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_chonanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );

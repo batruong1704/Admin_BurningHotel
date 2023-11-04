@@ -108,63 +108,63 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel3.setText("Mã Hoá Đơn:");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 23, 108, -1));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 23, 110, -1));
 
         jLabel26.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel26.setText("Tổng Tiền:");
-        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 108, -1));
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 110, -1));
 
         jLabel15.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel15.setText("Ngày Đi:");
-        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 108, -1));
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 110, -1));
 
         jLabel16.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel16.setText("Ngày Đến:");
-        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 108, -1));
+        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 110, -1));
 
         jLabel10.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel10.setText("Phòng:");
-        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 113, 108, -1));
+        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 113, 110, -1));
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel7.setText("Người Đặt:");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 83, 108, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 83, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel6.setText("Mã Khách Hàng:");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 53, -1, -1));
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 53, 120, -1));
 
-        lb_mahoadon.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_mahoadon.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_mahoadon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_mahoadon.setText(" ");
         jPanel8.add(lb_mahoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 210, -1));
 
-        lb_makh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_makh.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_makh.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_makh.setText(" ");
         jPanel8.add(lb_makh, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, -1));
 
-        lb_tenkh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_tenkh.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_tenkh.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_tenkh.setText(" ");
         jPanel8.add(lb_tenkh, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 210, -1));
 
-        lb_maphong.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_maphong.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_maphong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_maphong.setText(" ");
         jPanel8.add(lb_maphong, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 210, -1));
 
-        lb_ngayden.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_ngayden.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_ngayden.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_ngayden.setText(" ");
         jPanel8.add(lb_ngayden, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 210, -1));
 
-        lb_ngaydi.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_ngaydi.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_ngaydi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_ngaydi.setText(" ");
         jPanel8.add(lb_ngaydi, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 210, -1));
 
-        lb_TongTien.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_TongTien.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_TongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_TongTien.setText(" ");
         jPanel8.add(lb_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 210, -1));
@@ -185,18 +185,18 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel11.setText("Email:");
-        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 108, -1));
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 100, -1));
 
-        lb_email.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_email.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_email.setText(" ");
         jPanel8.add(lb_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 210, -1));
 
         jLabel12.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel12.setText("Số Điện Thoại:");
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 108, -1));
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 110, -1));
 
-        lb_sodienthoai.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        lb_sodienthoai.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         lb_sodienthoai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_sodienthoai.setText(" ");
         jPanel8.add(lb_sodienthoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 210, -1));
