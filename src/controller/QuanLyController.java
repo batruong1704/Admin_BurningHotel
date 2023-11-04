@@ -539,7 +539,7 @@ public class QuanLyController {
                 db.setHoten(rs.getString("HoTen"));
                 db.setGioitinh(rs.getString("GioiTinh"));
                 db.setNgaysinh(rs.getString("NgaySinh"));
-                db.setChucvu(rs.getString("ChucVu"));
+                db.setChucvu(rs.getString("MaChucVu"));
                 db.setSonamkn(rs.getString("SoNamKinhNghiem"));
                 db.setEmail(rs.getString("Email"));
                 db.setSdt(rs.getString("SoDienThoai"));
@@ -561,7 +561,7 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "INSERT INTO DauBep (ID, HoTen, GioiTinh, NgaySinh, ChucVu, SoNamKinhNghiem, Email, SoDienThoai, DiaChi, MoTa, HinhAnh) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO DauBep (ID, HoTen, GioiTinh, NgaySinh, MaChucVu, SoNamKinhNghiem, Email, SoDienThoai, DiaChi, MoTa, HinhAnh) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             state = conn.prepareStatement(sql);
             state.setString(1, db.getId());
             state.setString(2, db.getHoten());
@@ -587,7 +587,7 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE DauBep SET ID = ?, HoTen = ?, GioiTinh= ?, NgaySinh= ?, ChucVu = ?, SoNamKinhNghiem = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, MoTa = ?, HinhAnh = ?  WHERE ID = ?";
+            sql = "UPDATE DauBep SET ID = ?, HoTen = ?, GioiTinh= ?, NgaySinh= ?, MaChucVu = ?, SoNamKinhNghiem = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, MoTa = ?, HinhAnh = ?  WHERE ID = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, db.getId());
             state.setString(2, db.getHoten());
