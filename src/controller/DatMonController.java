@@ -12,12 +12,14 @@ import model.Hotel_Manager;
 import model.tbl_MonAn;
 import model.tbl_PhieuDatMon;
 import model.tbl_PhieuTraPhong;
+import java.sql.PreparedStatement;
 
 public class DatMonController {
+
     private static Connection conn = null;
     private static String sql;
-    
-    public static ArrayList<tbl_PhieuDatMon> NguonPhong(String sDieuKien) throws SQLException  {
+
+    public static ArrayList<tbl_PhieuDatMon> NguonPhong(String sDieuKien) throws SQLException {
         ArrayList<tbl_PhieuDatMon> arrPhieuDatMon = new ArrayList<>();
         Statement state = null;
         try {
@@ -50,22 +52,27 @@ public class DatMonController {
         }
         return arrPhieuDatMon;
     }
-    
-    
+
     public static List<tbl_MonAn> NguonMonAn(String Category, String Content) {
         List<tbl_MonAn> arrMonAn = new ArrayList<>();
-        Statement state = null;
+        PreparedStatement preparedStatement = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From doan ";
-            if (Category != null && !Category.equals("")) {
-                sql = sql + " Where " + Category + " Like '%" + Content + "%'";
+            sql = "SELECT * FROM doan";
+
+            // Kiểm tra xem có điều kiện tìm kiếm không
+            if (!Category.isEmpty() && !Content.isEmpty()) {
+                sql += " WHERE " + Category + " LIKE ?";
             }
-            sql = sql + " Order by ID";
-            state = conn.createStatement();
-            ResultSet rs = state.executeQuery(sql);
-            // Xử lý kết quả trả về
+
+            preparedStatement = conn.prepareStatement(sql);
+
+            if (!Category.isEmpty() && !Content.isEmpty()) {
+                preparedStatement.setString(1, "%" + Content + "%");
+            }
+
+            ResultSet rs = preparedStatement.executeQuery();
+
             while (rs.next()) {
                 tbl_MonAn bp = new tbl_MonAn();
                 bp.setID(rs.getString("ID"));
@@ -80,23 +87,25 @@ public class DatMonController {
                 bp.setSoLuongDaBan(rs.getString("SoLuongDaBan"));
                 arrMonAn.add(bp);
             }
-            state.close();
+
+            rs.close();
+            preparedStatement.close();
             conn.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return arrMonAn;
     }
-    
+
     public static ArrayList<String> layDanhSachPhanLoai() {
         ArrayList<String> danhSachPhanLoai = new ArrayList<>();
-        
+
         try {
             try (java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL)) {
                 sql = "SELECT DISTINCT PhanLoai FROM doan";
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);
-                
+
                 while (resultSet.next()) {
                     String phanLoai = resultSet.getString("PhanLoai");
                     danhSachPhanLoai.add(phanLoai);
@@ -105,11 +114,11 @@ public class DatMonController {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+
         return danhSachPhanLoai;
     }
-    
-        public static ArrayList<tbl_PhieuTraPhong> NguonBonus(String maKT) throws SQLException  {
+
+    public static ArrayList<tbl_PhieuTraPhong> NguonBonus(String maKT) throws SQLException {
         ArrayList<tbl_PhieuTraPhong> arrPhieuTra = new ArrayList<>();
         Statement state = null;
         try {
@@ -118,8 +127,8 @@ public class DatMonController {
                   SELECT pdp.MaKhachHang, hd.MaHoaDon, php.TongTien
                   FROM hoadon hd, phieudatphong pdp
                   WHERE hd.MaPhieuDatPhong = pdp.MaPhieuDatPhong
-                  and hd.MaHoaDon = '""" + maKT +"'";
-            
+                  and hd.MaHoaDon = '""" + maKT + "'";
+
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -135,9 +144,9 @@ public class DatMonController {
             System.out.println("Lỗi: " + ex.getMessage());
         }
         return arrPhieuTra;
-        }
-        
-        public static String NguonTruyVanDuLieu(String sTenCotGT) throws IOException {
+    }
+
+    public static String NguonTruyVanDuLieu(String sTenCotGT) throws IOException {
         String ketqua = "";
         Statement state = null;
         try {

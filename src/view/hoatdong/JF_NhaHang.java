@@ -30,16 +30,20 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     private String mamonan, tenmonan, giamonan, tongphieu, tiencoc;
     int soluong;
     private final HashMap<String, Integer> monanHashMap = new HashMap<>();
+    private String mahoadon, makhachhang, maphong;
 
     public JF_NhaHang() throws IOException {
         initComponents();
-        LayNguonDV();
+        LayNguonDV("", "");
         hienThiDanhSachPhanLoai();
+        mahoadon = JP_QuanLyTienIch.mahoadonString;
+        makhachhang = JP_QuanLyTienIch.makhachhangString;
+        maphong = JP_QuanLyTienIch.maphongString;
     }
 
-    public void LayNguonDV() throws IOException {
+    public void LayNguonDV(String danhmuc, String content) throws IOException {
         tbl_MonAn = (DefaultTableModel) tb_monan.getModel();
-        arrMonAn = DatMonController.NguonMonAn("", "");
+        arrMonAn = DatMonController.NguonMonAn(danhmuc, content);
         tbl_MonAn.setRowCount(0);
         arrMonAn.forEach((KQ) -> {
             tbl_MonAn.addRow(new Object[]{KQ.getID(), KQ.getTenMon(), KQ.getPhanLoai(), KQ.getThanhTien(), KQ.getSoLuongDaBan()});
@@ -49,7 +53,7 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     public void hienThiDanhSachPhanLoai() {
         ArrayList<String> danhSachPhanLoai = DatMonController.layDanhSachPhanLoai();
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(danhSachPhanLoai.toArray(new String[0]));
-        cb_tkdanhmuc.setModel(model);
+        cbb_tkdanhmuc.setModel(model);
     }
 
     private void tinhTongTien() {
@@ -64,7 +68,6 @@ public final class JF_NhaHang extends javax.swing.JFrame {
                 tongTien += gia * soLuong;
             }
         }
-
         String tongTienStr = String.valueOf(tongTien);
         lb_tongtien.setText(tongTienStr);
     }
@@ -76,9 +79,9 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        cb_tkdanhmuc = new javax.swing.JComboBox<>();
-        btn_b2_timkiem = new javax.swing.JLabel();
-        btn_b2_refreshdv = new javax.swing.JLabel();
+        cbb_tkdanhmuc = new javax.swing.JComboBox<>();
+        btn_timkiem = new javax.swing.JLabel();
+        btn_refreshdv = new javax.swing.JLabel();
         txt_tknoidung = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
@@ -125,13 +128,18 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Bộ lọc:");
 
-        cb_tkdanhmuc.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        cbb_tkdanhmuc.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
 
-        btn_b2_timkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
-        btn_b2_timkiem.setText("jLabel14");
+        btn_timkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
+        btn_timkiem.setText("jLabel14");
+        btn_timkiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_timkiemMouseClicked(evt);
+            }
+        });
 
-        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
-        btn_b2_refreshdv.setText("jLabel14");
+        btn_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_refreshdv.setText("jLabel14");
 
         txt_tknoidung.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
 
@@ -144,13 +152,13 @@ public final class JF_NhaHang extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(cb_tkdanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbb_tkdanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_tknoidung, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_b2_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_b2_refreshdv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_refreshdv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -158,14 +166,14 @@ public final class JF_NhaHang extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_b2_refreshdv, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_refreshdv, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_b2_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cb_tkdanhmuc)
+                                .addComponent(cbb_tkdanhmuc)
                                 .addComponent(txt_tknoidung)))))
                 .addGap(18, 18, 18))
         );
@@ -499,12 +507,9 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         tenmonan = lb_ten.getText();
         giamonan = lb_gia.getText();
         soluong = Integer.parseInt(txt_soluongsp.getText());
-
         if (mamonan.isEmpty() || tenmonan.isEmpty() || giamonan.isEmpty()) {
             return;
         }
-
-        // Kiểm tra xem sản phẩm đã tồn tại trong bảng chưa
         int existingRow = -1;
         for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
             if (tenmonan.equals(tbl_ChotDichVu.getValueAt(i, 0).toString())) {
@@ -514,16 +519,13 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         }
 
         if (existingRow != -1) {
-            // Sản phẩm đã tồn tại, cập nhật số lượng
             int currentSoluong = (int) tbl_ChotDichVu.getValueAt(existingRow, 1);
             tbl_ChotDichVu.setValueAt(currentSoluong + soluong, existingRow, 1);
         } else {
-            // Sản phẩm chưa tồn tại, thêm sản phẩm mới
             Object[] row = {tenmonan, soluong, giamonan};
             tbl_ChotDichVu.addRow(row);
         }
         tinhTongTien();
-        // Xoá nội dung và đặt lại txt_soluongsp = 1
         lb_ma.setText("");
         lb_ten.setText("");
         lb_gia.setText("");
@@ -540,8 +542,6 @@ public final class JF_NhaHang extends javax.swing.JFrame {
 
         if (selectedRow != -1) {
             String tenMonAn = tbl_ChotDichVu.getValueAt(selectedRow, 0).toString();
-
-            // Kiểm tra xem sản phẩm có cùng tên đã tồn tại trong bảng chưa
             int existingRow = -1;
             for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
                 if (tenMonAn.equals(tbl_ChotDichVu.getValueAt(i, 0).toString())) {
@@ -553,10 +553,8 @@ public final class JF_NhaHang extends javax.swing.JFrame {
             if (existingRow != -1) {
                 int currentSoluong = (int) tbl_ChotDichVu.getValueAt(existingRow, 1);
                 if (currentSoluong > 1) {
-                    // Nếu số lượng lớn hơn 1, giảm số lượng
                     tbl_ChotDichVu.setValueAt(currentSoluong - 1, existingRow, 1);
                 } else {
-                    // Nếu số lượng bằng 1, xoá hàng
                     tbl_ChotDichVu.removeRow(selectedRow);
                 }
             }
@@ -577,41 +575,6 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_monanMouseClicked
 
     private void btn_hoanthanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hoanthanhActionPerformed
-//        try {
-//            giamonan = lb_gia.getText();
-//            if (giamonan.isEmpty()) {
-//                giamonan = "0";
-//            }
-//            tbl_PhieuBonus cnmonan = new tbl_PhieuBonus("", JP_DatPhong.maPhieuDk, giamonan);
-//            DatPhongController.ThemPhieuBonus(cnmonan, "MaPDV", "PhieuDichVu", "PDV");
-//
-//            for (int i = 0; i < tb_chotmonan.getRowCount(); i++) {
-//                mamonan = tb_chotmonan.getValueAt(i, 0).toString();
-//                giamonan = tb_chotmonan.getValueAt(i, 2).toString();
-//                tbl_CTPhieuDV cnCTPDV = new tbl_CTPhieuDV("", "", mamonan, giamonan);
-//                DatPhongController.ThemCTPhieuDichVu(cnCTPDV);
-//            }
-//            //            double tongmonan = Double.parseDouble(lb_b2_tonggiamonan.getText());
-//            double tongphong = Double.parseDouble(JP_DatPhong.tinhTien);
-//
-//            //            tongphieu = String.valueOf(tongphong + tongmonan);
-//            LocalDate currentDate = LocalDate.now();
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//            String ngayHienTai = currentDate.format(formatter);
-//            //            tiencoc = txt_tiencoc.getText();
-//            if (tiencoc.isEmpty()) {
-//                tiencoc = "0";
-//            }
-//            tbl_HoaDon cnhd = new tbl_HoaDon("", JP_DatPhong.maPhieuDk, "", "", ngayHienTai, tongphieu, tiencoc);
-//            DatPhongController.ThemHoaDon(cnhd, tiencoc);
-//            JOptionPane.showMessageDialog(this, "Đặt phòng Thành Công!", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
-//            dispose();
-//            JFrame jf_Main = new Home();
-//            jf_Main.setLocationRelativeTo(null);
-//            jf_Main.setVisible(true);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(JF_NhaHang.class.getName()).log(Level.SEVERE, null, ex);
-//        }
 
     }//GEN-LAST:event_btn_hoanthanhActionPerformed
 
@@ -647,19 +610,16 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         String soLuongStr = txt_soluongsp.getText();
 
         if (soLuongStr.isEmpty()) {
-            // Nếu trường số lượng rỗng, đặt lại giá trị mặc định là 1
             txt_soluongsp.setText("1");
         } else {
             try {
                 int soLuong = Integer.parseInt(soLuongStr);
                 if (soLuong < 1 || soLuong > 9) {
                     JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ. Vui lòng nhập số lượng từ 1 đến 9.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                    // Đặt lại giá trị mặc định là 1
                     txt_soluongsp.setText("1");
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ. Vui lòng nhập số lượng từ 1 đến 9.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                // Đặt lại giá trị mặc định là 1
                 txt_soluongsp.setText("1");
             }
         }
@@ -678,6 +638,16 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_giamsoluong2MouseClicked
 
+    private void btn_timkiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timkiemMouseClicked
+        tbl_MonAn = (DefaultTableModel) tb_monan.getModel();
+        tbl_MonAn.setRowCount(0);
+
+        List<tbl_MonAn> danhSachMonAn = DatMonController.NguonMonAn(cbb_tkdanhmuc.getSelectedItem().toString(), txt_tknoidung.getText().trim());
+        danhSachMonAn.forEach((monAn) -> {
+            tbl_MonAn.addRow(new Object[]{monAn.getID(), monAn.getTenMon(), monAn.getPhanLoai(), monAn.getThanhTien(), monAn.getSoLuongDaBan()});
+        });
+    }//GEN-LAST:event_btn_timkiemMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             try {
@@ -689,17 +659,15 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btn_b2_refreshdv;
-    private javax.swing.JLabel btn_b2_timkiem;
-    private javax.swing.JLabel btn_giamsoluong;
-    private javax.swing.JLabel btn_giamsoluong1;
     private javax.swing.JLabel btn_giamsoluong2;
     private container.Button btn_hoanthanh;
     private javax.swing.JLabel btn_loaibo;
     private container.Button btn_quaylai;
+    private javax.swing.JLabel btn_refreshdv;
     private javax.swing.JButton btn_them;
     private javax.swing.JLabel btn_themsoluong;
-    private javax.swing.JComboBox<String> cb_tkdanhmuc;
+    private javax.swing.JLabel btn_timkiem;
+    private javax.swing.JComboBox<String> cbb_tkdanhmuc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

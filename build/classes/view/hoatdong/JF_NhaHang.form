@@ -63,15 +63,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel14" alignment="0" min="-2" pref="277" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="cb_tkdanhmuc" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="cbb_tkdanhmuc" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txt_tknoidung" pref="203" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btn_b2_timkiem" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="btn_b2_refreshdv" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="btn_timkiem" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="btn_refreshdv" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -82,14 +82,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btn_b2_refreshdv" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="btn_refreshdv" min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btn_b2_timkiem" max="32767" attributes="0"/>
+                                  <Component id="btn_timkiem" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cb_tkdanhmuc" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="cbb_tkdanhmuc" alignment="3" max="32767" attributes="0"/>
                                       <Component id="txt_tknoidung" alignment="3" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -112,7 +112,7 @@
                 <Property name="text" type="java.lang.String" value="B&#x1ed9; l&#x1ecd;c:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cb_tkdanhmuc">
+            <Component class="javax.swing.JComboBox" name="cbb_tkdanhmuc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="14" style="0"/>
@@ -125,15 +125,18 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="btn_b2_timkiem">
+            <Component class="javax.swing.JLabel" name="btn_timkiem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/search_25px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel14"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_timkiemMouseClicked"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="btn_b2_refreshdv">
+            <Component class="javax.swing.JLabel" name="btn_refreshdv">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/refresh_26px_light.png"/>
