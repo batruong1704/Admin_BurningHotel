@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class JDiaLog_BoLoc extends javax.swing.JFrame {
+public class JDiaLog_BoLocHoaDon extends javax.swing.JFrame {
 
-    public JDiaLog_BoLoc() {
+    public JDiaLog_BoLocHoaDon() {
         initComponents();
     }
 
@@ -30,7 +30,6 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
         ckb_manv = new javax.swing.JCheckBox();
         txt_manv = new javax.swing.JTextField();
         txt_tongtiento = new javax.swing.JTextField();
-        ckb_trangthai = new javax.swing.JCheckBox();
         ckb_tongtien = new javax.swing.JCheckBox();
         ckb_ngayden = new javax.swing.JCheckBox();
         ckb_phong = new javax.swing.JCheckBox();
@@ -121,10 +120,6 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
 
         txt_tongtiento.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
 
-        ckb_trangthai.setBackground(new java.awt.Color(255, 255, 255));
-        ckb_trangthai.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        ckb_trangthai.setText("Trạng thái hoá đơn");
-
         ckb_tongtien.setBackground(new java.awt.Color(255, 255, 255));
         ckb_tongtien.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         ckb_tongtien.setText("Tổng tiền:");
@@ -164,9 +159,45 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(ckb_tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_tongtienfrom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 10, Short.MAX_VALUE))
+                            .addComponent(txt_tongtiento)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(ckb_ngayden, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_ngaydenfrom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_ngaydento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(ckb_phong, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_phong))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(ckb_manv, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_manv))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ckb_makh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ckb_mahoadon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -175,51 +206,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_mahd)
                             .addComponent(txt_makh)
-                            .addComponent(txt_tenkh, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ckb_manv, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_manv))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ckb_phong, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_phong))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ckb_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGap(190, 190, 190)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ckb_ngayden, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_ngaydenfrom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_ngaydento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(190, 190, 190)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ckb_tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_tongtienfrom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 2, Short.MAX_VALUE))
-                            .addComponent(txt_tongtiento))))
+                            .addComponent(txt_tenkh, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -261,9 +248,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                     .addComponent(ckb_tongtien)
                     .addComponent(txt_tongtienfrom, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_tongtiento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(ckb_trangthai)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -284,7 +269,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
             }
             
             if (ckb_makh.isSelected()) {
-                String condition2 = "kh.MaKhachHang LIKE '%" + txt_makh.getText() + "%'";
+                String condition2 = "kh.ID LIKE '%" + txt_makh.getText() + "%'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition2);
                 } else {
@@ -293,7 +278,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
             }
             
             if (ckb_tenkh.isSelected()) {
-                String condition3 = "kh.TenKhachHang LIKE '%" + txt_tenkh.getText() + "%'";
+                String condition3 = "kh.HoTen LIKE '%" + txt_tenkh.getText() + "%'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition3);
                 } else {
@@ -309,7 +294,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                 }
             }
             if (ckb_phong.isSelected()) {
-                String condition5 = "pdp.MaPhong = '" + txt_phong.getText() + "'";
+                String condition5 = "ctdp.MaPhong = '" + txt_phong.getText() + "'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition5);
                 } else {
@@ -320,7 +305,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fromDate = dateFormat.format(txt_ngaydenfrom.getDate());
                 String toDate = dateFormat.format(txt_ngaydento.getDate());
-                String dateCondition = "pdp.NgayDen BETWEEN '" + fromDate + "' AND '" + toDate + "'";
+                String dateCondition = "ctdp.NgayDen BETWEEN '" + fromDate + "' AND '" + toDate + "'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(dateCondition);
                 } else {
@@ -337,22 +322,14 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                     sql.append(" WHERE ").append(Condition7);
                 }
             }
-            if (ckb_trangthai.isSelected()) {
-                String condition8 = " hd.TongTien - hd.TienCoc != 0 ";
-                if (sql.toString().contains("WHERE")) {
-                    sql.append(" AND ").append(condition8);
-                } else {
-                    sql.append(" WHERE ").append(condition8);
-                }
-            }
             
             String finalSql = sql.toString();
-            JP_HoaDon.LayNguon(finalSql);
+            JP_QuanLyTienIch.LayNguon(finalSql);
             dispose();
         } catch (IOException ex) {
-            Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_xacnhanActionPerformed
 
@@ -373,21 +350,23 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDiaLog_BoLocHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JDiaLog_BoLoc().setVisible(true);
+                new JDiaLog_BoLocHoaDon().setVisible(true);
             }
         });
     }
@@ -401,7 +380,6 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckb_phong;
     private javax.swing.JCheckBox ckb_tenkh;
     private javax.swing.JCheckBox ckb_tongtien;
-    private javax.swing.JCheckBox ckb_trangthai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

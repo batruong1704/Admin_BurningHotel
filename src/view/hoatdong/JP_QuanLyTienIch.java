@@ -2,7 +2,7 @@ package view.hoatdong;
 
 import controller.DatMonController;
 import view.hoatdong.JDiaLog_HoaDon;
-import view.hoatdong.JDiaLog_BoLoc;
+import view.hoatdong.JDiaLog_BoLocNhaHang;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -315,7 +315,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_dongyMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        JFrame dialogBL = new JDiaLog_BoLoc();
+        JFrame dialogBL = new JDiaLog_BoLocNhaHang();
         dialogBL.setVisible(true);
         dialogBL.setLocationRelativeTo(null);
     }//GEN-LAST:event_jLabel5MouseClicked

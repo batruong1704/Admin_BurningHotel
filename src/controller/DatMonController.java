@@ -204,7 +204,7 @@ public class DatMonController {
                   JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
                   JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
                   JOIN phong p ON p.MaPhong = ctdp.MaPhong
-                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP
                 
                   """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
