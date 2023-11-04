@@ -213,7 +213,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         jPanel8.add(lb_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
 
         btn_dongy.setFont(new java.awt.Font("Montserrat", 3, 14)); // NOI18N
-        btn_dongy.setText("Thanh Toán");
+        btn_dongy.setText("Chuyển tới nhà hàng");
         btn_dongy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_dongyMouseClicked(evt);
@@ -369,13 +369,16 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         }
     }
     private void btn_dongyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dongyActionPerformed
-
     }//GEN-LAST:event_btn_dongyActionPerformed
 
     private void btn_dongyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_dongyMouseClicked
-        JFrame dialogHD = new JDiaLog_HoaDon();
-        dialogHD.setVisible(true);
-        dialogHD.setLocationRelativeTo(null);
+        try {
+            JFrame JF_NhaHang = new JF_NhaHang();
+            JF_NhaHang.setVisible(true);
+            JF_NhaHang.setLocationRelativeTo(null);
+        } catch (IOException ex) {
+            Logger.getLogger(JP_QuanLyTienIch.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_dongyMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

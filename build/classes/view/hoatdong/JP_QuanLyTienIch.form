@@ -430,7 +430,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Thanh To&#xe1;n"/>
+                <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n t&#x1edb;i nh&#xe0; h&#xe0;ng"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_dongyMouseClicked"/>

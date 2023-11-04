@@ -72,7 +72,7 @@ public class DatMonController {
                 bp.setThoiGianNau(rs.getString("ThoiGianNau"));
                 bp.setDoKho(rs.getString("DoKho"));
                 bp.setThanhPhan(rs.getString("ThanhPhan"));
-                bp.setHamLuongKalo(rs.getString("HamLuongKalo"));
+                bp.setHamLuongKalo(rs.getString("HamLuongcalo"));
                 bp.setThanhTien(rs.getString("ThanhTien"));
                 bp.setMoTa(rs.getString("MoTa"));
                 bp.setSoLuongDaBan(rs.getString("SoLuongDaBan"));
