@@ -253,9 +253,9 @@ public final class JF_DatMonB2 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tb_monan);
         if (tb_monan.getColumnModel().getColumnCount() > 0) {
-            tb_monan.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tb_monan.getColumnModel().getColumn(0).setPreferredWidth(10);
             tb_monan.getColumnModel().getColumn(1).setPreferredWidth(70);
-            tb_monan.getColumnModel().getColumn(2).setPreferredWidth(25);
+            tb_monan.getColumnModel().getColumn(2).setPreferredWidth(30);
             tb_monan.getColumnModel().getColumn(3).setPreferredWidth(25);
             tb_monan.getColumnModel().getColumn(4).setPreferredWidth(25);
         }
