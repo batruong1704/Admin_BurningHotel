@@ -3,7 +3,6 @@ package view.hoatdong;
 import controller.DatMonController;
 import view.hoatdong.JDiaLog_HoaDon;
 import view.hoatdong.JDiaLog_BoLoc;
-import controller.HoaDonController;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,14 +11,15 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import model.tbl_PhieuTraPhong;
+import model.tbl_QuanLiTienIch;
+import view.hoatdong.JF_NhaHang;
 
 public class JP_QuanLyTienIch extends javax.swing.JPanel {
 
     static DefaultTableModel model;
-    static ArrayList<tbl_PhieuTraPhong> arrTimPhong = new ArrayList<>();
+    static ArrayList<tbl_QuanLiTienIch> arrQuanLiTienIch = new ArrayList<>();
 
-    public static String mahoadonString, makhachhangString, tenkhachhangString, emailkhachhang, sdt, maphongString, ngaydenString, ngaydiString, songayluutruString, giaphongString, giadichvuString, giasanphString, tongtienString, conthieuString, tiencocString;
+    public static String mahoadonString, makhachhangString, tenkhachhangString, emailkhachhang, sdt, maphongString, ngaydenString, ngaydiString, songayluutruString,tongtienString;
 
     public JP_QuanLyTienIch() throws IOException, SQLException {
         initComponents();
@@ -27,10 +27,10 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
     }
 
     public static void LayNguon(String dk) throws IOException, SQLException {
-        arrTimPhong = HoaDonController.NguonPhong(dk);
+        arrQuanLiTienIch = DatMonController.NguonQuanLiTienIch(dk);
         model = (DefaultTableModel) tb_qlphongtructuyen.getModel();
         model.setRowCount(0);
-        arrTimPhong.forEach((KQ) -> {
+        arrQuanLiTienIch.forEach((KQ) -> {
             model.addRow(new Object[]{KQ.getPhong(), KQ.getTenkhachhang(), KQ.getEmailkhachhang(), KQ.getSdt(), KQ.getNgayden(), KQ.getNgaydi(),
                 KQ.getSongayolai(), KQ.getTongthanhtoan()});
         });
@@ -286,7 +286,6 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
             ngaydiString = model.getValueAt(index, 5).toString();
             songayluutruString = model.getValueAt(index, 6).toString();
             tongtienString = model.getValueAt(index, 7).toString();
-
             lb_mahoadon.setText(DatMonController.NguonTruyVanDuLieu("MaHoaDon"));
             lb_makh.setText(DatMonController.NguonTruyVanDuLieu("MaKhachHang"));
             lb_tenkh.setText(tenkhachhangString);

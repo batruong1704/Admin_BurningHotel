@@ -16,6 +16,7 @@ import view.quanly.JP_DauBep;
 import view.quanly.JP_ChucVu;
 import view.hoatdong.JP_DatPhong;
 import view.hoatdong.JP_HoaDon;
+import view.hoatdong.JP_QuanLyTienIch;
 import view.quanly.JP_DauBep;
 import view.quanly.JP_DichVu;
 import view.khohang.JP_DoAn;
@@ -27,7 +28,6 @@ import view.hoatdong.JP_SuaPhieuDatPhong;
 import view.quanly.JP_MaGiamGia;
 import view.khohang.JP_NhaPhanPhoi;
 import view.quanly.JP_NhanVien;
-import view.hoatdong.JP_QuanLyTienIch;
 import view.thongkedoanhthu.JP_ThongKe;
 
 public class chuyenmanhinhController {

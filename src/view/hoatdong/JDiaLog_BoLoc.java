@@ -269,7 +269,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
             }
             
             if (ckb_makh.isSelected()) {
-                String condition2 = "kh.MaKhachHang LIKE '%" + txt_makh.getText() + "%'";
+                String condition2 = "kh.ID LIKE '%" + txt_makh.getText() + "%'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition2);
                 } else {
@@ -278,7 +278,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
             }
             
             if (ckb_tenkh.isSelected()) {
-                String condition3 = "kh.TenKhachHang LIKE '%" + txt_tenkh.getText() + "%'";
+                String condition3 = "kh.HoTen LIKE '%" + txt_tenkh.getText() + "%'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition3);
                 } else {
@@ -294,7 +294,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                 }
             }
             if (ckb_phong.isSelected()) {
-                String condition5 = "pdp.MaPhong = '" + txt_phong.getText() + "'";
+                String condition5 = "ctdp.MaPhong = '" + txt_phong.getText() + "'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(condition5);
                 } else {
@@ -305,7 +305,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fromDate = dateFormat.format(txt_ngaydenfrom.getDate());
                 String toDate = dateFormat.format(txt_ngaydento.getDate());
-                String dateCondition = "pdp.NgayDen BETWEEN '" + fromDate + "' AND '" + toDate + "'";
+                String dateCondition = "ctdp.NgayDen BETWEEN '" + fromDate + "' AND '" + toDate + "'";
                 if (sql.toString().contains("WHERE")) {
                     sql.append(" AND ").append(dateCondition);
                 } else {
@@ -324,7 +324,7 @@ public class JDiaLog_BoLoc extends javax.swing.JFrame {
             }
             
             String finalSql = sql.toString();
-            JP_HoaDon.LayNguon(finalSql);
+            JP_QuanLyTienIch.LayNguon(finalSql);
             dispose();
         } catch (IOException ex) {
             Logger.getLogger(JDiaLog_BoLoc.class.getName()).log(Level.SEVERE, null, ex);
