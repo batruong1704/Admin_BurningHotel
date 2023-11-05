@@ -18,15 +18,14 @@ import model.tbl_MonAn;
 import model.tbl_PhieuDatMon;
 import model.tbl_PhieuMonAn;
 
-
 public final class JF_NhaHang extends javax.swing.JFrame {
+
     DefaultTableModel tbl_MonAn, tbl_ChotDichVu;
     List<tbl_MonAn> arrMonAn = new ArrayList<>();
     private String mamonan, tenmonan, giamonan, tongphieu, tiencoc;
     private int soluong;
     private final HashMap<String, Integer> monanHashMap = new HashMap<>();
     private String mahoadon, makhachhang, maphong;
-
 
     public JF_NhaHang() throws IOException {
         initComponents();
@@ -136,6 +135,11 @@ public final class JF_NhaHang extends javax.swing.JFrame {
 
         btn_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
         btn_refreshdv.setText("jLabel14");
+        btn_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_refreshdvMouseClicked(evt);
+            }
+        });
 
         txt_tknoidung.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
 
@@ -236,15 +240,14 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_hoanthanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_quaylai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel10.add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -256,22 +259,22 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         lb_ma.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jLabel28.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel28.setText("Mã Món:");
+        jLabel28.setText("  Mã Món:");
 
         jLabel30.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel30.setText("Tên Món:");
+        jLabel30.setText("  Tên Món:");
 
         lb_ten.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
         lb_ten.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jLabel34.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel34.setText("Giá:");
+        jLabel34.setText("  Giá:");
 
         lb_gia.setFont(new java.awt.Font("Montserrat Medium", 3, 16)); // NOI18N
         lb_gia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jLabel35.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel35.setText("Số Lượng:");
+        jLabel35.setText("  Số Lượng:");
 
         btn_giamsoluong2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_giamsoluong2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minus_25px.png"))); // NOI18N
@@ -418,6 +421,12 @@ public final class JF_NhaHang extends javax.swing.JFrame {
             }
         });
         jScrollPane6.setViewportView(tb_chotmonan);
+        if (tb_chotmonan.getColumnModel().getColumnCount() > 0) {
+            tb_chotmonan.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tb_chotmonan.getColumnModel().getColumn(1).setPreferredWidth(125);
+            tb_chotmonan.getColumnModel().getColumn(2).setPreferredWidth(5);
+            tb_chotmonan.getColumnModel().getColumn(3).setPreferredWidth(5);
+        }
 
         jPanel4.add(jScrollPane6, java.awt.BorderLayout.CENTER);
 
@@ -462,13 +471,20 @@ public final class JF_NhaHang extends javax.swing.JFrame {
             }
         });
         tb_monan.setRowHeight(22);
-        tb_monan.setRowMargin(5);
+        tb_monan.setRowMargin(10);
         tb_monan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_monanMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tb_monan);
+        if (tb_monan.getColumnModel().getColumnCount() > 0) {
+            tb_monan.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tb_monan.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tb_monan.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tb_monan.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tb_monan.getColumnModel().getColumn(4).setPreferredWidth(15);
+        }
 
         jPanel11.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -504,6 +520,9 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         lb_ma.setText(model.getValueAt(index, 0).toString());
         lb_ten.setText(model.getValueAt(index, 1).toString());
         lb_gia.setText(model.getValueAt(index, 3).toString());
+
+        // Cập nhật giá tổng cộng khi chọn một dòng mới trong bảng tb_monan
+        updateGia();
     }//GEN-LAST:event_tb_monanMouseClicked
 
     private void btn_giamsoluong2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_giamsoluong2MouseClicked
@@ -544,7 +563,8 @@ public final class JF_NhaHang extends javax.swing.JFrame {
 
         if (soLuong < 9) {
             soLuong++;
-            txt_soluongsp.setText(String.valueOf(soLuong));            updateGia();
+            txt_soluongsp.setText(String.valueOf(soLuong));
+            updateGia();
         } else {
             JOptionPane.showMessageDialog(this, "Số lượng sản phẩm đã đạt tối đa (9)", "Thông Báo", JOptionPane.WARNING_MESSAGE);
         }
@@ -555,26 +575,37 @@ public final class JF_NhaHang extends javax.swing.JFrame {
         mamonan = lb_ma.getText();
         tenmonan = lb_ten.getText();
         giamonan = lb_gia.getText();
-        
         soluong = Integer.parseInt(txt_soluongsp.getText());
+
         if (mamonan.isEmpty() || tenmonan.isEmpty() || giamonan.isEmpty()) {
             return;
         }
+
+        boolean isExisting = false;
         int existingRow = -1;
         for (int i = 0; i < tbl_ChotDichVu.getRowCount(); i++) {
             if (mamonan.equals(tbl_ChotDichVu.getValueAt(i, 0).toString())) {
                 existingRow = i;
+                isExisting = true;
                 break;
             }
         }
 
-        if (existingRow != -1) {
+        if (isExisting) {
+            // Món đã tồn tại trong bảng tb_chotmonan, cập nhật số lượng và giá
             int currentSoluong = (int) tbl_ChotDichVu.getValueAt(existingRow, 2);
             tbl_ChotDichVu.setValueAt(currentSoluong + soluong, existingRow, 2);
+
+            // Cập nhật giá dựa trên số lượng mới
+            double giaTien = Double.parseDouble(giamonan);
+            double giaTongCong = giaTien * (currentSoluong + soluong);
+            tbl_ChotDichVu.setValueAt(giaTongCong, existingRow, 3);
         } else {
-            Object[] row = {mamonan,tenmonan, soluong, giamonan};
+            // Món chưa tồn tại trong bảng tb_chotmonan, thêm mới món
+            Object[] row = {mamonan, tenmonan, soluong, giamonan};
             tbl_ChotDichVu.addRow(row);
         }
+
         tinhTongTien();
         lb_ma.setText("");
         lb_ten.setText("");
@@ -591,18 +622,18 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_quaylaiActionPerformed
 
     private void btn_hoanthanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hoanthanhActionPerformed
-        tongphieu=lb_tongtien.getText();
-        
-        tbl_PhieuMonAn pma = new tbl_PhieuMonAn( "", mahoadon, tongphieu);
+        tongphieu = lb_tongtien.getText();
+
+        tbl_PhieuMonAn pma = new tbl_PhieuMonAn("", mahoadon, tongphieu);
         DatMonController.ThemPhieuMonAn(pma, mahoadon);
         for (int i = 0; i < tb_chotmonan.getRowCount(); i++) {
-             mamonan = tb_chotmonan.getValueAt(i, 0).toString();
-             soluong= Integer.parseInt(tb_chotmonan.getValueAt(i, 2).toString());
-             giamonan = tb_chotmonan.getValueAt(i, 3).toString();
-             int mapma=DatMonController.LayMaPMA(mahoadon);
-              tbl_ChiTietMonAn ctma = new tbl_ChiTietMonAn("" , mamonan, giamonan, mapma,soluong);
-              DatMonController.ThemChiTietDatMon(ctma,mapma);
-            }
+            mamonan = tb_chotmonan.getValueAt(i, 0).toString();
+            soluong = Integer.parseInt(tb_chotmonan.getValueAt(i, 2).toString());
+            giamonan = tb_chotmonan.getValueAt(i, 3).toString();
+            int mapma = DatMonController.LayMaPMA(mahoadon);
+            tbl_ChiTietMonAn ctma = new tbl_ChiTietMonAn("", mamonan, giamonan, mapma, soluong);
+            DatMonController.ThemChiTietDatMon(ctma, mapma);
+        }
         try {
             DatMonController.CapNhatHoaDon(mahoadon, tongphieu);
         } catch (SQLException ex) {
@@ -639,6 +670,14 @@ public final class JF_NhaHang extends javax.swing.JFrame {
     private void tb_chotmonanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_chotmonanMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tb_chotmonanMouseClicked
+
+    private void btn_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshdvMouseClicked
+        try {
+            LayNguonDV("", "");
+        } catch (IOException ex) {
+            Logger.getLogger(JF_NhaHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_refreshdvMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {

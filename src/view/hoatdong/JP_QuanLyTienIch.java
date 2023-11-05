@@ -286,8 +286,10 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
             ngaydiString = model.getValueAt(index, 5).toString();
             songayluutruString = model.getValueAt(index, 6).toString();
             tongtienString = model.getValueAt(index, 7).toString();
-            lb_mahoadon.setText(DatMonController.NguonTruyVanDuLieu("MaHoaDon"));
-            lb_makh.setText(DatMonController.NguonTruyVanDuLieu("MaKhachHang"));
+            mahoadonString = DatMonController.NguonTruyVanDuLieu("MaHoaDon");
+            makhachhangString = DatMonController.NguonTruyVanDuLieu("MaKhachHang");
+            lb_mahoadon.setText(mahoadonString);
+            lb_makh.setText(makhachhangString);
             lb_tenkh.setText(tenkhachhangString);
             lb_maphong.setText(maphongString);
             lb_email.setText(emailkhachhang);
