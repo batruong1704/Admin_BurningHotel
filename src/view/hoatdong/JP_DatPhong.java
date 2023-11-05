@@ -1,17 +1,13 @@
 package view.hoatdong;
 
-import view.hoatdong.JDiaLog_DatPhong;
 import controller.DatPhongController;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -90,48 +86,56 @@ public class JP_DatPhong extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
         btn_refresh_KH = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        button1 = new container.Button();
+        txt_ticket_manhanvien = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_info_email = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txt_info_makh = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txt_info_tenkh = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txt_info_diachi = new javax.swing.JTextField();
+        rdb_info_Nam = new javax.swing.JRadioButton();
+        rdb_info_Nu = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        rdb_Khac = new javax.swing.JRadioButton();
+        txt_info_cmnd = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txt_info_sdt = new javax.swing.JTextField();
+        txt_ticket_maphong = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_ticket_checkin = new com.toedter.calendar.JDateChooser();
+        txt_timtheoSDT = new javax.swing.JLabel();
+        btn_timtheotenkhachhang = new javax.swing.JLabel();
+        btn_timtheomakhachhang = new javax.swing.JLabel();
+        txt_timtheoEmail = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        txt_ticket_checkout = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_khachhang = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_phong = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        txt_ticket_maphong = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        txt_ticket_checkin = new com.toedter.calendar.JDateChooser();
-        jLabel20 = new javax.swing.JLabel();
-        txt_ticket_checkout = new com.toedter.calendar.JDateChooser();
-        txt_info_makh = new javax.swing.JTextField();
-        btn_timtheomakhachhang = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txt_info_tenkh = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        btn_timtheotenkhachhang = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txt_info_diachi = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        rdb_info_Nam = new javax.swing.JRadioButton();
-        rdb_Khac = new javax.swing.JRadioButton();
-        rdb_info_Nu = new javax.swing.JRadioButton();
-        txt_info_cmnd = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txt_info_sdt = new javax.swing.JTextField();
-        txt_timtheoSDT = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txt_ticket_manhanvien = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        button1 = new container.Button();
-        txt_timtheoEmail = new javax.swing.JLabel();
-        txt_info_email = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1140, 780));
@@ -147,34 +151,373 @@ public class JP_DatPhong extends javax.swing.JPanel {
         jLabel1.setText("Service management");
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setPreferredSize(new java.awt.Dimension(750, 710));
-        jPanel8.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(750, 305));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setPreferredSize(new java.awt.Dimension(750, 35));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
         btn_refresh_KH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_refresh_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_25px.png"))); // NOI18N
+        btn_refresh_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_refresh_KH.setPreferredSize(new java.awt.Dimension(35, 25));
         btn_refresh_KH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_refresh_KHMouseClicked(evt);
             }
         });
-        jPanel5.add(btn_refresh_KH, java.awt.BorderLayout.LINE_END);
+        jPanel1.add(btn_refresh_KH, java.awt.BorderLayout.LINE_END);
+
+        jLabel9.setFont(new java.awt.Font("Century", 1, 30)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Service management");
+        jPanel1.add(jLabel9, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setPreferredSize(new java.awt.Dimension(380, 710));
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jPanel9.setPreferredSize(new java.awt.Dimension(5, 710));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        jPanel7.add(jPanel9, java.awt.BorderLayout.LINE_START);
+
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/next_32px_blue.png"))); // NOI18N
+        button1.setBorderColor(new java.awt.Color(55, 157, 241));
+        button1.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
+        button1.setRadius(10);
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        txt_ticket_manhanvien.setFont(new java.awt.Font("Montserrat", 3, 15)); // NOI18N
+        txt_ticket_manhanvien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txt_ticket_manhanvien.setText("Hiển mã nhân viên");
+
+        jLabel25.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel25.setText("Người thực hiện:");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addContainerGap())
+        );
+
+        jPanel7.add(jPanel10, java.awt.BorderLayout.PAGE_END);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(380, 30));
+        jPanel12.setLayout(new java.awt.BorderLayout());
+
+        jLabel24.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Thông tin chi tiết");
+        jPanel12.add(jLabel24, java.awt.BorderLayout.CENTER);
+
+        jPanel7.add(jPanel12, java.awt.BorderLayout.PAGE_START);
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel8.setText("Email:");
+
+        txt_info_email.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_email.setMargin(new java.awt.Insets(0, 2, 0, 0));
+        txt_info_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_info_emailActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel2.setText("Mã Khách Hàng:");
+
+        txt_info_makh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_makh.setMargin(new java.awt.Insets(0, 2, 0, 0));
+
+        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel3.setText("Tên Khách Hàng: ");
+
+        txt_info_tenkh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_tenkh.setMargin(new java.awt.Insets(0, 2, 0, 0));
+        txt_info_tenkh.setMinimumSize(new java.awt.Dimension(7, 25));
+        txt_info_tenkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_info_tenkhActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel4.setText("Địa Chỉ:");
+
+        txt_info_diachi.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_diachi.setMargin(new java.awt.Insets(0, 2, 0, 0));
+
+        rdb_info_Nam.setBackground(new java.awt.Color(255, 255, 255));
+        rdb_info_Nam.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        rdb_info_Nam.setLabel("Nam");
+
+        rdb_info_Nu.setBackground(new java.awt.Color(255, 255, 255));
+        rdb_info_Nu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        rdb_info_Nu.setLabel("Nữ");
+
+        jLabel5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel5.setText("Giới Tính:");
+
+        rdb_Khac.setBackground(new java.awt.Color(255, 255, 255));
+        rdb_Khac.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        rdb_Khac.setText("Khác");
+        rdb_Khac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdb_KhacActionPerformed(evt);
+            }
+        });
+
+        txt_info_cmnd.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_cmnd.setMargin(new java.awt.Insets(0, 2, 0, 0));
+
+        jLabel6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel6.setText("CMND/CCCD:");
+
+        jLabel7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel7.setText("SĐT:");
+
+        txt_info_sdt.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_info_sdt.setMargin(new java.awt.Insets(0, 2, 0, 0));
+
+        txt_ticket_maphong.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        txt_ticket_maphong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txt_ticket_maphong.setText("Mã Phòng");
+        txt_ticket_maphong.setPreferredSize(new java.awt.Dimension(74, 25));
+
+        jLabel22.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel22.setText("Mã Phòng:");
+
+        jLabel19.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel19.setText("Ngày Đến:");
+
+        txt_ticket_checkin.setBackground(new java.awt.Color(255, 255, 255));
+        txt_ticket_checkin.setDateFormatString("yyyy, MM, dd");
+        txt_ticket_checkin.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+
+        txt_timtheoSDT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_timtheoSDT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
+        txt_timtheoSDT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_timtheoSDTMouseClicked(evt);
+            }
+        });
+
+        btn_timtheotenkhachhang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_timtheotenkhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
+        btn_timtheotenkhachhang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_timtheotenkhachhangMouseClicked(evt);
+            }
+        });
+
+        btn_timtheomakhachhang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_timtheomakhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
+        btn_timtheomakhachhang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_timtheomakhachhangMouseClicked(evt);
+            }
+        });
+
+        txt_timtheoEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_timtheoEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
+        txt_timtheoEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_timtheoEmailMouseClicked(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jLabel20.setText("Ngày Đi:");
+
+        txt_ticket_checkout.setBackground(new java.awt.Color(255, 255, 255));
+        txt_ticket_checkout.setDateFormatString("yyyy, MM, dd");
+        txt_ticket_checkout.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_info_email))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_info_makh, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                            .addComponent(txt_info_tenkh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_timtheotenkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_timtheomakhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1))))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_info_diachi)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rdb_info_Nam, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdb_info_Nu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdb_Khac, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_info_cmnd, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_info_sdt)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_timtheoSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txt_ticket_checkin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, 0)
+                        .addComponent(txt_info_email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, 0)
+                        .addComponent(txt_info_makh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_timtheomakhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, 0)
+                        .addComponent(txt_info_tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(btn_timtheotenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(0, 0, 0)
+                .addComponent(txt_info_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(rdb_info_Nam)
+                    .addComponent(rdb_info_Nu)
+                    .addComponent(rdb_Khac)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(0, 0, 0)
+                .addComponent(txt_info_cmnd, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, 0)
+                        .addComponent(txt_info_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_timtheoSDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(0, 0, 0)
+                .addComponent(txt_ticket_checkin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(0, 0, 0)
+                .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
+        );
+
+        jPanel7.add(jPanel13, java.awt.BorderLayout.CENTER);
+
+        add(jPanel7, java.awt.BorderLayout.LINE_END);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setPreferredSize(new java.awt.Dimension(760, 305));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(5, 305));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel5, java.awt.BorderLayout.LINE_START);
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.BorderLayout());
 
         jLabel21.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Lựa chọn khách hàng");
-        jPanel5.add(jLabel21, java.awt.BorderLayout.CENTER);
+        jPanel8.add(jLabel21, java.awt.BorderLayout.CENTER);
 
-        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+        jPanel4.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -223,30 +566,40 @@ public class JP_DatPhong extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tb_khachhang);
-        if (tb_khachhang.getColumnModel().getColumnCount() > 0) {
-            tb_khachhang.getColumnModel().getColumn(0).setPreferredWidth(20);
-            tb_khachhang.getColumnModel().getColumn(1).setPreferredWidth(125);
-            tb_khachhang.getColumnModel().getColumn(2).setPreferredWidth(175);
-            tb_khachhang.getColumnModel().getColumn(3).setPreferredWidth(75);
-        }
 
-        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jPanel8.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(750, 350));
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setPreferredSize(new java.awt.Dimension(750, 35));
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        jPanel6.setPreferredSize(new java.awt.Dimension(5, 305));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel6, java.awt.BorderLayout.LINE_START);
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setPreferredSize(new java.awt.Dimension(760, 30));
+        jPanel11.setLayout(new java.awt.BorderLayout());
 
         jLabel23.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Lựa chọn phòng");
-        jPanel6.add(jLabel23, java.awt.BorderLayout.CENTER);
+        jPanel11.add(jLabel23, java.awt.BorderLayout.CENTER);
 
-        jPanel4.add(jPanel6, java.awt.BorderLayout.PAGE_START);
+        jPanel3.add(jPanel11, java.awt.BorderLayout.PAGE_START);
 
         tb_phong.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         tb_phong.setModel(new javax.swing.table.DefaultTableModel(
@@ -293,292 +646,24 @@ public class JP_DatPhong extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tb_phong);
-        if (tb_phong.getColumnModel().getColumnCount() > 0) {
-            tb_phong.getColumnModel().getColumn(0).setPreferredWidth(35);
-            tb_phong.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tb_phong.getColumnModel().getColumn(2).setPreferredWidth(35);
-            tb_phong.getColumnModel().getColumn(3).setPreferredWidth(35);
+
+        jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_refresh_KHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refresh_KHMouseClicked
+
+        try {
+            sTimMaPhieu = "";
+            Buoc1_LayNguonKH();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-
-        jPanel8.add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        add(jPanel8, java.awt.BorderLayout.LINE_START);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel22.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel22.setText("Mã Phòng:");
-
-        txt_ticket_maphong.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_ticket_maphong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txt_ticket_maphong.setText("Mã Phòng");
-        txt_ticket_maphong.setPreferredSize(new java.awt.Dimension(74, 25));
-
-        jLabel19.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel19.setText("Ngày Đến:");
-
-        txt_ticket_checkin.setBackground(new java.awt.Color(255, 255, 255));
-        txt_ticket_checkin.setDateFormatString("yyyy, MM, dd");
-        txt_ticket_checkin.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-
-        jLabel20.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel20.setText("Ngày Đi:");
-
-        txt_ticket_checkout.setBackground(new java.awt.Color(255, 255, 255));
-        txt_ticket_checkout.setDateFormatString("yyyy, MM, dd");
-        txt_ticket_checkout.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-
-        txt_info_makh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_makh.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
-        btn_timtheomakhachhang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_timtheomakhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
-        btn_timtheomakhachhang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_timtheomakhachhangMouseClicked(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel2.setText("Mã Khách Hàng:");
-
-        txt_info_tenkh.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_tenkh.setMargin(new java.awt.Insets(0, 2, 0, 0));
-        txt_info_tenkh.setMinimumSize(new java.awt.Dimension(7, 25));
-        txt_info_tenkh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_info_tenkhActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel3.setText("Tên Khách Hàng: ");
-
-        btn_timtheotenkhachhang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_timtheotenkhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
-        btn_timtheotenkhachhang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_timtheotenkhachhangMouseClicked(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel4.setText("Địa Chỉ:");
-
-        txt_info_diachi.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_diachi.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
-        jLabel5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel5.setText("Giới Tính:");
-
-        rdb_info_Nam.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdb_info_Nam);
-        rdb_info_Nam.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        rdb_info_Nam.setLabel("Nam");
-
-        rdb_Khac.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdb_Khac);
-        rdb_Khac.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        rdb_Khac.setText("Khác");
-        rdb_Khac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdb_KhacActionPerformed(evt);
-            }
-        });
-
-        rdb_info_Nu.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rdb_info_Nu);
-        rdb_info_Nu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        rdb_info_Nu.setLabel("Nữ");
-
-        txt_info_cmnd.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_cmnd.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
-        jLabel6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel6.setText("CMND/CCCD:");
-
-        txt_info_sdt.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_sdt.setMargin(new java.awt.Insets(0, 2, 0, 0));
-
-        txt_timtheoSDT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_timtheoSDT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
-        txt_timtheoSDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_timtheoSDTMouseClicked(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel7.setText("SĐT:");
-
-        txt_ticket_manhanvien.setFont(new java.awt.Font("Montserrat", 3, 15)); // NOI18N
-        txt_ticket_manhanvien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        txt_ticket_manhanvien.setText("Hiển mã nhân viên");
-
-        jLabel24.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel24.setText("Người thực hiện:");
-
-        button1.setText("Tiếp Theo");
-        button1.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
-        button1.setRadius(10);
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-
-        txt_timtheoEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_timtheoEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_dark_26px.png"))); // NOI18N
-        txt_timtheoEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_timtheoEmailMouseClicked(evt);
-            }
-        });
-
-        txt_info_email.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        txt_info_email.setMargin(new java.awt.Insets(0, 2, 0, 0));
-        txt_info_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_info_emailActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel8.setText("Email:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                            .addComponent(txt_info_email))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 24, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_info_makh, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txt_info_tenkh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_timtheotenkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_timtheomakhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_info_diachi, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdb_info_Nam, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rdb_info_Nu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rdb_Khac, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_info_cmnd, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_info_sdt)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_timtheoSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_ticket_checkin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, 0)
-                        .addComponent(txt_info_email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_timtheoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, 0)
-                        .addComponent(txt_info_makh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_timtheomakhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, 0)
-                        .addComponent(txt_info_tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_timtheotenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel4)
-                .addGap(0, 0, 0)
-                .addComponent(txt_info_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(rdb_info_Nam)
-                    .addComponent(rdb_info_Nu)
-                    .addComponent(rdb_Khac)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel6)
-                .addGap(0, 0, 0)
-                .addComponent(txt_info_cmnd, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, 0)
-                        .addComponent(txt_info_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_timtheoSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_ticket_maphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel19)
-                .addGap(0, 0, 0)
-                .addComponent(txt_ticket_checkin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel20)
-                .addGap(0, 0, 0)
-                .addComponent(txt_ticket_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(txt_ticket_manhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
-        );
-
-        add(jPanel2, java.awt.BorderLayout.LINE_END);
-    }// </editor-fold>//GEN-END:initComponents
+    }//GEN-LAST:event_btn_refresh_KHMouseClicked
 
     private void tb_khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_khachhangMouseClicked
         try {
@@ -614,7 +699,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_tb_khachhangMouseClicked
 
     private void tb_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_phongMouseClicked
@@ -624,31 +709,13 @@ public class JP_DatPhong extends javax.swing.JPanel {
         txt_ticket_maphong.setText(maPhong);
     }//GEN-LAST:event_tb_phongMouseClicked
 
-    private void btn_timtheomakhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheomakhachhangMouseClicked
-        try {
-            sPhanLoaiTimKiem = "ID";
-            sTimKhachHang = txt_info_makh.getText();
-            Buoc1_LayNguonKH();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_btn_timtheomakhachhangMouseClicked
+    private void txt_info_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_info_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_info_emailActionPerformed
 
     private void txt_info_tenkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_info_tenkhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_info_tenkhActionPerformed
-
-    private void btn_timtheotenkhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheotenkhachhangMouseClicked
-        try {
-            sPhanLoaiTimKiem = "HoTen";
-            sTimKhachHang = txt_info_tenkh.getText();
-            Buoc1_LayNguonKH();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_btn_timtheotenkhachhangMouseClicked
 
     private void rdb_KhacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_KhacActionPerformed
         // TODO add your handling code here:
@@ -662,19 +729,40 @@ public class JP_DatPhong extends javax.swing.JPanel {
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_txt_timtheoSDTMouseClicked
 
-    private void btn_refresh_KHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refresh_KHMouseClicked
-        
+    private void btn_timtheotenkhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheotenkhachhangMouseClicked
         try {
-            sTimMaPhieu = "";
+            sPhanLoaiTimKiem = "HoTen";
+            sTimKhachHang = txt_info_tenkh.getText();
             Buoc1_LayNguonKH();
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_btn_refresh_KHMouseClicked
+
+    }//GEN-LAST:event_btn_timtheotenkhachhangMouseClicked
+
+    private void btn_timtheomakhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_timtheomakhachhangMouseClicked
+        try {
+            sPhanLoaiTimKiem = "ID";
+            sTimKhachHang = txt_info_makh.getText();
+            Buoc1_LayNguonKH();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btn_timtheomakhachhangMouseClicked
+
+    private void txt_timtheoEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_timtheoEmailMouseClicked
+        try {
+            sPhanLoaiTimKiem = "Email";
+            sTimKhachHang = txt_info_email.getText();
+            Buoc1_LayNguonKH();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_timtheoEmailMouseClicked
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         TableModel modelP = tb_phong.getModel();
@@ -699,14 +787,14 @@ public class JP_DatPhong extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin!", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
-//        try {
-//            if (DatPhongController.KiemTra("PhieuDatPhong", "MaPhieuDatPhong", maPhieuDk)) {
-//                JOptionPane.showMessageDialog(this, "Mã phiếu đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        //        try {
+            //            if (DatPhongController.KiemTra("PhieuDatPhong", "MaPhieuDatPhong", maPhieuDk)) {
+                //                JOptionPane.showMessageDialog(this, "Mã phiếu đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+                //                return;
+                //            }
+            //        } catch (SQLException ex) {
+            //            Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+            //        }
         if (ngayDen == null || ngayDi == null || ngayDen.after(ngayDi)) {
             JOptionPane.showMessageDialog(this, "Ngày đến hoặc ngày đi không hợp lệ", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             return;
@@ -720,7 +808,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
             try {
                 soNgay = (double) ((ngayDi.getTime() - ngayDen.getTime()) / (24 * 60 * 60 * 1000));
                 giaPhong = DatPhongController.NguonTruyVanDuLieu("GiaPhong", "Phong", "MaPhong", maPhong);
-                
+
                 tinhTien = String.valueOf(soNgay * Double.parseDouble(giaPhong));
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
@@ -730,20 +818,6 @@ public class JP_DatPhong extends javax.swing.JPanel {
         dialog.setVisible(true);
         dialog.setLocationRelativeTo(null);
     }//GEN-LAST:event_button1ActionPerformed
-
-    private void txt_timtheoEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_timtheoEmailMouseClicked
-        try {
-            sPhanLoaiTimKiem = "Email";
-            sTimKhachHang = txt_info_email.getText();
-            Buoc1_LayNguonKH();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(JP_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_txt_timtheoEmailMouseClicked
-
-    private void txt_info_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_info_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_info_emailActionPerformed
 
 
 
@@ -761,19 +835,27 @@ public class JP_DatPhong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton rdb_Khac;

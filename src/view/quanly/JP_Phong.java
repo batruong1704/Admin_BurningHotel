@@ -129,9 +129,9 @@ private File selectedFile;
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        bt_them1 = new javax.swing.JButton();
-        bt_sua1 = new javax.swing.JButton();
-        bt_xoa1 = new javax.swing.JButton();
+        bt_them = new javax.swing.JButton();
+        bt_sua = new javax.swing.JButton();
+        bt_xoa = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         bt_ghi = new javax.swing.JButton();
@@ -225,27 +225,27 @@ private File selectedFile;
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Cập Nhật"), "Cập Nhật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel14.setPreferredSize(new java.awt.Dimension(360, 61));
 
-        bt_them1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        bt_them1.setText("Thêm");
-        bt_them1.addActionListener(new java.awt.event.ActionListener() {
+        bt_them.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_them.setText("Thêm");
+        bt_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_them1ActionPerformed(evt);
+                bt_themActionPerformed(evt);
             }
         });
 
-        bt_sua1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        bt_sua1.setText("Sửa");
-        bt_sua1.addActionListener(new java.awt.event.ActionListener() {
+        bt_sua.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_sua.setText("Sửa");
+        bt_sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_sua1ActionPerformed(evt);
+                bt_suaActionPerformed(evt);
             }
         });
 
-        bt_xoa1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        bt_xoa1.setText("Xoá");
-        bt_xoa1.addActionListener(new java.awt.event.ActionListener() {
+        bt_xoa.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_xoa.setText("Xoá");
+        bt_xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_xoa1ActionPerformed(evt);
+                bt_xoaActionPerformed(evt);
             }
         });
 
@@ -255,11 +255,11 @@ private File selectedFile;
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_them1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_them, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_sua1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_sua, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(bt_xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -267,9 +267,9 @@ private File selectedFile;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bt_them1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(bt_sua1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_xoa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_them, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(bt_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_xoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -284,7 +284,9 @@ private File selectedFile;
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel15.setPreferredSize(new java.awt.Dimension(360, 60));
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,8 +294,10 @@ private File selectedFile;
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -318,7 +322,7 @@ private File selectedFile;
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel12.add(jPanel15, java.awt.BorderLayout.CENTER);
@@ -735,15 +739,15 @@ private File selectedFile;
         }
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    private void bt_them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_them1ActionPerformed
+    private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
         macu = "";
         KhoaMo(true);
         XoaTrang();
         txt_maphong.requestFocus();
-    }//GEN-LAST:event_bt_them1ActionPerformed
+    }//GEN-LAST:event_bt_themActionPerformed
 
-    private void bt_sua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_sua1ActionPerformed
+    private void bt_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_suaActionPerformed
         if (txt_maphong.getText().length() <= 0) {
             return;
         }
@@ -751,9 +755,9 @@ private File selectedFile;
         ktThem = false;
         KhoaMo(true);
         txt_maphong.requestFocus();
-    }//GEN-LAST:event_bt_sua1ActionPerformed
+    }//GEN-LAST:event_bt_suaActionPerformed
 
-    private void bt_xoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xoa1ActionPerformed
+    private void bt_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xoaActionPerformed
         if (txt_maphong.getText().length() <= 0) {
             JOptionPane.showConfirmDialog(this, "Hãy nhập thông tin cần xoá!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -774,7 +778,7 @@ private File selectedFile;
                 return;
             }
         }
-    }//GEN-LAST:event_bt_xoa1ActionPerformed
+    }//GEN-LAST:event_bt_xoaActionPerformed
 
     private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
         maPhong = txt_maphong.getText();
@@ -877,11 +881,8 @@ private File selectedFile;
     private javax.swing.JButton bt_ghi;
     private javax.swing.JButton bt_khong;
     private javax.swing.JButton bt_sua;
-    private javax.swing.JButton bt_sua1;
     private javax.swing.JButton bt_them;
-    private javax.swing.JButton bt_them1;
     private javax.swing.JButton bt_xoa;
-    private javax.swing.JButton bt_xoa1;
     private javax.swing.JComboBox<String> cbb_loaiphong;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -901,7 +902,6 @@ private File selectedFile;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;

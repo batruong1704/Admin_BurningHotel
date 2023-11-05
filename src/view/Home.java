@@ -282,7 +282,7 @@ public class Home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Manager");
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Operations");
 
@@ -402,7 +402,7 @@ public class Home extends javax.swing.JFrame {
         lb_hoadon.setText("Hoá Đơn");
         btn_hoadon.add(lb_hoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Statistical");
 
@@ -578,7 +578,7 @@ public class Home extends javax.swing.JFrame {
         lb_ThongKeDoanhThu.setText("Thống Kê Doanh Thu");
         btn_ThongKeDoanhThu.add(lb_ThongKeDoanhThu, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, -2, -1, 30));
 
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Warehouse");
 
@@ -1550,6 +1550,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jp_ScreenMain;
     private javax.swing.JLabel lb_ThongKeDoanhThu;
     private javax.swing.JLabel lb_chucvu;

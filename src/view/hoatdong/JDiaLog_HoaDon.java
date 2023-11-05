@@ -6,11 +6,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import static view.hoatdong.JP_HoaDon.conthieuString;
 import static view.hoatdong.JP_HoaDon.giadichvuString;
-import static view.hoatdong.JP_HoaDon.giaphongString;
 import static view.hoatdong.JP_HoaDon.giamonanString;
+import static view.hoatdong.JP_HoaDon.giaphongString;
 import static view.hoatdong.JP_HoaDon.mahoadonString;
 import static view.hoatdong.JP_HoaDon.makhachhangString;
 import static view.hoatdong.JP_HoaDon.maphongString;
@@ -42,18 +41,18 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
     }
     
     public void reset (){
-        lb_mahoadon.setText("");
-        lb_makh.setText("");
-        lb_tenkh.setText("");
-        lb_maphong.setText("");
-        lb_ngayden.setText("");
-        lb_ngaydi.setText("");
-        lb_songayo.setText("");
-        lb_giaphong.setText("");
-        lb_monan.setText("");
-        lb_giadichvu.setText("");
-        lb_TongTien.setText("");
-        lb_Con.setText("");
+        view.hoatdong.JP_HoaDon.lb_mahoadon.setText("");
+        view.hoatdong.JP_HoaDon.lb_makh.setText("");
+        view.hoatdong.JP_HoaDon.lb_tenkh.setText("");
+        view.hoatdong.JP_HoaDon.lb_maphong.setText("");
+        view.hoatdong.JP_HoaDon.lb_ngayden.setText("");
+        view.hoatdong.JP_HoaDon.lb_ngaydi.setText("");
+        view.hoatdong.JP_HoaDon.lb_songayo.setText("");
+        view.hoatdong.JP_HoaDon.lb_giaphong.setText("");
+        view.hoatdong.JP_HoaDon.lb_monan.setText("");
+        view.hoatdong.JP_HoaDon.lb_giadichvu.setText("");
+        view.hoatdong.JP_HoaDon.lb_TongTien.setText("");
+        view.hoatdong.JP_HoaDon.lb_Con.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -404,7 +403,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                         pa.XoaTrang();
                         pa.setVisible(true);
                         dispose();
-                        JP_HoaDon.reset();
+                        reset();
                 }
                 catch (SQLException ex) {
                     Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);

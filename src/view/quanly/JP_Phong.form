@@ -203,11 +203,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="bt_them1" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="bt_them" min="-2" pref="82" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="bt_sua1" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="bt_sua" min="-2" pref="82" max="-2" attributes="0"/>
                                   <EmptySpace pref="8" max="32767" attributes="0"/>
-                                  <Component id="bt_xoa1" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <Component id="bt_xoa" min="-2" pref="90" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -217,9 +217,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="bt_them1" pref="35" max="32767" attributes="0"/>
-                                      <Component id="bt_sua1" max="32767" attributes="0"/>
-                                      <Component id="bt_xoa1" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="bt_them" pref="35" max="32767" attributes="0"/>
+                                      <Component id="bt_sua" max="32767" attributes="0"/>
+                                      <Component id="bt_xoa" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="17" max="32767" attributes="0"/>
                               </Group>
@@ -227,7 +227,7 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="bt_them1">
+                        <Component class="javax.swing.JButton" name="bt_them">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Montserrat Medium" size="12" style="0"/>
@@ -235,10 +235,10 @@
                             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_them1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_themActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="bt_sua1">
+                        <Component class="javax.swing.JButton" name="bt_sua">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Montserrat Medium" size="12" style="0"/>
@@ -246,10 +246,10 @@
                             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_sua1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_suaActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="bt_xoa1">
+                        <Component class="javax.swing.JButton" name="bt_xoa">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Montserrat Medium" size="12" style="0"/>
@@ -257,7 +257,7 @@
                             <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_xoa1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_xoaActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -320,7 +320,7 @@
                                       <Component id="bt_ghi" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="bt_khong" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                                  <EmptySpace pref="14" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -328,8 +328,14 @@
                       <SubComponents>
                         <Component class="javax.swing.JButton" name="bt_ghi">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Montserrat Medium" size="12" style="0"/>
+                              <Font name="Montserrat SemiBold" size="13" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Ghi"/>
                           </Properties>
@@ -340,9 +346,19 @@
                         <Component class="javax.swing.JButton" name="bt_khong">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Montserrat Medium" size="12" style="0"/>
+                              <Font name="Montserrat Medium" size="13" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="ff" green="0" red="0" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_khongActionPerformed"/>

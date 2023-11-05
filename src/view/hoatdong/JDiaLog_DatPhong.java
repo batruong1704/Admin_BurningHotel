@@ -354,7 +354,7 @@ public final class JDiaLog_DatPhong extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng ký dịch vụ tiếp không?", "Tiếp tục đăng ký dịch vụ", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 JFrame JF_DatPhong;
-                JF_DatPhong = new JF_DatPhongB2();
+                JF_DatPhong = new JP_DatPhongB2();
                 JF_DatPhong.setVisible(true);
                 JF_DatPhong.setLocationRelativeTo(null);
             } else {
