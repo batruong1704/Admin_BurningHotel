@@ -329,24 +329,11 @@ public class JP_HoaDon extends javax.swing.JPanel {
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-    public static void XoaTrang() {
-        mahoadonString = "";
-        makhachhangString = "";
-        tenkhachhangString = "";
-        maphongString = "";
-        ngaydenString = "";
-        ngaydiString = "";
-        songayluutruString = "";
-        giaphongString = "";
-        giamonanString = "";
-        giadichvuString = "";
-        tongtienString = "";
-        conthieuString = "";
-    }
 
     private void layThem(String a) {
         try {
             ArrayList<tbl_PhieuTraPhong> arrThem = HoaDonController.NguonPhongBonus(a);
+           
             for (tbl_PhieuTraPhong phieuTraPhong : arrThem) {
                 giaphongString = phieuTraPhong.getGiaphong();
                 giadichvuString = phieuTraPhong.getGiadichvu();

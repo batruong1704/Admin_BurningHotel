@@ -380,10 +380,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                 int kq = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn thanh toán hoá đơn này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
                 HoaDonController.CapNhatPDP(lb_mahoadon.getText(),tiencocHT);
                 jpHoaDon.LayNguon("");
-                
-                JP_HoaDon pa=new JP_HoaDon();
-                
-                pa.XoaTrang();
+                reset();
                 dispose();
               
             } catch (SQLException ex) {
@@ -399,11 +396,9 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
                         HoaDonController.CapNhatHoaDon(lb_mahoadon.getText());
                         HoaDonController.CapNhatPhong(maphongString);
                         jpHoaDon.LayNguon("");
-                        JP_HoaDon pa=new JP_HoaDon();
-                        pa.XoaTrang();
-                        pa.setVisible(true);
-                        dispose();
                         reset();
+                        dispose();
+                       
                 }
                 catch (SQLException ex) {
                     Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);

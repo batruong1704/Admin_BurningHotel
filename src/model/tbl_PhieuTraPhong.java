@@ -31,12 +31,12 @@ public class tbl_PhieuTraPhong {
     }
 
    
-    public tbl_PhieuTraPhong(String tenkhachhang, String giaphong, String giadichvu, String giamonan, String conthieu) {
+    public tbl_PhieuTraPhong(String tenkhachhang, String giaphong, String giadichvu, String giamonan) {
         this.tenkhachhang = tenkhachhang;
         this.giaphong = giaphong;
         this.giadichvu = giadichvu;
         this.giamonan = giamonan;
-        this.conthieu = conthieu;
+        
     }
     
     
@@ -116,7 +116,7 @@ public class tbl_PhieuTraPhong {
         return giamonan;
     }
 
-    public void setGiamonan(String giasanpham) {
+    public void setGiamonan(String giamonan) {
         this.giamonan = giamonan;
     }
 

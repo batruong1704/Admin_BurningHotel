@@ -29,19 +29,17 @@ public class HoaDonController {
                       ctdp.NgayDi,
                       pdp.MaNhanVien,
                       pdp.ThanhToanTruoc,
-                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) AS SoNgayLuTru,
-                      hd.TongTien,
+                      DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) AS SoNgayLuuTru,
+                      hd.TongTien as tt,
                       CASE
                           WHEN pdp.TongTien - pdp.ThanhToanTruoc = 0 THEN 'Hoàn Thành'
                           WHEN hd.TinhTrang= 'Đã thanh toán' THEN 'Hoàn Thành'
                           ELSE CAST(pdp.TongTien - pdp.ThanhToanTruoc AS VARCHAR(255))
                       END AS ConThieu
-                  FROM hoadon hd
+                  FROM hoadon hd 
                   JOIN phieudatphong pdp ON hd.MaPDP = pdp.MaPDP
                   JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
-                  JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
-                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP
-                
+                  JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP           
                   """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
                 sql = sql + sDieuKien;
@@ -55,8 +53,8 @@ public class HoaDonController {
                 bp.setPhong(rs.getString("MaPhong"));
                 bp.setNgayden(rs.getString("NgayDen"));
                 bp.setNgaydi(rs.getString("NgayDi"));
-                bp.setSongayolai(rs.getString("SoNgayLuTru"));
-                bp.setTongthanhtoan(rs.getString("TongTien"));
+                bp.setSongayolai(rs.getString("SoNgayLuuTru"));
+                bp.setTongthanhtoan(rs.getString("tt"));
                 bp.setConthieu(rs.getString("ConThieu"));
                 arrPhieuTra.add(bp);
             }
@@ -134,17 +132,14 @@ public class HoaDonController {
             conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
             sql = """
                     SELECT DATEDIFF(ctdp.NgayDi, ctdp.NgayDen) * p.GiaPhong AS ThanhTienP,
-                           pdv.TongTienDV AS TongTienDV,
-                           pma.TongTienMA AS TongTienMA,
                            kh.HoTen,
                            COALESCE(pdv.TongTienDV, 0) AS TongTienDV,
-                           COALESCE(pma.TongTienMA, 0) AS TongTienMA,
-                           (pdp.ThanhToanTruoc + COALESCE(pma.TongTienMA, 0)) AS DaCoc 
+                           COALESCE(pma.TongTienMA, 0) AS TongTienMA
                     FROM hoadon hd
                     JOIN phieudatphong pdp ON hd.MaPDP = pdp.MaPDP
                     JOIN chitietdatphong ctdp ON pdp.MaPDP = ctdp.MaPDP
                     JOIN phong p ON ctdp.MaPhong = p.MaPhong
-                    LEFT JOIN phieumonan pma ON hd.MaHoaDon = pma.MaHoaDon
+                    LEFT JOIN phieumonan pma ON pma.MaHoaDon = hd.MaHoaDon
                     LEFT JOIN phieudichvu pdv ON pdp.MaPDP = pdv.MaPDP
                     JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
                     WHERE hd.MaHoaDon = '""" + maKT + "'";
@@ -157,7 +152,6 @@ public class HoaDonController {
                 bp.setGiaphong(rs.getString("ThanhTienP"));
                 bp.setGiadichvu(rs.getString("TongTienDV"));
                 bp.setGiamonan(rs.getString("TongTienMA"));
-                bp.setTiencoc(rs.getString("DaCoc"));
                 arrPhieuTra.add(bp);
             }
             state.close();
