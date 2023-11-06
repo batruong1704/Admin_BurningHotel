@@ -1,12 +1,13 @@
 package model;
 
 public class tbl_QuanLiTienIch {
-    String mahoadon, makhachhang, tenkhachhang, emailkhachhang, sdt, phong, ngayden, ngaydi, songayolai, tongthanhtoan;
+    String maphieudatphong, mahoadon, makhachhang, tenkhachhang, emailkhachhang, sdt, phong, ngayden, ngaydi, songayolai, tongthanhtoan;
 
     public tbl_QuanLiTienIch() {
     }
 
-    public tbl_QuanLiTienIch(String mahoadon, String makhachhang, String tenkhachhang, String emailkhachhang, String sdt, String phong, String ngayden, String ngaydi, String songayolai,String tongthanhtoan) {
+    public tbl_QuanLiTienIch(String maphieudatphong, String mahoadon, String makhachhang, String tenkhachhang, String emailkhachhang, String sdt, String phong, String ngayden, String ngaydi, String songayolai,String tongthanhtoan) {
+        this.maphieudatphong = maphieudatphong;
         this.mahoadon = mahoadon;
         this.makhachhang = makhachhang;
         this.tenkhachhang = tenkhachhang;
@@ -17,6 +18,14 @@ public class tbl_QuanLiTienIch {
         this.ngaydi = ngaydi;
         this.songayolai = songayolai;
         this.tongthanhtoan = tongthanhtoan;
+    }
+
+    public String getMaphieudatphong() {
+        return maphieudatphong;
+    }
+
+    public void setMaphieudatphong(String maphieudatphong) {
+        this.maphieudatphong = maphieudatphong;
     }
 
     public String getSdt() {

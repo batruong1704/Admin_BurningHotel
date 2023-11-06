@@ -163,13 +163,13 @@ public class DatMonController {
         return arrPhieuTra;
     }
 
-    public static String NguonTruyVanDuLieu(String sTenCotGT) throws IOException {
+    public static String NguonTruyVanDuLieu(String sTenCotGT, String sMaKT) throws IOException {
         String ketqua = "";
         Statement state = null;
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select " + sTenCotGT + " from phieudatphong pdp, hoadon hd, chitietdatphong ctdp where pdp.MaPDP = hd.MaPDP and hd.MaPDP = ctdp.MaPDP";
+            sql = "Select " + sTenCotGT + " from phieudatphong pdp, hoadon hd, chitietdatphong ctdp where pdp.MaPDP = hd.MaPDP and hd.MaPDP = ctdp.MaPDP and hd.MaPDP = '" + sMaKT + "'";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             // Xử lý kết quả trả về
@@ -191,6 +191,7 @@ public class DatMonController {
             conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
             sql = """
                   SELECT
+                      ctdp.MaPDP,
                       hd.MaHoaDon,
                       kh.ID,
                       kh.HoTen,
@@ -207,7 +208,7 @@ public class DatMonController {
                   JOIN khachhang kh ON kh.ID = pdp.MaKhachHang
                   JOIN chitietdatphong ctdp ON ctdp.MaPDP = pdp.MaPDP
                   JOIN phong p ON p.MaPhong = ctdp.MaPhong
-                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP;
+                  LEFT JOIN phieudichvu pdv ON pdv.MaPDP = pdp.MaPDP
                 
                   """;
             if (sDieuKien != null && !sDieuKien.equals("")) {
@@ -217,6 +218,7 @@ public class DatMonController {
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 tbl_QuanLiTienIch bp = new tbl_QuanLiTienIch();
+                bp.setMaphieudatphong(rs.getString("MaPDP"));
                 bp.setMahoadon(rs.getString("MaHoaDon"));
                 bp.setMakhachhang(rs.getString("ID"));
                 bp.setTenkhachhang(rs.getString("HoTen"));

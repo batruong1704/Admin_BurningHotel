@@ -19,7 +19,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
     static DefaultTableModel model;
     static ArrayList<tbl_QuanLiTienIch> arrQuanLiTienIch = new ArrayList<>();
 
-    public static String mahoadonString, makhachhangString, tenkhachhangString, emailkhachhang, sdt, maphongString, ngaydenString, ngaydiString, songayluutruString,tongtienString;
+    public static String maphieudatphongString, mahoadonString, makhachhangString, tenkhachhangString, emailkhachhang, sdt, maphongString, ngaydenString, ngaydiString, songayluutruString,tongtienString;
 
     public JP_QuanLyTienIch() throws IOException, SQLException {
         initComponents();
@@ -31,7 +31,7 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         model = (DefaultTableModel) tb_qlphongtructuyen.getModel();
         model.setRowCount(0);
         arrQuanLiTienIch.forEach((KQ) -> {
-            model.addRow(new Object[]{KQ.getPhong(), KQ.getTenkhachhang(), KQ.getEmailkhachhang(), KQ.getSdt(), KQ.getNgayden(), KQ.getNgaydi(),
+            model.addRow(new Object[]{KQ.getMaphieudatphong(), KQ.getPhong(), KQ.getTenkhachhang(), KQ.getEmailkhachhang(), KQ.getSdt(), KQ.getNgayden(), KQ.getNgaydi(),
                 KQ.getSongayolai(), KQ.getTongthanhtoan()});
         });
     }
@@ -210,17 +210,17 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         tb_qlphongtructuyen.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         tb_qlphongtructuyen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Phòng", "Họ Tên", "Email", "Số Điện Thoại", "Ngày Đến", "Ngày Đi", "Số Ngày lưu trú", "Tổng Tiền"
+                "Mã PDP", "Phòng", "Họ Tên", "Email", "Số Điện Thoại", "Ngày Đến", "Ngày Đi", "Số Ngày lưu trú", "Tổng Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -236,10 +236,10 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tb_qlphongtructuyen);
         if (tb_qlphongtructuyen.getColumnModel().getColumnCount() > 0) {
-            tb_qlphongtructuyen.getColumnModel().getColumn(0).setPreferredWidth(35);
-            tb_qlphongtructuyen.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tb_qlphongtructuyen.getColumnModel().getColumn(1).setPreferredWidth(35);
             tb_qlphongtructuyen.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tb_qlphongtructuyen.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tb_qlphongtructuyen.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tb_qlphongtructuyen.getColumnModel().getColumn(4).setPreferredWidth(40);
         }
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -278,19 +278,18 @@ public class JP_QuanLyTienIch extends javax.swing.JPanel {
         try {
             int index = tb_qlphongtructuyen.getSelectedRow();
             TableModel model = tb_qlphongtructuyen.getModel();
-            maphongString = model.getValueAt(index, 0).toString();
-            tenkhachhangString = model.getValueAt(index, 1).toString();
-            emailkhachhang = model.getValueAt(index, 2).toString();
-            sdt = model.getValueAt(index, 3).toString();
-            ngaydenString = model.getValueAt(index, 4).toString();
-            ngaydiString = model.getValueAt(index, 5).toString();
-            songayluutruString = model.getValueAt(index, 6).toString();
-            tongtienString = model.getValueAt(index, 7).toString();
-            mahoadonString = DatMonController.NguonTruyVanDuLieu("MaHoaDon");
-            makhachhangString = DatMonController.NguonTruyVanDuLieu("MaKhachHang");
+            maphieudatphongString = model.getValueAt(index, 0).toString();
+            maphongString = model.getValueAt(index, 1).toString();
+            tenkhachhangString = model.getValueAt(index, 2).toString();
+            emailkhachhang = model.getValueAt(index, 3).toString();
+            sdt = model.getValueAt(index, 4).toString();
+            ngaydenString = model.getValueAt(index, 5).toString();
+            ngaydiString = model.getValueAt(index, 6).toString();
+            songayluutruString = model.getValueAt(index, 7).toString();
+            tongtienString = model.getValueAt(index, 8).toString();
             
-            lb_mahoadon.setText(mahoadonString);
-            lb_makh.setText(makhachhangString);
+            lb_mahoadon.setText( DatMonController.NguonTruyVanDuLieu("MaHoaDon",maphieudatphongString));
+            lb_makh.setText(DatMonController.NguonTruyVanDuLieu("MaKhachHang",maphieudatphongString)) ;
             lb_tenkh.setText(tenkhachhangString);
             lb_maphong.setText(maphongString);
             lb_email.setText(emailkhachhang);
