@@ -23,6 +23,8 @@ public class JP_ChucVu extends javax.swing.JPanel {
  
     public JP_ChucVu() throws IOException, SQLException {
         initComponents();
+        XoaTrang();
+        KhoaMo(false);
         tbl_ChucVu = (DefaultTableModel) tb_chucvu.getModel();
         LayNguon("", "");
         txt.addEventOptionSelected(new SearchOptinEvent() {
@@ -445,8 +447,7 @@ public class JP_ChucVu extends javax.swing.JPanel {
 
     private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
         XoaTrang();
-        refresh(true);
-        ktThem = true;
+        KhoaMo(false);
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed

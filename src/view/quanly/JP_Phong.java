@@ -30,6 +30,8 @@ private File selectedFile;
     
     public JP_Phong() throws IOException, SQLException {
         initComponents();
+        XoaTrang();
+        KhoaMo(false);
         LayNguon();
         LoadComboBoxLoaiPhong();
     }
@@ -40,7 +42,7 @@ private File selectedFile;
         tbl_Phong.setRowCount(0);
         arrPhong.forEach((KQ) -> {
 
-            tbl_Phong.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(),KQ.getKieuPhong(), KQ.getSLMax(), KQ.getLoaiGiuong(), KQ.getGiaPhong(), KQ.getIMG(),KQ.getDienTich(),
+            tbl_Phong.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(),KQ.getKieuPhong(), KQ.getSLMax(), KQ.getLoaiGiuong(), KQ.getGiaPhong(),KQ.getDienTich(),
                                            KQ.getTamNhin(),KQ.getMoTa(), KQ.getTinhTrang()});
 
         });
@@ -102,7 +104,7 @@ private File selectedFile;
 
     public void XoaTrang() {
         txt_maphong.setText("");
-        cbb_loaiphong.setSelectedIndex(0);
+//        cbb_loaiphong.setSelectedIndex(0);
         txt_loaigiuong.setText("");
         txt_slmax.setText("");
         txt_giaphong.setText("");
@@ -860,14 +862,13 @@ private File selectedFile;
             LayNguon();
         } catch (IOException ex) {
         }
-        XoaTrang();
+        
         KhoaMo(false);
     }//GEN-LAST:event_bt_ghiActionPerformed
 
     private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
         XoaTrang();
-        refresh(true);
-        ktThem = true;
+        KhoaMo(false);
     }//GEN-LAST:event_bt_khongActionPerformed
     private DefaultComboBoxModel<String> comboBoxLoaiPhong;
     public void LoadComboBoxLoaiPhong() throws IOException, SQLException {

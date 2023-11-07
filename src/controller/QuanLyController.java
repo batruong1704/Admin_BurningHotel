@@ -145,7 +145,7 @@ public class QuanLyController {
                 bp.setLoaiGiuong(rs.getString("LoaiGiuong"));
                 bp.setGiaPhong(rs.getString("GiaPhong"));
 
-                bp.setIMG(rs.getString("IMG"));
+//                bp.setIMG(rs.getString("IMG"));
                 bp.setDienTich(rs.getString("DienTich"));
                 bp.setTamNhin(rs.getString("TamNhin"));
                 bp.setMoTa(rs.getString("MoTa"));
