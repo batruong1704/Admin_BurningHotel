@@ -238,7 +238,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
 
     private void bt_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DangNhapActionPerformed
         try (Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM nhanvien nv, chucvu cv WHERE nv.MaChucVu = cv.MaChucVu and  Email = ? AND MatKhau = ?")) {
+            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM nhanvien nv, chucvu cv WHERE nv.MaChucVu = cv.MaChucVu and  nv.Email = ? AND nv.MatKhau = ?")) {
             String UN = txt_TaiKhoan.getText();
             String PW = txt_MatKhau.getText();
             psQL.setString(1, UN);

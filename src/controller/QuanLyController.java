@@ -519,15 +519,17 @@ public class QuanLyController {
             ex.printStackTrace();
         } 
     }
-    public static List<tbl_DauBep> NguonDauBep(String sMaKT) throws IOException {
+    public static List<tbl_DauBep> NguonDauBep(String sMaKT,String tCot) throws IOException {
         List<tbl_DauBep> arrDauBep = new ArrayList<>();
         Statement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From DauBep";
+            sql = "Select * From daubep";
             if(sMaKT != null && !sMaKT.equals("")){
-                sql = sql + " Where ID ='" + sMaKT + "'";
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
             sql = sql + " order by ID";
             state = conn.createStatement();
@@ -555,7 +557,21 @@ public class QuanLyController {
         } 
         return arrDauBep;
     }
-    
+    public static List<String> NguonCBBDauBep() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM daubep";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    } 
     public static void ThemDauBep(tbl_DauBep db) {
         conn = null;
         PreparedStatement state = null;

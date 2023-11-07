@@ -167,7 +167,9 @@ public class chuyenmanhinhController {
                         node = new JP_DauBep();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
                 case "PhieuGiamGia": {

@@ -15,9 +15,11 @@ import controller.QuanLyKhachSanController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.tbl_DauBep;
@@ -28,36 +30,47 @@ public class JP_DauBep extends javax.swing.JPanel {
     List<tbl_DauBep> arrDauBep = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimDauBep;
-    private static String id, hoten, gioitinh, chucvu, sonamkn, email, sdt, diachi, mota, hinhanh,hinhanh2;
+    private static String id, hoten, gioitinh, chucvu, sonamkn, email, sdt, diachi, mota, hinhanh,hinhanh2,tcot;
     public static Date ngaysinh;
 
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
     }};
 
-    public JP_DauBep() throws IOException {
+    public JP_DauBep() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LayNguon();
-        LayNguonCBO();
+     //   LayNguonCBO();
+        LoadComBoBoxDaubep();
         sTimDauBep = "";
     }
 
     public void LayNguon() throws IOException {
         tbl_DauBep = (DefaultTableModel)  tb_DauBep.getModel();
-        arrDauBep = QuanLyController.NguonDauBep(sTimDauBep);
+        arrDauBep = QuanLyController.NguonDauBep(sTimDauBep,tcot);
         tbl_DauBep.setRowCount(0);
         arrDauBep.forEach((KQ) -> {
             tbl_DauBep.addRow(new Object[]{KQ.getId(), KQ.getHoten(),KQ.getGioitinh(), KQ.getNgaysinh(), KQ.getChucvu(), KQ.getSonamkn(),KQ.getEmail(), KQ.getSdt(), KQ.getDiachi(), KQ.getMota(), KQ.getHinhanh()});
         });
     }
-    public void LayNguonCBO() throws IOException {
-        arrDauBep = QuanLyController.NguonDauBep(sTimDauBep);
+   // public void LayNguonCBO() throws IOException {
+  //      arrDauBep = QuanLyController.NguonDauBep(sTimDauBep);
 //        for (int i = 0; i < arrKhachHang.size(); i++) {
 //            cbgioitinh.addItem(arrKhachHang.get(i).getGioitinh());
 //        }
+   // }
+    private DefaultComboBoxModel<String> comboBoxDaubep;
+     public void LoadComBoBoxDaubep() throws IOException, SQLException {
+        comboBoxDaubep = new DefaultComboBoxModel<>();
+        cb_daubep.setModel(comboBoxDaubep);
+         List<String> daubep = QuanLyController.NguonCBBDauBep();
+         for (String db : daubep) {
+            comboBoxDaubep.addElement(db);
+         }
     }
+     
     public void KhoaMo(boolean b) {
         txtid.setEditable(b);
         txttendb.setEditable(b);
@@ -117,7 +130,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_daubep = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -193,10 +206,9 @@ public class JP_DauBep extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(76, 41, 211));
-        jComboBox1.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
+        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -204,7 +216,7 @@ public class JP_DauBep extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -218,7 +230,7 @@ public class JP_DauBep extends javax.swing.JPanel {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8))
                 .addGap(15, 15, 15))
         );
@@ -669,8 +681,9 @@ public class JP_DauBep extends javax.swing.JPanel {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         sTimDauBep = txt_timkiem.getText();
+        tcot=(String)cb_daubep.getSelectedItem();
         try{
-            LayNguon();
+           LayNguon();
         }catch(IOException ex){
             Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -872,7 +885,7 @@ public class JP_DauBep extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cb_daubep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -919,4 +932,6 @@ public class JP_DauBep extends javax.swing.JPanel {
     private javax.swing.JTextField txtsonamkn;
     private javax.swing.JTextField txttendb;
     // End of variables declaration//GEN-END:variables
+
+   
 }
