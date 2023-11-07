@@ -595,17 +595,17 @@ public class JP_DauBep extends javax.swing.JPanel {
         tb_DauBep.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         tb_DauBep.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Đầu Bếp", "Giới Tính ", "Năm Sinh", "Chức Vụ", "Số Năm KN", "Email", "SĐT", "Địa Chỉ ", "Mô Tả", "Hình Ảnh"
+                "ID", "Tên Đầu Bếp", "Giới Tính ", "Năm Sinh", "Chức Vụ", "Số Năm KN", "Email", "SĐT", "Địa Chỉ ", "Mô Tả"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -632,7 +632,6 @@ public class JP_DauBep extends javax.swing.JPanel {
             tb_DauBep.getColumnModel().getColumn(7).setPreferredWidth(50);
             tb_DauBep.getColumnModel().getColumn(8).setPreferredWidth(10);
             tb_DauBep.getColumnModel().getColumn(9).setPreferredWidth(100);
-            tb_DauBep.getColumnModel().getColumn(10).setPreferredWidth(10);
         }
 
         jPanel10.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -650,10 +649,11 @@ public class JP_DauBep extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void tb_DauBepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_DauBepMouseClicked
-        int index = tb_DauBep.getSelectedRow();
+        try{
+            int index = tb_DauBep.getSelectedRow();
         TableModel model = tb_DauBep.getModel();
         id = model.getValueAt(index, 0).toString();
-        hoten = model.getValueAt(index, 1).toString();
+        hoten = model.getValueAt(index, 1).toString();        
         gioitinh = model.getValueAt(index, 2).toString();
         Date date;
         try {
@@ -668,7 +668,6 @@ public class JP_DauBep extends javax.swing.JPanel {
         sdt = model.getValueAt(index, 7).toString();
         diachi = model.getValueAt(index, 8).toString();
         mota = model.getValueAt(index, 9).toString();
-        hinhanh = model.getValueAt(index, 10).toString();
         txtid.setText(id);
         txttendb.setText(hoten);
         if(gioitinh.equalsIgnoreCase("Nam") ){
@@ -690,7 +689,10 @@ public class JP_DauBep extends javax.swing.JPanel {
         txtsdt.setText(sdt);
         txtdiachi.setText(diachi);
         txtmota.setText(mota);
-        lb_anh.setText(hinhanh);
+        lb_anh.setText(QuanLyController.NguonTruyVanDuLieuDauBep("HinhAnh", id));
+        } catch (IOException ex) {
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tb_DauBepMouseClicked
 
     private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
@@ -731,11 +733,11 @@ public class JP_DauBep extends javax.swing.JPanel {
         diachi = txtdiachi.getText();
         mota = txtmota.getText();
         hinhanh = lb_anh.getText();
-        hinhanh2 = "../img/restaurant/"+lb_anh.getText();
-        tbl_DauBep db = new tbl_DauBep(id, hoten, gioitinh, date, chucvu, sonamkn, email, sdt, diachi, mota, hinhanh2);
+//        hinhanh2 = "../img/restaurant/"+lb_anh.getText();
+        tbl_DauBep db = new tbl_DauBep(id, hoten, gioitinh, date, chucvu, sonamkn, email, sdt, diachi, mota, hinhanh);
         if (ktThem == true) {
             QuanLyController.ThemDauBep(db);
-            String uploadDirectory = "C:\\xampp\\htdocs\\BurningHotel\\img\\restaurant";
+            String uploadDirectory = "C:\\xampp\\htdocs\\BurningHotel\\img\\restaurant\\chef";
             File uploadFile = new File(uploadDirectory, hinhanh);
 
             try {

@@ -604,33 +604,33 @@ private File selectedFile;
         tb_Phong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         tb_Phong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Loại Phòng", "Kiểu Phòng", "SLMax", "Loại Giường", "Giá Phòng", "IMG", "Diện Tích", "Tầm Nhìn", "Mô Tả", "Tình Trạng"
+                "ID", "Loại Phòng", "Kiểu Phòng", "SLMax", "Loại Giường", "Giá Phòng", "Diện Tích", "Tầm Nhìn", "Mô Tả", "Tình Trạng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -659,6 +659,7 @@ private File selectedFile;
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void tb_PhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_PhongMouseClicked
+        try{
         int index = tb_Phong.getSelectedRow();
         TableModel model = tb_Phong.getModel();
         maPhong = model.getValueAt(index, 0).toString();
@@ -667,11 +668,10 @@ private File selectedFile;
         slmax=model.getValueAt(index, 3).toString();
         loaigiuong = model.getValueAt(index, 4).toString();
         giaPhong = model.getValueAt(index, 5).toString();
-        img = model.getValueAt(index, 6).toString();
-        dientich=  model.getValueAt(index, 7).toString();
-        tamnhin = model.getValueAt(index, 8).toString();
-        moTa = model.getValueAt(index, 9).toString();
-        tinhTrang = model.getValueAt(index, 10).toString();
+        dientich=  model.getValueAt(index, 6).toString();
+        tamnhin = model.getValueAt(index, 7).toString();
+        moTa = model.getValueAt(index, 8).toString();
+        tinhTrang = model.getValueAt(index, 9).toString();
 
         txt_maphong.setText(maPhong);
         cbb_loaiphong.setSelectedItem(loaiPhong);
@@ -679,7 +679,7 @@ private File selectedFile;
         txt_slmax.setText(slmax);
         txt_loaigiuong.setText(loaigiuong);
         txt_giaphong.setText(giaPhong);
-        lb_anh.setText(img);
+        lb_anh.setText(QuanLyController.NguonTruyVanDuLieuPhong("IMG", maPhong));
         txt_dientich.setText(dientich);
         txt_tamnhin.setText(tamnhin);
         txt_mota.setText(moTa);
@@ -691,6 +691,9 @@ private File selectedFile;
             rdb_Full.setSelected(true);
         }
         txt_mota.setText(moTa);
+        } catch (IOException ex) {
+            Logger.getLogger(JP_Phong.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tb_PhongMouseClicked
 
     private void txt_maphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_maphongActionPerformed
