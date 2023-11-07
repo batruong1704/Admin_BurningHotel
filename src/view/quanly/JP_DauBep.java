@@ -117,6 +117,7 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -176,14 +177,12 @@ public class JP_DauBep extends javax.swing.JPanel {
 
         jPanel9.setBackground(new java.awt.Color(76, 41, 211));
         jPanel9.setPreferredSize(new java.awt.Dimension(300, 70));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 10, 20));
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txt_timkiem.setBorder(null);
         txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
         txt_timkiem.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel9.add(txt_timkiem);
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,7 +192,36 @@ public class JP_DauBep extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel9.add(jLabel8);
+
+        jComboBox1.setBackground(new java.awt.Color(76, 41, 211));
+        jComboBox1.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8))
+                .addGap(15, 15, 15))
+        );
 
         jPanel5.add(jPanel9, java.awt.BorderLayout.LINE_END);
 
@@ -844,6 +872,7 @@ public class JP_DauBep extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
