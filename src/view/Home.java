@@ -1154,6 +1154,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        JFrame jf_Main = new JF_DangNhap();                                      // Khởi tạo JFrame chính
+        jf_Main.setLocationRelativeTo(null);
+        jf_Main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
