@@ -1,8 +1,6 @@
 package view.hoatdong;
 
 import controller.DatMonController;
-import view.hoatdong.JDiaLog_HoaDon;
-import view.hoatdong.JDiaLog_BoLocNhaHang;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.tbl_QuanLiTienIch;
-import view.hoatdong.JF_NhaHang;
 
 public class JP_QuanLyTienIch extends javax.swing.JPanel {
 

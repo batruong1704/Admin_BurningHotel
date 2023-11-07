@@ -2,7 +2,6 @@ package view;
 import view.hoatdong.JP_DatPhong;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;

@@ -13,9 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.tbl_ChiTietMonAn;
-import model.tbl_ChucVu;
 import model.tbl_MonAn;
-import model.tbl_PhieuDatMon;
 import model.tbl_PhieuMonAn;
 
 public final class JF_NhaHang extends javax.swing.JFrame {

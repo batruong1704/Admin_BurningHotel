@@ -1,20 +1,13 @@
 package view.khohang;
 
 import controller.HangHoaController;
-import controller.QuanLyController;
-import java.math.RoundingMode;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import model.tbl_ChucVu;
 import model.tbl_HangHoa;
 import model.tbl_Nhaphanphoi;
 import model.tbl_NhapHang;

@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.tbl_CTPhieuDV;
-import model.tbl_CTPhieuSP;
 import model.tbl_DichVu;
 import model.tbl_HoaDon;
 import model.tbl_MonAn;

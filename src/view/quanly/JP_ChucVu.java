@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package view.quanly;
 
 import controller.QuanLyController;
 import controller.QuanLyKhachSanController;
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.sql.SQLException;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,10 +13,6 @@ import model.tbl_ChucVu;
 import textfield.SearchOptinEvent;
 import textfield.SearchOption;
 
-/**
- *
- * @author 05032002
- */
 public class JP_ChucVu extends javax.swing.JPanel {
 
     DefaultTableModel tbl_ChucVu;

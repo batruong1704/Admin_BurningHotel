@@ -1,12 +1,8 @@
 package view.khohang;
 
 import controller.HangHoaController;
-import java.math.RoundingMode;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

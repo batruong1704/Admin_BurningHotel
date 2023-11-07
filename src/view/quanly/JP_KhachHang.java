@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import controller.QuanLyKhachSanController;
 public class JP_KhachHang extends javax.swing.JPanel {
@@ -45,9 +44,6 @@ public class JP_KhachHang extends javax.swing.JPanel {
     }
     public void LayNguonCBO() throws IOException {
         arrKhachHang = QuanLyController.NguonKhachHang(sTimKhachHang);
-//        for (int i = 0; i < arrKhachHang.size(); i++) {
-//            cbgioitinh.addItem(arrKhachHang.get(i).getGioitinh());
-//        }
     }
     public void KhoaMo(boolean b) {
         txtmakh.setEditable(b);
