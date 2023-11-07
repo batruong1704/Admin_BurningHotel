@@ -20,6 +20,8 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
 
     public JP_NhaPhanPhoi() {
         initComponents();
+        XoaTrang();
+        KhoaMo(false);
         LoadDataArrayListToTable();
         timkiem = "";
     }
@@ -34,6 +36,12 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
     }
 
     public void KhoaMo(boolean b) {
+        txtmacty.setEditable(b);
+        txttencty.setEditable(b);
+        txtsdt.setEditable(b);
+        txtemail.setEditable(b);
+        txtdiachi.setEditable(b);
+        txtsdt.setEditable(b);
         bt_them.setEnabled(!b);
         bt_sua.setEnabled(!b);
         bt_xoa.setEnabled(!b);
@@ -452,7 +460,6 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
                 }
             }
         }
-        XoaTrang();
     }//GEN-LAST:event_bt_xoaActionPerformed
 
     private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
@@ -486,8 +493,8 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
 
     private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
         // TODO add your handling code here:
-
-        refresh(true);
+        XoaTrang();
+        KhoaMo(false);
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void bt_lammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_lammoiActionPerformed

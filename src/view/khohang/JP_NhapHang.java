@@ -23,6 +23,7 @@ public class JP_NhapHang extends javax.swing.JPanel {
     
     public JP_NhapHang() {
         initComponents();
+        KhoaMo(false);
         ppmasp.add(panelmasp);
         ppncc.add(panelncc);
         updateDateTimeLabel();
@@ -54,20 +55,18 @@ public class JP_NhapHang extends javax.swing.JPanel {
     }
 
     public void KhoaMo(boolean b) {
-//        txtmasp.setEditable(b);
-//        txttensp.setEditable(b);
-//        txtmact.setEditable(b);
-//        txtloaihang.setEditable(b);
-//        txtsoluong.setEditable(b);
-//        txtgianhap.setEditable(b);
-//        txtgiaban.setEditable(b);
-//        cbdvt.setEditable(b);
-
+        txtmanhap.setEditable(b);
+        
+        txtloaihang.setEditable(b);
+        txtsoluong.setEditable(b);
+        txtgianhap.setEditable(b);
+        txtsoluong.setEditable(b);
+    
         btnhaphang.setEnabled(!b);
         btsua.setEnabled(!b);
         btxoa.setEnabled(!b);
-//        btghi.setEnabled(b);
-//        btkhong.setEnabled(b);
+        btghi.setEnabled(b);
+        btkhong.setEnabled(b);
 //        btketthuc.setEnabled(!b);
 
     }
@@ -816,8 +815,7 @@ public class JP_NhapHang extends javax.swing.JPanel {
     private void btkhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btkhongActionPerformed
         // TODO add your handling code here:
         XoaTrang();
-        refresh(true);
-        ktThem = true;
+        KhoaMo(false);
     }//GEN-LAST:event_btkhongActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

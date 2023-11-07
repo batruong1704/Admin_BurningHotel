@@ -23,6 +23,8 @@ public class JP_HangHoa extends javax.swing.JPanel {
 
     public JP_HangHoa() {
         initComponents();
+        XoaTrang();
+        KhoaMo(false);
         LoadArrayListToTable();
         menu.add(panel);
         LoadJList();
@@ -545,7 +547,6 @@ public class JP_HangHoa extends javax.swing.JPanel {
                 }
             }
         }
-        XoaTrang();
     }//GEN-LAST:event_btxoaActionPerformed
 
     private void btghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btghiActionPerformed
@@ -600,8 +601,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
     private void btkhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btkhongActionPerformed
         // TODO add your handling code here:
         XoaTrang();
-        refresh(true);
-        ktThem = true;
+        KhoaMo(false);
     }//GEN-LAST:event_btkhongActionPerformed
 
     private void btlamoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlamoiActionPerformed
