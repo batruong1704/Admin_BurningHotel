@@ -238,7 +238,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
 
     private void bt_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DangNhapActionPerformed
         try (Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM khachhang WHERE Email = ? AND PassWord = ?")) {
+            PreparedStatement psQL = conn.prepareStatement("SELECT * FROM nhanvien nv, chucvu cv WHERE nv.MaChucVu = cv.MaChucVu and  Email = ? AND MatKhau = ?")) {
             String UN = txt_TaiKhoan.getText();
             String PW = txt_MatKhau.getText();
             psQL.setString(1, UN);
@@ -247,9 +247,22 @@ public class JF_DangNhap extends javax.swing.JFrame {
 
             if (rsQL.next()) {
                 Hotel_Manager.sTenDN = rsQL.getString("Email");
-                Hotel_Manager.sMatKhau = rsQL.getString("PassWord");
-                Hotel_Manager.sMaNhanVien = rsQL.getString("ID");
+                Hotel_Manager.sMatKhau = rsQL.getString("MatKhau");
+                Hotel_Manager.sMaNhanVien = rsQL.getString("MaNhanVien");
+                Hotel_Manager.sTenNhanVien = rsQL.getString("HoTen");
+                Hotel_Manager.sMaChucVu = rsQL.getString("TenChucVu");
+                Hotel_Manager.sNgaySinh = rsQL.getString("NgaySinh");
+                Hotel_Manager.sGioiTinh = rsQL.getString("GioiTinh");
+                Hotel_Manager.sDiaChi = rsQL.getString("DiaChi");
+                Hotel_Manager.sLuong = rsQL.getString("LuongTheoNgay");
                 JP_DatPhong.laymanhanvien = Hotel_Manager.sMaNhanVien;
+                JF_AboutMe.laymanhanvien = Hotel_Manager.sMaNhanVien;
+                JF_AboutMe.tennhanvien = Hotel_Manager.sTenNhanVien;
+                JF_AboutMe.machucvu = Hotel_Manager.sMaChucVu;
+                JF_AboutMe.gioitinh = Hotel_Manager.sGioiTinh;
+                JF_AboutMe.ngaysinh = Hotel_Manager.sNgaySinh;
+                JF_AboutMe.diachi = Hotel_Manager.sDiaChi;
+                JF_AboutMe.luongtheongay = Hotel_Manager.sLuong;
                 dispose();
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 // tự động đóng thông báo sau 3 giây

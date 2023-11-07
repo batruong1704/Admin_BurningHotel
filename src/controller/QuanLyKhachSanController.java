@@ -55,7 +55,7 @@ public class QuanLyKhachSanController {
         boolean updateSuccess = false;
          try {
         java.sql.Connection conn = DriverManager.getConnection(dbURL);
-        sql = "UPDATE taikhoanadmin SET PassWord = ? WHERE Email = ? AND PassWord = ?";
+        sql = "UPDATE nhanvien SET MatKhau = ? WHERE Email = ? AND MatKhau = ?";
         state = conn.prepareStatement(sql);
         state.setString(1, mkm);
         state.setString(2, email);
@@ -79,7 +79,7 @@ public class QuanLyKhachSanController {
         PreparedStatement state = null;
         try {
             conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            String sql = "UPDATE taikhoanadmin SET PassWord = ? WHERE SDT = ? AND Email = ?";
+            String sql = "UPDATE nhanvien SET MatKhau = ? WHERE SoDienThoai = ? AND Email = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, pw);
             state.setString(2, sdt);
@@ -90,13 +90,13 @@ public class QuanLyKhachSanController {
         }
     }
 
-    public static boolean KiemTraDatLaiMatKhau(String manhap1, String manhap2) {
+    public static boolean KiemTraDatLaiMatKhau(String email, String sdt) {
         conn = null;
         Statement state = null;
         boolean kq = false;
         try {
             conn = (Connection) DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "Select * from taikhoanadmin where taikhoanadmin.Email= '" + manhap1 + "' and taikhoanadmin.SDT='" + manhap2 + "'";
+            sql = "Select * from nhanvien where Email= '" + email + "' and SoDienThoai='" + sdt + "'";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             if (rs.next()) {
