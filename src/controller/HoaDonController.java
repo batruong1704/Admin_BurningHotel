@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import model.Hotel_Manager;
 import model.tbl_PhieuTraPhong;
 
@@ -110,20 +112,29 @@ public class HoaDonController {
         conn.close();
     }
     
-    public static void CapNhatPhong(String maphong) throws SQLException{
-        conn = null;
+    public static void CapNhatPhong(String maphong, String ngaydi) throws SQLException {
+        Connection conn = null;
         PreparedStatement state = null;
-        conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+
         try {
-            sql = "UPDATE phong SET TrangThai = 'Trống' WHERE maphong = '" + maphong + "'";
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+
+            Date ngayhientai = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String ngayht = dateFormat.format(ngayhientai);
+
+            if (ngayht.equals(ngaydi)) {
+                String sql = "UPDATE phong SET TrangThai = 'Trống' WHERE MaPhong = ?";
+                state = conn.prepareStatement(sql);
+                state.setString(1, maphong);
+                state.executeUpdate();
+            } else {
+                System.out.println("Ngày hiện tại không trùng với ngày đi.");
+            }
         } catch (Exception e) {
             System.out.println("Lỗi: " + e.getMessage());
         }
-        state = conn.prepareStatement(sql);
-        state.execute();
-        state.close();
-        conn.close();
-    }
+}
     
     public static ArrayList<tbl_PhieuTraPhong> NguonPhongBonus(String maKT) throws SQLException  {
         ArrayList<tbl_PhieuTraPhong> arrPhieuTra = new ArrayList<>();

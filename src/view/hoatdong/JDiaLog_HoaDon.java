@@ -21,7 +21,6 @@ import static view.hoatdong.JP_HoaDon.tongtienString;
 
 public class JDiaLog_HoaDon extends javax.swing.JFrame {
  private JP_HoaDon jpHoaDon;
-
     public JDiaLog_HoaDon() throws SQLException, IOException {
         initComponents();
         this.jpHoaDon = jpHoaDon;
@@ -367,7 +366,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                                              
+        String ngaydi=lb_ngaydi.getText();
         //double tiencocCSDLDouble = Double.parseDouble(JP_HoaDon.tiencocString);
         double tienconthieuDouble = Double.parseDouble(lb_Con.getText());
         double tiencocHT = Double.parseDouble(txt_thanhtoan.getText());
@@ -394,7 +393,7 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
             if (kq == JOptionPane.YES_OPTION) {
                 try {
                         HoaDonController.CapNhatHoaDon(lb_mahoadon.getText());
-                        HoaDonController.CapNhatPhong(maphongString);
+                        HoaDonController.CapNhatPhong(maphongString,ngaydi);
                         jpHoaDon.LayNguon("");
                         reset();
                         dispose();
