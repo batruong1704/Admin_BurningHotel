@@ -662,15 +662,15 @@ public class JP_DauBep extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tb_DauBep);
         if (tb_DauBep.getColumnModel().getColumnCount() > 0) {
-            tb_DauBep.getColumnModel().getColumn(0).setPreferredWidth(5);
-            tb_DauBep.getColumnModel().getColumn(1).setPreferredWidth(75);
-            tb_DauBep.getColumnModel().getColumn(2).setPreferredWidth(10);
-            tb_DauBep.getColumnModel().getColumn(3).setPreferredWidth(10);
-            tb_DauBep.getColumnModel().getColumn(4).setPreferredWidth(10);
-            tb_DauBep.getColumnModel().getColumn(5).setPreferredWidth(10);
+            tb_DauBep.getColumnModel().getColumn(0).setPreferredWidth(1);
+            tb_DauBep.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tb_DauBep.getColumnModel().getColumn(2).setPreferredWidth(5);
+            tb_DauBep.getColumnModel().getColumn(3).setPreferredWidth(5);
+            tb_DauBep.getColumnModel().getColumn(4).setPreferredWidth(5);
+            tb_DauBep.getColumnModel().getColumn(5).setPreferredWidth(5);
             tb_DauBep.getColumnModel().getColumn(6).setPreferredWidth(75);
             tb_DauBep.getColumnModel().getColumn(7).setPreferredWidth(50);
-            tb_DauBep.getColumnModel().getColumn(8).setPreferredWidth(10);
+            tb_DauBep.getColumnModel().getColumn(8).setPreferredWidth(5);
             tb_DauBep.getColumnModel().getColumn(9).setPreferredWidth(100);
         }
 

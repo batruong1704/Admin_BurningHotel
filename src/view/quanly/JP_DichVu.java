@@ -386,8 +386,8 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tb_dichvu);
         if (tb_dichvu.getColumnModel().getColumnCount() > 0) {
             tb_dichvu.getColumnModel().getColumn(0).setPreferredWidth(1);
-            tb_dichvu.getColumnModel().getColumn(1).setPreferredWidth(240);
-            tb_dichvu.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tb_dichvu.getColumnModel().getColumn(1).setPreferredWidth(300);
+            tb_dichvu.getColumnModel().getColumn(2).setPreferredWidth(40);
         }
 
         jPanel8.add(jScrollPane2, java.awt.BorderLayout.CENTER);
