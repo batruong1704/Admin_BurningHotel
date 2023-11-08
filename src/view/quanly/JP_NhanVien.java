@@ -207,6 +207,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
         bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
@@ -217,6 +218,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
         bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -229,7 +231,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_ghi, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(bt_ghi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))

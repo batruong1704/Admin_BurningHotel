@@ -188,22 +188,22 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
-        bt_ghi.setMaximumSize(new java.awt.Dimension(85, 25));
-        bt_ghi.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_ghi.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
-        bt_khong.setMaximumSize(new java.awt.Dimension(85, 25));
-        bt_khong.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_khong.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -215,20 +215,20 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel7.add(jPanel8, java.awt.BorderLayout.CENTER);
@@ -504,49 +504,6 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
-        if (txtmagiamgia.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txtmagiamgia.requestFocus();
-            return;
-        }
-        if (txttenmagiamgia.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txttenmagiamgia.requestFocus();
-            return;
-        }
-        if (QuanLyKhachSanController.KiemTraTrungMa("PhieuGiamGia", "MaGiamGia", txtmagiamgia.getText(), ktThem, macu) == true) {
-            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txtmagiamgia.requestFocus();
-            return;
-        }
-        magiamgia = txtmagiamgia.getText();
-        tenmagiamgia = txttenmagiamgia.getText();
-        chietkhau = txtchietkhau.getText();
-        if (rdb_conhan.isSelected()) {
-            tinhtrang = "1";
-        } else  {
-            tinhtrang = "0";
-        }
-        tbl_MaGiamGia mgg = new tbl_MaGiamGia(magiamgia, tenmagiamgia, chietkhau, tinhtrang);
-        if (ktThem == true) {
-            QuanLyController.ThemMaGiamGia(mgg);
-        } else {
-            QuanLyController.CapNhapMaGiamGia(mgg, macu);
-        }
-        try {
-            LayNguon();
-        } catch (IOException ex) {
-            Logger.getLogger(QuanLyKhachSanController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_ghiActionPerformed
-
-    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
-        XoaTrang();
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_khongActionPerformed
-
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
         macu = "";
@@ -618,6 +575,50 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
             rdb_hethan.setSelected(true);
         }
     }//GEN-LAST:event_tb_MaGiamGiaMouseClicked
+
+    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
+        if (txtmagiamgia.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txtmagiamgia.requestFocus();
+            return;
+        }
+        if (txttenmagiamgia.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txttenmagiamgia.requestFocus();
+            return;
+        }
+        if (QuanLyKhachSanController.KiemTraTrungMa("PhieuGiamGia", "MaGiamGia", txtmagiamgia.getText(), ktThem, macu) == true) {
+            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txtmagiamgia.requestFocus();
+            return;
+        }
+        magiamgia = txtmagiamgia.getText();
+        tenmagiamgia = txttenmagiamgia.getText();
+        chietkhau = txtchietkhau.getText();
+        if (rdb_conhan.isSelected()) {
+            tinhtrang = "1";
+        } else  {
+            tinhtrang = "0";
+        }
+        tbl_MaGiamGia mgg = new tbl_MaGiamGia(magiamgia, tenmagiamgia, chietkhau, tinhtrang);
+        if (ktThem == true) {
+            QuanLyController.ThemMaGiamGia(mgg);
+        } else {
+            QuanLyController.CapNhapMaGiamGia(mgg, macu);
+        }
+        try {
+            LayNguon();
+        } catch (IOException ex) {
+            Logger.getLogger(QuanLyKhachSanController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        KhoaMo(false);
+    }//GEN-LAST:event_bt_ghiActionPerformed
+
+    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
+        XoaTrang();
+        KhoaMo(false);
+        refresh(true);
+    }//GEN-LAST:event_bt_khongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

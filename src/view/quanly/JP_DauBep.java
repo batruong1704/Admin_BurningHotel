@@ -263,22 +263,22 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(320, 70));
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
-        bt_ghi.setMaximumSize(new java.awt.Dimension(85, 25));
-        bt_ghi.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_ghi.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
-        bt_khong.setMaximumSize(new java.awt.Dimension(85, 25));
-        bt_khong.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_khong.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -290,19 +290,19 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(bt_ghi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_ghi, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(bt_khong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -736,6 +736,69 @@ public class JP_DauBep extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tb_DauBepMouseClicked
 
+    private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
+        ktThem = true;
+        macu = "";
+        KhoaMo(true);
+        XoaTrang();
+        txtid.requestFocus();
+    }//GEN-LAST:event_bt_themActionPerformed
+
+    private void bt_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_suaActionPerformed
+        if (txtid.getText().length() <= 0) {
+            return;
+        }
+        macu = txtid.getText();
+        ktThem = false;
+        KhoaMo(true);
+        txtid.requestFocus();
+    }//GEN-LAST:event_bt_suaActionPerformed
+
+    private void bt_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xoaActionPerformed
+        if (txtid.getText().length() <= 0) {
+            JOptionPane.showConfirmDialog(this, "Hãy nhập thông tin cần xoá!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        macu = txtid.getText();
+        for (int i = 0; i < arrDauBep.size(); i++) {
+            if (arrDauBep.get(i).getId().equals(macu)) {
+                int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa đầu bếp này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+                if (kq == JOptionPane.YES_OPTION) {
+                    QuanLyController.XoaDauBep(macu);
+                    XoaTrang();
+                    try {
+                        LayNguon();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                return;
+            }
+        }
+    }//GEN-LAST:event_bt_xoaActionPerformed
+
+    private void txttendbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttendbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttendbActionPerformed
+
+    private void rdb_KhacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_KhacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdb_KhacActionPerformed
+
+    private void bt_chonanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chonanhActionPerformed
+        // TODO add your handling code here:
+        JFileChooser filechooser= new JFileChooser();
+        FileNameExtensionFilter imageFilter= new FileNameExtensionFilter("hinhanh","png","jpg");
+        filechooser.setFileFilter(imageFilter);
+        filechooser.setMultiSelectionEnabled(false);
+        int x=filechooser.showDialog(this, "Chọn file");
+        if (x==filechooser.APPROVE_OPTION){
+            selectedFile =filechooser.getSelectedFile();
+            String fileName =  selectedFile.getName();
+            lb_anh.setText(fileName);
+        }
+    }//GEN-LAST:event_bt_chonanhActionPerformed
+
     private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
         if (txtid.getText().length() <= 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
@@ -812,70 +875,8 @@ public class JP_DauBep extends javax.swing.JPanel {
     private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
         XoaTrang();
         KhoaMo(false);
+        refresh(true);
     }//GEN-LAST:event_bt_khongActionPerformed
-
-    private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
-        ktThem = true;
-        macu = "";
-        KhoaMo(true);
-        XoaTrang();
-        txtid.requestFocus();
-    }//GEN-LAST:event_bt_themActionPerformed
-
-    private void bt_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_suaActionPerformed
-        if (txtid.getText().length() <= 0) {
-            return;
-        }
-        macu = txtid.getText();
-        ktThem = false;
-        KhoaMo(true);
-        txtid.requestFocus();
-    }//GEN-LAST:event_bt_suaActionPerformed
-
-    private void bt_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xoaActionPerformed
-        if (txtid.getText().length() <= 0) {
-            JOptionPane.showConfirmDialog(this, "Hãy nhập thông tin cần xoá!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        macu = txtid.getText();
-        for (int i = 0; i < arrDauBep.size(); i++) {
-            if (arrDauBep.get(i).getId().equals(macu)) {
-                int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa đầu bếp này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
-                if (kq == JOptionPane.YES_OPTION) {
-                    QuanLyController.XoaDauBep(macu);
-                    XoaTrang();
-                    try {
-                        LayNguon();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                return;
-            }
-        }
-    }//GEN-LAST:event_bt_xoaActionPerformed
-
-    private void txttendbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttendbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttendbActionPerformed
-
-    private void rdb_KhacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_KhacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdb_KhacActionPerformed
-
-    private void bt_chonanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chonanhActionPerformed
-        // TODO add your handling code here:
-        JFileChooser filechooser= new JFileChooser();
-        FileNameExtensionFilter imageFilter= new FileNameExtensionFilter("hinhanh","png","jpg");
-        filechooser.setFileFilter(imageFilter);
-        filechooser.setMultiSelectionEnabled(false);
-        int x=filechooser.showDialog(this, "Chọn file");
-        if (x==filechooser.APPROVE_OPTION){
-            selectedFile =filechooser.getSelectedFile();
-            String fileName =  selectedFile.getName();
-            lb_anh.setText(fileName);
-        }
-    }//GEN-LAST:event_bt_chonanhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

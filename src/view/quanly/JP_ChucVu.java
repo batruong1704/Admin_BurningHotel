@@ -136,9 +136,11 @@ public class JP_ChucVu extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 5));
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
-        bt_ghi.setPreferredSize(new java.awt.Dimension(100, 25));
+        bt_ghi.setPreferredSize(new java.awt.Dimension(100, 30));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
@@ -146,9 +148,11 @@ public class JP_ChucVu extends javax.swing.JPanel {
         });
         jPanel3.add(bt_ghi);
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
-        bt_khong.setPreferredSize(new java.awt.Dimension(100, 25));
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(100, 30));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -286,7 +290,7 @@ public class JP_ChucVu extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(txt_luongchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(415, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel13, java.awt.BorderLayout.CENTER);
@@ -411,45 +415,6 @@ public class JP_ChucVu extends javax.swing.JPanel {
         txt_luongchucvu.setText(luongChucVu);
     }//GEN-LAST:event_tb_chucvuMouseClicked
 
-    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
-        if (txt_machucvu.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_machucvu.requestFocus();
-            return;
-        }
-        if (txt_tenchucvu.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_tenchucvu.requestFocus();
-            return;
-        }
-        if (QuanLyKhachSanController.KiemTraTrungMa("ChucVu", "MaChucVu", txt_machucvu.getText(), ktThem, macu) == true) {
-            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_machucvu.requestFocus();
-            return;
-        }
-        maChucVu = txt_machucvu.getText();
-        tenChucVu = txt_tenchucvu.getText();
-        luongChucVu=txt_luongchucvu.getText();
-
-        tbl_ChucVu cn = new tbl_ChucVu(maChucVu, tenChucVu, luongChucVu);
-        if (ktThem == true) {
-            QuanLyController.ThemBoPhan(cn);
-        } else {
-            QuanLyController.CapNhapBoPhan(cn, macu);
-        }
-        try {
-            LayNguon("", "");
-        } catch (IOException ex) {
-
-        }
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_ghiActionPerformed
-
-    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
-        XoaTrang();
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_khongActionPerformed
-
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
         macu = "";
@@ -510,6 +475,46 @@ public class JP_ChucVu extends javax.swing.JPanel {
             java.util.logging.Logger.getLogger(JP_ChucVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtKeyReleased
+
+    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
+        if (txt_machucvu.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_machucvu.requestFocus();
+            return;
+        }
+        if (txt_tenchucvu.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_tenchucvu.requestFocus();
+            return;
+        }
+        if (QuanLyKhachSanController.KiemTraTrungMa("ChucVu", "MaChucVu", txt_machucvu.getText(), ktThem, macu) == true) {
+            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_machucvu.requestFocus();
+            return;
+        }
+        maChucVu = txt_machucvu.getText();
+        tenChucVu = txt_tenchucvu.getText();
+        luongChucVu=txt_luongchucvu.getText();
+
+        tbl_ChucVu cn = new tbl_ChucVu(maChucVu, tenChucVu, luongChucVu);
+        if (ktThem == true) {
+            QuanLyController.ThemBoPhan(cn);
+        } else {
+            QuanLyController.CapNhapBoPhan(cn, macu);
+        }
+        try {
+            LayNguon("", "");
+        } catch (IOException ex) {
+
+        }
+        KhoaMo(false);
+    }//GEN-LAST:event_bt_ghiActionPerformed
+
+    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
+        XoaTrang();
+        KhoaMo(false);
+        refresh(true);
+    }//GEN-LAST:event_bt_khongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
