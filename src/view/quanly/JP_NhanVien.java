@@ -105,7 +105,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         txtdiachi.setText("");
         txtemail.setText("");
         txtmatkhau.setText("");
-        txttimkiem.setText("");
+        txt_timkiem.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -115,8 +115,11 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        txttimkiem = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        cb_daubep = new javax.swing.JComboBox<>();
+        txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -167,13 +170,25 @@ public final class JP_NhanVien extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(76, 41, 211));
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 70));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 10, 20));
+        jPanel10.setLayout(new java.awt.BorderLayout());
 
-        txttimkiem.setBackground(new java.awt.Color(123, 156, 225));
-        txttimkiem.setBorder(null);
-        txttimkiem.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel10.add(txttimkiem);
+        jPanel15.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
+        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
+        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_daubep);
+
+        txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
+        txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        txt_timkiem.setBorder(null);
+        txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel15.add(txt_timkiem);
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,7 +196,17 @@ public final class JP_NhanVien extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel10.add(jLabel8);
+        jPanel15.add(jLabel8);
+
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
+        jPanel15.add(btn_b2_refreshdv);
+
+        jPanel10.add(jPanel15, java.awt.BorderLayout.LINE_END);
 
         jPanel2.add(jPanel10, java.awt.BorderLayout.LINE_END);
 
@@ -463,7 +488,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(0, 0, 0)
                 .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel13, java.awt.BorderLayout.CENTER);
@@ -556,15 +581,6 @@ public final class JP_NhanVien extends javax.swing.JPanel {
 
         add(jPanel9, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        timkiem = txttimkiem.getText();
-        try {
-            LoadDataArrayListToTable();
-        } catch (IOException ex) {
-            Logger.getLogger(JP_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jLabel8MouseClicked
 
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         // TODO add your handling code here:
@@ -731,6 +747,19 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         refresh(true);
     }//GEN-LAST:event_bt_khongActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        timkiem = txt_timkiem.getText();
+        try {
+            LoadDataArrayListToTable();
+        } catch (IOException ex) {
+            Logger.getLogger(JP_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -738,7 +767,9 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_daubep;
     private javax.swing.JComboBox<String> cbmacv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -749,6 +780,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -768,6 +800,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbnam;
     private javax.swing.JRadioButton rbnu;
     private javax.swing.JTable tb_nhanvien;
+    private javax.swing.JTextField txt_timkiem;
     private javax.swing.JTextField txtdiachi;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txthoten;
@@ -775,6 +808,5 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     private javax.swing.JTextField txtmatkhau;
     private com.toedter.calendar.JDateChooser txtngaysinh;
     private javax.swing.JTextField txtsdt;
-    private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 }

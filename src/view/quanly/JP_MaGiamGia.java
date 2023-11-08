@@ -104,8 +104,11 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        cb_daubep = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -147,14 +150,23 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
 
         jPanel9.setBackground(new java.awt.Color(76, 41, 211));
         jPanel9.setPreferredSize(new java.awt.Dimension(300, 70));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 10, 20));
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
+
+        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
+        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_daubep);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txt_timkiem.setBorder(null);
         txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
-        txt_timkiem.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel9.add(txt_timkiem);
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel15.add(txt_timkiem);
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,7 +176,12 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel9.add(jLabel8);
+        jPanel15.add(jLabel8);
+
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        jPanel15.add(btn_b2_refreshdv);
+
+        jPanel9.add(jPanel15, java.awt.BorderLayout.LINE_END);
 
         jPanel5.add(jPanel9, java.awt.BorderLayout.LINE_END);
 
@@ -495,15 +512,6 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         add(jPanel10, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        sTimMaGiamGia = txt_timkiem.getText();
-        try{
-            LayNguon();
-        }catch(IOException ex){
-            Logger.getLogger(JP_MaGiamGia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jLabel8MouseClicked
-
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
         macu = "";
@@ -620,6 +628,15 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         refresh(true);
     }//GEN-LAST:event_bt_khongActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        sTimMaGiamGia = txt_timkiem.getText();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_MaGiamGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -627,7 +644,9 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_daubep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -639,6 +658,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

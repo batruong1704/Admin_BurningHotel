@@ -68,7 +68,14 @@ public final class JP_DichVu extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        cb_daubep = new javax.swing.JComboBox<>();
+        txt_timkiem = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -99,22 +106,54 @@ public final class JP_DichVu extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(76, 41, 211));
         jPanel1.setPreferredSize(new java.awt.Dimension(1140, 70));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel13.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel13.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(jPanel13, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Service management");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-        );
+        jPanel14.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel14.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
+
+        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
+        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_daubep);
+
+        txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
+        txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        txt_timkiem.setBorder(null);
+        txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel15.add(txt_timkiem);
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel15.add(jLabel8);
+
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        jPanel15.add(btn_b2_refreshdv);
+
+        jPanel14.add(jPanel15, java.awt.BorderLayout.LINE_END);
+
+        jPanel1.add(jPanel14, java.awt.BorderLayout.LINE_END);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -499,6 +538,16 @@ public final class JP_DichVu extends javax.swing.JPanel {
         refresh(true);
     }//GEN-LAST:event_bt_khongActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+//        sTimDauBep = txt_timkiem.getText();
+//        tcot=(String)cb_daubep.getSelectedItem();
+//        try{
+//            LayNguon();
+//        }catch(IOException ex){
+//            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -506,14 +555,20 @@ public final class JP_DichVu extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
+    private javax.swing.JComboBox<String> cb_daubep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -527,5 +582,6 @@ public final class JP_DichVu extends javax.swing.JPanel {
     private javax.swing.JTextField txt_giadv;
     private javax.swing.JTextField txt_mdv;
     private javax.swing.JTextField txt_tdv;
+    private javax.swing.JTextField txt_timkiem;
     // End of variables declaration//GEN-END:variables
 }

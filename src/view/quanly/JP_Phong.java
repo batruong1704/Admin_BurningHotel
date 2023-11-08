@@ -126,6 +126,7 @@ private File selectedFile;
         jPanel8 = new javax.swing.JPanel();
         txt_timkiem2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -198,6 +199,9 @@ private File selectedFile;
             }
         });
         jPanel8.add(jLabel11);
+
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        jPanel8.add(btn_b2_refreshdv);
 
         jPanel4.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
@@ -890,6 +894,7 @@ private File selectedFile;
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbb_loaiphong;
     private javax.swing.JLabel jLabel1;
