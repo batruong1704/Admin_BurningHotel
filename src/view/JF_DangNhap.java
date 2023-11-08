@@ -253,6 +253,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
                 Hotel_Manager.sMaChucVu = rsQL.getString("TenChucVu");
                 Hotel_Manager.sNgaySinh = rsQL.getString("NgaySinh");
                 Hotel_Manager.sGioiTinh = rsQL.getString("GioiTinh");
+                Hotel_Manager.sSDT = rsQL.getString("SoDienThoai");
                 Hotel_Manager.sDiaChi = rsQL.getString("DiaChi");
                 Hotel_Manager.sLuong = rsQL.getString("LuongTheoNgay");
                 JP_DatPhong.laymanhanvien = Hotel_Manager.sMaNhanVien;
@@ -260,6 +261,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
                 JF_AboutMe.tennhanvien = Hotel_Manager.sTenNhanVien;
                 JF_AboutMe.machucvu = Hotel_Manager.sMaChucVu;
                 JF_AboutMe.gioitinh = Hotel_Manager.sGioiTinh;
+                JF_AboutMe.sodienthoai = Hotel_Manager.sSDT;
                 JF_AboutMe.ngaysinh = Hotel_Manager.sNgaySinh;
                 JF_AboutMe.diachi = Hotel_Manager.sDiaChi;
                 JF_AboutMe.luongtheongay = Hotel_Manager.sLuong;

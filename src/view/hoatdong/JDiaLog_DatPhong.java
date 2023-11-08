@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.tbl_HoaDon;
 import model.tbl_PhieuDatPhong;
 
@@ -341,7 +342,14 @@ public final class JDiaLog_DatPhong extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        dispose();
+        try {
+            JPanel jp_main = new JP_DatPhong();
+            jp_main.setVisible(true);
+            dispose();
+
+        } catch (IOException ex) {
+            Logger.getLogger(JDiaLog_DatPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_confActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confActionPerformed

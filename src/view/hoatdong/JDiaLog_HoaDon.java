@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import static view.hoatdong.JP_HoaDon.conthieuString;
 import static view.hoatdong.JP_HoaDon.giadichvuString;
 import static view.hoatdong.JP_HoaDon.giamonanString;
@@ -362,7 +363,15 @@ public class JDiaLog_HoaDon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        dispose();
+     try {
+         JPanel jp_main = new JP_HoaDon();
+         jp_main.setVisible(true);
+         dispose();
+     } catch (IOException ex) {
+         Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException ex) {
+         Logger.getLogger(JDiaLog_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

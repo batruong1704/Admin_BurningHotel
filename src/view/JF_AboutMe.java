@@ -5,7 +5,7 @@ import controller.QuanLyKhachSanController;
 public class JF_AboutMe extends javax.swing.JFrame {
 
     private static String email, mkc, mkm;
-    public static String laymanhanvien, tennhanvien, machucvu, gioitinh, ngaysinh, diachi, luongtheongay; 
+    public static String laymanhanvien, tennhanvien, machucvu, gioitinh, ngaysinh, sodienthoai, diachi, luongtheongay; 
     public JF_AboutMe() {
         initComponents();
         txt_manhanvien.setText(JF_AboutMe.laymanhanvien);
@@ -13,6 +13,7 @@ public class JF_AboutMe extends javax.swing.JFrame {
         txt_machucvu.setText(JF_AboutMe.machucvu);
         txt_gioitinh.setText(JF_AboutMe.gioitinh);
         txt_ngaysinh.setText(JF_AboutMe.ngaysinh);
+        txt_sdt.setText(JF_AboutMe.sodienthoai);
         txt_diachi.setText(JF_AboutMe.diachi);
         txt_luong.setText(JF_AboutMe.luongtheongay);
     }

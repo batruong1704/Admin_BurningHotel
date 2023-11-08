@@ -278,10 +278,12 @@ public class JP_DatPhong extends javax.swing.JPanel {
         txt_info_diachi.setMargin(new java.awt.Insets(0, 2, 0, 0));
 
         rdb_info_Nam.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_info_Nam);
         rdb_info_Nam.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         rdb_info_Nam.setLabel("Nam");
 
         rdb_info_Nu.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_info_Nu);
         rdb_info_Nu.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         rdb_info_Nu.setLabel("Nữ");
 
@@ -289,6 +291,7 @@ public class JP_DatPhong extends javax.swing.JPanel {
         jLabel5.setText("Giới Tính:");
 
         rdb_Khac.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_Khac);
         rdb_Khac.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         rdb_Khac.setText("Khác");
         rdb_Khac.addActionListener(new java.awt.event.ActionListener() {
