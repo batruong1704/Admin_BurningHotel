@@ -128,16 +128,22 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel5.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        bt_khong.setText("Không ");
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
+        bt_khong.setText("Không");
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -149,20 +155,20 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addContainerGap()
+                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_ghi)
-                    .addComponent(bt_khong))
-                .addGap(16, 16, 16))
+                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -291,7 +297,7 @@ public final class JP_DichVu extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(txt_giadv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(424, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel9, java.awt.BorderLayout.CENTER);
@@ -389,46 +395,6 @@ public final class JP_DichVu extends javax.swing.JPanel {
         add(jPanel8, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
-        // TODO add your handling code here:
-        if (txt_mdv.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_mdv.requestFocus();
-            return;
-        }
-        if (txt_tdv.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_tdv.requestFocus();
-            return;
-        }
-        if (QuanLyKhachSanController.KiemTraTrungMa("DichVu", "MaDichVu", txt_mdv.getText(), ktThem, macu) == true) {
-            JOptionPane.showMessageDialog(this, "Mã dich vụ đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txt_mdv.requestFocus();
-            return;
-        }
-        MaDichVu = txt_mdv.getText();
-        TenDichVu = txt_tdv.getText();
-        GiaDichVu=txt_giadv.getText();
-        tbl_DichVu cn = new tbl_DichVu(MaDichVu, TenDichVu, GiaDichVu);
-        if (ktThem == true) {
-            QuanLyController.ThemDichVu(cn);
-        } else {
-            QuanLyController.CapNhapDichVu(cn, macu);
-        }
-        try {
-            LayNguon();
-        } catch (IOException ex) {
-            Logger.getLogger(JP_DichVu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_ghiActionPerformed
-
-    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
-        // TODO add your handling code here:
-        XoaTrang();
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_khongActionPerformed
-
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         // TODO add your handling code here:
         ktThem = true;
@@ -493,6 +459,45 @@ public final class JP_DichVu extends javax.swing.JPanel {
         txt_tdv.setText(TenDichVu);
         txt_giadv.setText(GiaDichVu);
     }//GEN-LAST:event_tb_dichvuMouseClicked
+
+    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
+        if (txt_mdv.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_mdv.requestFocus();
+            return;
+        }
+        if (txt_tdv.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_tdv.requestFocus();
+            return;
+        }
+        if (QuanLyKhachSanController.KiemTraTrungMa("DichVu", "MaDichVu", txt_mdv.getText(), ktThem, macu) == true) {
+            JOptionPane.showMessageDialog(this, "Mã dich vụ đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_mdv.requestFocus();
+            return;
+        }
+        MaDichVu = txt_mdv.getText();
+        TenDichVu = txt_tdv.getText();
+        GiaDichVu=txt_giadv.getText();
+        tbl_DichVu cn = new tbl_DichVu(MaDichVu, TenDichVu, GiaDichVu);
+        if (ktThem == true) {
+            QuanLyController.ThemDichVu(cn);
+        } else {
+            QuanLyController.CapNhapDichVu(cn, macu);
+        }
+        try {
+            LayNguon();
+        } catch (IOException ex) {
+            Logger.getLogger(JP_DichVu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        KhoaMo(false);
+    }//GEN-LAST:event_bt_ghiActionPerformed
+
+    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
+        XoaTrang();
+        KhoaMo(false);
+        refresh(true);
+    }//GEN-LAST:event_bt_khongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

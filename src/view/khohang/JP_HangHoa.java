@@ -106,6 +106,11 @@ public class JP_HangHoa extends javax.swing.JPanel {
         listncc = new javax.swing.JList<>();
         menu = new javax.swing.JPopupMenu();
         jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        cb_daubep = new javax.swing.JComboBox<>();
+        txt_timkiem = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -168,6 +173,61 @@ public class JP_HangHoa extends javax.swing.JPanel {
         jPanel6.setMinimumSize(new java.awt.Dimension(1140, 70));
         jPanel6.setPreferredSize(new java.awt.Dimension(1140, 70));
         jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jPanel8.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel8.setPreferredSize(new java.awt.Dimension(300, 70));
+
+        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
+        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
+
+        txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
+        txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        txt_timkiem.setBorder(null);
+        txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(200, 20));
+
+        jLabel13.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13))
+                .addGap(15, 15, 15))
+        );
+
+        jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
+
+        jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Customer management");
+        jPanel6.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -639,14 +699,22 @@ public class JP_HangHoa extends javax.swing.JPanel {
     }//GEN-LAST:event_tbhanghoaMouseClicked
 
     private void listnccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listnccMouseClicked
-        // TODO add your handling code here:
-     
         int selectedIndex = listncc.getSelectedIndex();//llaasy vị trí
         String selectedValue = listncc.getSelectedValue();//lấy giá trị
         String[] values = selectedValue.split("-");//chia chuỗi
         String mact = values[0];
         txtmact.setText(mact);
     }//GEN-LAST:event_listnccMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+//        sTimDauBep = txt_timkiem.getText();
+//        tcot=(String)cb_daubep.getSelectedItem();
+//        try{
+//            LayNguon();
+//        }catch(IOException ex){
+//            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_jLabel13MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -657,9 +725,12 @@ public class JP_HangHoa extends javax.swing.JPanel {
     private javax.swing.JButton btthem;
     private javax.swing.JButton bttimkiem;
     private javax.swing.JButton btxoa;
+    private javax.swing.JComboBox<String> cb_daubep;
     private javax.swing.JComboBox<String> cbdvt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -673,12 +744,14 @@ public class JP_HangHoa extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listncc;
     private javax.swing.JPopupMenu menu;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tbhanghoa;
+    private javax.swing.JTextField txt_timkiem;
     private javax.swing.JTextField txtgiaban;
     private javax.swing.JTextField txtgianhap;
     private javax.swing.JTextField txtloaihang;

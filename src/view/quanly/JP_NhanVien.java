@@ -69,7 +69,6 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         bt_xoa.setEnabled(!b);
         bt_ghi.setEnabled(b);
         bt_khong.setEnabled(b);
-        bt_lammoi.setEnabled(b);
     }
 
     public void refresh(boolean b) {
@@ -124,7 +123,6 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         bt_ghi = new javax.swing.JButton();
         bt_khong = new javax.swing.JButton();
-        bt_lammoi = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -205,27 +203,25 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
         jPanel5.setPreferredSize(new java.awt.Dimension(330, 70));
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
-            }
-        });
-
-        bt_lammoi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        bt_lammoi.setText("Làm Mới");
-        bt_lammoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_lammoiActionPerformed(evt);
             }
         });
 
@@ -234,23 +230,20 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(bt_ghi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(bt_khong)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(bt_lammoi)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(bt_ghi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_ghi)
-                    .addComponent(bt_khong)
-                    .addComponent(bt_lammoi))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -573,62 +566,6 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
-        // TODO add your handling code here:
-        if (txtmanv.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã nhân viên ", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txtmanv.requestFocus();
-            return;
-        }
-        if (QuanLyKhachSanController.KiemTraTrungMa("NhanVien", "MaNhanVien", txtmanv.getText(), ktThem, macu) == true) {
-            JOptionPane.showMessageDialog(this, "Mã nhân viên đã tồn tại", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-            txtmanv.requestFocus();
-            return;
-        }
-        manv = txtmanv.getText();
-        hoten = txthoten.getText();
-        macv = (String) cbmacv.getSelectedItem();
-        String gioitinh;
-        if (rbnam.isSelected()) {
-            gioitinh = "1";
-        } else {
-            gioitinh = "0";
-        }
-        sdt = txtsdt.getText();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String ngaysinh = sdf.format(txtngaysinh.getDate());
-
-        diachi = txtdiachi.getText();
-        email = txtemail.getText();
-        matkhau = txtmatkhau.getText();
-
-        tbl_NhanVien nv = new tbl_NhanVien(manv, hoten, macv, ngaysinh, gioitinh, diachi, email, sdt, matkhau);
-        if (ktThem == true) {
-            QuanLyController.ThemNhanVien(nv);
-            JOptionPane.showMessageDialog(this, "Thêm mới thành công ");
-        } else {
-            QuanLyController.CapNhatNhanVien(nv, macu);
-            JOptionPane.showMessageDialog(this, "Cập nhập thành công");
-        }
-        try {
-            LoadDataArrayListToTable();
-        } catch (IOException ex) {
-            Logger.getLogger(JP_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        KhoaMo(false);
-    }//GEN-LAST:event_bt_ghiActionPerformed
-
-    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
-        // TODO add your handling code here:
-        refresh(true);
-    }//GEN-LAST:event_bt_khongActionPerformed
-
-    private void bt_lammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_lammoiActionPerformed
-        // TODO add your handling code here:
-        XoaTrang();
-    }//GEN-LAST:event_bt_lammoiActionPerformed
-
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         // TODO add your handling code here:
         ktThem = true;
@@ -743,11 +680,61 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tb_nhanvienMouseClicked
 
+    private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
+        if (txtmanv.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã nhân viên ", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txtmanv.requestFocus();
+            return;
+        }
+        if (QuanLyKhachSanController.KiemTraTrungMa("NhanVien", "MaNhanVien", txtmanv.getText(), ktThem, macu) == true) {
+            JOptionPane.showMessageDialog(this, "Mã nhân viên đã tồn tại", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txtmanv.requestFocus();
+            return;
+        }
+        manv = txtmanv.getText();
+        hoten = txthoten.getText();
+        macv = (String) cbmacv.getSelectedItem();
+        String gioitinh;
+        if (rbnam.isSelected()) {
+            gioitinh = "1";
+        } else {
+            gioitinh = "0";
+        }
+        sdt = txtsdt.getText();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngaysinh = sdf.format(txtngaysinh.getDate());
+
+        diachi = txtdiachi.getText();
+        email = txtemail.getText();
+        matkhau = txtmatkhau.getText();
+
+        tbl_NhanVien nv = new tbl_NhanVien(manv, hoten, macv, ngaysinh, gioitinh, diachi, email, sdt, matkhau);
+        if (ktThem == true) {
+            QuanLyController.ThemNhanVien(nv);
+            JOptionPane.showMessageDialog(this, "Thêm mới thành công ");
+        } else {
+            QuanLyController.CapNhatNhanVien(nv, macu);
+            JOptionPane.showMessageDialog(this, "Cập nhập thành công");
+        }
+        try {
+            LoadDataArrayListToTable();
+        } catch (IOException ex) {
+            Logger.getLogger(JP_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        KhoaMo(false);
+    }//GEN-LAST:event_bt_ghiActionPerformed
+
+    private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
+        XoaTrang();
+        KhoaMo(false);
+        refresh(true);
+    }//GEN-LAST:event_bt_khongActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
     private javax.swing.JButton bt_khong;
-    private javax.swing.JButton bt_lammoi;
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
