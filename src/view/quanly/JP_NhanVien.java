@@ -722,7 +722,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         txtdiachi.setText(diachi);
         txtemail.setText(email);
         txtmatkhau.setText(matkhau);
-        if (gioitinh.equalsIgnoreCase("1")) {
+        if (gioitinh.equalsIgnoreCase("Nam")) {
             rbnam.setSelected(true);
             rbnu.setSelected(false);
         } else {

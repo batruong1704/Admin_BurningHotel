@@ -121,6 +121,7 @@ private File selectedFile;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         txt_timkiem2 = new javax.swing.JTextField();
@@ -392,6 +393,7 @@ private File selectedFile;
         jLabel7.setText("Tình Trạng:");
 
         rdb_Full.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_Full);
         rdb_Full.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_Full.setText("Full");
         rdb_Full.addActionListener(new java.awt.event.ActionListener() {
@@ -401,6 +403,7 @@ private File selectedFile;
         });
 
         rdb_Empty.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rdb_Empty);
         rdb_Empty.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_Empty.setText("Empty");
 
@@ -887,6 +890,7 @@ private File selectedFile;
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbb_loaiphong;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

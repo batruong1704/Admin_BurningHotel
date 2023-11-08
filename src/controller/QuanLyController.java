@@ -224,7 +224,7 @@ public class QuanLyController {
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
 
-            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,KieuPhong = ?, SLMax = ?, LoaiGiuong=? GiaPhong = ?, IMG=?, DienTich=?, TamNhin=?,MoTa = ?, TinhTrang = ? WHERE MaPhong = ?";
+            sql = "UPDATE phong SET MaPhong = ?, LoaiPhong = ?,KieuPhong = ?, SLMax = ?, LoaiGiuong=?, GiaPhong = ?, IMG=?, DienTich=?, TamNhin=?,MoTa = ?, TrangThai = ? WHERE MaPhong = ?";
 
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMaPhong());
@@ -285,7 +285,12 @@ public class QuanLyController {
                 bp.setEmail(rs.getString("Email"));
                 bp.setCmnd(rs.getString("CMND"));
                 bp.setDiachi(rs.getString("DiaChi"));
-                bp.setGioitinh(rs.getString("GioiTinh"));
+                if(rs.getString("GioiTinh").equals("1")){
+                    bp.setGioitinh("Nam");
+
+                } else {
+                    bp.setGioitinh("Nữ");
+                }
                 arrKhachHang.add(bp);
             }
             state.close();
@@ -404,7 +409,7 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE DichVu SET MaDichVu = ?, TenDichVu = ?, Gia = ? WHERE MaDichVu = ?";
+            sql = "UPDATE DichVu SET MaDichVu = ?, TenDichVu = ?, DonGia = ? WHERE MaDichVu = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, bp.getMadichvu());
             state.setString(2, bp.getTendichvu());
@@ -751,7 +756,12 @@ public class QuanLyController {
                 bp.setHoten(rs.getString("HoTen"));
                 bp.setMacv(rs.getString("MaChucVu"));
                 bp.setNgaysinh(rs.getString("NgaySinh"));
-                bp.setGioitinh(rs.getString("GioiTinh"));
+                if(rs.getString("GioiTinh").equals("1")){
+                    bp.setGioitinh("Nam");
+
+                } else {
+                    bp.setGioitinh("Nữ");
+                }
                 bp.setDiachi(rs.getString("DiaChi"));
                 bp.setEmail(rs.getString("Email"));
                 bp.setSdt(rs.getString("SoDienThoai"));

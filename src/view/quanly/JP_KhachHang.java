@@ -613,7 +613,7 @@ public class JP_KhachHang extends javax.swing.JPanel {
         txttenkh.setText(tenkh);
         txtdiachi.setText(diachi);
         txtemail.setText(email);
-        if(gioitinh.equalsIgnoreCase("1") ){
+        if(gioitinh.equalsIgnoreCase("Nam") ){
             rdb_Nam.setSelected(true);
             rdb_Nu.setSelected(false);
         }else{
