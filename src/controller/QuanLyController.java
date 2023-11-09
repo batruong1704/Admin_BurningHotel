@@ -73,6 +73,7 @@ public class QuanLyController {
     } 
     return arrBoPhan;
 }
+    
 
     public static void ThemBoPhan(tbl_ChucVu bp) {
         conn = null;
@@ -562,6 +563,31 @@ public class QuanLyController {
         } 
         return arrDauBep;
     }
+    
+    public static ArrayList<tbl_ChucVu> ChucVuDauBep() throws IOException {
+    ArrayList<tbl_ChucVu> arrBoPhan = new ArrayList<>();
+    try {
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+        sql = "Select * From ChucVu where MaChucVu LIKE '3%'" ;
+        
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        // Xử lý kết quả trả về
+        while (rs.next()) {
+            tbl_ChucVu bp = new tbl_ChucVu();
+            bp.setMaChucVu(rs.getString("MaChucVu"));
+            bp.setTenChucVu(rs.getString("TenChucVu"));
+            bp.setLuongTheoNgay(rs.getString("LuongTheoNgay"));
+            arrBoPhan.add(bp);
+        }
+        ps.close();
+        conn.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } 
+    return arrBoPhan;
+}
+    
     public static List<String> NguonCBBDauBep() throws SQLException{
         List<String> fields = new ArrayList<>();
         Statement state = null;
