@@ -535,17 +535,17 @@ public class JP_DoAn extends javax.swing.JPanel {
         tb_DoAn.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         tb_DoAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Món", "Phân Loại", "Thời Gian Nấu", "Độ Khó", "Thành Phần", "Hàm Lượng Calo", "Thành Tiền", "Mô Tả", "Số Lượng Bán", "Hình Ảnh"
+                "ID", "Tên Món", "Phân Loại", "Thời Gian Nấu", "Độ Khó", "Thành Phần", "Hàm Lượng Calo", "Thành Tiền", "Mô Tả", "Số Lượng Bán"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true, false, false, true, true
+                false, false, false, false, true, true, true, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
