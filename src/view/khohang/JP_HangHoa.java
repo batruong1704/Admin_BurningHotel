@@ -61,7 +61,6 @@ public class JP_HangHoa extends javax.swing.JPanel {
         txtgianhap.setEditable(b);
         txtgiaban.setEditable(b);
         cbdvt.setEditable(b);
-
         btthem.setEnabled(!b);
         btsua.setEnabled(!b);
         btxoa.setEnabled(!b);
@@ -134,7 +133,6 @@ public class JP_HangHoa extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btghi = new javax.swing.JButton();
         btkhong = new javax.swing.JButton();
-        btlamoi = new javax.swing.JButton();
         cbdvt = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -327,27 +325,25 @@ public class JP_HangHoa extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 12))); // NOI18N
 
-        btghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btghi.setBackground(new java.awt.Color(0, 0, 255));
+        btghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        btghi.setForeground(new java.awt.Color(255, 255, 255));
         btghi.setText("Ghi");
+        btghi.setPreferredSize(new java.awt.Dimension(130, 34));
         btghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btghiActionPerformed(evt);
             }
         });
 
-        btkhong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btkhong.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        btkhong.setForeground(new java.awt.Color(0, 0, 255));
         btkhong.setText("Không");
+        btkhong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        btkhong.setPreferredSize(new java.awt.Dimension(130, 34));
         btkhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btkhongActionPerformed(evt);
-            }
-        });
-
-        btlamoi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        btlamoi.setText("Làm mới");
-        btlamoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btlamoiActionPerformed(evt);
             }
         });
 
@@ -357,22 +353,19 @@ public class JP_HangHoa extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btghi)
+                .addComponent(btghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(btkhong)
-                .addGap(18, 18, 18)
-                .addComponent(btlamoi)
-                .addGap(25, 25, 25))
+                .addComponent(btkhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btghi)
-                    .addComponent(btkhong)
-                    .addComponent(btlamoi))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addComponent(btghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btkhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         cbdvt.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -664,11 +657,6 @@ public class JP_HangHoa extends javax.swing.JPanel {
         KhoaMo(false);
     }//GEN-LAST:event_btkhongActionPerformed
 
-    private void btlamoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlamoiActionPerformed
-        // TODO add your handling code here:
-        XoaTrang();
-    }//GEN-LAST:event_btlamoiActionPerformed
-
     private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
         // TODO add your handling code here:
         timkiem = txttimkiem.getText();
@@ -720,7 +708,6 @@ public class JP_HangHoa extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btghi;
     private javax.swing.JButton btkhong;
-    private javax.swing.JButton btlamoi;
     private javax.swing.JButton btsua;
     private javax.swing.JButton btthem;
     private javax.swing.JButton bttimkiem;

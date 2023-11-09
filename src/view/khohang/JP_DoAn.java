@@ -46,7 +46,7 @@ public class JP_DoAn extends javax.swing.JPanel {
         arrDoAn = HangHoaController.NguonDoAn(sTimDoAn);
         tbl_DoAn.setRowCount(0);
         arrDoAn.forEach((KQ) -> {
-            tbl_DoAn.addRow(new Object[]{KQ.getId(), KQ.getTenmon(),KQ.getPhanloai(), KQ.getThoigiannau(), KQ.getDokho(), KQ.getThanhphan(),KQ.getHamluongcalo(), KQ.getThanhtien(), KQ.getMota(), KQ.getSoluongban(), KQ.getImg()});
+            tbl_DoAn.addRow(new Object[]{KQ.getId(), KQ.getTenmon(),KQ.getPhanloai(), KQ.getThoigiannau(), KQ.getDokho(), KQ.getThanhphan(),KQ.getHamluongcalo(), KQ.getThanhtien(), KQ.getMota(), KQ.getSoluongban()});
         });
     }
     private DefaultComboBoxModel<String> comboBoxModel;
@@ -457,22 +457,26 @@ public class JP_DoAn extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều Khiển", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Montserrat", 0, 11))); // NOI18N
 
-        bt_ghi.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_ghi.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ghi.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_ghi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ghi.setText("Ghi");
         bt_ghi.setMaximumSize(new java.awt.Dimension(85, 25));
         bt_ghi.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_ghi.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_ghi.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_ghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ghiActionPerformed(evt);
             }
         });
 
-        bt_khong.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        bt_khong.setFont(new java.awt.Font("Montserrat SemiBold", 1, 13)); // NOI18N
+        bt_khong.setForeground(new java.awt.Color(0, 0, 255));
         bt_khong.setText("Không");
+        bt_khong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         bt_khong.setMaximumSize(new java.awt.Dimension(85, 25));
         bt_khong.setMinimumSize(new java.awt.Dimension(85, 25));
-        bt_khong.setPreferredSize(new java.awt.Dimension(85, 25));
+        bt_khong.setPreferredSize(new java.awt.Dimension(130, 34));
         bt_khong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khongActionPerformed(evt);
@@ -484,19 +488,19 @@ public class JP_DoAn extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -515,13 +519,13 @@ public class JP_DoAn extends javax.swing.JPanel {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         add(jPanel8, java.awt.BorderLayout.LINE_START);
@@ -702,6 +706,7 @@ public class JP_DoAn extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void tb_DoAnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_DoAnMouseClicked
+        try {
         int index = tb_DoAn.getSelectedRow();
         TableModel model = tb_DoAn.getModel();
         id = model.getValueAt(index, 0).toString();
@@ -714,7 +719,6 @@ public class JP_DoAn extends javax.swing.JPanel {
         thanhtien = model.getValueAt(index, 7).toString();
         mota = model.getValueAt(index, 8).toString();
         soluongban = model.getValueAt(index, 9).toString();
-        img = model.getValueAt(index, 10).toString();
         txtid.setText(id);
         txttenmon.setText(tenmon);
         cbphanloai.setSelectedItem(phanloai);
@@ -725,7 +729,10 @@ public class JP_DoAn extends javax.swing.JPanel {
         txtthanhtien.setText(thanhtien);
         txtslban.setText(soluongban);
         txtmota.setText(mota);
-        lb_anh.setText(img);
+        lb_anh.setText(HangHoaController.NguonTruyVanDuDoAn("img", id));
+        } catch (IOException ex) {
+            Logger.getLogger(JP_DoAn.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tb_DoAnMouseClicked
 
     private void txttenmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttenmonActionPerformed

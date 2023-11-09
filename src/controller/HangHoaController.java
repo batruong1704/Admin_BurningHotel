@@ -580,4 +580,26 @@ public class HangHoaController {
             ex.printStackTrace();
         } 
     }
+    
+    public static String NguonTruyVanDuDoAn(String sTenCotGT, String sMaKT) throws IOException {
+        String ketqua = "";
+        Statement state = null;
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select " + sTenCotGT + " from doan where ID = '" + sMaKT + "'";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                ketqua = rs.getString(sTenCotGT);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ketqua;
+    }
+
 }
