@@ -1,9 +1,9 @@
 # Phần mềm quản lý khách sạn
 ## 1. Tổng quan:
-1. Ngôn ngữ lập trình: Java Swing
-2. Loại CSDL: Relational Database
-3. Đối tượng sử dung: Người quản lý, Lễ tân
-4. Các chức năng chính: Quản lý các nghiệp vụ của khách sạn, hỗ trợ đặt phòng, theo dõi doanh thu theo tháng
+  Ngôn ngữ lập trình: Java Swing
+  Loại CSDL: Relational Database
+  Đối tượng sử dung: Người quản lý, Lễ tân
+  Các chức năng chính: Quản lý các nghiệp vụ của khách sạn, hỗ trợ đặt phòng, theo dõi doanh thu theo tháng
 ## 2. Hình ảnh chương trình:
 ![image](https://github.com/buck1704/Hotel_Manager/assets/132087690/2ed5b15a-a9c7-443d-b3ad-b993095a3a95)
 <p align="center">Giao Diện Đăng Nhập</p>
