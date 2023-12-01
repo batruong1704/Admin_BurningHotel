@@ -3,10 +3,12 @@ package view.quanly;
 import controller.QuanLyController;
 import controller.QuanLyKhachSanController;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -17,21 +19,33 @@ public final class JP_DichVu extends javax.swing.JPanel {
     DefaultTableModel tbl_DichVu;
     List<tbl_DichVu> arrDichVu = new ArrayList<>();
     private static boolean ktThem;
-    private static String macu;
-    private static String MaDichVu, TenDichVu, GiaDichVu;
-    public JP_DichVu() throws IOException, IOException {
+    private static String macu, sTimDichVu;
+    private static String MaDichVu, TenDichVu, GiaDichVu, tcot;
+    public JP_DichVu() throws IOException, IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LayNguon();
+        sTimDichVu="";
+        LoadComBoBoxDichvu();
     }
     public void LayNguon() throws IOException {
         tbl_DichVu = (DefaultTableModel) tb_dichvu.getModel();
-        arrDichVu = QuanLyController.NguonDichVu();
+        arrDichVu = QuanLyController.NguonDichVu(sTimDichVu, tcot);
         tbl_DichVu.setRowCount(0);
         arrDichVu.forEach((KQ) -> {
             tbl_DichVu.addRow(new Object[]{KQ.getMadichvu(), KQ.getTendichvu(), KQ.getGiadichvu()});
         });
+    }
+    
+    private DefaultComboBoxModel<String> comboBoxDichvu;
+     public void LoadComBoBoxDichvu() throws IOException, SQLException {
+        comboBoxDichvu = new DefaultComboBoxModel<>();
+        cb_dichvu.setModel(comboBoxDichvu);
+         List<String> dichvu = QuanLyController.NguonCBBDichVu();
+         for (String db : dichvu) {
+            comboBoxDichvu.addElement(db);
+         }
     }
      
      public void KhoaMo(boolean b) {
@@ -72,7 +86,7 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        cb_daubep = new javax.swing.JComboBox<>();
+        cb_dichvu = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btn_b2_refreshdv = new javax.swing.JLabel();
@@ -126,10 +140,10 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
-        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
-        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel15.add(cb_daubep);
+        cb_dichvu.setBackground(new java.awt.Color(76, 41, 211));
+        cb_dichvu.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_dichvu.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_dichvu);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -149,6 +163,11 @@ public final class JP_DichVu extends javax.swing.JPanel {
         jPanel15.add(jLabel8);
 
         btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
         jPanel15.add(btn_b2_refreshdv);
 
         jPanel14.add(jPanel15, java.awt.BorderLayout.LINE_END);
@@ -539,14 +558,24 @@ public final class JP_DichVu extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-//        sTimDauBep = txt_timkiem.getText();
-//        tcot=(String)cb_daubep.getSelectedItem();
-//        try{
-//            LayNguon();
-//        }catch(IOException ex){
-//            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        sTimDichVu = txt_timkiem.getText();
+        tcot=(String)cb_dichvu.getSelectedItem();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        sTimDichVu = "";
+        tcot=(String)cb_dichvu.getSelectedItem();
+        try{
+           LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -556,7 +585,7 @@ public final class JP_DichVu extends javax.swing.JPanel {
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
     private javax.swing.JLabel btn_b2_refreshdv;
-    private javax.swing.JComboBox<String> cb_daubep;
+    private javax.swing.JComboBox<String> cb_dichvu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

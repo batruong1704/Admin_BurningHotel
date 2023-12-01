@@ -39,7 +39,7 @@ private File selectedFile;
     
     public void LayNguon() throws IOException {
         tbl_Phong = (DefaultTableModel) tb_DatBan.getModel();
-        arrPhong = QuanLyController.NguonPhong();
+        //arrPhong = QuanLyController.NguonPhong();
         tbl_Phong.setRowCount(0);
         arrPhong.forEach((KQ) -> {
 

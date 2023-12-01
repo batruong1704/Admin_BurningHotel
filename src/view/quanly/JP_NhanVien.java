@@ -15,6 +15,7 @@ import javax.swing.table.TableModel;
 import model.tbl_NhanVien;
 import controller.QuanLyKhachSanController;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import model.tbl_ChucVu;
 
@@ -23,20 +24,21 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     DefaultTableModel model;//DefaultTableModel là một lớp trong Java Swing được sử dụng để quản lý dữ liệu cho một JTable (bảng hiển thị dữ liệu).
     List<tbl_NhanVien> list = new ArrayList<>();
     private static boolean ktThem;
-    private static String macu;
-    private static String manv, hoten, macv, gioitinh, ngaysinh, sdt, diachi, email, matkhau;
-    private static String timkiem;
+    private static String macu, sTimNhanVien;
+    private static String manv, hoten, macv, gioitinh, ngaysinh, sdt, diachi, email, matkhau, tcot;
 
-    public JP_NhanVien() throws IOException {
+    public JP_NhanVien() throws IOException, SQLException {
         initComponents();
         LoadDataArrayListToTable();
         LoadComBoBox();
-        timkiem = "";
+        LoadComBoBoxNhanVien();
+        sTimNhanVien = "";
         KhoaMo(false);
+        XoaTrang();
     }
 
     public void LoadDataArrayListToTable() throws IOException {
-        list = QuanLyController.NguonNhanVien(timkiem);//lấy danh sách các đối tuượng 
+        list = QuanLyController.NguonNhanVien(sTimNhanVien, tcot);//lấy danh sách các đối tuượng 
         model = (DefaultTableModel) tb_nhanvien.getModel();
         model.setRowCount(0);//thiết lập số hàng của bảng là 0
         for (tbl_NhanVien nv : list) { //để lặp qua từng đối tượng tbl_NhanVien trong danh sách list.
@@ -52,6 +54,16 @@ public final class JP_NhanVien extends javax.swing.JPanel {
          for (tbl_ChucVu o : chucvu) {
             comboBoxModel.addElement(o.getMaChucVu() +"-"+o.getTenChucVu() ); 
         }
+    }
+    
+    private DefaultComboBoxModel<String> comboBoxNhanVien;
+     public void LoadComBoBoxNhanVien() throws IOException, SQLException {
+        comboBoxNhanVien = new DefaultComboBoxModel<>();
+        cb_nhanvien.setModel(comboBoxNhanVien);
+         List<String> nhanvien = QuanLyController.NguonCBBNhanVien();
+         for (String db : nhanvien) {
+            comboBoxNhanVien.addElement(db);
+         }
     }
 
     public void KhoaMo(boolean b) {
@@ -116,7 +128,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        cb_daubep = new javax.swing.JComboBox<>();
+        cb_nhanvien = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btn_b2_refreshdv = new javax.swing.JLabel();
@@ -176,10 +188,10 @@ public final class JP_NhanVien extends javax.swing.JPanel {
         jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
-        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
-        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel15.add(cb_daubep);
+        cb_nhanvien.setBackground(new java.awt.Color(76, 41, 211));
+        cb_nhanvien.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_nhanvien.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_nhanvien);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -268,7 +280,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_ghi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -748,16 +760,23 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        timkiem = txt_timkiem.getText();
-        try {
-            LoadDataArrayListToTable();
-        } catch (IOException ex) {
-            Logger.getLogger(JP_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        sTimNhanVien = txt_timkiem.getText();
+        tcot=(String)cb_nhanvien.getSelectedItem();
+        try{
+           LoadDataArrayListToTable();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
-        // TODO add your handling code here:
+        sTimNhanVien = "";
+        tcot=(String)cb_nhanvien.getSelectedItem();
+        try{
+           LoadDataArrayListToTable();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
 
 
@@ -769,7 +788,7 @@ public final class JP_NhanVien extends javax.swing.JPanel {
     private javax.swing.JButton bt_xoa;
     private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cb_daubep;
+    private javax.swing.JComboBox<String> cb_nhanvien;
     private javax.swing.JComboBox<String> cbmacv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

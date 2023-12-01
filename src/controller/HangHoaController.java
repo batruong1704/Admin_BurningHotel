@@ -25,16 +25,34 @@ public class HangHoaController {
     public static String sql, sql2;
     public static String slm, sls;
 
-    public static List<tbl_HangHoa> LoadDataHangHoaToArrayList(String kt) {
+    public static List<String> NguonCBBHangHoa() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM mathang";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    }
+    
+    public static List<tbl_HangHoa> LoadDataHangHoaToArrayList(String sMaKT,String tCot) {
         List<tbl_HangHoa> list = new ArrayList<>();
         try {
             conn = (Connection) DriverManager.getConnection(dbURL);
             Statement st = (Statement) conn.createStatement();
-            sql = " select * from mathang ";
-            if (kt != null && !kt.equals("")) {
-                sql = sql + "where MaHang like N'%" + kt + "%' or TenHang like N'%" + kt + "%'";
-
+            sql = "Select * From mathang";
+            if(sMaKT != null && !sMaKT.equals("")){
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
+            sql = sql + " order by MaHang";
             ResultSet rs = (ResultSet) st.executeQuery(sql);
             while (rs.next()) {
                 tbl_HangHoa hh = new tbl_HangHoa();
@@ -475,7 +493,23 @@ public class HangHoaController {
         }
     }
     
-    public static List<tbl_DoAn> NguonDoAn(String sMaKT) throws IOException {
+    public static List<String> NguonCBBDoAn() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM doan";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    }
+    
+    public static List<tbl_DoAn> NguonDoAn(String sMaKT,String tCot) throws IOException {
         List<tbl_DoAn> arrDoAn = new ArrayList<>();
         Statement state = null;
         try {
@@ -483,7 +517,9 @@ public class HangHoaController {
             // Thực hiện truy vấn và lấy kết quả trả về
             sql = "Select * From DoAn";
             if(sMaKT != null && !sMaKT.equals("")){
-                sql = sql + " Where ID ='" + sMaKT + "'";
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
             sql = sql + " order by ID";
             state = conn.createStatement();

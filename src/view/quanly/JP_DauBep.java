@@ -223,6 +223,11 @@ public class JP_DauBep extends javax.swing.JPanel {
         jPanel9.add(jLabel8);
 
         btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
         jPanel9.add(btn_b2_refreshdv);
 
         jPanel5.add(jPanel9, java.awt.BorderLayout.LINE_END);
@@ -903,6 +908,16 @@ public class JP_DauBep extends javax.swing.JPanel {
 
         comboBoxModel.setSelectedItem(mact);
     }//GEN-LAST:event_cbmacvActionPerformed
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        sTimDauBep = "";
+        tcot=(String)cb_daubep.getSelectedItem();
+        try{
+           LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

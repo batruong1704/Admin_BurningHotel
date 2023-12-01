@@ -25,20 +25,22 @@ private File selectedFile;
     DefaultTableModel tbl_Phong;
     ArrayList<tbl_Phong> arrPhong = new ArrayList<>();
     private static boolean ktThem;
-    private static String macu;
-    private static String maPhong, loaiPhong,kieuPhong,slmax,loaigiuong,giaPhong,img,img2,dientich,tamnhin,moTa, tinhTrang;
+    private static String macu, sTimPhong;
+    private static String maPhong, loaiPhong,kieuPhong,slmax,loaigiuong,giaPhong,img,img2,dientich,tamnhin,moTa, tinhTrang, tcot;
     
     public JP_Phong() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LayNguon();
+        LoadComBoBoxPhong();
         LoadComboBoxLoaiPhong();
+        sTimPhong="";
     }
     
     public void LayNguon() throws IOException {
         tbl_Phong = (DefaultTableModel) tb_Phong.getModel();
-        arrPhong = QuanLyController.NguonPhong();
+        arrPhong = QuanLyController.NguonPhong(sTimPhong, tcot);
         tbl_Phong.setRowCount(0);
         arrPhong.forEach((KQ) -> {
 
@@ -46,6 +48,16 @@ private File selectedFile;
                                            KQ.getTamNhin(),KQ.getMoTa(), KQ.getTinhTrang()});
 
         });
+    }
+    
+    private DefaultComboBoxModel<String> comboBoxPhong;
+    public void LoadComBoBoxPhong() throws IOException, SQLException {
+        comboBoxPhong = new DefaultComboBoxModel<>();
+        cb_phong.setModel(comboBoxPhong);
+         List<String> phong = QuanLyController.NguonCBBPhong();
+         for (String db : phong) {
+            comboBoxPhong.addElement(db);
+         }
     }
     
     DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer() {
@@ -123,9 +135,11 @@ private File selectedFile;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        txt_timkiem2 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        cb_phong = new javax.swing.JComboBox<>();
+        txt_timkiem = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -181,29 +195,46 @@ private File selectedFile;
         jPanel4.setPreferredSize(new java.awt.Dimension(1140, 70));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel8.setBackground(new java.awt.Color(76, 41, 211));
-        jPanel8.setPreferredSize(new java.awt.Dimension(300, 70));
-        jPanel8.setRequestFocusEnabled(false);
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 10, 20));
+        jPanel13.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel13.setLayout(new java.awt.BorderLayout());
 
-        txt_timkiem2.setBackground(new java.awt.Color(123, 156, 225));
-        txt_timkiem2.setBorder(null);
-        txt_timkiem2.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel8.add(txt_timkiem2);
+        jPanel16.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel16.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        cb_phong.setBackground(new java.awt.Color(76, 41, 211));
+        cb_phong.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_phong.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel16.add(cb_phong);
+
+        txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
+        txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        txt_timkiem.setBorder(null);
+        txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel16.add(txt_timkiem);
+
+        jLabel15.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                jLabel15MouseClicked(evt);
             }
         });
-        jPanel8.add(jLabel11);
+        jPanel16.add(jLabel15);
 
         btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
-        jPanel8.add(btn_b2_refreshdv);
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
+        jPanel16.add(btn_b2_refreshdv);
 
-        jPanel4.add(jPanel8, java.awt.BorderLayout.LINE_END);
+        jPanel13.add(jPanel16, java.awt.BorderLayout.LINE_END);
+
+        jPanel4.add(jPanel13, java.awt.BorderLayout.LINE_END);
 
         jLabel8.setFont(new java.awt.Font("Century Schoolbook", 1, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -663,10 +694,6 @@ private File selectedFile;
         add(jPanel10, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-
-    }//GEN-LAST:event_jLabel11MouseClicked
-
     private void tb_PhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_PhongMouseClicked
         try{
         int index = tb_Phong.getSelectedRow();
@@ -877,6 +904,26 @@ private File selectedFile;
         XoaTrang();
         KhoaMo(false);
     }//GEN-LAST:event_bt_khongActionPerformed
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        sTimPhong = txt_timkiem.getText();
+        tcot=(String)cb_phong.getSelectedItem();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        sTimPhong = "";
+        tcot=(String)cb_phong.getSelectedItem();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
     private DefaultComboBoxModel<String> comboBoxLoaiPhong;
     public void LoadComboBoxLoaiPhong() throws IOException, SQLException {
      comboBoxLoaiPhong = new DefaultComboBoxModel<>();
@@ -896,13 +943,14 @@ private File selectedFile;
     private javax.swing.JButton bt_xoa;
     private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_phong;
     private javax.swing.JComboBox<String> cbb_loaiphong;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -915,15 +963,16 @@ private File selectedFile;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -939,6 +988,6 @@ private File selectedFile;
     private javax.swing.JTextArea txt_mota;
     private javax.swing.JTextField txt_slmax;
     private javax.swing.JTextField txt_tamnhin;
-    private javax.swing.JTextField txt_timkiem2;
+    private javax.swing.JTextField txt_timkiem;
     // End of variables declaration//GEN-END:variables
 }

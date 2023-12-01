@@ -83,7 +83,7 @@
                 <Property name="verticalGap" type="int" value="20"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="cb_daubep">
+                <Component class="javax.swing.JComboBox" name="cb_khachhang">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="d3" green="29" red="4c" type="rgb"/>
@@ -141,6 +141,9 @@
                       <Image iconType="3" name="/image/refresh_26px_light.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_b2_refreshdvMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

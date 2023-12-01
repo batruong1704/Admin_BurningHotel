@@ -120,6 +120,9 @@
                   <Image iconType="3" name="/image/refresh_26px_light.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_b2_refreshdvMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

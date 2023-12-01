@@ -95,7 +95,9 @@ public class chuyenmanhinhController {
                         node = new JP_DichVu();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
 
@@ -104,7 +106,9 @@ public class chuyenmanhinhController {
                         node = new JP_NhanVien();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
 
@@ -113,7 +117,9 @@ public class chuyenmanhinhController {
                         node = new JP_KhachHang();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
 
@@ -146,7 +152,13 @@ public class chuyenmanhinhController {
                 break;
 
                 case "KhoHang": {
+                try {
                     node = new JP_HangHoa();
+                } catch (IOException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
 
@@ -160,7 +172,13 @@ public class chuyenmanhinhController {
                 break;
 
                 case "NhaPhanPhoi": {
+                try {
                     node = new JP_NhaPhanPhoi();
+                } catch (IOException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
                 case "DauBep": {
@@ -178,7 +196,9 @@ public class chuyenmanhinhController {
                         node = new JP_MaGiamGia();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
                 
@@ -187,7 +207,9 @@ public class chuyenmanhinhController {
                         node = new JP_DoAn();
                     } catch (IOException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (SQLException ex) {
+                    Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 }
                 break;
                 

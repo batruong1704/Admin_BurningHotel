@@ -1,43 +1,59 @@
 package view.khohang;
 
 import controller.HangHoaController;
+import controller.QuanLyController;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.tbl_HangHoa;
 import model.tbl_Nhaphanphoi;
+import view.quanly.JP_DauBep;
 
 public class JP_HangHoa extends javax.swing.JPanel {
 
     DefaultTableModel model;
     List<tbl_HangHoa> list = new ArrayList<>();
     private static boolean ktThem;
-    private static String macu;
-    private static String mahang, tenhang, macongty, loaihang, donvitinh, gianhap, giaban;
-
-    private static String timkiem;
+    private static String macu, sTimHangHoa;
+    private static String mahang, tenhang, macongty, loaihang, donvitinh, gianhap, giaban, tcot;
     int soluong;
 
-    public JP_HangHoa() {
+    public JP_HangHoa() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LoadArrayListToTable();
+        LoadComBoBoxHangHoa();
         menu.add(panel);
         LoadJList();
-        timkiem = "";
+        sTimHangHoa = "";
     }
 
     public void LoadArrayListToTable() {
-        list = HangHoaController.LoadDataHangHoaToArrayList(timkiem);
+        list = HangHoaController.LoadDataHangHoaToArrayList(sTimHangHoa, tcot);
         model = (DefaultTableModel) tbhanghoa.getModel();
         model.setRowCount(0);
         for (tbl_HangHoa hh : list) {
             model.addRow(new Object[]{hh.getMahang(), hh.getTenhang(), hh.getMacongty(), hh.getLoaihang(), hh.getSoluong(), hh.getDonvitinh(), hh.gianhap, hh.giaban});
         }
+    }
+    
+    private DefaultComboBoxModel<String> comboBoxHangHoa;
+    public void LoadComBoBoxHangHoa() throws IOException, SQLException {
+        comboBoxHangHoa = new DefaultComboBoxModel<>();
+        cb_hanghoa.setModel(comboBoxHangHoa);
+         List<String> hanghoa = HangHoaController.NguonCBBHangHoa();
+         for (String db : hanghoa) {
+            comboBoxHangHoa.addElement(db);
+         }
     }
 
     public void LoadJList() {
@@ -106,7 +122,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
         menu = new javax.swing.JPopupMenu();
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        cb_daubep = new javax.swing.JComboBox<>();
+        cb_hanghoa = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -175,9 +191,9 @@ public class JP_HangHoa extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(76, 41, 211));
         jPanel8.setPreferredSize(new java.awt.Dimension(300, 70));
 
-        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
-        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
+        cb_hanghoa.setBackground(new java.awt.Color(76, 41, 211));
+        cb_hanghoa.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_hanghoa.setForeground(new java.awt.Color(255, 255, 255));
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -200,7 +216,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_hanghoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_timkiem, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,7 +230,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_daubep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_hanghoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel13))
                 .addGap(15, 15, 15))
         );
@@ -529,7 +545,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -659,7 +675,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
 
     private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
         // TODO add your handling code here:
-        timkiem = txttimkiem.getText();
+        sTimHangHoa = txttimkiem.getText();
         LoadArrayListToTable();
     }//GEN-LAST:event_bttimkiemActionPerformed
 
@@ -695,13 +711,9 @@ public class JP_HangHoa extends javax.swing.JPanel {
     }//GEN-LAST:event_listnccMouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-//        sTimDauBep = txt_timkiem.getText();
-//        tcot=(String)cb_daubep.getSelectedItem();
-//        try{
-//            LayNguon();
-//        }catch(IOException ex){
-//            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        sTimHangHoa = txt_timkiem.getText();
+        tcot=(String)cb_hanghoa.getSelectedItem();
+        LoadArrayListToTable();
     }//GEN-LAST:event_jLabel13MouseClicked
 
 
@@ -712,7 +724,7 @@ public class JP_HangHoa extends javax.swing.JPanel {
     private javax.swing.JButton btthem;
     private javax.swing.JButton bttimkiem;
     private javax.swing.JButton btxoa;
-    private javax.swing.JComboBox<String> cb_daubep;
+    private javax.swing.JComboBox<String> cb_hanghoa;
     private javax.swing.JComboBox<String> cbdvt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

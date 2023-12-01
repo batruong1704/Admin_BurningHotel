@@ -13,19 +13,21 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import controller.QuanLyKhachSanController;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 public class JP_KhachHang extends javax.swing.JPanel {
 
     DefaultTableModel tbl_KhachHang;
     List<tbl_KhachHang> arrKhachHang = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimKhachHang;
-    private static String makh, tenkh, diachi, email,gioitinh, cmnd, sodt;
+    private static String makh, tenkh, diachi, email,gioitinh, cmnd, sodt, tcot;
 
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
     }};
 
-    public JP_KhachHang() throws IOException {
+    public JP_KhachHang() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
@@ -33,17 +35,24 @@ public class JP_KhachHang extends javax.swing.JPanel {
         LayNguonCBO();
         sTimKhachHang = "";
     }
+    
+    private DefaultComboBoxModel<String> comboBoxKhachHang;
 
     public void LayNguon() throws IOException {
         tbl_KhachHang = (DefaultTableModel)  tb_KhachHang.getModel();
-        arrKhachHang = QuanLyController.NguonKhachHang(sTimKhachHang);
+        arrKhachHang = QuanLyController.NguonKhachHang(sTimKhachHang, tcot);
         tbl_KhachHang.setRowCount(0);
         arrKhachHang.forEach((KQ) -> {
             tbl_KhachHang.addRow(new Object[]{KQ.getMakh(), KQ.getTenkh(),KQ.getSdt(),KQ.getEmail(),KQ.getCmnd(), KQ.getDiachi(), KQ.getGioitinh()});
         });
     }
-    public void LayNguonCBO() throws IOException {
-        arrKhachHang = QuanLyController.NguonKhachHang(sTimKhachHang);
+    public void LayNguonCBO() throws IOException, SQLException {
+        comboBoxKhachHang = new DefaultComboBoxModel<>();
+        cb_khachhang.setModel(comboBoxKhachHang);
+         List<String> khachhang = QuanLyController.NguonCBBKhachHang();
+         for (String db : khachhang) {
+            comboBoxKhachHang.addElement(db);
+         }
     }
     public void KhoaMo(boolean b) {
         txtmakh.setEditable(b);
@@ -94,7 +103,7 @@ public class JP_KhachHang extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        cb_daubep = new javax.swing.JComboBox<>();
+        cb_khachhang = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btn_b2_refreshdv = new javax.swing.JLabel();
@@ -150,10 +159,10 @@ public class JP_KhachHang extends javax.swing.JPanel {
         jPanel14.setPreferredSize(new java.awt.Dimension(300, 70));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
-        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
-        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel14.add(cb_daubep);
+        cb_khachhang.setBackground(new java.awt.Color(76, 41, 211));
+        cb_khachhang.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_khachhang.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel14.add(cb_khachhang);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -173,6 +182,11 @@ public class JP_KhachHang extends javax.swing.JPanel {
         jPanel14.add(jLabel8);
 
         btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
         jPanel14.add(btn_b2_refreshdv);
 
         jPanel9.add(jPanel14, java.awt.BorderLayout.LINE_END);
@@ -645,12 +659,23 @@ public class JP_KhachHang extends javax.swing.JPanel {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         sTimKhachHang = txt_timkiem.getText();
+        tcot=(String)cb_khachhang.getSelectedItem();
         try{
             LayNguon();
         }catch(IOException ex){
             Logger.getLogger(JP_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        sTimKhachHang = "";
+        tcot=(String)cb_khachhang.getSelectedItem();
+        try{
+           LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -661,7 +686,7 @@ public class JP_KhachHang extends javax.swing.JPanel {
     private javax.swing.JButton bt_xoa;
     private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cb_daubep;
+    private javax.swing.JComboBox<String> cb_khachhang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

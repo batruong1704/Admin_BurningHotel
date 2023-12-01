@@ -16,6 +16,8 @@ import javax.swing.table.TableModel;
 import controller.QuanLyKhachSanController;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import model.tbl_MaGiamGia;
 public class JP_MaGiamGia extends javax.swing.JPanel {
@@ -24,13 +26,13 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     List<tbl_MaGiamGia> arrMaGiamGia = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimMaGiamGia;
-    private static String magiamgia, tenmagiamgia, chietkhau, tinhtrang;
+    private static String magiamgia, tenmagiamgia, chietkhau, tinhtrang, tcot;
 
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
     }};
 
-    public JP_MaGiamGia() throws IOException {
+    public JP_MaGiamGia() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
@@ -41,17 +43,22 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
 
     public void LayNguon() throws IOException {
         tbl_MaGiamGia = (DefaultTableModel)  tb_MaGiamGia.getModel();
-        arrMaGiamGia = QuanLyController.NguonMaGiamGia(sTimMaGiamGia);
+        arrMaGiamGia = QuanLyController.NguonMaGiamGia(sTimMaGiamGia, tcot);
         tbl_MaGiamGia.setRowCount(0);
         arrMaGiamGia.forEach((KQ) -> {
             tbl_MaGiamGia.addRow(new Object[]{KQ.getMagiamgia(), KQ.getTenmagiamgia(), KQ.getChietkhau(), KQ.getTinhtrang()});
         });
     }
-    public void LayNguonCBO() throws IOException {
-        arrMaGiamGia = QuanLyController.NguonMaGiamGia(sTimMaGiamGia);
-//        for (int i = 0; i < arrMaGiamGia.size(); i++) {
-//            cbgioitinh.addItem(arrMaGiamGia.get(i).getGioitinh());
-//        }
+    
+    private DefaultComboBoxModel<String> comboBoxMaGiamGia;
+    public void LayNguonCBO() throws IOException, SQLException {
+        comboBoxMaGiamGia = new DefaultComboBoxModel<>();
+        cb_magiamgia.setModel(comboBoxMaGiamGia);
+         List<String> daubep = QuanLyController.NguonCBBMaGiamGia();
+         for (String db : daubep) {
+            comboBoxMaGiamGia.addElement(db);
+         }
+        
     }
     DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer() {
         @Override
@@ -105,7 +112,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        cb_daubep = new javax.swing.JComboBox<>();
+        cb_magiamgia = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btn_b2_refreshdv = new javax.swing.JLabel();
@@ -156,10 +163,10 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
         jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
 
-        cb_daubep.setBackground(new java.awt.Color(76, 41, 211));
-        cb_daubep.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
-        cb_daubep.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel15.add(cb_daubep);
+        cb_magiamgia.setBackground(new java.awt.Color(76, 41, 211));
+        cb_magiamgia.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_magiamgia.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_magiamgia);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -629,11 +636,12 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_khongActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        sTimMaGiamGia = txt_timkiem.getText();
+        sTimMaGiamGia = "";
+        tcot=(String)cb_magiamgia.getSelectedItem();
         try{
-            LayNguon();
+           LayNguon();
         }catch(IOException ex){
-            Logger.getLogger(JP_MaGiamGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
@@ -646,7 +654,7 @@ public class JP_MaGiamGia extends javax.swing.JPanel {
     private javax.swing.JButton bt_xoa;
     private javax.swing.JLabel btn_b2_refreshdv;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cb_daubep;
+    private javax.swing.JComboBox<String> cb_magiamgia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

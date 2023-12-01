@@ -14,7 +14,7 @@ import model.tbl_NhapHang;
 
 public class JP_NhapHang extends javax.swing.JPanel {
 
-    private static String manhap, masp, nhacungcap, dvt, loaihang, ngaynhap, gianhap,timkiem, m;
+    private static String manhap, masp, nhacungcap, dvt, loaihang, ngaynhap, gianhap,timkiem, m, n;
     private static int soluong ;
     private static boolean ktThem, ktxoa;
     private static String mcsp, mcncc, mcnh;
@@ -37,7 +37,7 @@ public class JP_NhapHang extends javax.swing.JPanel {
     public void LoadComBoBoxMaSP() {
         comboBoxMaSP = new DefaultComboBoxModel<>();
         cbmasp.setModel(comboBoxMaSP);
-        List<tbl_HangHoa> hanghoa = HangHoaController.LoadDataHangHoaToArrayList(m);
+        List<tbl_HangHoa> hanghoa = HangHoaController.LoadDataHangHoaToArrayList(m,n);
          for (tbl_HangHoa o : hanghoa) {
             comboBoxMaSP.addElement(o.getMahang() + "-" + o.getTenhang());
          }
@@ -875,7 +875,7 @@ public class JP_NhapHang extends javax.swing.JPanel {
 
     public void LoadArrayListToTable() {
         List<tbl_HangHoa> list;
-        list = HangHoaController.LoadDataHangHoaToArrayList(m);
+        list = HangHoaController.LoadDataHangHoaToArrayList(m,n);
         model = (DefaultTableModel) tbhanghoa.getModel();
         model.setRowCount(0);
         for (tbl_HangHoa hh : list) {

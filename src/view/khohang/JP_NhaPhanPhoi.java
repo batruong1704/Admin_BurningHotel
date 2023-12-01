@@ -2,8 +2,13 @@ package view.khohang;
 
 import controller.QuanLyController;
 import controller.QuanLyKhachSanController;
+import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -16,23 +21,34 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
     private static boolean ktThem;
     private static String macu;
     private static String macty, tencty, email, sdt, diachi;
-    private static String timkiem;
+    private static String timkiem, tcot;
 
-    public JP_NhaPhanPhoi() {
+    public JP_NhaPhanPhoi() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LoadDataArrayListToTable();
+        LoadComBoBoxNhaPhanPhoi();
         timkiem = "";
     }
 
     public void LoadDataArrayListToTable() {
-        list = QuanLyController.LoadDataToArrayNhaCungCap(timkiem);
+        list = QuanLyController.LoadDataToArrayNhaCungCap(timkiem, tcot);
         model = (DefaultTableModel) tb_nhacungcap.getModel();
         model.setRowCount(0);
         for (tbl_Nhaphanphoi ncc : list) {
             model.addRow(new Object[]{ncc.getMact(), ncc.getTenct(), ncc.getDiachi(), ncc.getEmail(), ncc.getDienthoai()});
         }
+    }
+    
+    private DefaultComboBoxModel<String> comboBoxNhaPhanPhoi;
+     public void LoadComBoBoxNhaPhanPhoi() throws IOException, SQLException {
+        comboBoxNhaPhanPhoi = new DefaultComboBoxModel<>();
+        cb_nhaphanphoi.setModel(comboBoxNhaPhanPhoi);
+         List<String> nhaphanphoi = QuanLyController.NguonCBBNhaCungCap();
+         for (String db : nhaphanphoi) {
+            comboBoxNhaPhanPhoi.addElement(db);
+         }
     }
 
     public void KhoaMo(boolean b) {
@@ -69,7 +85,7 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
         txtemail.setText("");
         txtdiachi.setText("");
         txtsdt.setText("");
-        txttimkiem.setText("");
+        txt_timkiem.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -77,9 +93,12 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        cb_nhaphanphoi = new javax.swing.JComboBox<>();
+        txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txttimkiem = new javax.swing.JTextField();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -113,9 +132,26 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1140, 70));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(76, 41, 211));
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel10.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel10.setLayout(new java.awt.BorderLayout());
 
+        jPanel15.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
+
+        cb_nhaphanphoi.setBackground(new java.awt.Color(76, 41, 211));
+        cb_nhaphanphoi.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_nhaphanphoi.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_nhaphanphoi);
+
+        txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
+        txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        txt_timkiem.setBorder(null);
+        txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel15.add(txt_timkiem);
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search_25px.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,32 +159,19 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
+        jPanel15.add(jLabel8);
 
-        txttimkiem.setBackground(new java.awt.Color(123, 156, 225));
-        txttimkiem.setBorder(null);
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
+        jPanel15.add(btn_b2_refreshdv);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jPanel10.add(jPanel15, java.awt.BorderLayout.LINE_END);
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
+        jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -393,11 +416,6 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
         add(jPanel4, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        timkiem = txttimkiem.getText();
-        LoadDataArrayListToTable();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
     private void tb_nhacungcapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_nhacungcapMouseClicked
         // TODO add your handling code here:
         int index = tb_nhacungcap.getSelectedRow();
@@ -493,6 +511,18 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
         KhoaMo(false);
     }//GEN-LAST:event_bt_khongActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        timkiem = txt_timkiem.getText();
+        tcot=(String)cb_nhaphanphoi.getSelectedItem();
+        LoadDataArrayListToTable();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        timkiem = "";
+        tcot=(String)cb_nhaphanphoi.getSelectedItem();
+        LoadDataArrayListToTable();
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -500,12 +530,15 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
+    private javax.swing.JComboBox<String> cb_nhaphanphoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -516,11 +549,11 @@ public final class JP_NhaPhanPhoi extends javax.swing.JPanel {
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lb7;
     private javax.swing.JTable tb_nhacungcap;
+    private javax.swing.JTextField txt_timkiem;
     private javax.swing.JTextField txtdiachi;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtmacty;
     private javax.swing.JTextField txtsdt;
     private javax.swing.JTextField txttencty;
-    private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 }

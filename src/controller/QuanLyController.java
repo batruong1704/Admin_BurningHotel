@@ -127,13 +127,35 @@ public class QuanLyController {
         } 
     }
     
-    public static ArrayList<tbl_Phong> NguonPhong() throws IOException {
+    public static List<String> NguonCBBPhong() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM phong";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    }
+    
+    public static ArrayList<tbl_Phong> NguonPhong(String sMaKT,String tCot) throws IOException {
         ArrayList<tbl_Phong> arrPhong = new ArrayList<>();
         Statement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From Phong Order by MaPhong";
+            sql = "Select * From Phong";
+            if(sMaKT != null && !sMaKT.equals("")){
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
+            }
+            sql = sql + " order by MaPhong";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             // Xử lý kết quả trả về
@@ -264,7 +286,23 @@ public class QuanLyController {
         } 
     }
     
-    public static List<tbl_KhachHang> NguonKhachHang(String sMaKT) throws IOException {
+    public static List<String> NguonCBBKhachHang() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM khachhang";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    } 
+    
+    public static List<tbl_KhachHang> NguonKhachHang(String sMaKT,String tCot) throws IOException {
         List<tbl_KhachHang> arrKhachHang = new ArrayList<>();
         Statement state = null;
         try {
@@ -272,7 +310,9 @@ public class QuanLyController {
             // Thực hiện truy vấn và lấy kết quả trả về
             sql = "Select * From khachhang";
             if(sMaKT != null && !sMaKT.equals("")){
-                sql = sql + " Where ID ='" + sMaKT + "'";
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
             sql = sql + " order by ID";
             state = conn.createStatement();
@@ -301,6 +341,7 @@ public class QuanLyController {
         } 
         return arrKhachHang;
     }
+    
     
     public static void ThemKhachHang(tbl_KhachHang bp) {
         conn = null;
@@ -363,13 +404,35 @@ public class QuanLyController {
         } 
     }
     
-    public static List<tbl_DichVu> NguonDichVu() throws IOException {
+    public static List<String> NguonCBBDichVu() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM dichvu";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    } 
+    
+    public static List<tbl_DichVu> NguonDichVu(String sMaKT,String tCot) throws IOException {
         List<tbl_DichVu> arrDichVu = new ArrayList<>();
         Statement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From DichVu Order by MaDichVu";
+            sql = "Select * From DichVu";
+            if(sMaKT != null && !sMaKT.equals("")){
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
+            }
+            sql = sql + " order by MaDichVu";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             // Xử lý kết quả trả về
@@ -438,16 +501,35 @@ public class QuanLyController {
             ex.printStackTrace();
         }
     }
-    public static  List<tbl_Nhaphanphoi> LoadDataToArrayNhaCungCap(String kt){
+    
+    public static List<String> NguonCBBNhaCungCap() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM nhacungcap";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    }
+    
+    public static  List<tbl_Nhaphanphoi> LoadDataToArrayNhaCungCap(String sMaKT,String tCot){
         List<tbl_Nhaphanphoi> arrncc = new ArrayList<>();
         try{
             conn=DriverManager.getConnection(Hotel_Manager.dbURL);
             Statement st=conn.createStatement();
-            String sql="select * from nhacungcap";
-           if (kt != null && !kt.equals("")) {
-                sql = sql + " where MaCongTy like N'%" + kt + "%'";
-               
+            sql = "Select * From nhacungcap";
+            if(sMaKT != null && !sMaKT.equals("")){
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
+            sql = sql + " order by MaCongTy";
             ResultSet rs=st.executeQuery(sql);
             while(rs.next()){
                 String macty=rs.getString("MaCongTy");
@@ -525,6 +607,7 @@ public class QuanLyController {
             ex.printStackTrace();
         } 
     }
+    
     public static List<tbl_DauBep> NguonDauBep(String sMaKT,String tCot) throws IOException {
         List<tbl_DauBep> arrDauBep = new ArrayList<>();
         Statement state = null;
@@ -602,7 +685,8 @@ public class QuanLyController {
             fields.add(fieldName);
         }
         return fields;
-    } 
+    }
+    
     public static void ThemDauBep(tbl_DauBep db) {
         conn = null;
         PreparedStatement state = null;
@@ -672,7 +756,23 @@ public class QuanLyController {
         } 
     }
     
-    public static List<tbl_MaGiamGia> NguonMaGiamGia(String sMaKT) throws IOException {
+    public static List<String> NguonCBBMaGiamGia() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM magiamgia";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    }
+    
+    public static List<tbl_MaGiamGia> NguonMaGiamGia(String sMaKT,String tCot) throws IOException {
         List<tbl_MaGiamGia> arrMaGiamGia = new ArrayList<>();
         Statement state = null;
         try {
@@ -680,7 +780,9 @@ public class QuanLyController {
             // Thực hiện truy vấn và lấy kết quả trả về
             sql = "Select * From PhieuGiamGia";
             if(sMaKT != null && !sMaKT.equals("")){
-                sql = sql + " Where MaGiamGia ='" + sMaKT + "'";
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
             sql = sql + " order by MaGiamGia";
             state = conn.createStatement();
@@ -705,6 +807,7 @@ public class QuanLyController {
         } 
         return arrMaGiamGia;
     }
+    
     
     public static void ThemMaGiamGia(tbl_MaGiamGia mgg) {
         conn = null;
@@ -761,16 +864,33 @@ public class QuanLyController {
         } 
     }
     
+    public static List<String> NguonCBBNhanVien() throws SQLException{
+        List<String> fields = new ArrayList<>();
+        Statement state = null;
+        java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "SHOW COLUMNS FROM nhanvien";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+             while (rs.next()) {
+            // Lấy tên trường và thêm vào danh sách
+            String fieldName = rs.getString("Field");
+            fields.add(fieldName);
+        }
+        return fields;
+    } 
     
-        public static List<tbl_NhanVien> NguonNhanVien(String sMaKT) throws IOException {
+        public static List<tbl_NhanVien> NguonNhanVien(String sMaKT,String tCot) throws IOException {
         List<tbl_NhanVien> arrNhanVien = new ArrayList<>();
         Statement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
             // Thực hiện truy vấn và lấy kết quả trả về
-            sql = "Select * From NhanVien";
+            sql = "Select * From nhanvien";
             if(sMaKT != null && !sMaKT.equals("")){
-                sql = sql + " Where MaNhanVien ='" + sMaKT + "'";
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " WHERE " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
             }
             sql = sql + " order by MaNhanVien";
             state = conn.createStatement();
@@ -801,6 +921,7 @@ public class QuanLyController {
         } 
         return arrNhanVien;
     }
+        
     
     public static void ThemNhanVien(tbl_NhanVien bp) {
         conn = null;

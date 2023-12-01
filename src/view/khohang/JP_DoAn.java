@@ -1,11 +1,13 @@
 package view.khohang;
 
 import controller.HangHoaController;
+import controller.QuanLyController;
 import controller.QuanLyKhachSanController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,34 +28,39 @@ public class JP_DoAn extends javax.swing.JPanel {
     List<tbl_DoAn> arrDoAn = new ArrayList<>();
     private static boolean ktThem;
     private static String macu, sTimDoAn;
-    private static String id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img,img2;
+    private static String id, tenmon, phanloai, thoigiannau, dokho, thanhphan, hamluongcalo, thanhtien, mota, soluongban, img, img2, tcot;
      private File selectedFile;  
     private static DefaultTableCellRenderer center = new DefaultTableCellRenderer() {{
         setHorizontalAlignment(SwingConstants.CENTER);
     }};
 
-    public JP_DoAn() throws IOException {
+    public JP_DoAn() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LayNguon();
-        LayNguonCBO();
+        LoadComBoBoxDoAn();
         sTimDoAn = "";
     }
 
     public void LayNguon() throws IOException {
         tbl_DoAn = (DefaultTableModel)  tb_DoAn.getModel();
-        arrDoAn = HangHoaController.NguonDoAn(sTimDoAn);
+        arrDoAn = HangHoaController.NguonDoAn(sTimDoAn, tcot);
         tbl_DoAn.setRowCount(0);
         arrDoAn.forEach((KQ) -> {
             tbl_DoAn.addRow(new Object[]{KQ.getId(), KQ.getTenmon(),KQ.getPhanloai(), KQ.getThoigiannau(), KQ.getDokho(), KQ.getThanhphan(),KQ.getHamluongcalo(), KQ.getThanhtien(), KQ.getMota(), KQ.getSoluongban()});
         });
     }
-    private DefaultComboBoxModel<String> comboBoxModel;
-    public void LayNguonCBO() throws IOException {
-        arrDoAn = HangHoaController.NguonDoAn(sTimDoAn);
-        
-        }
+    
+    private DefaultComboBoxModel<String> comboBoxDoan;
+     public void LoadComBoBoxDoAn() throws IOException, SQLException {
+        comboBoxDoan = new DefaultComboBoxModel<>();
+        cb_doan.setModel(comboBoxDoan);
+         List<String> doan = HangHoaController.NguonCBBDoAn();
+         for (String db : doan) {
+            comboBoxDoan.addElement(db);
+         }
+    }
  
     public void KhoaMo(boolean b) {
         txtid.setEditable(b);
@@ -111,9 +118,12 @@ public class JP_DoAn extends javax.swing.JPanel {
 
         general = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        cb_doan = new javax.swing.JComboBox<>();
         txt_timkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        btn_b2_refreshdv = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -162,16 +172,24 @@ public class JP_DoAn extends javax.swing.JPanel {
         jPanel5.setPreferredSize(new java.awt.Dimension(1140, 70));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jPanel9.setBackground(new java.awt.Color(76, 41, 211));
-        jPanel9.setPreferredSize(new java.awt.Dimension(300, 70));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 10, 20));
+        jPanel11.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel11.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setBackground(new java.awt.Color(76, 41, 211));
+        jPanel15.setPreferredSize(new java.awt.Dimension(300, 70));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20));
+
+        cb_doan.setBackground(new java.awt.Color(76, 41, 211));
+        cb_doan.setFont(new java.awt.Font("Montserrat", 1, 10)); // NOI18N
+        cb_doan.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel15.add(cb_doan);
 
         txt_timkiem.setBackground(new java.awt.Color(123, 156, 225));
         txt_timkiem.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txt_timkiem.setBorder(null);
         txt_timkiem.setMinimumSize(new java.awt.Dimension(100, 15));
-        txt_timkiem.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel9.add(txt_timkiem);
+        txt_timkiem.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel15.add(txt_timkiem);
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,9 +199,19 @@ public class JP_DoAn extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel9.add(jLabel8);
+        jPanel15.add(jLabel8);
 
-        jPanel5.add(jPanel9, java.awt.BorderLayout.LINE_END);
+        btn_b2_refreshdv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh_26px_light.png"))); // NOI18N
+        btn_b2_refreshdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_b2_refreshdvMouseClicked(evt);
+            }
+        });
+        jPanel15.add(btn_b2_refreshdv);
+
+        jPanel11.add(jPanel15, java.awt.BorderLayout.LINE_END);
+
+        jPanel5.add(jPanel11, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -525,7 +553,7 @@ public class JP_DoAn extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel8, java.awt.BorderLayout.LINE_START);
@@ -587,15 +615,6 @@ public class JP_DoAn extends javax.swing.JPanel {
 
         add(jPanel10, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        sTimDoAn = txt_timkiem.getText();
-        try{
-            LayNguon();
-        }catch(IOException ex){
-            Logger.getLogger(JP_DoAn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jLabel8MouseClicked
 
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
@@ -769,6 +788,26 @@ public class JP_DoAn extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bt_chonanhActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        sTimDoAn = txt_timkiem.getText();
+        tcot=(String)cb_doan.getSelectedItem();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DoAn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void btn_b2_refreshdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_b2_refreshdvMouseClicked
+        sTimDoAn = "";
+        tcot=(String)cb_doan.getSelectedItem();
+        try{
+            LayNguon();
+        }catch(IOException ex){
+            Logger.getLogger(JP_DoAn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_b2_refreshdvMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_chonanh;
@@ -777,6 +816,8 @@ public class JP_DoAn extends javax.swing.JPanel {
     private javax.swing.JButton bt_sua;
     private javax.swing.JButton bt_them;
     private javax.swing.JButton bt_xoa;
+    private javax.swing.JLabel btn_b2_refreshdv;
+    private javax.swing.JComboBox<String> cb_doan;
     private javax.swing.JComboBox<String> cbdokho;
     private javax.swing.JComboBox<String> cbphanloai;
     private javax.swing.ButtonGroup general;
@@ -795,11 +836,12 @@ public class JP_DoAn extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
