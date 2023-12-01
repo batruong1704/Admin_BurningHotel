@@ -764,7 +764,7 @@ private File selectedFile;
         }
         tbl_DatBan db = new tbl_DatBan(ID, MaKhachHang, TenKhachHang, Email, Sdt, SoLuong, ThoiGian, NgayDat, date, TinhTrang, MaNhanVien);
         if (ktThem == true) {
-//            QuanLyController.ThemDatBan(db);
+            QuanLyController.ThemDatBan(db, Email);
         } else {
             QuanLyController.CapNhapDatBan(db);
         }

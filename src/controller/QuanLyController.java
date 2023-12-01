@@ -23,7 +23,7 @@ import model.tbl_Nhaphanphoi;
 
 public class QuanLyController {
     private static Connection conn = null;
-    private static String sql,sql2;
+    private static String sql,sql1,sql2,sql3;
     
     public static ArrayList<tbl_ChucVu> NguonChucVu(String where, String search) throws IOException {
     ArrayList<tbl_ChucVu> arrBoPhan = new ArrayList<>();
@@ -1070,31 +1070,53 @@ public class QuanLyController {
         return arrDatBan;
     }
     
-//    public static void ThemDatBan(tbl_DatBan db) {
-//        conn = null;
-//        PreparedStatement state = null;
-//        try {
-//            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-//            sql = "INSERT INTO datban (ID, HoTen, GioiTinh, NgaySinh, MaChucVu, SoNamKinhNghiem, Email, SoDienThoai, DiaChi, MoTa, HinhAnh) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//            state = conn.prepareStatement(sql);
-//            state.setString(1, db.getId());
-//            state.setString(2, db.getHoten());
-//            state.setString(3, db.getGioitinh());
-//            state.setString(4, db.getNgaysinh());
-//            state.setString(5, db.getChucvu());
-//            state.setString(6, db.getSonamkn());
-//            state.setString(7, db.getEmail());
-//            state.setString(8, db.getSdt());
-//            state.setString(9, db.getDiachi());
-//            state.setString(10, db.getMota());
-//            state.setString(11, db.getHinhanh());
-//            state.execute();
-//            state.close();
-//            conn.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+    public static void ThemDatBan(tbl_DatBan db, String email) {
+        int rowCount;
+        String makhachhang;
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql="SELECT COUNT(*) FROM khachhang WHERE Email = "+ email +";";
+            state = conn.prepareStatement(sql);
+            ResultSet rs = (ResultSet) state.executeQuery();
+            while (rs.next()) {
+                rowCount = rs.getInt(1);
+            if (rowCount > 0) {
+                System.out.println("Lỗi: Địa chỉ email đã tồn tại trong cơ sở dữ liệu.");
+                // Thực hiện các hành động khác nếu cần
+            }else{
+                sql1 = "INSERT INTO khachang (HoTen, SDT, Email) VALUES (?, ?, ?)";
+                state = conn.prepareStatement(sql1);
+                state.setString(1, db.getTenKhachHang());
+                state.setString(2, db.getSdt());
+                state.setString(3, email);
+                state.execute();
+                sql2 = "Select ID from KhachHang where Email = "+ email +";";
+                ResultSet rs1 = state.executeQuery(sql2);
+                while (rs.next()) {
+                makhachhang = rs1.getString("ID");
+                sql3="INSERT INTO datban(MaKhachHang, SoLuong, ThoiGian, NgayDat, NgayDen, TinhTrang, MaNhanVien) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                state = conn.prepareStatement(sql3);
+                state.setString(1, makhachhang);
+                state.setString(2, db.getSoLuong());
+                state.setString(3, db.getThoiGian());
+                state.setString(4, db.getNgayDat());
+                state.setString(5, db.getNgayDen());
+                state.setString(6, db.getTinhTrang());
+                state.setString(6, db.getMaNhanVien());
+                state.execute();
+                state.close();
+                conn.close();
+                }               
+             }
+            }
+             
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public static void CapNhapDatBan(tbl_DatBan db) {
         conn = null;
