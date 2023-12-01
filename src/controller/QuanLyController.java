@@ -1077,7 +1077,7 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql="SELECT COUNT(*) FROM khachhang WHERE Email = "+ email +";";
+            sql="SELECT COUNT(*) FROM khachhang WHERE Email = '"+ email +"'";
             state = conn.prepareStatement(sql);
             ResultSet rs = (ResultSet) state.executeQuery();
             while (rs.next()) {
@@ -1086,15 +1086,16 @@ public class QuanLyController {
                 System.out.println("Lỗi: Địa chỉ email đã tồn tại trong cơ sở dữ liệu.");
                 // Thực hiện các hành động khác nếu cần
             }else{
-                sql1 = "INSERT INTO khachang (HoTen, SDT, Email) VALUES (?, ?, ?)";
+                sql1 = "INSERT INTO khachhang (HoTen, SDT, Email,PassWord) VALUES (?, ?, ?, ?)";
                 state = conn.prepareStatement(sql1);
                 state.setString(1, db.getTenKhachHang());
                 state.setString(2, db.getSdt());
                 state.setString(3, email);
+                state.setString(4, db.getSdt());
                 state.execute();
-                sql2 = "Select ID from KhachHang where Email = "+ email +";";
+                sql2 = "Select ID from KhachHang where Email = '"+ email +"'";
                 ResultSet rs1 = state.executeQuery(sql2);
-                while (rs.next()) {
+                while (rs1.next()) {
                 makhachhang = rs1.getString("ID");
                 sql3="INSERT INTO datban(MaKhachHang, SoLuong, ThoiGian, NgayDat, NgayDen, TinhTrang, MaNhanVien) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 state = conn.prepareStatement(sql3);
@@ -1104,7 +1105,7 @@ public class QuanLyController {
                 state.setString(4, db.getNgayDat());
                 state.setString(5, db.getNgayDen());
                 state.setString(6, db.getTinhTrang());
-                state.setString(6, db.getMaNhanVien());
+                state.setString(7, db.getMaNhanVien());
                 state.execute();
                 state.close();
                 conn.close();

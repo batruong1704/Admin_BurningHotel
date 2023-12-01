@@ -39,8 +39,9 @@ private File selectedFile;
         XoaTrang();
         KhoaMo(false);
         LayNguon();
+        
         lb_manhanvien.setText(JP_DatBan.laymanhanvien);
-//        lb_ngaydat.setText(formattedDate);
+        updateDateTimeLabel();
     }
     
     public void LayNguon() throws IOException {
@@ -753,6 +754,7 @@ private File selectedFile;
         SoLuong = txt_songuoi.getText();
         ThoiGian = txt_thoigian.getText();
         MaNhanVien = lb_manhanvien.getText();
+        NgayDat = lb_ngaydat.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(txt_ngayden.getDate());
         if (rdb_cho.isSelected()) {
