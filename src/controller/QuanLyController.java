@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Hotel_Manager;
 import model.tbl_ChucVu;
+import model.tbl_DatBan;
 import model.tbl_DauBep;
 import model.tbl_DichVu;
 import model.tbl_KhachHang;
@@ -1028,5 +1029,127 @@ public class QuanLyController {
         }
         return ketqua;
     }
+   
+    
+    public static List<tbl_DatBan> NguonDatBan(String sMaKT,String tCot) throws IOException {
+        List<tbl_DatBan> arrDatBan = new ArrayList<>();
+        Statement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "select db.ID, HoTen, Email, SDT, SoLuong,ThoiGian,NgayDat,NgayDen,TinhTrang,MaNhanVien from khachhang kh, datban db where kh.ID = db.MaKhachHang";
+            if(sMaKT != null && !sMaKT.equals("")){
+                if (sMaKT != null && !sMaKT.equals("")) {
+                   sql = sql + " AND " + tCot + " LIKE '%" + sMaKT + "%'";
+                }
+            }
+            sql = sql + " order by ID";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                tbl_DatBan db = new tbl_DatBan();
+                db.setID(rs.getString("db.ID"));
+//                db.setMaKhachHang(rs.getString("MaKhachHang"));
+                db.setSoLuong(rs.getString("SoLuong"));
+                db.setThoiGian(rs.getString("ThoiGian"));
+                db.setNgayDat(rs.getString("NgayDat"));
+                db.setNgayDen(rs.getString("NgayDen"));
+                db.setTinhTrang(rs.getString("TinhTrang"));
+                db.setMaNhanVien(rs.getString("MaNhanVien"));
+                db.setTenKhachHang(rs.getString("HoTen"));
+                db.setSdt(rs.getString("SDT"));
+                db.setEmail(rs.getString("Email"));
+                arrDatBan.add(db);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return arrDatBan;
+    }
+    
+//    public static void ThemDatBan(tbl_DatBan db) {
+//        conn = null;
+//        PreparedStatement state = null;
+//        try {
+//            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+//            sql = "INSERT INTO datban (ID, HoTen, GioiTinh, NgaySinh, MaChucVu, SoNamKinhNghiem, Email, SoDienThoai, DiaChi, MoTa, HinhAnh) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//            state = conn.prepareStatement(sql);
+//            state.setString(1, db.getId());
+//            state.setString(2, db.getHoten());
+//            state.setString(3, db.getGioitinh());
+//            state.setString(4, db.getNgaysinh());
+//            state.setString(5, db.getChucvu());
+//            state.setString(6, db.getSonamkn());
+//            state.setString(7, db.getEmail());
+//            state.setString(8, db.getSdt());
+//            state.setString(9, db.getDiachi());
+//            state.setString(10, db.getMota());
+//            state.setString(11, db.getHinhanh());
+//            state.execute();
+//            state.close();
+//            conn.close();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
+    public static void CapNhapDatBan(tbl_DatBan db, String macu) {
+        conn = null;
+        PreparedStatement state = null;
+        try {
+            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            sql = "UPDATE datban SET SoLuong = ?, ThoiGian = ?, NgayDen= ?, TinhTrang = ? WHERE ID = ?";
+            state = conn.prepareStatement(sql);
+            state.setString(1, db.getSoLuong());
+            state.setString(2, db.getThoiGian());
+            state.setString(3, db.getNgayDen());
+            state.setString(4, db.getTinhTrang());
+            state.setString(5, macu);
+            state.execute();
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+
+//    public static void XoaDauBep(String id) {
+//        conn = null;
+//        PreparedStatement state = null;
+//        try {
+//            java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+//            sql = "DELETE FROM DauBep WHERE ID = ?";
+//            state = conn.prepareStatement(sql);
+//            state.setString(1, id);
+//            state.execute();
+//            state.close();
+//            conn.close();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } 
+//    }
+    
+    public static String NguonTruyVanDuLieuDatBan(String sTenCotGT, String sMaKT) throws IOException {
+        String ketqua = "";
+        Statement state = null;
+        try {
+            conn = DriverManager.getConnection(Hotel_Manager.dbURL);
+            // Thực hiện truy vấn và lấy kết quả trả về
+            sql = "Select " + sTenCotGT + " from datban where ID = '" + sMaKT + "'";
+            state = conn.createStatement();
+            ResultSet rs = state.executeQuery(sql);
+            // Xử lý kết quả trả về
+            while (rs.next()) {
+                ketqua = rs.getString(sTenCotGT);
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ketqua;
+    }
 }

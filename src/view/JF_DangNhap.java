@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import model.Hotel_Manager;
+import view.hoatdong.JP_DatBan;
 
 public class JF_DangNhap extends javax.swing.JFrame {
     public JF_DangNhap() {
@@ -257,6 +258,7 @@ public class JF_DangNhap extends javax.swing.JFrame {
                 Hotel_Manager.sDiaChi = rsQL.getString("DiaChi");
                 Hotel_Manager.sLuong = rsQL.getString("LuongTheoNgay");
                 JP_DatPhong.laymanhanvien = Hotel_Manager.sMaNhanVien;
+                JP_DatBan.laymanhanvien = Hotel_Manager.sMaNhanVien;
                 JF_AboutMe.laymanhanvien = Hotel_Manager.sMaNhanVien;
                 JF_AboutMe.tennhanvien = Hotel_Manager.sTenNhanVien;
                 JF_AboutMe.machucvu = Hotel_Manager.sMaChucVu;

@@ -9,13 +9,40 @@ package model;
  * @author Admin
  */
 public class tbl_DatBan {
-    String ID, MaKhachHang, SoLuong,ThoiGian,NgayDat, NgayDen, TinhTrang,MaNhanVien;
+    String ID, MaKhachHang,TenKhachHang,Email,Sdt, SoLuong,ThoiGian,NgayDat, NgayDen, TinhTrang,MaNhanVien;
     
     public tbl_DatBan(){}
+
+    public String getTenKhachHang() {
+        return TenKhachHang;
+    }
+
+    public void setTenKhachHang(String TenKhachHang) {
+        this.TenKhachHang = TenKhachHang;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getSdt() {
+        return Sdt;
+    }
+
+    public void setSdt(String Sdt) {
+        this.Sdt = Sdt;
+    }
     
-    public tbl_DatBan(String ID, String MaKhachHang, String SoLuong, String ThoiGian, String NgayDat, String NgayDen, String TinhTrang, String MaNhanVien) {
+    public tbl_DatBan(String ID, String MaKhachHang, String TenKhachHang, String Email, String Sdt, String SoLuong, String ThoiGian, String NgayDat, String NgayDen, String TinhTrang, String MaNhanVien) {
         this.ID = ID;
         this.MaKhachHang = MaKhachHang;
+        this.TenKhachHang = TenKhachHang;
+        this.Email = Email;
+        this.Sdt = Sdt;
         this.SoLuong = SoLuong;
         this.ThoiGian = ThoiGian;
         this.NgayDat = NgayDat;

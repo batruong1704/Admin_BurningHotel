@@ -1,7 +1,6 @@
 package view.hoatdong;
 import view.quanly.*;
 import controller.QuanLyController;
-import model.tbl_Phong;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -16,35 +15,41 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.tbl_DatBan;
 
 public final class JP_DatBan extends javax.swing.JPanel {
 private File selectedFile;  
-    DefaultTableModel tbl_Phong;
-    ArrayList<tbl_Phong> arrPhong = new ArrayList<>();
+    DefaultTableModel tbl_DatBan;
+    List<tbl_DatBan> arrDatBan = new ArrayList<>();
     private static boolean ktThem;
-    private static String macu;
-    private static String maPhong, loaiPhong,kieuPhong,slmax,loaigiuong,giaPhong,img,img2,dientich,tamnhin,moTa, tinhTrang;
-    
+    private static String macu, sTimBan;
+    private static String ID, MaKhachHang,TenKhachHang,Email,Sdt,SoLuong,ThoiGian,NgayDat,NgayDen,TinhTrang,MaNhanVien,tCot;
+    public static String laymanhanvien;
     public JP_DatBan() throws IOException, SQLException {
         initComponents();
         XoaTrang();
         KhoaMo(false);
         LayNguon();
-        LoadComboBoxLoaiPhong();
+        lb_manhanvien.setText(JP_DatBan.laymanhanvien);
+        lb_ngaydat.setText(NgayDat);
     }
     
     public void LayNguon() throws IOException {
-        tbl_Phong = (DefaultTableModel) tb_DatBan.getModel();
-        //arrPhong = QuanLyController.NguonPhong();
-        tbl_Phong.setRowCount(0);
-        arrPhong.forEach((KQ) -> {
-
-            tbl_Phong.addRow(new Object[]{KQ.getMaPhong(), KQ.getLoaiPhong(),KQ.getKieuPhong(), KQ.getSLMax(), KQ.getLoaiGiuong(), KQ.getGiaPhong(),KQ.getDienTich(),
-                                           KQ.getTamNhin(),KQ.getMoTa(), KQ.getTinhTrang()});
+        tbl_DatBan = (DefaultTableModel) tb_DatBan.getModel();
+        arrDatBan =  QuanLyController.NguonDatBan(sTimBan, tCot);
+        tbl_DatBan.setRowCount(0);
+        arrDatBan.forEach((KQ) -> {
+            tbl_DatBan.addRow(new Object[]{KQ.getID(), KQ.getTenKhachHang(),KQ.getEmail(), KQ.getSdt(), KQ.getSoLuong(), KQ.getThoiGian(),KQ.getNgayDen(),KQ.getMaNhanVien(),
+                                           KQ.getTinhTrang()});
 
         });
     }
@@ -63,9 +68,30 @@ private File selectedFile;
     };
     
     public void KhoaMo(boolean b) {
+        txt_tenkhachhang.setEditable(b);
+        txt_email.setEditable(b);
+        txt_sdt.setEditable(b);
+        txt_songuoi.setEditable(b);
+        txt_thoigian.setEditable(b);
+        bt_them.setEnabled(!b);
+        bt_sua.setEnabled(!b);
+        bt_xoa.setEnabled(!b);
+        bt_ghi.setEnabled(b);
+        bt_khong.setEnabled(b);
+//        tb_KhachHang.setEnabled(!b);
     }
 
     public void refresh(boolean b) {
+        txt_tenkhachhang.setEditable(!b);
+        txt_email.setEditable(!b);
+        txt_sdt.setEditable(!b);
+        txt_songuoi.setEditable(b);
+        txt_thoigian.setEditable(b);
+        bt_them.setEnabled(!b);
+        bt_sua.setEnabled(!b);
+        bt_xoa.setEnabled(!b);
+        bt_ghi.setEnabled(b);
+        bt_khong.setEnabled(b);
     }
 
     public void XoaTrang() {
@@ -116,6 +142,8 @@ private File selectedFile;
         txt_email = new javax.swing.JTextField();
         txt_ngayden = new com.toedter.calendar.JDateChooser();
         rdb_hoanthanh = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        lb_manhanvien = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -370,7 +398,7 @@ private File selectedFile;
 
         lb_ngaydat.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         lb_ngaydat.setForeground(new java.awt.Color(51, 0, 51));
-        lb_ngaydat.setText("12/10/2023");
+        lb_ngaydat.setText("ngaydat");
 
         txt_email.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         txt_email.setMargin(new java.awt.Insets(0, 2, 0, 0));
@@ -388,6 +416,13 @@ private File selectedFile;
         buttonGroup1.add(rdb_hoanthanh);
         rdb_hoanthanh.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         rdb_hoanthanh.setText("Hoàn thành");
+
+        jLabel14.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        jLabel14.setText("Nhân Viên Thực Hiện");
+
+        lb_manhanvien.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        lb_manhanvien.setForeground(new java.awt.Color(51, 0, 51));
+        lb_manhanvien.setText("manhanvien");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -411,18 +446,20 @@ private File selectedFile;
                     .addComponent(txt_tenkhachhang)
                     .addComponent(txt_ngayden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lb_ngaydat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(rdb_cho, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(rdb_xacnhan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rdb_hoanthanh)))
+                        .addComponent(rdb_hoanthanh))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_ngaydat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_manhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -453,21 +490,25 @@ private File selectedFile;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_ngayden, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lb_ngaydat, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_ngaydat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_manhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdb_cho)
                     .addComponent(rdb_xacnhan)
                     .addComponent(rdb_hoanthanh))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addGap(47, 47, 47))
+                .addContainerGap())
         );
 
         jPanel5.add(jPanel9, java.awt.BorderLayout.CENTER);
@@ -584,7 +625,47 @@ private File selectedFile;
     }//GEN-LAST:event_btn_findMouseClicked
 
     private void tb_DatBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_DatBanMouseClicked
-        
+       try {
+        int index = tb_DatBan.getSelectedRow();
+        TableModel model = tb_DatBan.getModel();
+        ID = model.getValueAt(index, 0).toString();
+        TenKhachHang = model.getValueAt(index, 1).toString();
+        Email =model.getValueAt(index, 2).toString();
+        Sdt = model.getValueAt(index,3 ).toString();
+        SoLuong= model.getValueAt(index, 4).toString();
+        ThoiGian = model.getValueAt(index, 5).toString();
+        Date date;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(index, 6).toString());
+            txt_ngayden.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MaNhanVien = model.getValueAt(index, 7).toString();
+        TinhTrang = model.getValueAt(index, 8).toString();
+        txt_tenkhachhang.setText(TenKhachHang);
+        txt_email.setText(Email);
+        txt_sdt.setText(Sdt);
+        txt_songuoi.setText(SoLuong);
+        txt_thoigian.setText(ThoiGian);
+        lb_ngaydat.setText(QuanLyController.NguonTruyVanDuLieuDatBan("NgayDat", ID));
+        lb_manhanvien.setText(MaNhanVien);
+        if(TinhTrang.equalsIgnoreCase("Chờ") ){
+            rdb_cho.setSelected(true);
+            rdb_xacnhan.setSelected(false);
+            rdb_hoanthanh.setSelected(false);
+        }else if(TinhTrang.equalsIgnoreCase("Xác Nhận") ){
+            rdb_cho.setSelected(false);
+            rdb_xacnhan.setSelected(true);
+            rdb_hoanthanh.setSelected(false);
+        }else{
+            rdb_cho.setSelected(false);
+            rdb_xacnhan.setSelected(false);
+            rdb_hoanthanh.setSelected(true);
+        }
+      } catch (IOException ex) {
+        Logger.getLogger(JP_DatBan.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_tb_DatBanMouseClicked
 
     private void txt_tenkhachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tenkhachhangActionPerformed
@@ -621,35 +702,84 @@ private File selectedFile;
         }
         macu = txt_tenkhachhang.getText();
         ktThem = false;
-        KhoaMo(true);
+        refresh(true);
         txt_tenkhachhang.requestFocus();
     }//GEN-LAST:event_bt_suaActionPerformed
 
     private void bt_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xoaActionPerformed
-        if (txt_tenkhachhang.getText().length() <= 0) {
-            JOptionPane.showConfirmDialog(this, "Hãy nhập thông tin cần xoá!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        macu = txt_tenkhachhang.getText();
-        for (int i = 0; i < arrPhong.size(); i++) {
-            if (arrPhong.get(i).getMaPhong().equals(macu)) {
-                int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Phòng này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
-                if (kq == JOptionPane.YES_OPTION) {
-                    QuanLyController.XoaPhong(macu);
-                    XoaTrang();
-                    try {
-                        LayNguon();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JP_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                return;
-            }
-        }
+//        if (txt_tenkhachhang.getText().length() <= 0) {
+//            JOptionPane.showConfirmDialog(this, "Hãy nhập thông tin cần xoá!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//            return;
+//        }
+//        macu = txt_tenkhachhang.getText();
+//        for (int i = 0; i < arrPhong.size(); i++) {
+//            if (arrPhong.get(i).getMaPhong().equals(macu)) {
+//                int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Phòng này không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+//                if (kq == JOptionPane.YES_OPTION) {
+//                    QuanLyController.XoaPhong(macu);
+//                    XoaTrang();
+//                    try {
+//                        LayNguon();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(JP_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//                return;
+//            }
+//        }
     }//GEN-LAST:event_bt_xoaActionPerformed
 
     private void bt_ghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ghiActionPerformed
-        
+        if (txt_tenkhachhang.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_tenkhachhang.requestFocus();
+            return;
+        }
+        if (txt_email.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_email.requestFocus();
+            return;
+        }
+        if (txt_sdt.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập đủ thông tin.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            txt_sdt.requestFocus();
+            return;
+        }
+        if (!rdb_cho.isSelected() && !rdb_xacnhan.isSelected() && !rdb_hoanthanh.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn Tình trạng", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+//        if (QuanLyController.KiemTraTrungMa("datban", "MaKhachHang", txtid.getText(), ktThem, macu) == true) {
+//            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+//            txtid.requestFocus();
+//            return;
+//        }
+        TenKhachHang = txt_tenkhachhang.getText();
+        Email = txt_email.getText();
+        Sdt = txt_sdt.getText();
+        SoLuong = txt_songuoi.getText();
+        ThoiGian = txt_thoigian.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(txt_ngayden.getDate());
+        if (rdb_cho.isSelected()) {
+            TinhTrang = "Chờ";
+        } else if(rdb_xacnhan.isSelected()) {
+            TinhTrang = "Xác nhận";
+        }else{
+            TinhTrang="Hoàn thành";
+        }
+        tbl_DatBan db = new tbl_DatBan(ID, MaKhachHang, TenKhachHang, Email, Sdt, SoLuong, ThoiGian, NgayDat, NgayDen, TinhTrang, MaNhanVien);
+        if (ktThem == true) {
+//            QuanLyController.ThemDatBan(db);
+        } else {
+            QuanLyController.CapNhapDatBan(db, macu);
+        }
+        try {
+            LayNguon();
+        } catch (IOException ex) {
+            Logger.getLogger(QuanLyKhachSanController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        KhoaMo(false);
     }//GEN-LAST:event_bt_ghiActionPerformed
 
     private void bt_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khongActionPerformed
@@ -660,10 +790,13 @@ private File selectedFile;
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_emailActionPerformed
-    private DefaultComboBoxModel<String> comboBoxLoaiPhong;
-    public void LoadComboBoxLoaiPhong() throws IOException, SQLException {
- }
 
+    private void updateDateTimeLabel() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = currentDate.format(formatter);
+        lb_ngaydat.setText(formattedDate);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ghi;
@@ -677,6 +810,7 @@ private File selectedFile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -700,6 +834,7 @@ private File selectedFile;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lb_manhanvien;
     private javax.swing.JLabel lb_ngaydat;
     private javax.swing.JRadioButton rdb_cho;
     private javax.swing.JRadioButton rdb_hoanthanh;
