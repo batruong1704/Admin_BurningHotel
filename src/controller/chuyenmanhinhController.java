@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import view.Home_BackUp;
+import view.hoatdong.JP_DatBan;
 import view.quanly.JP_DauBep;
 import view.quanly.JP_ChucVu;
 import view.hoatdong.JP_DatPhong;
@@ -193,6 +194,15 @@ public class chuyenmanhinhController {
                 case "QLTienIch": {
                     try {
                         node = new JP_QuanLyTienIch();
+                    } catch (IOException | SQLException ex) {
+                        Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                
+                case "DatBan": {
+                    try {
+                        node = new JP_DatBan();
                     } catch (IOException | SQLException ex) {
                         Logger.getLogger(chuyenmanhinhController.class.getName()).log(Level.SEVERE, null, ex);
                     }
