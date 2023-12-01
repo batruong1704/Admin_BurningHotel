@@ -857,7 +857,7 @@
                       <Font name="Montserrat Medium" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="9" rowCount="20">
+                      <Table columnCount="8" rowCount="20">
                         <Column editable="false" title="ID" type="java.lang.Object"/>
                         <Column editable="false" title="T&#xea;n Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
                         <Column editable="false" title="Email" type="java.lang.Object"/>
@@ -865,17 +865,11 @@
                         <Column editable="false" title="L&#x1b0;&#x1ee3;ng Ng&#x1b0;&#x1edd;i" type="java.lang.Object"/>
                         <Column editable="false" title="Th&#x1edd;i gian" type="java.lang.Object"/>
                         <Column editable="false" title="Ng&#xe0;y &#x110;&#x1ebf;n" type="java.lang.Object"/>
-                        <Column editable="false" title="Nh&#xe2;n Vi&#xea;n Th&#x1ef1;c Hi&#x1ec7;n" type="java.lang.Object"/>
                         <Column editable="false" title="T&#xec;nh Tr&#x1ea1;ng" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>

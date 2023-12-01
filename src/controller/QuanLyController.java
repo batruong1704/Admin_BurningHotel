@@ -1101,13 +1101,14 @@ public class QuanLyController {
         PreparedStatement state = null;
         try {
             java.sql.Connection conn = DriverManager.getConnection(Hotel_Manager.dbURL);
-            sql = "UPDATE datban SET SoLuong = ?, ThoiGian = ?, NgayDen= ?, TinhTrang = ? WHERE ID = ?";
+            sql = "UPDATE datban SET SoLuong = ?, ThoiGian = ?, NgayDen= ?, TinhTrang = ?, MaNhanVien=? WHERE ID = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, db.getSoLuong());
             state.setString(2, db.getThoiGian());
             state.setString(3, db.getNgayDen());
             state.setString(4, db.getTinhTrang());
-            state.setString(5, db.getID());
+            state.setString(5, db.getMaNhanVien());
+            state.setString(6, db.getID());
             state.execute();
             state.close();
             conn.close();

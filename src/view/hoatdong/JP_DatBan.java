@@ -40,7 +40,7 @@ private File selectedFile;
         KhoaMo(false);
         LayNguon();
         lb_manhanvien.setText(JP_DatBan.laymanhanvien);
-        lb_ngaydat.setText(NgayDat);
+//        lb_ngaydat.setText(formattedDate);
     }
     
     public void LayNguon() throws IOException {
@@ -48,7 +48,7 @@ private File selectedFile;
         arrDatBan =  QuanLyController.NguonDatBan(sTimBan, tCot);
         tbl_DatBan.setRowCount(0);
         arrDatBan.forEach((KQ) -> {
-            tbl_DatBan.addRow(new Object[]{KQ.getID(), KQ.getTenKhachHang(),KQ.getEmail(), KQ.getSdt(), KQ.getSoLuong(), KQ.getThoiGian(),KQ.getNgayDen(),KQ.getMaNhanVien(),
+            tbl_DatBan.addRow(new Object[]{KQ.getID(), KQ.getTenKhachHang(),KQ.getEmail(), KQ.getSdt(), KQ.getSoLuong(), KQ.getThoiGian(),KQ.getNgayDen(),
                                            KQ.getTinhTrang()});
 
         });
@@ -570,33 +570,33 @@ private File selectedFile;
         tb_DatBan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         tb_DatBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Khách Hàng", "Email", "Số Điện Thoại", "Lượng Người", "Thời gian", "Ngày Đến", "Nhân Viên Thực Hiện", "Tình Trạng"
+                "ID", "Tên Khách Hàng", "Email", "Số Điện Thoại", "Lượng Người", "Thời gian", "Ngày Đến", "Tình Trạng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -641,15 +641,14 @@ private File selectedFile;
         } catch (ParseException ex) {
             Logger.getLogger(JP_DauBep.class.getName()).log(Level.SEVERE, null, ex);
         }
-        MaNhanVien = model.getValueAt(index, 7).toString();
-        TinhTrang = model.getValueAt(index, 8).toString();
+        TinhTrang = model.getValueAt(index, 7).toString();
         txt_tenkhachhang.setText(TenKhachHang);
         txt_email.setText(Email);
         txt_sdt.setText(Sdt);
         txt_songuoi.setText(SoLuong);
         txt_thoigian.setText(ThoiGian);
         lb_ngaydat.setText(QuanLyController.NguonTruyVanDuLieuDatBan("NgayDat", ID));
-        lb_manhanvien.setText(MaNhanVien);
+//        lb_manhanvien.setText(MaNhanVien);
         if(TinhTrang.equalsIgnoreCase("Chờ") ){
             rdb_cho.setSelected(true);
             rdb_xacnhan.setSelected(false);
@@ -690,7 +689,6 @@ private File selectedFile;
 
     private void bt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_themActionPerformed
         ktThem = true;
-        macu = "";
         KhoaMo(true);
         XoaTrang();
         txt_tenkhachhang.requestFocus();
@@ -749,16 +747,12 @@ private File selectedFile;
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn Tình trạng", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
-//        if (QuanLyController.KiemTraTrungMa("datban", "MaKhachHang", txtid.getText(), ktThem, macu) == true) {
-//            JOptionPane.showMessageDialog(this, "Mã ngành đã tồn tại trong cơ sở dữ liệu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-//            txtid.requestFocus();
-//            return;
-//        }
         TenKhachHang = txt_tenkhachhang.getText();
         Email = txt_email.getText();
         Sdt = txt_sdt.getText();
         SoLuong = txt_songuoi.getText();
         ThoiGian = txt_thoigian.getText();
+        MaNhanVien = lb_manhanvien.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(txt_ngayden.getDate());
         if (rdb_cho.isSelected()) {
