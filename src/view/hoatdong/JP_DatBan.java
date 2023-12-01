@@ -700,7 +700,7 @@ private File selectedFile;
         if (txt_tenkhachhang.getText().length() <= 0) {
             return;
         }
-        macu = txt_tenkhachhang.getText();
+//        macu = "";
         ktThem = false;
         refresh(true);
         txt_tenkhachhang.requestFocus();
@@ -768,11 +768,11 @@ private File selectedFile;
         }else{
             TinhTrang="Hoàn thành";
         }
-        tbl_DatBan db = new tbl_DatBan(ID, MaKhachHang, TenKhachHang, Email, Sdt, SoLuong, ThoiGian, NgayDat, NgayDen, TinhTrang, MaNhanVien);
+        tbl_DatBan db = new tbl_DatBan(ID, MaKhachHang, TenKhachHang, Email, Sdt, SoLuong, ThoiGian, NgayDat, date, TinhTrang, MaNhanVien);
         if (ktThem == true) {
 //            QuanLyController.ThemDatBan(db);
         } else {
-            QuanLyController.CapNhapDatBan(db, macu);
+            QuanLyController.CapNhapDatBan(db);
         }
         try {
             LayNguon();

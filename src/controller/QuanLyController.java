@@ -1096,7 +1096,7 @@ public class QuanLyController {
 //        }
 //    }
 
-    public static void CapNhapDatBan(tbl_DatBan db, String macu) {
+    public static void CapNhapDatBan(tbl_DatBan db) {
         conn = null;
         PreparedStatement state = null;
         try {
@@ -1107,7 +1107,7 @@ public class QuanLyController {
             state.setString(2, db.getThoiGian());
             state.setString(3, db.getNgayDen());
             state.setString(4, db.getTinhTrang());
-            state.setString(5, macu);
+            state.setString(5, db.getID());
             state.execute();
             state.close();
             conn.close();
